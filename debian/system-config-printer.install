@@ -1,0 +1,8 @@
+etc/dbus-1
+usr/bin
+usr/share/applications
+usr/share/dbus-1
+usr/share/locale
+usr/share/man
+usr/share/system-config-printer
+debian/gpk-install-package-name /usr/share/system-config-printer/

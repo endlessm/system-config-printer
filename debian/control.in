@@ -1,0 +1,92 @@
+Source: system-config-printer
+Section: gnome
+Priority: optional
+Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
+Uploaders: @GNOME_TEAM@,
+ Guido Günther <agx@sigxcpu.org>
+Build-Depends: cdbs (>= 0.4.90~),
+               debhelper (>= 8),
+               autotools-dev,
+               python-all-dev (>= 2.6),
+               libxml-parser-perl,
+               desktop-file-utils (>= 0.13),
+               xmlto,
+               gnome-pkg-tools,
+               intltool,
+               libcups2-dev,
+               libglib2.0-dev,
+               libudev-dev (>= 172) [linux-any],
+               libusb-1.0-0-dev,
+               systemd
+Standards-Version: 3.9.4
+Vcs-Svn: svn://anonscm.debian.org/pkg-gnome/attic/system-config-printer
+Vcs-Browser: http://anonscm.debian.org/viewvc/pkg-gnome/attic/system-config-printer
+Homepage: http://cyberelk.net/tim/software/system-config-printer/
+X-Python-Version: >= 2.6
+
+Package: system-config-printer
+Architecture: all
+Depends: ${misc:Depends},
+         ${python:Depends},
+         python-cups (>= 1.9.60),
+         python-cupshelpers (= ${binary:Version}),
+         python-dbus,
+         python-libxml2,
+         python-gi,
+         gir1.2-glib-2.0,
+         gir1.2-pango-1.0,
+         gir1.2-gdkpixbuf-2.0,
+         gir1.2-gtk-3.0,
+         gir1.2-notify-0.7,
+         gir1.2-packagekitglib-1.0,
+         gnome-icon-theme,
+Recommends: system-config-printer-udev,
+            cups-pk-helper,
+            gir1.2-gnomekeyring-1.0,
+            python-smbc
+Suggests: python-gnomekeyring,
+          sessioninstaller
+Conflicts: hal-cups-utils
+Description: graphical interface to configure the printing system
+ System-config-printer is a GUI written in Python using GTK+ to 
+ configure a CUPS server. Its primary use is to configure the printing 
+ system on the local host, but can also be used to setup a remote 
+ printer.
+ .
+ In terms of features, it aims to be as complete as the CUPS web 
+ administration tool, while being integrated to the desktop.
+
+Package: system-config-printer-applet
+Architecture: all
+Depends: ${misc:Depends},
+         ${python:Depends},
+         system-config-printer (= ${binary:Version})
+Description: Notification applet for printing jobs.
+
+Package: python-cupshelpers
+Architecture: all
+Section: python
+Depends: ${misc:Depends},
+         ${python:Depends},
+         python-cups (>= 1.9.42),
+         python-dbus,
+         python-elementtree | python (>= 2.5),
+         python-pycurl
+Description: Python utility modules around the CUPS printing system
+ These Python modules, that come from the system-config-printer 
+ distribution, help building applications and utilities around the CUPS 
+ Python bindings.
+
+Package: system-config-printer-udev
+Architecture: linux-any
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+         ${python:Depends},
+         python-cups (>= 1.9.42),
+         python-cupshelpers (= ${source:Version}),
+         python-dbus
+Conflicts: hal-cups-utils (<< 0.6.17)
+Description: Utilities to detect and configure printers automatically
+ These utilities allow to detect automatically printers using UDEV when they
+ are plugged on the system. They are then configured automatically in the CUPS
+ printing daemon and made available to users.
