@@ -22,15 +22,11 @@
 import os
 import glib
 
+GPK_INSTALL_PACKAGE_NAME='/usr/share/system-config-printer/gpk-install-package-name'
+
 class PackageKit:
     def __init__ (self):
-        for dir in os.environ.get ("PATH", "").split (":"):
-            path = dir + os.path.sep + "gpk-install-package-name"
-            if os.access (path, os.X_OK):
-                self.gpk_install_package_name = path
-                return
-
-        raise RuntimeError, "No gpk-install-package-name program available"
+        self.gpk_install_package_name = GPK_INSTALL_PACKAGE_NAME
 
     def InstallPackageName (self, xid, timestamp, name):
         glib.spawn_async ([self.gpk_install_package_name, name])
