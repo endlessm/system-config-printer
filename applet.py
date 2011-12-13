@@ -20,6 +20,7 @@
 import cups
 cups.require ("1.9.42")
 import sys
+sys.path.append("/usr/share/system-config-printer")
 from debug import *
 
 import dbus

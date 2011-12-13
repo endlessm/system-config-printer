@@ -22,6 +22,8 @@
 ## Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 # config is generated from config.py.in by configure
+import sys
+sys.path.append("/usr/share/system-config-printer")
 import config
 
 import sys, os, time, re
