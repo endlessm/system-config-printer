@@ -225,21 +225,10 @@ class SystemConfigFirewall:
             pass
 
     def _check_any_allowed (self, search):
-        (args, filename) = self._get_fw_data ()
-        if filename == None: return True
-        isect = set (search).intersection (set (args))
-        return len (isect) != 0
-
+        return True
 
     def add_service (self, service):
-        try:
-            (args, filename) = self._fw_data
-        except AttributeError:
-            (args, filename) = self._get_fw_data ()
-        if filename == None: return
-
-        args.append ("--service=" + service)
-        self._fw_data = (args, filename)
+        pass
 
     def check_ipp_client_allowed (self):
         return self._check_any_allowed (set(["--port=%s:%s" %
