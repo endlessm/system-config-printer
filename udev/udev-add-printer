@@ -32,28 +32,73 @@ MFG_BLACKLIST=[
     "graphtec",
     ]
 
+def is_ipp_uri (uri):
+    return uri.startswith('ipp://')
+
+def is_ippusb_uri (uri):
+    return '/ipp/print?isippoverusb=true&' in uri
+
+def get_ippusb_uri_params (uri):
+    params_i = uri.find('/ipp/print?isippusboverusb=true&')
+    if params_i < 0:
+        return ""
+    return uri[params_i:]
+
+def is_same_ippusb_printer (uri1, uri2):
+    return get_ippusb_uri_params(uri1) == get_ippusb_uri_params(uri2)
+
 def create_queue (c, printers, name, device_uri, ppdname, info, installer):
     # Make sure the name is unique.
     namel = str (name.lower ())
-    unique = False
-    suffix = 1
-    while not unique:
-        unique = True
-        for printer in list(printers.values ()):
-            if (not printer.discovered and
-                ((suffix == 1 and printer.name.lower () == namel) or
-                 (suffix > 1 and
-                  printer.name.lower () == namel + "-" + str (suffix)))):
-                unique = False
-                break
 
-        if not unique:
-            suffix += 1
-            if suffix == 100:
+    # Find any existing queue for this uri
+    name_found = False;
+    for printer in list(printers.values ()):
+        # ippusbxd needs the queue's uri to be modified
+        uri = printer.device_uri;
+        if (is_ipp_uri (uri)):
+            if (is_ippusb_uri (uri) and
+                is_ipp_uri (device_uri) and is_ippusb_uri (device_uri) and
+                is_same_ippusb_printer (uri, device_uri)):
+                name_found = True;
+                name = printer.name;
                 break
+        else:
+            if (uri == device_uri):
+                name_found = True;
+                name = printer.name;
+                break;
 
-    if suffix > 1:
-        name += "-" + str (suffix)
+
+    if (not name_found):
+        # Generate a unique name for our unique uri
+        unique = False
+        suffix = 1
+        while not unique:
+            unique = True
+            for printer in list(printers.values ()):
+                if (not printer.discovered and
+                    ((suffix == 1 and printer.name.lower () == namel) or
+                     (suffix > 1 and
+                      printer.name.lower () == namel + "-" + str (suffix)))):
+
+                    # ippusbxd needs the queue's uri to be modified
+                    uri = printer.device_uri;
+                    if (is_ipp_uri (uri)        and is_ippusb_uri (uri) and
+                        is_ipp_uri (device_uri) and is_ippusb_uri (device_uri) and
+                         is_same_ippusb_printer (uri, device_uri)):
+                        break
+
+                    unique = False
+                    break
+
+            if not unique:
+                suffix += 1
+                if suffix == 100:
+                    break
+
+        if suffix > 1:
+            name += "-" + str (suffix)
 
     c.addPrinter (name,
                   device=device_uri,
