@@ -722,6 +722,23 @@ def setPPDPageSize(ppd, language):
     for each in letter:
         if language == each:
             size = 'Letter'
+
+    # Use setting in /etc/papersize if available
+    try:
+        f = open ("/etc/papersize")
+        for line in f:
+            if line.startswith("#"):
+                continue
+            if line.strip().lower().startswith("a4"):
+                size = 'A4'
+            elif line.strip().lower().startswith("letter"):
+                size = 'Letter'
+            elif line.strip() != "":
+                break
+        f.close()
+    except:
+        pass
+
     try:
         ppd.markOption ('PageSize', size)
         _debugprint ("set PageSize = %s" % size)
