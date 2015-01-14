@@ -1,43 +1,15 @@
 #!/usr/bin/make -f
-
-GNOME_DOWNLOAD_URL = http://cyberelk.net/tim/data/system-config-printer/$(DEB_UPSTREAM_VERSION_MAJOR_MINOR)/$(GNOME_TARBALL)
-TARBALL_EXT := tar.xz
+# Sample debian/rules that uses cdbs.  Originaly written by Robert Millan.
+# This file is public domain.
 
 include /usr/share/cdbs/1/rules/debhelper.mk
 include /usr/share/cdbs/1/class/autotools.mk
-include /usr/share/cdbs/1/class/python-module.mk
-include /usr/share/gnome-pkg-tools/1/rules/uploaders.mk
--include /usr/share/gnome-pkg-tools/1/rules/gnome-get-source.mk
+include /usr/share/cdbs/1/class/gnome.mk
+include /usr/share/cdbs/1/rules/simple-patchsys.mk
+include /usr/share/cdbs/1/rules/autoreconf.mk
 
-DEB_PYTHON2_MODULE_PACKAGES := python-cupshelpers \
-                               system-config-printer \
-                               system-config-printer-udev
-DEB_PYTHON_PRIVATE_MODULES_DIRS_system-config-printer-udev := /lib/udev/
+DEB_CONFIGURE_EXTRA_FLAGS := --sbindir=/usr/bin --with-udev-rules
+DEB_MAKE_INSTALL_TARGET := install DESTDIR=$(DEB_DESTDIR) udevrulesdir=/lib/udev/rules.d udevhelperdir=/lib/udev
 
-DEB_CONFIGURE_EXTRA_FLAGS := \
-		--sbindir=/usr/bin \
-		--with-udev-rules
-
-configure/python-cupshelpers::
-	cp debug.py smburi.py cupshelpers/
-
-cleanbuilddir/python-cupshelpers::
-	rm -rf cupshelpers/debug.py cupshelpers/smburi.py
-
-install/system-config-printer-applet::
-	mkdir -p debian/system-config-printer-applet/etc/xdg/autostart
-	mv debian/tmp/etc/xdg/autostart/print-applet.desktop debian/system-config-printer-applet/etc/xdg/autostart
-	mkdir -p debian/system-config-printer-applet/usr/bin
-	mv debian/tmp/usr/bin/system-config-printer-applet debian/system-config-printer-applet/usr/bin	
-	mkdir -p debian/system-config-printer-applet/usr/share/man/man1
-	mv debian/tmp/usr/share/man/man1/system-config-printer-applet.1 debian/system-config-printer-applet/usr/share/man/man1
-	mkdir -p debian/system-config-printer-applet/usr/share/system-config-printer
-	mv debian/tmp/usr/share/system-config-printer/applet.py debian/system-config-printer-applet/usr/share/system-config-printer
-
-# Generate the service file before the build so we substitute the
-# correct path to the udev helper.
-configure/system-config-printer-udev:: udev/configure-printer@.service
-
-udev/configure-printer@.service: udev/configure-printer@.service.in
-	sed -e 's,@udevhelperdir@,/lib/udev,g' $< > $@
-
+binary-install/python-cupshelpers::
+	dh_python2 -ppython-cupshelpers
