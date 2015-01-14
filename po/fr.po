@@ -2369,7 +2369,7 @@ msgstr "<b>Paramètres</b>"
 #. Not more than 25 characters
 #: ../ui/PrinterPropertiesDialog.ui.h:14
 msgid "Print Self-Test Page"
-msgstr "Imprimer la page de test"
+msgstr "Imprimer la page de diagnostic"
 
 #. Not more than 25 characters
 #: ../ui/PrinterPropertiesDialog.ui.h:16
