@@ -295,9 +295,10 @@ update-po: missing-languages
 
 missing-languages:
 	bash -c '\
+	export LC_COLLATE=C; \
 	eval $$(grep ALL_LINGUAS configure.in); \
-	diff -u <(echo $$ALL_LINGUAS | xargs -rn1 echo) \
-		<(cd po; ls -1 *.po | sed -e "s,\.po$$,,")'
+	diff -u <(echo $$ALL_LINGUAS | xargs -rn1 echo | sort) \
+		<(cd po; ls -1 *.po | sed -e "s,\.po$$,," | sort)'
 
 missing-imports:
 	s=0; \
