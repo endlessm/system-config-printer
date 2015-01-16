@@ -5,4 +5,5 @@ Exec=system-config-printer
 Terminal=false
 Type=Application
 Icon=printer
+NoDisplay=true
 StartupNotify=true
