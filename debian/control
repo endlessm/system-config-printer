@@ -79,6 +79,19 @@ Description: Printer configuration GUI
  .
  This package provides the GTK frontend.
 
+Package: system-config-printer-applet
+Architecture: all
+Depends: ${misc:Depends},
+         ${python3:Depends},
+         python3-cups (>= 1.9.55),
+         python3-cupshelpers (= ${source:Version}),
+         python3-dbus,
+         python3-gi,
+         gir1.2-glib-2.0,
+         gir1.2-notify-0.7,
+         system-config-printer-common (= ${binary:Version})
+Description: Notification applet for printing jobs.
+
 Package: python3-cupshelpers
 Architecture: all
 Depends: ${shlibs:Depends},

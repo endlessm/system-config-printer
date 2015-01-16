@@ -28,4 +28,3 @@ debian/tmp/usr/share/man
 debian/tmp/usr/bin/system-config-printer-applet
 debian/tmp/usr/bin/system-config-printer
 debian/tmp/usr/bin/install-printerdriver
-debian/tmp/etc/xdg/autostart/print-applet.desktop
