@@ -13,3 +13,10 @@ DEB_MAKE_INSTALL_TARGET := install DESTDIR=$(DEB_DESTDIR) udevrulesdir=/lib/udev
 
 binary-install/python-cupshelpers::
 	dh_python2 -ppython-cupshelpers
+
+# Generate the service file before the build so we substitute the
+# correct path to the udev helper.
+configure/system-config-printer-udev:: udev/configure-printer@.service
+
+udev/configure-printer@.service: udev/configure-printer@.service.in
+	sed -e 's,@udevhelperdir@,/lib/udev,g' $< > $@

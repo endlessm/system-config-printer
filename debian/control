@@ -13,7 +13,8 @@ Build-Depends: cdbs (>= 0.4.43),
                libusb-1.0-0-dev,
                libudev-dev,
                libcups2-dev,
-               libglib2.0-dev
+               libglib2.0-dev,
+               systemd
 Standards-Version: 3.7.2
 X-Python-Version: >= 3.0
 
