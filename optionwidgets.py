@@ -1,6 +1,6 @@
 ## system-config-printer
 
-## Copyright (C) 2006, 2007, 2008, 2009 Red Hat, Inc.
+## Copyright (C) 2006, 2007, 2008, 2009, 2014 Red Hat, Inc.
 ## Copyright (C) 2006 Florian Festi <ffesti@redhat.com>
 ## Copyright (C) 2007, 2008, 2009 Tim Waugh <twaugh@redhat.com>
 
@@ -22,7 +22,7 @@ import config
 from gi.repository import Gtk
 import cups
 import gettext
-gettext.install(domain=config.PACKAGE, localedir=config.localedir, unicode=True)
+gettext.install(domain=config.PACKAGE, localedir=config.localedir)
 import ppdippstr
 
 def OptionWidget(option, ppd, gui, tab_label=None):
@@ -32,7 +32,7 @@ def OptionWidget(option, ppd, gui, tab_label=None):
         len (option.choices) != 2):
         # This option is advertised as a Boolean but in fact has more
         # than two choices.
-        print "Treating Boolean option %s as PickOne" % option.keyword
+        print("Treating Boolean option %s as PickOne" % option.keyword)
         ui = cups.PPD_UI_PICKONE
 
     if ui == cups.PPD_UI_BOOLEAN:
@@ -55,8 +55,8 @@ class Option:
         vbox = Gtk.VBox()
         
         self.btnConflict = Gtk.Button()
-        icon = Gtk.Image.new_from_stock(Gtk.STOCK_DIALOG_WARNING,
-                                        Gtk.IconSize.SMALL_TOOLBAR)
+        icon = Gtk.Image.new_from_icon_name(Gtk.STOCK_DIALOG_WARNING,
+                                            Gtk.IconSize.SMALL_TOOLBAR)
         self.btnConflict.add(icon)
         self.btnConflict.set_no_show_all(True) #avoid the button taking
                                                # over control again
@@ -167,13 +167,11 @@ class Option:
         parent = self.btnConflict
         while parent != None and not isinstance (parent, Gtk.Window):
             parent = parent.get_parent ()
-
-        dialog = Gtk.MessageDialog (parent,
-                                    Gtk.DialogFlags.DESTROY_WITH_PARENT |
-                                    Gtk.DialogFlags.MODAL,
-                                    Gtk.MessageType.WARNING,
-                                    Gtk.ButtonsType.CLOSE,
-                                    self.conflict_message)
+        dialog = Gtk.MessageDialog (parent=parent,
+                                    modal=True, destroy_with_parent=True,
+                                    message_type=Gtk.MessageType.WARNING,
+                                    buttons=Gtk.ButtonsType.CLOSE,
+                                    text=self.conflict_message)
         dialog.run()
         dialog.destroy()
         
@@ -182,10 +180,11 @@ class Option:
 class OptionBool(Option):
 
     def __init__(self, option, ppd, gui, tab_label=None):
-        self.selector = Gtk.CheckButton(ppdippstr.ppd.get (option.text))
+        self.selector = Gtk.CheckButton.new_with_label(
+                                            ppdippstr.ppd.get (option.text))
         self.label = None
-        self.false = u"False" # hack to allow "None" instead of "False"
-        self.true = u"True"
+        self.false = "False" # hack to allow "None" instead of "False"
+        self.true = "True"
         for c in option.choices:
             if c["choice"] in ("None", "False", "Off"):
                 self.false = c["choice"]
@@ -222,7 +221,7 @@ class OptionPickOne(Option):
         if selected is not None:
             self.selector.set_active(selected)
         else:
-            print option.text, "unknown value:", option.defchoice
+            print(option.text, "unknown value:", option.defchoice)
         self.selector.connect("changed", self.on_change)
 
         Option.__init__(self, option, ppd, gui, tab_label=tab_label)

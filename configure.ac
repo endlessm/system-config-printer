@@ -1,9 +1,9 @@
-AC_INIT(system-config-printer, 1.4.3)
+AC_INIT(system-config-printer, 1.5.4)
 AC_CONFIG_SRCDIR(system-config-printer.py)
 AM_INIT_AUTOMAKE([dist-xz dist-bzip2 subdir-objects 1.6 foreign])
 IT_PROG_INTLTOOL
 AM_GNU_GETTEXT([external])
-AM_PATH_PYTHON
+AM_PATH_PYTHON([3])
 PACKAGE="AC_PACKAGE_NAME"
 VERSION="AC_PACKAGE_VERSION"
 GETTEXT_PACKAGE="AC_PACKAGE_NAME"
@@ -44,13 +44,22 @@ AC_ARG_WITH(udev-rules,
 	    [with_udev_rules=no])
 AM_CONDITIONAL([UDEV_RULES], [test x$with_udev_rules != xno])
 
-if test x$with_udev_rules != xno; then
+AC_ARG_WITH([udevdir],
+	AS_HELP_STRING([--with-udevdir=DIR], [Directory for udev helper programs]),
+	[], [with_udevdir=$($PKG_CONFIG --variable=udevdir udev)])
+if test "x$with_udevdir" != xno; then
+	AC_SUBST([udevdir], [$with_udevdir])
+	AC_SUBST([udevrulesdir], [$with_udevdir/rules.d])
+fi
+
+if test "x$with_udev_rules" != xno -a "x$with_udevdir" != xno; then
    PKG_CHECK_MODULES(libudev, [libudev >= 172], has_libudev=yes, has_libudev=no)
    PKG_CHECK_MODULES(libusb, libusb-1.0, has_libusb=yes, has_libusb=no)
    if test x$has_glib == xno -o \
+           x$has_udev == xno -o \
            x$has_libudev == xno -o \
-           x$has_libusb == xno; then
-      AC_MSG_ERROR([Missing libraries])
+           x$has_libusb == xno ; then
+      AC_MSG_ERROR([Missing packages])
    fi
 
    AM_PROG_CC_C_O
@@ -65,7 +74,7 @@ if test "x$with_systemdsystemunitdir" != xno; then
 fi
 AM_CONDITIONAL(HAVE_SYSTEMD, [test -n "$with_systemdsystemunitdir" -a "x$with_systemdsystemunitdir" != xno ])
 
-ALL_LINGUAS="ar as bg bn_IN bn br bs ca cs cy da de el en_GB es et fa fi fr gu he hi hr hu hy id is it ja ka kn ko lo lv mai mk ml mr ms my nb nds nl nn or pa pl pt_BR pt ro ru si sk sl sr@latin sr sv ta te th tr uk vi zh_CN zh_TW"
+ALL_LINGUAS="ar as bg bn_IN bn br bs ca cs cy da de el en_GB es et fa fi fr gu he hi hr hu id is it ja kn ko lv mai mk ml mr ms nb nds nl nn or pa pl pt_BR pt ro ru si sk sl sr@latin sr sv ta te th tr uk vi zh_CN zh_TW"
 AC_CONFIG_FILES([
 Makefile
 po/Makefile.in
@@ -73,5 +82,6 @@ system-config-printer
 system-config-printer-applet
 install-printerdriver
 dbus/scp-dbus-service
+udev/configure-printer@.service
 ])
 AC_OUTPUT

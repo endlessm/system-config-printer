@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 ## Printing troubleshooter
 
@@ -39,8 +39,8 @@ if __name__ == "__main__":
     root = os.path.dirname (sub)
     sys.path.append (root)
 
-import base
-from base import *
+from . import base
+from .base import *
 
 class Troubleshooter:
     def __init__ (self, quitfn=None, parent=None):
@@ -70,20 +70,20 @@ class Troubleshooter:
         box.set_spacing (3)
         box.set_layout (Gtk.ButtonBoxStyle.END)
 
-        back = Gtk.Button (stock=Gtk.STOCK_GO_BACK)
+        back = Gtk.Button.new_from_stock (Gtk.STOCK_GO_BACK)
         back.connect ('clicked', self._on_back_clicked)
         back.set_sensitive (False)
         self.back = back
 
-        close = Gtk.Button (stock=Gtk.STOCK_CLOSE)
+        close = Gtk.Button.new_from_stock (Gtk.STOCK_CLOSE)
         close.connect ('clicked', self.quit)
         self.close = close
 
-        cancel = Gtk.Button (stock=Gtk.STOCK_CANCEL)
+        cancel = Gtk.Button.new_from_stock (Gtk.STOCK_CANCEL)
         cancel.connect ('clicked', self.quit)
         self.cancel = cancel
 
-        forward = Gtk.Button (stock=Gtk.STOCK_GO_FORWARD)
+        forward = Gtk.Button.new_from_stock (Gtk.STOCK_GO_FORWARD)
         forward.connect ('clicked', self._on_forward_clicked)
         self.forward = forward
 
@@ -123,7 +123,7 @@ class Troubleshooter:
 
         # Delete the questions so that their __del__ hooks can run.
         # Do this in reverse order of creation.
-        for i in xrange (len (self.questions)):
+        for i in range (len (self.questions)):
             self.questions.pop ()
 
         self.main.hide ()
@@ -170,9 +170,9 @@ class Troubleshooter:
         n = 1
         for i in range (self.current_page):
             answers = self.question_answers[i].copy ()
-            for hidden in filter (lambda x: x.startswith ("_"), answers.keys()):
+            for hidden in [x for x in answers.keys() if x.startswith ("_")]:
                 del answers[hidden]
-            if len (answers.keys ()) == 0:
+            if len (list(answers.keys ())) == 0:
                 continue
             text += "Page %d (%s):" % (n, self.questions[i]) + '\n'
             text += pprint.pformat (answers) + '\n'
@@ -281,15 +281,15 @@ class Troubleshooter:
 
     def _report_traceback (self):
         try:
-            print "Traceback:"
+            print("Traceback:")
             (type, value, tb) = sys.exc_info ()
             tblast = traceback.extract_tb (tb, limit=None)
             if len (tblast):
                 tblast = tblast[:len (tblast) - 1]
             extxt = traceback.format_exception_only (type, value)
             for line in traceback.format_tb(tb):
-                print line.strip ()
-            print extxt[0].strip ()
+                print(line.strip ())
+            print(extxt[0].strip ())
         except:
             pass
 
@@ -357,7 +357,7 @@ def run (quitfn=None, parent=None):
     for module in QUESTIONS:
         try:
             if not module in modules_imported:
-                exec ("from %s import %s" % (module, module))
+                exec ("from .%s import %s" % (module, module))
                 modules_imported.append (module)
 
             exec ("%s (troubleshooter)" % module)

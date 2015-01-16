@@ -1,8 +1,8 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 ## Printing troubleshooter
 
-## Copyright (C) 2008, 2010 Red Hat, Inc.
+## Copyright (C) 2008, 2010, 2014 Red Hat, Inc.
 ## Authors:
 ##  Tim Waugh <twaugh@redhat.com>
 
@@ -25,26 +25,42 @@ from gi.repository import Gtk
 import cups
 import os
 import tempfile
+import datetime
 import time
 from timedops import TimedOperation
-from base import *
+from .base import *
+
+try:
+    from systemd import journal
+except:
+    journal = False
+
 class ErrorLogFetch(Question):
     def __init__ (self, troubleshooter):
         Question.__init__ (self, troubleshooter, "Error log fetch")
-        troubleshooter.new_page (Gtk.Label (), self)
+        page = self.initial_vbox (_("Retrieve Journal Entries"),
+                                  _("No system journal entries were found. "
+                                    "This may be because you are not an "
+                                    "administrator. To fetch journal entries "
+                                    "please run this command:"))
+        self.entry = Gtk.Entry ()
+        self.entry.set_editable (False)
+        page.pack_start (self.entry, False, False, 0)
+        troubleshooter.new_page (page, self)
         self.persistent_answers = {}
 
     def display (self):
         answers = self.troubleshooter.answers
         parent = self.troubleshooter.get_window ()
         self.answers = {}
-        try:
-            checkpoint = answers['error_log_checkpoint']
-        except KeyError:
-            checkpoint = None
+        checkpoint = answers.get ('error_log_checkpoint')
+        cursor = answers.get ('error_log_cursor')
+        timestamp = answers.get ('error_log_timestamp')
 
-        if self.persistent_answers.has_key ('error_log'):
+        if ('error_log' in self.persistent_answers or
+            'journal' in self.persistent_answers):
             checkpoint = None
+            cursor = None
 
         def fetch_log (c):
             prompt = c._get_prompt_allowed ()
@@ -67,8 +83,9 @@ class ErrorLogFetch(Question):
                 return tmpfname
             return None
 
+        now = datetime.datetime.fromtimestamp (time.time ()).strftime ("%F %T")
         self.authconn = self.troubleshooter.answers['_authenticated_connection']
-        if answers.has_key ('error_log_debug_logging_set'):
+        if 'error_log_debug_logging_set' in answers:
             try:
                 self.op = TimedOperation (self.authconn.adminGetServerSettings,
                                           parent=parent)
@@ -104,18 +121,42 @@ class ErrorLogFetch(Question):
             except cups.IPPError:
                 pass
 
+        self.answers = {}
+        if journal and cursor != None:
+            def journal_format (x):
+                try:
+                    priority = "XACEWNIDd"[x['PRIORITY']]
+                except (IndexError, TypeError):
+                    priority = " "
+
+                return (priority + " " +
+                        x['__REALTIME_TIMESTAMP'].strftime("[%m/%b/%Y:%T]") +
+                        " " + x['MESSAGE'])
+
+            r = journal.Reader ()
+            r.seek_cursor (cursor)
+            r.add_match (_COMM="cupsd")
+            self.answers['journal'] = [journal_format (x) for x in r]
+
         if checkpoint != None:
             self.op = TimedOperation (fetch_log,
                                       (self.authconn,),
                                       parent=parent)
             tmpfname = self.op.run ()
             if tmpfname != None:
-                f = file (tmpfname)
+                f = open (tmpfname)
                 f.seek (checkpoint)
                 lines = f.readlines ()
                 os.remove (tmpfname)
-                self.answers = { 'error_log': map (lambda x: x.strip (),
-                                                   lines) }
+                self.answers = { 'error_log': [x.strip () for x in lines] }
+
+        if (len (self.answers.get ('journal', [])) +
+            len (self.answers.get ('error_log', []))) == 0:
+            cmd = ("su -c 'journalctl _COMM=cupsd "
+                   "--since=\"%s\" --until=\"%s\"' > troubleshoot-logs.txt" %
+                   (answers['error_log_timestamp'], now))
+            self.entry.set_text (cmd)
+            return True
 
         return False
 

@@ -1,5 +1,3 @@
-CFLAGS=-g -O2 -Wall
-
 SUBDIRS=po
 
 EXPORT_MODULES=					\
@@ -67,6 +65,7 @@ install-exec-local: .stamp-distutils-in-builddir
 # doesn't provide a way to do this itself.
 uninstall-local:
 	rm -f $(DESTDIR)/$(pythondir)/cupshelpers*.egg-info
+	rm -rf $(DESTDIR)/$(pythondir)/cupshelpers/__pycache__
 	for file in $(EXPORT_MODULES) $(EXPORT_MODULES_GEN); do	\
 		rm -f $(DESTDIR)/$(pythondir)/$$file*;		\
 	done
@@ -82,6 +81,7 @@ clean-local:
 		done;						\
 	fi
 	rm -f .stamp-distutils-in-builddir
+	rm -f .stamp-man-pages-built
 
 nobase_pkgdata_SCRIPTS=				\
 	check-device-ids.py			\
@@ -110,6 +110,7 @@ nobase_pkgdata_DATA=					\
 	jobviewer.py					\
 	monitor.py					\
 	newprinter.py					\
+	OpenPrintingRequest.py				\
 	options.py					\
 	optionwidgets.py				\
 	PhysicalDevice.py				\
@@ -179,27 +180,27 @@ bin_SCRIPTS=					\
 	dbus/scp-dbus-service
 
 if UDEV_RULES
-udevrulesdir=$(sysconfdir)/udev/rules.d
 udevrules_DATA=udev/70-printers.rules
 udev_udev_configure_printer_SOURCES=\
 	udev/udev-configure-printer.c
 udev_udev_configure_printer_LDADD= -lcups -ludev $(libusb_LIBS) $(GLIB_LIBS)
 udev_udev_configure_printer_CFLAGS= $(AM_CFLAGS) $(libusb_CFLAGS) $(GLIB_CFLAGS)
-udevhelperdir=$(sysconfdir)/udev
-udevhelper_PROGRAMS=\
+udev_PROGRAMS=\
 	udev/udev-configure-printer
-udevhelper_SCRIPTS=\
+udev_SCRIPTS=\
 	udev/udev-add-printer
 
 if HAVE_SYSTEMD
-%.service: %.service.in
-	$(AM_V_GEN)sed -e 's,@udevhelperdir\@,$(udevhelperdir),g' $< > $@
 systemdsystemunit_DATA = \
 	udev/configure-printer@.service
-CLEANFILES = \
+systemd_CLEANFILES = \
 	$(systemdsystemunit_DATA)
+else
+systemd_CLEANFILES=
 endif
 
+else
+systemd_CLEANFILES=
 endif
 
 man_MANS=					\
@@ -218,6 +219,8 @@ dbusinterfacesdir = $(datadir)/dbus-1/interfaces/
 dbusservices_DATA =				\
 	dbus/org.fedoraproject.Config.Printing.service
 dbusservicesdir = $(datadir)/dbus-1/services/
+
+@INTLTOOL_DESKTOP_RULE@
 
 desktop_DATA =\
 	system-config-printer.desktop \
@@ -252,6 +255,12 @@ uninstall-desktopDATA:
 
 desktop_in_files = $(desktop_DATA:.desktop=.desktop.in)
 
+@INTLTOOL_XML_RULE@
+
+appdatadir = $(datadir)/appdata
+appdata_in_files = system-config-printer.appdata.xml.in
+appdata_DATA = $(appdata_in_files:.xml.in=.xml)
+
 EXTRA_DIST=\
 	$(nobase_pkgdata_SCRIPTS) \
 	$(nobase_pkgdata_DATA) \
@@ -276,13 +285,15 @@ EXTRA_DIST=\
 	udev/udev-add-printer \
 	udev/70-printers.rules \
 	udev/configure-printer@.service.in \
-	xml/preferreddrivers.xml
-
-@INTLTOOL_DESKTOP_RULE@
+	xml/preferreddrivers.xml \
+	$(appdata_in_files)
 
 # The man pages are generated from DocBook XML.
-$(man_MANS): $(top_srcdir)/man/system-config-printer.xml
+.stamp-man-pages-built: $(top_srcdir)/man/system-config-printer.xml
 	xmlto man -o man $<
+	touch .stamp-man-pages-built
+
+$(man_MANS): .stamp-man-pages-built
 
 html:	$(EXPORT_MODULES) $(EXPORT_MODULES_GEN)
 	rm -rf html
@@ -296,7 +307,7 @@ update-po: missing-languages
 missing-languages:
 	bash -c '\
 	export LC_COLLATE=C; \
-	eval $$(grep ALL_LINGUAS configure.in); \
+	eval $$(grep ALL_LINGUAS configure.ac); \
 	diff -u <(echo $$ALL_LINGUAS | xargs -rn1 echo | sort) \
 		<(cd po; ls -1 *.po | sed -e "s,\.po$$,," | sort)'
 
@@ -328,7 +339,7 @@ run-dbus-service:	config.py cupshelpers/config.py
 	$(PYTHON) $(top_srcdir)/scp-dbus-service.py --debug
 
 test-xmldriverprefs:	cupshelpers/xmldriverprefs.py xml/preferreddrivers.xml
-	python -c 'from cupshelpers.xmldriverprefs import test; test()' \
+	$(PYTHON) -c 'from cupshelpers.xmldriverprefs import test; test()' \
 		2>&1 | less
 
 help:
@@ -356,11 +367,15 @@ test-xml-validity.sh:	FORCE
 	echo "xmllint --relaxng \\" >> "$@"
 	echo "    $(top_srcdir)/xml/preferreddrivers.rng \\" >> "$@"
 	echo "    $(top_srcdir)/xml/preferreddrivers.xml >/dev/null" >> "$@"
-	echo "python $(top_srcdir)/xml/validate.py \\" >> "$@"
+	echo "$(PYTHON) $(top_srcdir)/xml/validate.py \\" >> "$@"
 	echo "    $(top_srcdir)/xml/preferreddrivers.xml" >> "$@"
 	chmod 755 "$@"
 
 TESTS = test-xml-validity.sh test-ppd-module.sh
+
+CLEANFILES=			\
+	$(systemd_CLEANFILES)	\
+	$(appdata_DATA)
 
 DISTCLEANFILES=*.pyc *.pyo *~ *.bak \
 	troubleshoot/*.pyc troubleshoot/*.pyo troubleshoot/*~ \
@@ -371,5 +386,6 @@ DISTCLEANFILES=*.pyc *.pyo *~ *.bak \
 
 distclean-local:
 	rm -rf html
+	rm -rf cupshelpers/__pycache__
 
 .PHONY: update-po missing-languages run help FORCE

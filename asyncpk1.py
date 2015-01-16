@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 ## Copyright (C) 2007, 2008, 2009, 2010, 2012, 2013 Red Hat, Inc.
 ## Copyright (C) 2008 Novell, Inc.
@@ -20,6 +20,7 @@
 
 import cups
 import dbus
+from functools import reduce
 try:
     from gi.repository import Gdk
     from gi.repository import Gtk
@@ -200,20 +201,20 @@ class _WriteToTmpFile:
 
     def reply_handler (self, conn, none):
         tmpfd = os.open (self._filename, os.O_RDONLY)
-        tmpfile = os.fdopen (tmpfd, 'r')
-        if self._kwds.has_key ("fd"):
+        tmpfile = os.fdopen (tmpfd, 'rt')
+        if "fd" in self._kwds:
             fd = self._kwds["fd"]
             os.lseek (fd, 0, os.SEEK_SET)
             line = tmpfile.readline ()
             while line != '':
-                os.write (fd, line)
+                os.write (fd, line.encode('UTF-8'))
                 line = tempfile.readline ()
         else:
             file_object = self._kwds["file"]
             file_object.seek (0)
             line = tmpfile.readline ()
             while line != '':
-                file_object.write (line)
+                file_object.write (line.encode('UTF-8'))
                 line = tmpfile.readline ()
 
         tmpfile.close ()
@@ -315,11 +316,11 @@ class PK1Connection:
         leftover_kwds = kwds.copy ()
         reply_handler = leftover_kwds.get ("reply_handler")
         error_handler = leftover_kwds.get ("error_handler")
-        if leftover_kwds.has_key ("reply_handler"):
+        if "reply_handler" in leftover_kwds:
             del leftover_kwds["reply_handler"]
-        if leftover_kwds.has_key ("error_handler"):
+        if "error_handler" in leftover_kwds:
             del leftover_kwds["error_handler"]
-        if leftover_kwds.has_key ("auth_handler"):
+        if "auth_handler" in leftover_kwds:
             del leftover_kwds["auth_handler"]
 
         result = [True, reply_handler, error_handler, ()]
@@ -350,7 +351,7 @@ class PK1Connection:
             argindex += 1
 
         for kw, default in params[argindex:]:
-            if leftover_kwds.has_key (kw):
+            if kw in leftover_kwds:
                 try:
                     val = self._coerce (types[argindex], leftover_kwds[kw])
                 except TypeError as e:
@@ -366,7 +367,7 @@ class PK1Connection:
             argindex += 1
 
         if leftover_kwds:
-            debugprint ("Leftover keywords: %s" % repr (leftover_kwds.keys ()))
+            debugprint ("Leftover keywords: %s" % repr (list(leftover_kwds.keys ())))
             return result
 
         result[0] = False
@@ -437,9 +438,9 @@ class PK1Connection:
 
     def _unpack_getDevices_reply (self, dbusdict):
         result_str = dict()
-        for key, value in dbusdict.iteritems ():
+        for key, value in dbusdict.items ():
             if type (key) == dbus.String:
-                result_str[unicode (key)] = unicode (value)
+                result_str[str (key)] = str (value)
             else:
                 result_str[key] = value
 
@@ -513,7 +514,7 @@ class PK1Connection:
 
         # getFile(resource, filename=None, fd=-1, file=None) -> None
         if use_pycups:
-            if ((len (args) == 0 and kwds.has_key ('resource')) or
+            if ((len (args) == 0 and 'resource' in kwds) or
                 (len (args) == 1)):
                 can_use_tempfile = True
                 for each in kwds.keys ():
@@ -576,7 +577,6 @@ class PK1Connection:
 
 if __name__ == '__main__':
     from gi.repository import GObject
-    GObject.threads_init ()
     from debug import set_debugging
     set_debugging (True)
     class UI:
@@ -584,25 +584,25 @@ if __name__ == '__main__':
             w = Gtk.Window ()
             v = Gtk.VBox ()
             w.add (v)
-            b = Gtk.Button ("Go")
+            b = Gtk.Button.new_with_label ("Go")
             v.pack_start (b, False, False, 0)
             b.connect ("clicked", self.button_clicked)
-            b = Gtk.Button ("Fetch")
+            b = Gtk.Button.new_with_label ("Fetch")
             v.pack_start (b, False, False, 0)
             b.connect ("clicked", self.fetch_clicked)
             b.set_sensitive (False)
             self.fetch_button = b
-            b = Gtk.Button ("Cancel job")
+            b = Gtk.Button.new_with_label ("Cancel job")
             v.pack_start (b, False, False, 0)
             b.connect ("clicked", self.cancel_clicked)
             b.set_sensitive (False)
             self.cancel_button = b
-            b = Gtk.Button ("Get file")
+            b = Gtk.Button.new_with_label ("Get file")
             v.pack_start (b, False, False, 0)
             b.connect ("clicked", self.get_file_clicked)
             b.set_sensitive (False)
             self.get_file_button = b
-            b = Gtk.Button ("Something harmless")
+            b = Gtk.Button.new_with_label ("Something harmless")
             v.pack_start (b, False, False, 0)
             b.connect ("clicked", self.harmless_clicked)
             b.set_sensitive (False)
@@ -633,14 +633,14 @@ if __name__ == '__main__':
                                        error_handler=self.connection_error)
 
         def connected (self, conn, result):
-            print "Connected"
+            print("Connected")
             self.fetch_button.set_sensitive (True)
             self.cancel_button.set_sensitive (True)
             self.get_file_button.set_sensitive (True)
             self.harmless_button.set_sensitive (True)
 
         def connection_error (self, conn, error):
-            print "Failed to connect"
+            print("Failed to connect")
             raise error
 
         def fetch_clicked (self, button):
@@ -650,57 +650,57 @@ if __name__ == '__main__':
 
         def got_devices (self, conn, devices):
             if conn != self.conn:
-                print "Ignoring stale reply"
+                print("Ignoring stale reply")
                 return
 
-            print "got devices: %s" % devices
+            print("got devices: %s" % devices)
 
         def get_devices_error (self, conn, exc):
             if conn != self.conn:
-                print "Ignoring stale error"
+                print("Ignoring stale error")
                 return
 
-            print "devices error: %s" % repr (exc)
+            print("devices error: %s" % repr (exc))
 
         def cancel_clicked (self, button):
-            print "Cancel job..."
+            print("Cancel job...")
             self.conn.cancelJob (1,
                                  reply_handler=self.job_canceled,
                                  error_handler=self.cancel_job_error)
 
         def job_canceled (self, conn, none):
             if conn != self.conn:
-                print "Ignoring stale reply for %s" % conn
+                print("Ignoring stale reply for %s" % conn)
                 return
 
-            print "Job canceled"
+            print("Job canceled")
 
         def cancel_job_error (self, conn, exc):
             if conn != self.conn:
-                print "Ignoring stale error for %s" % conn
+                print("Ignoring stale error for %s" % conn)
                 return
 
-            print "cancel error: %s" % repr (exc)
+            print("cancel error: %s" % repr (exc))
 
         def get_file_clicked (self, button):
-            self.my_file = file ("cupsd.conf", "w")
+            self.my_file = open ("cupsd.conf", "w")
             self.conn.getFile ("/admin/conf/cupsd.conf", file=self.my_file,
                                reply_handler=self.got_file,
                                error_handler=self.get_file_error)
 
         def got_file (self, conn, none):
             if conn != self.conn:
-                print "Ignoring stale reply for %s" % conn
+                print("Ignoring stale reply for %s" % conn)
                 return
 
-            print "Got file"
+            print("Got file")
 
         def get_file_error (self, conn, exc):
             if conn != self.conn:
-                print "Ignoring stale error"
+                print("Ignoring stale error")
                 return
 
-            print "get file error: %s" % repr (exc)
+            print("get file error: %s" % repr (exc))
 
         def harmless_clicked (self, button):
             self.conn.getJobs (reply_handler=self.got_jobs,
@@ -708,12 +708,12 @@ if __name__ == '__main__':
 
         def got_jobs (self, conn, result):
             if conn != self.conn:
-                print "Ignoring stale reply from %s" % repr (conn)
+                print("Ignoring stale reply from %s" % repr (conn))
                 return
-            print result
+            print(result)
 
         def get_jobs_error (self, exc):
-            print "get jobs error: %s" % repr (exc)
+            print("get jobs error: %s" % repr (exc))
 
     UI ()
     from dbus.mainloop.glib import DBusGMainLoop

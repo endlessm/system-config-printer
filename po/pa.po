@@ -3,8 +3,8 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# asaini <asaini@redhat.com>, 2013
 # Amanpreet Singh Alam <aalam@redhat.com>, 2004
+# Amandeep Singh Saini <asaini@redhat.com>, 2013
 # A S Alam <aalam@users.sf.net>, 2007
 # A S Alam <apbrar@gmail.com>, 2006
 # Automatically generated <punjablinux@netscape.net>, 2004
@@ -15,52 +15,52 @@ msgid ""
 msgstr ""
 "Project-Id-Version: system-config-printer\n"
 "Report-Msgid-Bugs-To: https://bugzilla.redhat.com/bugzilla\n"
-"POT-Creation-Date: 2013-10-22 13:06+0100\n"
-"PO-Revision-Date: 2013-08-30 12:49+0000\n"
-"Last-Translator: asaini <asaini@redhat.com>\n"
-"Language-Team: Panjabi (Punjabi) (http://www.transifex.com/projects/p/fedora/"
-"language/pa/)\n"
+"POT-Creation-Date: 2014-11-04 12:07+0000\n"
+"PO-Revision-Date: 2014-10-23 11:00+0000\n"
+"Last-Translator: Tim Waugh <twaugh@redhat.com>\n"
+"Language-Team: Panjabi (Punjabi) (http://www.transifex.com/projects/p/system-"
+"config-printer/language/pa/)\n"
 "Language: pa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../asyncipp.py:467 ../authconn.py:446 ../authconn.py:448
-#: ../errordialogs.py:67 ../pysmb.py:91 ../pysmb.py:93
+#: ../asyncipp.py:466 ../authconn.py:447 ../authconn.py:449
+#: ../errordialogs.py:63 ../pysmb.py:90 ../pysmb.py:92
 msgid "Not authorized"
 msgstr "ਪਰਮਾਣਿਤ ਨਹੀਂ ਹੈ"
 
-#: ../asyncipp.py:468 ../authconn.py:449 ../pysmb.py:94
+#: ../asyncipp.py:467 ../authconn.py:450 ../pysmb.py:93
 msgid "The password may be incorrect."
 msgstr "ਗੁਪਤ-ਕੋਡ ਗਲਤ ਹੋ ਸਕਦਾ ਹੈ।"
 
-#: ../asyncipp.py:479 ../authconn.py:470
+#: ../asyncipp.py:478 ../authconn.py:471
 #, python-format
 msgid "Authentication (%s)"
 msgstr "ਪ੍ਰਮਾਣਕਿਤਾ (%s)"
 
-#: ../asyncipp.py:554 ../authconn.py:297 ../errordialogs.py:58
-#: ../errordialogs.py:72
+#: ../asyncipp.py:553 ../authconn.py:300 ../errordialogs.py:54
+#: ../errordialogs.py:68
 msgid "CUPS server error"
 msgstr "CUPS ਸਰਵਰ ਗਲਤੀ"
 
-#: ../asyncipp.py:556 ../authconn.py:295
+#: ../asyncipp.py:555 ../authconn.py:298
 #, python-format
 msgid "CUPS server error (%s)"
 msgstr "CUPS ਸਰਵਰ ਗਲਤੀ (%s)"
 
-#: ../asyncipp.py:573 ../authconn.py:306 ../errordialogs.py:59
-#: ../troubleshoot/PrintTestPage.py:434
+#: ../asyncipp.py:571 ../authconn.py:308 ../errordialogs.py:55
+#: ../troubleshoot/PrintTestPage.py:431
 #, python-format
 msgid "There was an error during the CUPS operation: '%s'."
 msgstr "CUPS ਕਾਰਵਾਈ ਦੌਰਾਨ ਇੱਕ ਗਲਤੀ ਸੀ: '%s'।"
 
-#: ../asyncipp.py:576 ../authconn.py:309
+#: ../asyncipp.py:574 ../authconn.py:311
 msgid "Retry"
 msgstr "ਮੁਡ਼ ਕੋਸ਼ਿਸ਼"
 
-#: ../asyncipp.py:593 ../authconn.py:253 ../authconn.py:277
+#: ../asyncipp.py:591 ../authconn.py:254 ../authconn.py:280
 msgid "Operation canceled"
 msgstr "ਕਾਰਵਾਈ ਰੱਦ ਕੀਤੀ ਗਈ ਹੈ"
 
@@ -77,7 +77,7 @@ msgid "Domain:"
 msgstr "ਡੋਮੇਨ:"
 
 #. After that, prompt
-#: ../authconn.py:47 ../authconn.py:472 ../pysmb.py:99
+#: ../authconn.py:47 ../authconn.py:473 ../pysmb.py:98
 msgid "Authentication"
 msgstr "ਪ੍ਰਮਾਣਕਿਤਾ"
 
@@ -85,42 +85,42 @@ msgstr "ਪ੍ਰਮਾਣਕਿਤਾ"
 msgid "Remember password"
 msgstr "ਪਾਸਵਰਡ ਯਾਦ ਰੱਖੋ"
 
-#: ../errordialogs.py:68
+#: ../errordialogs.py:64
 msgid ""
 "The password may be incorrect, or the server may be configured to deny "
 "remote administration."
 msgstr "ਪਾਸਵਰਡ ਗਲਤ ਹੋ ਸਕਦਾ ਹੈ, ਜਾਂ ਸਰਵਰ ਨੂੰ ਰਿਮੋਟ ਪਰਬੰਧਨ ਰੱਦ ਕਰਨ ਲਈ ਸੰਰਚਿਤ ਕੀਤਾ ਹੋਵੇਗਾ।"
 
-#: ../errordialogs.py:74
+#: ../errordialogs.py:70
 msgid "Bad request"
 msgstr "ਬੱਡ ਰੀਕੁਐਂਸਟ"
 
-#: ../errordialogs.py:76
+#: ../errordialogs.py:72
 msgid "Not found"
 msgstr "ਨਹੀਂ ਲੱਭਿਆ"
 
-#: ../errordialogs.py:78
+#: ../errordialogs.py:74
 msgid "Request timeout"
 msgstr "ਬੇਨਤੀ ਸਮਾਂ ਸਮਾਪਤ ਹੋਇਆ"
 
-#: ../errordialogs.py:80
+#: ../errordialogs.py:76
 msgid "Upgrade required"
 msgstr "ਅੱਪਗਰੇਡ ਲੋੜੀਦਾ"
 
-#: ../errordialogs.py:82
+#: ../errordialogs.py:78
 msgid "Server error"
 msgstr "ਸਰਵਰ ਗਲਤੀ"
 
-#: ../errordialogs.py:84 ../system-config-printer.py:672
+#: ../errordialogs.py:80 ../system-config-printer.py:716
 msgid "Not connected"
 msgstr "ਜੁੜਿਆ ਨਹੀਂ"
 
-#: ../errordialogs.py:86
+#: ../errordialogs.py:82
 #, python-format
 msgid "status %s"
 msgstr "ਹਾਲਤ %s"
 
-#: ../errordialogs.py:88
+#: ../errordialogs.py:84
 #, python-format
 msgid "There was an HTTP error: %s."
 msgstr "ਇੱਕ HTTP ਗਲਤੀ ਹੈ: %s।"
@@ -157,15 +157,15 @@ msgstr "ਜੌਬ ਰੱਦ ਕਰੋ"
 msgid "Do you really want to cancel this job?"
 msgstr "ਕੀ ਤੁਸੀਂ ਸੱਚੀਂ ਇਹ ਜੌਬ ਨੂੰ ਰੱਦ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ?"
 
-#: ../jobviewer.py:202
+#: ../jobviewer.py:201
 msgid "Keep Printing"
 msgstr "ਛਾਪਣਾ ਜਾਰੀ ਰੱਖੋ"
 
-#: ../jobviewer.py:269
+#: ../jobviewer.py:268
 msgid "deleting job"
 msgstr "ਜੌਬ ਹਟਾ ਰਿਹਾ ਹੈ"
 
-#: ../jobviewer.py:271
+#: ../jobviewer.py:270
 msgid "canceling job"
 msgstr "ਜੌਬ ਰੱਦ ਕਰ ਰਿਹਾ ਹੈ"
 
@@ -229,7 +229,7 @@ msgstr "ਪ੍ਰਮਾਣਕਿਤਾ(_A)"
 msgid "_View Attributes"
 msgstr "ਐਟਰੀਬਿਊਟ ਵੇਖੋ(_V)"
 
-#: ../jobviewer.py:386 ../jobviewer.py:595
+#: ../jobviewer.py:386 ../jobviewer.py:596
 msgid "Close this window"
 msgstr "ਇਹ ਵਿੰਡੋ ਬੰਦ ਕਰੋ"
 
@@ -245,7 +245,7 @@ msgstr "ਉਪਭੋਗੀ"
 msgid "Document"
 msgstr "ਡੌਕੂਮੈਂਟ"
 
-#: ../jobviewer.py:452 ../system-config-printer.py:818
+#: ../jobviewer.py:452 ../system-config-printer.py:896
 #: ../troubleshoot/PrintTestPage.py:86
 msgid "Printer"
 msgstr "ਪਰਿੰਟਰ"
@@ -280,14 +280,14 @@ msgstr "ਸਭ ਜੌਬਾਂ"
 msgid "Document Print Status (%s)"
 msgstr "ਡੌਕੂਮੈਂਟ ਪਰਿੰਟ ਸਟੇਟਸ (%s)"
 
-#: ../jobviewer.py:585
+#: ../jobviewer.py:586
 msgid "Job attributes"
 msgstr "ਜੌਬ ਐਟਰੀਬਿਊਟ"
 
-#: ../jobviewer.py:720 ../jobviewer.py:1046 ../jobviewer.py:1787
-#: ../jobviewer.py:1817 ../jobviewer.py:2205 ../jobviewer.py:2210
-#: ../jobviewer.py:2224 ../jobviewer.py:2304 ../printerproperties.py:1648
-#: ../ui/NewPrinterWindow.ui.h:93 ../troubleshoot/ChooseNetworkPrinter.py:102
+#: ../jobviewer.py:721 ../jobviewer.py:1068 ../jobviewer.py:1850
+#: ../jobviewer.py:1880 ../jobviewer.py:2273 ../jobviewer.py:2282
+#: ../jobviewer.py:2304 ../jobviewer.py:2388 ../printerproperties.py:1648
+#: ../ui/NewPrinterWindow.ui.h:94 ../troubleshoot/ChooseNetworkPrinter.py:102
 #: ../troubleshoot/ChooseNetworkPrinter.py:103
 #: ../troubleshoot/ChooseNetworkPrinter.py:106
 #: ../troubleshoot/ChooseNetworkPrinter.py:107
@@ -297,202 +297,202 @@ msgstr "ਜੌਬ ਐਟਰੀਬਿਊਟ"
 msgid "Unknown"
 msgstr "ਅਣਜਾਣ"
 
-#: ../jobviewer.py:726
+#: ../jobviewer.py:727
 msgid "a minute ago"
 msgstr "1 ਮਿੰਟ ਪਹਿਲਾਂ"
 
-#: ../jobviewer.py:729
+#: ../jobviewer.py:730
 #, python-format
 msgid "%d minutes ago"
 msgstr "%d ਮਿੰਟ ਪਹਿਲਾਂ"
 
-#: ../jobviewer.py:733
+#: ../jobviewer.py:734
 msgid "an hour ago"
 msgstr "1 ਘੰਟਾ ਪਹਿਲਾਂ"
 
-#: ../jobviewer.py:735
+#: ../jobviewer.py:736
 #, python-format
 msgid "%d hours ago"
 msgstr "%d ਘੰਟੇ ਪਹਿਲਾਂ"
 
-#: ../jobviewer.py:739
+#: ../jobviewer.py:740
 msgid "yesterday"
 msgstr "ਕੱਲ੍ਹ"
 
-#: ../jobviewer.py:741
+#: ../jobviewer.py:742
 #, python-format
 msgid "%d days ago"
 msgstr "%d ਦਿਨ ਪਹਿਲਾਂ"
 
-#: ../jobviewer.py:745
+#: ../jobviewer.py:746
 msgid "last week"
 msgstr "ਆਖਰੀ ਹਫਤਾ"
 
-#: ../jobviewer.py:747
+#: ../jobviewer.py:748
 #, python-format
 msgid "%d weeks ago"
 msgstr "%d ਹਫਤੇ ਪਹਿਲਾਂ"
 
-#: ../jobviewer.py:995 ../jobviewer.py:1078
+#: ../jobviewer.py:1016 ../jobviewer.py:1100
 msgid "authenticating job"
 msgstr "ਪ੍ਰਮਾਣਕਿਤਾ ਜੌਬ"
 
-#: ../jobviewer.py:1044
+#: ../jobviewer.py:1066
 #, python-format
 msgid "Authentication required for printing document `%s' (job %d)"
 msgstr "ਡੌਕੂਮੈਂਟ `%s' (job %d) ਨੂੰ ਪਰਿੰਟ ਕਰਨ ਲਈ ਪ੍ਰਮਾਣਿਕਤਾ ਦੀ ਲੋੜ ਹੈ"
 
-#: ../jobviewer.py:1342
+#: ../jobviewer.py:1366
 msgid "holding job"
 msgstr "ਜੌਬ ਹੋਲਡ ਕਰਨਾ"
 
-#: ../jobviewer.py:1368
+#: ../jobviewer.py:1392
 msgid "releasing job"
 msgstr "ਜੌਬ ਛੱਡ ਰਿਹਾ ਹੈ"
 
 #. give the default filename some meaningful name
-#: ../jobviewer.py:1426
+#: ../jobviewer.py:1454
 msgid "retrieved"
 msgstr "ਮੁੜ-ਪ੍ਰਾਪਤ"
 
-#: ../jobviewer.py:1436
+#: ../jobviewer.py:1464
 msgid "Save File"
 msgstr "ਫਾਇਲ ਸੰਭਾਲੋ"
 
-#: ../jobviewer.py:1516 ../system-config-printer.py:242
+#: ../jobviewer.py:1579 ../system-config-printer.py:268
 #: ../ui/NewPrinterWindow.ui.h:9 ../troubleshoot/ChooseNetworkPrinter.py:37
 #: ../troubleshoot/ChoosePrinter.py:43 ../troubleshoot/DeviceListed.py:43
 msgid "Name"
 msgstr "ਨਾਂ"
 
-#: ../jobviewer.py:1519
+#: ../jobviewer.py:1582
 msgid "Value"
 msgstr "ਮੁੱਲ"
 
-#: ../jobviewer.py:1643
+#: ../jobviewer.py:1706
 msgid "No documents queued"
 msgstr "ਕੋਈ ਡੌਕੂਮੈਂਟ ਕਤਾਰ ਵਿੱਚ ਨਹੀਂ ਹੈ"
 
-#: ../jobviewer.py:1645
+#: ../jobviewer.py:1708
 msgid "1 document queued"
 msgstr "1 ਡੌਕੂਮੈਂਟ ਕਤਾਰ ਵਿੱਚ ਹੈ"
 
-#: ../jobviewer.py:1647
+#: ../jobviewer.py:1710
 #, python-format
 msgid "%d documents queued"
 msgstr "%d ਡੌਕੂਮੈਂਟ ਕਤਾਰ ਵਿੱਚ ਹਨ"
 
-#: ../jobviewer.py:1703
+#: ../jobviewer.py:1766
 #, python-format
 msgid "processing / pending:   %d / %d"
 msgstr "ਪਰੋਸੈੱਸਿੰਗ / ਅਧੂਰਾ:   %d / %d"
 
-#: ../jobviewer.py:1818
+#: ../jobviewer.py:1881
 msgid "Document printed"
 msgstr "ਡੌਕੂਮੈਂਟ ਪਰਿੰਟ ਹੋ ਗਿਆ ਹੈ"
 
-#: ../jobviewer.py:1819
+#: ../jobviewer.py:1882
 #, python-format
 msgid "Document `%s' has been sent to `%s' for printing."
 msgstr "ਡੌਕੂਮੈਂਟ `%s' ਨੂੰ ਪਰਿੰਟ ਕਰਨ ਲਈ `%s' ਵੱਲ ਭੇਜਿਆ ਗਿਆ ਹੈ।"
 
-#: ../jobviewer.py:1981
+#: ../jobviewer.py:2044
 #, python-format
 msgid "There was a problem sending document `%s' (job %d) to the printer."
 msgstr "ਡੌਕੂਮੈਂਟ `%s' (ਜੌਬ %d) ਨੂੰ ਪਰਿੰਟਰ ਵੱਲ ਭੇਜਣ ਵਿੱਚ ਸਮੱਸਿਆ ਸੀ।"
 
-#: ../jobviewer.py:1985
+#: ../jobviewer.py:2048
 #, python-format
 msgid "There was a problem processing document `%s' (job %d)."
 msgstr "ਡੌਕੂਮੈਂਟ `%s' (job %d) ਨੂੰ ਵਰਤਣ ਲਈ ਸਮੱਸਿਆ ਸੀ।"
 
 #. Give up and use the provided message untranslated.
-#: ../jobviewer.py:1992
+#: ../jobviewer.py:2055
 #, python-format
 msgid "There was a problem printing document `%s' (job %d): `%s'."
 msgstr "ਡੌਕੂਮੈਂਟ `%s' (ਜੌਬ %d) ਨੂੰ ਪਰਿੰਟ ਕਰਨ ਵਿੱਚ ਸਮੱਸਿਆ ਹੈ: `%s'।"
 
-#: ../jobviewer.py:1999 ../jobviewer.py:2015
+#: ../jobviewer.py:2062 ../jobviewer.py:2079
 msgid "Print Error"
 msgstr "ਪਰਿੰਟ ਗਲਤੀ"
 
-#: ../jobviewer.py:2000
+#: ../jobviewer.py:2064
 msgid "_Diagnose"
 msgstr "ਜਾਂਚ ਕਰੋ(_D)"
 
-#: ../jobviewer.py:2021
+#: ../jobviewer.py:2085
 #, python-format
 msgid "The printer called `%s' has been disabled."
 msgstr "`%s' ਪਰਿੰਟਰ ਅਯੋਗ ਕੀਤਾ ਹੋਇਆ ਹੈ।"
 
-#: ../jobviewer.py:2216
+#: ../jobviewer.py:2292
 msgid "disabled"
 msgstr "ਅਯੋਗ"
 
-#: ../jobviewer.py:2238
+#: ../jobviewer.py:2322
 msgid "Held for authentication"
 msgstr "ਪ੍ਰਮਾਣਕਿਤਾ ਲਈ ਰੋਕਿਆ ਹੈ"
 
-#: ../jobviewer.py:2240 ../troubleshoot/PrintTestPage.py:44
+#: ../jobviewer.py:2324 ../troubleshoot/PrintTestPage.py:44
 msgid "Held"
 msgstr "ਰੋਕਿਆ"
 
-#: ../jobviewer.py:2276
+#: ../jobviewer.py:2360
 #, python-format
 msgid "Held until %s"
 msgstr "%s ਤੱਕ ਰੋਕਿਆ"
 
-#: ../jobviewer.py:2281
+#: ../jobviewer.py:2365
 msgid "Held until day-time"
 msgstr "ਦਿਨ-ਚੜ੍ਹਨ ਤੱਕ ਰੋਕੀ"
 
-#: ../jobviewer.py:2283
+#: ../jobviewer.py:2367
 msgid "Held until evening"
 msgstr "ਸ਼ਾਮ ਤੱਕ ਰੋਕੋ"
 
-#: ../jobviewer.py:2285
+#: ../jobviewer.py:2369
 msgid "Held until night-time"
 msgstr "ਰਾਤ-ਸਮੇਂ ਰੋਕੀ"
 
-#: ../jobviewer.py:2287
+#: ../jobviewer.py:2371
 msgid "Held until second shift"
 msgstr "ਦੂਜੀ ਸ਼ਿਫਟ ਤੱਕ ਰੁਕੋ"
 
-#: ../jobviewer.py:2289
+#: ../jobviewer.py:2373
 msgid "Held until third shift"
 msgstr "ਤੀਜੀ ਸ਼ਿਫਟ ਤੱਕ ਰੁਕੋ"
 
-#: ../jobviewer.py:2291
+#: ../jobviewer.py:2375
 msgid "Held until weekend"
 msgstr "ਹਫਤੇ ਦੇ ਅਖੀਰ ਤੱਕ ਰੁਕਿਆ ਹੈ"
 
-#: ../jobviewer.py:2294 ../troubleshoot/PrintTestPage.py:43
+#: ../jobviewer.py:2378 ../troubleshoot/PrintTestPage.py:43
 msgid "Pending"
 msgstr "ਅਧੂਰਾ ਛੱਡਿਆ"
 
-#: ../jobviewer.py:2295 ../printerproperties.py:72
-#: ../system-config-printer.py:126 ../troubleshoot/PrintTestPage.py:45
+#: ../jobviewer.py:2379 ../printerproperties.py:72
+#: ../system-config-printer.py:131 ../troubleshoot/PrintTestPage.py:45
 msgid "Processing"
 msgstr "ਕਾਰਵਾਈ ਜਾਰੀ"
 
-#: ../jobviewer.py:2296 ../printerproperties.py:76
-#: ../system-config-printer.py:128 ../troubleshoot/PrintTestPage.py:46
+#: ../jobviewer.py:2380 ../printerproperties.py:76
+#: ../system-config-printer.py:133 ../troubleshoot/PrintTestPage.py:46
 msgid "Stopped"
 msgstr "ਰੁਕਿਆ"
 
-#: ../jobviewer.py:2297 ../troubleshoot/PrintTestPage.py:47
+#: ../jobviewer.py:2381 ../troubleshoot/PrintTestPage.py:47
 msgid "Canceled"
 msgstr "ਰੱਦ ਕੀਤਾ"
 
-#: ../jobviewer.py:2298 ../troubleshoot/PrintTestPage.py:48
+#: ../jobviewer.py:2382 ../troubleshoot/PrintTestPage.py:48
 msgid "Aborted"
 msgstr "ਅਧੂਰਾ ਛੱਡਿਆ"
 
-#: ../jobviewer.py:2299 ../troubleshoot/PrintTestPage.py:49
+#: ../jobviewer.py:2383 ../troubleshoot/PrintTestPage.py:49
 msgid "Completed"
 msgstr "ਮੁਕੰਮਲ"
 
-#: ../newprinter.py:75
+#: ../newprinter.py:73
 msgid ""
 "The firewall may need adjusting in order to detect network printers.  Adjust "
 "the firewall now?"
@@ -500,187 +500,186 @@ msgstr ""
 "ਫਾਇਰਵਾਲ ਨੂੰ ਸੋਧਣ ਦੀ ਲੋੜ ਪੈ ਸਕਦੀ ਹੈ ਤਾਂ ਕਿ ਨੈੱਟਵਰਕ ਪਰਿੰਟਰ ਖੋਜੇ ਜਾ ਸਕਣ।  ਹੁਣ ਫਾਇਰਵਾਲ ਸੈੱਟ "
 "ਕਰਨੀ ਹੈ?"
 
-#: ../newprinter.py:352 ../newprinter.py:363 ../newprinter.py:369
-#: ../newprinter.py:374
+#: ../newprinter.py:348 ../newprinter.py:359 ../newprinter.py:365
+#: ../newprinter.py:370
 msgid "Default"
 msgstr "ਮੂਲ"
 
 #. See section 4.2.6 of this document for explanation of finishing types:
 #. ftp://ftp.pwg.org/pub/pwg/candidates/cs-ippfinishings10-20010205-5100.1.pdf
-#: ../newprinter.py:364 ../newprinter.py:375 ../newprinter.py:3707
-#: ../ppdippstr.py:65 ../printerproperties.py:281
+#: ../newprinter.py:360 ../newprinter.py:371 ../newprinter.py:3692
+#: ../ppdippstr.py:65 ../printerproperties.py:280
 msgid "None"
 msgstr "ਕੋਈ ਨਹੀਂ"
 
-#: ../newprinter.py:365
+#: ../newprinter.py:361
 msgid "Odd"
 msgstr "ਟਾਂਕ"
 
-#: ../newprinter.py:366
+#: ../newprinter.py:362
 msgid "Even"
 msgstr "ਜਿਸਤ"
 
-#: ../newprinter.py:376
+#: ../newprinter.py:372
 msgid "XON/XOFF (Software)"
 msgstr "XON/XOFF (ਸਾਫਟਵੇਅਰ)"
 
-#: ../newprinter.py:377
+#: ../newprinter.py:373
 msgid "RTS/CTS (Hardware)"
 msgstr "RTS/CTS (ਹਾਰਡਵੇਅਰ)"
 
-#: ../newprinter.py:378
+#: ../newprinter.py:374
 msgid "DTR/DSR (Hardware)"
 msgstr "DTR/DSR (ਹਾਰਡਵੇਅਰ)"
 
-#: ../newprinter.py:396 ../printerproperties.py:235
+#: ../newprinter.py:392 ../printerproperties.py:234
 msgid "Members of this class"
 msgstr "ਇਹ ਕਲਾਸ ਦੇ ਮੈਂਬਰ"
 
-#: ../newprinter.py:398 ../printerproperties.py:236
+#: ../newprinter.py:394 ../printerproperties.py:235
 msgid "Others"
 msgstr "ਹੋਰ"
 
-#: ../newprinter.py:399
+#: ../newprinter.py:395
 msgid "Devices"
 msgstr "ਜੰਤਰ"
 
-#: ../newprinter.py:400
+#: ../newprinter.py:396
 msgid "Connections"
 msgstr "ਕੁਨੈਕਸ਼ਨ"
 
-#: ../newprinter.py:401
+#: ../newprinter.py:397
 msgid "Makes"
 msgstr "ਮੇਕ"
 
-#: ../newprinter.py:402
+#: ../newprinter.py:398
 msgid "Models"
 msgstr "ਮਾਡਲ"
 
-#: ../newprinter.py:403
+#: ../newprinter.py:399
 msgid "Drivers"
 msgstr "ਡਰਾਈਵਰ"
 
-#: ../newprinter.py:404 ../ui/NewPrinterWindow.ui.h:101
+#: ../newprinter.py:400 ../ui/NewPrinterWindow.ui.h:102
 msgid "Downloadable Drivers"
 msgstr "ਡਾਊਨਲੋਡ ਯੋਗ ਡਰਾਈਵਰ"
 
-#: ../newprinter.py:482
+#: ../newprinter.py:479
 msgid "Browsing not available (pysmbc not installed)"
 msgstr "ਬਰਾਊਜਿੰਗ ਉਪਲੱਬਧ ਨਹੀਂ ਹੈ (pysmbc ਇੰਸਟਾਲ ਨਹੀਂ ਹੈ)"
 
 #. SMB list columns
-#: ../newprinter.py:488
+#: ../newprinter.py:485
 msgid "Share"
 msgstr "ਸਾਂਝ"
 
-#: ../newprinter.py:494
+#: ../newprinter.py:491
 msgid "Comment"
 msgstr "ਟਿੱਪਣੀ"
 
-#: ../newprinter.py:509
+#: ../newprinter.py:506
 msgid ""
 "PostScript Printer Description files (*.ppd, *.PPD, *.ppd.gz, *.PPD.gz, *."
 "PPD.GZ)"
 msgstr ""
 "ਪੋਸਟਸਕਰਿਪਟ ਪ੍ਰਿੰਟਰ ਡਿਸਕਰਿਪਸ਼ ਫਾਇਲਾਂ (*.ppd, *.PPD, *.ppd.gz, *.PPD.gz, *.PPD.GZ)"
 
-#: ../newprinter.py:518
+#: ../newprinter.py:515
 msgid "All files (*)"
 msgstr "ਸਭ ਫਾਇਲਾਂ (*)"
 
-#: ../newprinter.py:669 ../newprinter.py:1551 ../newprinter.py:3189
-#: ../newprinter.py:3320 ../newprinter.py:3368 ../applet.py:127
+#: ../newprinter.py:664 ../newprinter.py:1516 ../newprinter.py:3242
+#: ../newprinter.py:3301 ../newprinter.py:3353 ../applet.py:128
 msgid "Search"
 msgstr "ਖੋਜੋ"
 
-#: ../newprinter.py:696 ../newprinter.py:718 ../ui/NewPrinterWindow.ui.h:1
+#: ../newprinter.py:691 ../newprinter.py:713 ../ui/NewPrinterWindow.ui.h:1
 msgid "New Printer"
 msgstr "ਨਵਾਂ ਪਰਿੰਟਰ"
 
-#: ../newprinter.py:704
+#: ../newprinter.py:699
 msgid "New Class"
 msgstr "ਨਵੀਂ ਕਲਾਸ"
 
-#: ../newprinter.py:709
+#: ../newprinter.py:704
 msgid "Change Device URI"
 msgstr "ਜੰਤਰ URI ਤਬਦੀਲ ਕਰੋ"
 
-#: ../newprinter.py:716
+#: ../newprinter.py:711
 msgid "Change Driver"
 msgstr "ਡਰਾਇਵਰ ਬਦਲੋ"
 
-#: ../newprinter.py:720
-#, fuzzy
+#: ../newprinter.py:715
 msgid "Download Printer Driver"
-msgstr "ਡਾਊਨਲੋਡ ਯੋਗ ਡਰਾਈਵਰ"
+msgstr ""
 
-#: ../newprinter.py:729 ../newprinter.py:2048
+#: ../newprinter.py:724 ../newprinter.py:2045 ../newprinter.py:2050
 msgid "fetching device list"
 msgstr "ਜੰਤਰ ਸੂਚੀ ਲੈ ਰਿਹਾ ਹੈ"
 
-#: ../newprinter.py:968
+#: ../newprinter.py:966
 #, python-format
 msgid "Installing driver %s"
 msgstr "ਚਾਲਕ %s ਇੰਸਟਾਲ ਕੀਤਾ ਜਾ ਰਿਹਾ"
 
-#: ../newprinter.py:976
+#: ../newprinter.py:973
 msgid "Installing ..."
 msgstr "ਇੰਲਟਾਲ ਕੀਤਾ ਜਾ ਰਿਹਾ..."
 
-#: ../newprinter.py:1332 ../newprinter.py:1487 ../newprinter.py:2996
-#: ../newprinter.py:3215 ../ppdsloader.py:86
+#: ../newprinter.py:1329 ../newprinter.py:3044 ../newprinter.py:3272
+#: ../ppdsloader.py:86
 msgid "Searching"
 msgstr "ਖੋਜ ਜਾਰੀ ਹੈ"
 
-#: ../newprinter.py:1340 ../newprinter.py:1488 ../ppdsloader.py:94
+#: ../newprinter.py:1339 ../ppdsloader.py:93
 msgid "Searching for drivers"
 msgstr "ਡਰਾਈਵਰਾਂ ਲਈ ਖੋਜ ਰਿਹਾ ਹੈ"
 
 #. device-info
 #. PhysicalDevice obj
 #. Separator?
-#: ../newprinter.py:1947
+#: ../newprinter.py:1969
 msgid "Enter URI"
 msgstr "URI ਦਿਓ"
 
-#: ../newprinter.py:1952
+#: ../newprinter.py:1974
 msgid "Network Printer"
 msgstr "ਨੈੱਟਵਰਕ ਪਰਿੰਟਰ"
 
-#: ../newprinter.py:1956
+#: ../newprinter.py:1978
 msgid "Find Network Printer"
 msgstr "ਨੈੱਟਵਰਕ ਪਰਿੰਟਰ ਲੱਭੋ"
 
-#: ../newprinter.py:2008
+#: ../newprinter.py:2010
 msgid "Allow all incoming IPP Browse packets"
 msgstr "ਸਭ ਆਉਣ ਵਾਲੇ IPP ਬਰਾਊਜ਼ ਪੈਕੇਟ"
 
-#: ../newprinter.py:2013
+#: ../newprinter.py:2015
 msgid "Allow all incoming mDNS traffic"
 msgstr "ਸਭ ਆਉਣਵਾਲ mDNS ਟਰੈਫਿਕ ਮਨਜੂਰ ਕਰੋ"
 
-#: ../newprinter.py:2024 ../newprinter.py:2027 ../newprinter.py:2450
-#: ../newprinter.py:2456 ../serversettings.py:559 ../serversettings.py:564
+#: ../newprinter.py:2025 ../newprinter.py:2028 ../newprinter.py:2456
+#: ../newprinter.py:2462 ../serversettings.py:563 ../serversettings.py:568
 msgid "Adjust Firewall"
 msgstr "ਫਾਇਰਵਾਲ ਠੀਕ ਕਰੋ"
 
-#: ../newprinter.py:2026 ../newprinter.py:2455
+#: ../newprinter.py:2027 ../newprinter.py:2461
 msgid "Do It Later"
 msgstr "ਇਹ ਬਾਅਦ ਵਿੱਚ ਕਰੋ"
 
-#: ../newprinter.py:2135 ../newprinter.py:3601
+#: ../newprinter.py:2136 ../newprinter.py:3585
 msgid " (Current)"
 msgstr " (ਮੌਜੂਦਾ)"
 
-#: ../newprinter.py:2205
+#: ../newprinter.py:2206
 msgid "Scanning..."
 msgstr "ਸਕੈਨਿੰਗ..."
 
-#: ../newprinter.py:2261
+#: ../newprinter.py:2262
 msgid "No Print Shares"
 msgstr "ਕੋਈ ਪਰਿੰਟ ਸ਼ੇਅਰ ਨਹੀਂ"
 
-#: ../newprinter.py:2262
+#: ../newprinter.py:2263
 msgid ""
 "There were no print shares found.  Please check that the Samba service is "
 "marked as trusted in your firewall configuration."
@@ -688,112 +687,117 @@ msgstr ""
 "ਕੋਈ ਪਰਿੰਟ ਸ਼ੇਅਰ ਨਹੀਂ ਲੱਭਿਆ।  ਕਿਰਪਾ ਕਰਕੇ ਜਾਂਚ ਕਰੋ ਕਿ ਸਾਂਬਾ ਸਰਵਿਸ ਤੁਹਾਡੀ ਫਾਇਰਵਾਲ ਸੰਰਚਨਾ "
 "ਵਿੱਚ ਭਰੋਸੇਯੋਗ ਮਾਰਕ ਕੀਤੀ ਹੈ ਕਿ ਨਹੀਂ।"
 
-#: ../newprinter.py:2452
+#: ../newprinter.py:2404
+#, python-format
+msgid "Verification requires the %s module"
+msgstr ""
+
+#: ../newprinter.py:2458
 msgid "Allow all incoming SMB/CIFS browse packets"
 msgstr "ਸਭ ਆਉਣ ਵਾਲੇ SMB/CIFS ਬਰਾਊਜ਼ ਪੈਕੇਟ ਮਨਜੂਰ ਕਰੋ"
 
-#: ../newprinter.py:2568
+#: ../newprinter.py:2574
 msgid "Print Share Verified"
 msgstr "ਪਰਿੰਟ ਸ਼ੇਅਰ ਜਾਂਚ ਹੋ ਗਈ ਹੈ"
 
-#: ../newprinter.py:2569
+#: ../newprinter.py:2575
 msgid "This print share is accessible."
 msgstr "ਇਹ ਪਰਿੰਟ ਸ਼ੇਅਰ ਪਹੁੰਚਯੋਗ ਹੈ।"
 
-#: ../newprinter.py:2574
+#: ../newprinter.py:2580
 msgid "This print share is not accessible."
 msgstr "ਇਹ ਪਰਿੰਟ ਸ਼ੇਅਰ ਪਹੁੰਚ ਯੋਗ ਨਹੀਂ ਹੈ।"
 
-#: ../newprinter.py:2577
+#: ../newprinter.py:2583
 msgid "Print Share Inaccessible"
 msgstr "ਪਰਿੰਟ ਸ਼ੇਅਰ ਪਹੁੰਚ ਤੋਂ ਬਾਹਰ ਹਨ"
 
-#: ../newprinter.py:2667
+#: ../newprinter.py:2705
 msgid "Parallel Port"
 msgstr "ਪੈਰਲਲ ਪੋਰਟ"
 
-#: ../newprinter.py:2669
+#: ../newprinter.py:2707
 msgid "Serial Port"
 msgstr "ਸੀਰੀਅਲ ਪੋਰਟ"
 
-#: ../newprinter.py:2671
+#: ../newprinter.py:2709
 msgid "USB"
 msgstr "USB"
 
-#: ../newprinter.py:2673
+#: ../newprinter.py:2711
 msgid "Bluetooth"
 msgstr "ਬਲਿਊਟੁੱਥ"
 
-#: ../newprinter.py:2675 ../newprinter.py:2678
+#: ../newprinter.py:2713 ../newprinter.py:2716
 msgid "HP Linux Imaging and Printing (HPLIP)"
 msgstr "HP ਲੀਨਕਸ ਈਮੇਜਿੰਗ ਅਤੇ ਪਰਿੰਟਿੰਗ (HPLIP)"
 
-#: ../newprinter.py:2677 ../newprinter.py:2807 ../newprinter.py:2809
-#: ../system-config-printer.py:821
+#: ../newprinter.py:2715 ../newprinter.py:2854 ../newprinter.py:2856
+#: ../system-config-printer.py:899
 msgid "Fax"
 msgstr "ਫੈਕਸ"
 
-#: ../newprinter.py:2680
+#: ../newprinter.py:2718
 msgid "Hardware Abstraction Layer (HAL)"
 msgstr "ਹਾਰਡਵੇਅਰ ਅਬਸਟਰੈਕਸ਼ਨ ਲੇਅਰ (HAL)"
 
-#: ../newprinter.py:2682 ../ppdippstr.py:178
+#: ../newprinter.py:2720 ../ppdippstr.py:178
 msgid "AppSocket/HP JetDirect"
 msgstr "AppSocket/HP JetDirect"
 
-#: ../newprinter.py:2691
+#: ../newprinter.py:2729
 #, python-format
 msgid "LPD/LPR queue '%s'"
 msgstr "LPD/LPR ਕਤਾਰ '%s'"
 
-#: ../newprinter.py:2694
+#: ../newprinter.py:2732
 msgid "LPD/LPR queue"
 msgstr "LPD/LPR ਕਤਾਰ"
 
-#: ../newprinter.py:2697 ../ppdippstr.py:184
+#: ../newprinter.py:2735 ../ppdippstr.py:184
 msgid "Windows Printer via SAMBA"
 msgstr "SAMBA ਰਾਹੀਂ Windows ਪਰਿੰਟਰ"
 
-#: ../newprinter.py:2708 ../newprinter.py:2710
+#: ../newprinter.py:2746 ../newprinter.py:2748
 msgid "IPP"
 msgstr "IPP"
 
-#: ../newprinter.py:2712
+#: ../newprinter.py:2750
 msgid "HTTP"
 msgstr "HTTP"
 
-#: ../newprinter.py:2720 ../newprinter.py:2871
+#: ../newprinter.py:2758 ../newprinter.py:2919
 msgid "Remote CUPS printer via DNS-SD"
 msgstr "ਰਿਮੋਟ CUPS ਪਰਿੰਟਰ ਵਾਇਆ DNS-SD"
 
-#: ../newprinter.py:2732 ../newprinter.py:2881
+#: ../newprinter.py:2770 ../newprinter.py:2929
 #, python-format
 msgid "%s network printer via DNS-SD"
 msgstr "%s ਨੈੱਟਵਰਕ ਪਰਿੰਟਰ ਵਾਇਆ DNS-SD"
 
-#: ../newprinter.py:2736 ../newprinter.py:2883
+#: ../newprinter.py:2774 ../newprinter.py:2931
 msgid "Network printer via DNS-SD"
 msgstr "ਨੈੱਟਵਰਕ ਪਰਿੰਟਰ ਵਾਇਆ DNS-SD"
 
-#: ../newprinter.py:2850
+#: ../newprinter.py:2898
 msgid "A printer connected to the parallel port."
 msgstr "ਪੈਰਲਲ ਪੋਰਟ ਨਾਲ ਜੁੜਿਆ ਇੱਕ ਪਰਿੰਟਰ।"
 
-#: ../newprinter.py:2852
+#: ../newprinter.py:2900
 msgid "A printer connected to a USB port."
 msgstr "USB ਪੋਰਟ ਨਾਲ ਇੱਕ ਪਰਿੰਟਰ ਜੁੜਿਆ ਹੈ।"
 
-#: ../newprinter.py:2854
+#: ../newprinter.py:2902
 msgid "A printer connected via Bluetooth."
 msgstr "ਬਲਿਊਟੁੱਥ ਰਾਹੀਂ ਜੁੜਿਆ ਇੱਕ ਪਰਿੰਟਰ।"
 
-#: ../newprinter.py:2856
+#: ../newprinter.py:2904
 msgid ""
 "HPLIP software driving a printer, or the printer function of a multi-"
 "function device."
 msgstr "HPLIP ਸਾਫਟਵੇਅਰ ਪਰਿੰਟਰ ਜਾਂ ਬਹੁਤੇ-ਫੰਕਸ਼ਨਾਂ ਵਾਲੇ ਜੰਤਰ ਦੇ ਪਰਿੰਟਰ ਫੰਕਸ਼ਨ ਨੂੰ ਚਲਾ ਰਿਹਾ ਹੈ।"
 
-#: ../newprinter.py:2859
+#: ../newprinter.py:2907
 msgid ""
 "HPLIP software driving a fax machine, or the fax function of a multi-"
 "function device."
@@ -801,51 +805,51 @@ msgstr ""
 "HPLIP ਸਾਫਟਵੇਅਰ ਇੱਕ ਫੈਕਸ ਮਸ਼ੀਨ ਚਲਾ ਰਿਹਾ ਹੈ, ਜਾਂ ਮਲਟੀ-ਫੰਕਸ਼ਨ ਜੰਤਰ ਦਾ ਫੈਕਸ ਫੰਕਸ਼ਨ ਚਲਾ ਰਿਹਾ "
 "ਹੈ।"
 
-#: ../newprinter.py:2862
+#: ../newprinter.py:2910
 msgid "Local printer detected by the Hardware Abstraction Layer (HAL)."
 msgstr "ਹਾਰਡਵੇਅਰ ਐਬਸਟਰੈਕਟਸ਼ਨ ਲੇਅਰ (HAL) ਦੁਆਰਾ ਇੱਕ ਲੋਕਲ ਪਰਿੰਟਰ ਖੋਜਿਆ ਗਿਆ ਹੈ।"
 
-#: ../newprinter.py:2997
+#: ../newprinter.py:3045
 msgid "Searching for printers"
 msgstr "ਪਰਿੰਟਰ ਲਈ ਖੋਜ ਰਿਹਾ ਹੈ"
 
-#: ../newprinter.py:3103 ../ui/NewPrinterWindow.ui.h:45
+#: ../newprinter.py:3151 ../ui/NewPrinterWindow.ui.h:46
 msgid "No printer was found at that address."
 msgstr "ਉਸ ਐਡਰੈੱਸ ਉੱਪਰ ਕੋਈ ਪਰਿੰਟਰ ਨਹੀਂ ਲੱਭਿਆ।"
 
-#: ../newprinter.py:3325
+#: ../newprinter.py:3306
 msgid "-- Select from search results --"
 msgstr "-- ਖੋਜ ਨਤੀਜੇ ਵਿੱਚੋਂ ਚੁਣੋ --"
 
-#: ../newprinter.py:3327
+#: ../newprinter.py:3308
 msgid "-- No matches found --"
 msgstr "-- ਕੋਈ ਮੇਲ ਨਹੀਂ ਲੱਭਿਆ --"
 
-#: ../newprinter.py:3417 ../ui/NewPrinterWindow.ui.h:79
+#: ../newprinter.py:3401 ../ui/NewPrinterWindow.ui.h:80
 msgid "Local Driver"
 msgstr "ਲੋਕਲ ਡਰਾਈਵਰ"
 
-#: ../newprinter.py:3449 ../newprinter.py:3512 ../newprinter.py:3610
+#: ../newprinter.py:3433 ../newprinter.py:3496 ../newprinter.py:3594
 msgid " (recommended)"
 msgstr "(ਸਿਫਾਰਸ਼ੀ)"
 
-#: ../newprinter.py:3642
+#: ../newprinter.py:3626
 msgid "This PPD is generated by foomatic."
 msgstr "ਇਹ PPD ਨੂੰ foomatic ਦੁਆਰਾ ਬਣਾਇਆ ਗਿਆ ਹੈ।"
 
-#: ../newprinter.py:3689
+#: ../newprinter.py:3674
 msgid "OpenPrinting"
 msgstr "ਓਪਨ-ਪ੍ਰਿੰਟਿੰਗ"
 
-#: ../newprinter.py:3700
+#: ../newprinter.py:3685
 msgid "Distributable"
 msgstr "ਵੰਡਣਯੋਗ"
 
-#: ../newprinter.py:3742
+#: ../newprinter.py:3727
 msgid ", "
 msgstr ", "
 
-#: ../newprinter.py:3747
+#: ../newprinter.py:3732
 #, python-format
 msgid ""
 "\n"
@@ -854,20 +858,20 @@ msgstr ""
 "\n"
 "(%s)"
 
-#: ../newprinter.py:3752
+#: ../newprinter.py:3737
 msgid "No support contacts known"
 msgstr "ਕੋਈ ਸਹਿਯਗ ਸੰਪਰਕ ਨਹੀਂ ਪਤਾ"
 
-#: ../newprinter.py:3756 ../newprinter.py:3769
+#: ../newprinter.py:3741 ../newprinter.py:3754
 msgid "Not specified."
 msgstr "ਨਿਰਧਾਰਤ ਨਹੀਂ ਹੈ।"
 
 #. Foomatic database problem of some sort.
-#: ../newprinter.py:3817
+#: ../newprinter.py:3802
 msgid "Database error"
 msgstr "ਡਾਟਾਬੇਸ ਗਲਤੀ"
 
-#: ../newprinter.py:3818
+#: ../newprinter.py:3803
 #, python-format
 msgid "The '%s' driver cannot be used with printer '%s %s'."
 msgstr "'%s' ਡਰਾਈਵਰ ਪਰਿੰਟਰ '%s %s' ਦੁਆਰਾ ਵਰਤਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ।"
@@ -875,45 +879,45 @@ msgstr "'%s' ਡਰਾਈਵਰ ਪਰਿੰਟਰ '%s %s' ਦੁਆਰਾ ਵ�
 #. This printer references some XML that is not
 #. installed by default.  Point the user at the
 #. package they need to install.
-#: ../newprinter.py:3828
+#: ../newprinter.py:3813
 #, python-format
 msgid "You will need to install the '%s' package in order to use this driver."
 msgstr "ਤੁਹਾਨੂੰ ਇਹ ਡਰਾਈਵਰ ਵਰਤਣ ਲਈ '%s' ਪੈਕੇਜ ਇੰਸਟਾਲ ਕਰਨ ਦੀ ਲੋੜ ਪਵੇਗੀ।"
 
 #. This error came from trying to open the PPD file.
-#: ../newprinter.py:3835
+#: ../newprinter.py:3820
 msgid "PPD error"
 msgstr "PPD ਗਲਤੀ"
 
-#: ../newprinter.py:3837
+#: ../newprinter.py:3822
 msgid "Failed to read PPD file.  Possible reason follows:"
 msgstr "PPD ਫਾਇਲ ਪੜ੍ਹਨ ਵਿੱਚ ਫੇਲ। ਸੰਭਵ ਕਾਰਨ ਇਸ ਤਰਾਂ ਹਨ:"
 
 #. Failed to get PPD downloaded from OpenPrinting XXX
-#: ../newprinter.py:3855
+#: ../newprinter.py:3840
 msgid "Downloadable drivers"
 msgstr "ਡਾਊਨਲੋਡ ਯੋਗ ਡਰਾਈਵਰ"
 
-#: ../newprinter.py:3856
+#: ../newprinter.py:3841
 msgid "Failed to download PPD."
 msgstr "PPD ਨੂੰ ਡਾਊਨਲੋਡ ਕਰਨ ਵਿੱਚ ਫੇਲ ਹੋਇਆ।"
 
-#: ../newprinter.py:3864
+#: ../newprinter.py:3849
 msgid "fetching PPD"
 msgstr "PPD ਲੈ ਰਿਹਾ ਹੈ"
 
-#: ../newprinter.py:3893 ../newprinter.py:3931
+#: ../newprinter.py:3878 ../newprinter.py:3915
 msgid "No Installable Options"
 msgstr "ਕੋਈ ਇੰਸਟਾਲ ਯੋਗ ਚੋਣ ਨਹੀਂ ਹੈ"
 
-#: ../newprinter.py:3995
+#: ../newprinter.py:3979
 #, python-format
 msgid "adding printer %s"
 msgstr "ਪਰਿੰਟਰ %s ਨੂੰ ਜੋੜ ਰਿਹਾ ਹੈ"
 
-#: ../newprinter.py:4020 ../newprinter.py:4032 ../newprinter.py:4050
-#: ../printerproperties.py:1009 ../system-config-printer.py:1606
-#: ../system-config-printer.py:1639
+#: ../newprinter.py:4008 ../newprinter.py:4020 ../newprinter.py:4038
+#: ../printerproperties.py:1002 ../system-config-printer.py:1688
+#: ../system-config-printer.py:1718
 #, python-format
 msgid "modifying printer %s"
 msgstr "ਤਬਦੀਲ ਹੋ ਰਿਹਾ ਪਰਿੰਟਰ %s"
@@ -1211,220 +1215,220 @@ msgstr "ਸੀਰੀਅਲ ਪੋਰਟ #1"
 msgid "LPT #1"
 msgstr "LPT #1"
 
-#: ../ppdsloader.py:156
+#: ../ppdsloader.py:159
 msgid "fetching PPDs"
 msgstr "PPDs ਲੈ ਰਿਹਾ ਹੈ"
 
-#: ../printerproperties.py:70 ../system-config-printer.py:125
+#: ../printerproperties.py:70 ../system-config-printer.py:130
 msgid "Idle"
 msgstr "ਵੇਹਲਾ"
 
-#: ../printerproperties.py:74 ../system-config-printer.py:127
+#: ../printerproperties.py:74 ../system-config-printer.py:132
 msgid "Busy"
 msgstr "ਰੁੱਝਿਆ"
 
 #. Printer state reasons list
-#: ../printerproperties.py:215
+#: ../printerproperties.py:214
 msgid "Message"
 msgstr "ਸੁਨੇਹੇ"
 
-#: ../printerproperties.py:237
+#: ../printerproperties.py:236
 msgid "Users"
 msgstr "ਉਪਭੋਗੀ"
 
-#: ../printerproperties.py:260
+#: ../printerproperties.py:259
 msgid "Portrait (no rotation)"
 msgstr "ਪੋਰਟਰੇਟ (ਕੋਈ ਰੋਟੇਸ਼ਨ ਨਹੀਂ)"
 
-#: ../printerproperties.py:261
+#: ../printerproperties.py:260
 msgid "Landscape (90 degrees)"
 msgstr "ਲੈਂਡਸਕੇਪ (90 ਡਿਗਰੀ)"
 
-#: ../printerproperties.py:262
+#: ../printerproperties.py:261
 msgid "Reverse landscape (270 degrees)"
 msgstr "ਉਲਟਾ ਲੈਂਡਸਕੇਪ (270 ਡਿਗਰੀ)"
 
-#: ../printerproperties.py:263
+#: ../printerproperties.py:262
 msgid "Reverse portrait (180 degrees)"
 msgstr "ਉਲਟਾ ਪੋਰਟਰੇਟ (180 ਡਿਗਰੀ)"
 
-#: ../printerproperties.py:269
+#: ../printerproperties.py:268
 msgid "Left to right, top to bottom"
 msgstr "ਖੱਬੇ ਤੋਂ ਸੱਜੇ, ਉੱਪਰ ਤੋਂ ਹੇਠਾਂ"
 
-#: ../printerproperties.py:270
+#: ../printerproperties.py:269
 msgid "Left to right, bottom to top"
 msgstr "ਖੱਬੋ ਤੋਂ ਸੱਜੇ, ਹੇਠਾਂ ਤੋਂ ਉੱਪਰ"
 
-#: ../printerproperties.py:271
+#: ../printerproperties.py:270
 msgid "Right to left, top to bottom"
 msgstr "ਸੱਜੇ ਤੋਂ ਖੱਬੇ, ਉੱਪਰ ਤੋਂ ਹੇਠਾਂ"
 
-#: ../printerproperties.py:272
+#: ../printerproperties.py:271
 msgid "Right to left, bottom to top"
 msgstr "ਸੱਜੇ ਤੋਂ ਖੱਬੇ, ਹੇਠਾਂ ਤੋਂ ਉੱਪਰ"
 
-#: ../printerproperties.py:273
+#: ../printerproperties.py:272
 msgid "Top to bottom, left to right"
 msgstr "ਉੱਪਰ ਤੋਂ ਹੇਠਾਂ, ਖੱਬੇ ਤੋਂ ਸੱਜੇ"
 
-#: ../printerproperties.py:274
+#: ../printerproperties.py:273
 msgid "Top to bottom, right to left"
 msgstr "ਉੱਪਰ ਤੋਂ ਹੇਠਾਂ, ਸੱਜੇ ਤੋਂ ਖੱਬੇ"
 
-#: ../printerproperties.py:275
+#: ../printerproperties.py:274
 msgid "Bottom to top, left to right"
 msgstr "ਹੇਠਾਂ ਤੋਂ ਉੱਪਰ, ਖੱਬੇ ਤੋਂ ਸੱਜੇ"
 
-#: ../printerproperties.py:276
+#: ../printerproperties.py:275
 msgid "Bottom to top, right to left"
 msgstr "ਹੇਠਾਂ ਤੋਂ ਉੱਪਰ, ਸੱਜੇ ਤੋਂ ਖੱਬੇ"
 
-#: ../printerproperties.py:282
+#: ../printerproperties.py:281
 msgid "Staple"
 msgstr "ਸਟੈਪਲ"
 
-#: ../printerproperties.py:283
+#: ../printerproperties.py:282
 msgid "Punch"
 msgstr "ਪੁੰਚ"
 
-#: ../printerproperties.py:284
+#: ../printerproperties.py:283
 msgid "Cover"
 msgstr "ਕਵਰ"
 
-#: ../printerproperties.py:285
+#: ../printerproperties.py:284
 msgid "Bind"
 msgstr "ਬਾਈਂਡ"
 
-#: ../printerproperties.py:286
+#: ../printerproperties.py:285
 msgid "Saddle stitch"
 msgstr "ਸੈਡਲ ਸਟਿੱਚ"
 
-#: ../printerproperties.py:287
+#: ../printerproperties.py:286
 msgid "Edge stitch"
 msgstr "Edge stitch"
 
-#: ../printerproperties.py:288
+#: ../printerproperties.py:287
 msgid "Fold"
 msgstr "ਫੋਲਡ"
 
-#: ../printerproperties.py:289
+#: ../printerproperties.py:288
 msgid "Trim"
 msgstr "ਟਰਿੰਮ"
 
-#: ../printerproperties.py:290
+#: ../printerproperties.py:289
 msgid "Bale"
 msgstr "ਬੇਲ"
 
-#: ../printerproperties.py:291
+#: ../printerproperties.py:290
 msgid "Booklet maker"
 msgstr "ਬੁੱਕਲੈਟ ਮੇਕਰ"
 
-#: ../printerproperties.py:292
+#: ../printerproperties.py:291
 msgid "Job offset"
 msgstr "ਜੌਬ ਆਫਸੈੱਟ"
 
-#: ../printerproperties.py:293
+#: ../printerproperties.py:292
 msgid "Staple (top left)"
 msgstr "ਸਟੈਪਲ (ਉੱਪਰ ਖੱਬੇ)"
 
-#: ../printerproperties.py:294
+#: ../printerproperties.py:293
 msgid "Staple (bottom left)"
 msgstr "ਸਟੈਪਲ (ਹੇਠਾਂ ਖੱਬੇ)"
 
-#: ../printerproperties.py:295
+#: ../printerproperties.py:294
 msgid "Staple (top right)"
 msgstr "ਸਟੈਪਲ (ਉੱਪਰ ਸੱਜੇ)"
 
-#: ../printerproperties.py:296
+#: ../printerproperties.py:295
 msgid "Staple (bottom right)"
 msgstr "ਸਟੈਪਲ (ਹੇਠਾਂ ਸੱਜੇ)"
 
-#: ../printerproperties.py:297
+#: ../printerproperties.py:296
 msgid "Edge stitch (left)"
 msgstr "Edge stitch (ਖੱਬੇ)"
 
-#: ../printerproperties.py:298
+#: ../printerproperties.py:297
 msgid "Edge stitch (top)"
 msgstr "ਇੱਜ ਸਟਿੱਚ (ਉੱਪਰ)"
 
-#: ../printerproperties.py:299
+#: ../printerproperties.py:298
 msgid "Edge stitch (right)"
 msgstr "ਇੱਜ ਸਟਿੱਚ (ਸੱਜੇ)"
 
-#: ../printerproperties.py:300
+#: ../printerproperties.py:299
 msgid "Edge stitch (bottom)"
 msgstr "Edge stitch (ਹੇਠਾਂ)"
 
-#: ../printerproperties.py:301
+#: ../printerproperties.py:300
 msgid "Staple dual (left)"
 msgstr "ਸਟੈਪਲ ਡਿਊਲ (ਖੱਬੇ)"
 
-#: ../printerproperties.py:302
+#: ../printerproperties.py:301
 msgid "Staple dual (top)"
 msgstr "ਸਟੈਪਲ ਡਿਊਲ (ਉੱਪਰ)"
 
-#: ../printerproperties.py:303
+#: ../printerproperties.py:302
 msgid "Staple dual (right)"
 msgstr "ਸਟੈਪਲ ਡਿਊਲ (ਸੱਜੇ)"
 
-#: ../printerproperties.py:304
+#: ../printerproperties.py:303
 msgid "Staple dual (bottom)"
 msgstr "ਸਟੈਪਲ ਡਿਊਲ (ਹੇਠਾਂ)"
 
-#: ../printerproperties.py:305
+#: ../printerproperties.py:304
 msgid "Bind (left)"
 msgstr "ਬਾਈਂਡ (ਖੱਬੇ)"
 
-#: ../printerproperties.py:306
+#: ../printerproperties.py:305
 msgid "Bind (top)"
 msgstr "ਬਾਈਡ (ਉੱਪਰ)"
 
-#: ../printerproperties.py:307
+#: ../printerproperties.py:306
 msgid "Bind (right)"
 msgstr "ਮੋੜੋ (ਸੱਜੇ)"
 
-#: ../printerproperties.py:308
+#: ../printerproperties.py:307
 msgid "Bind (bottom)"
 msgstr "ਬਾਈਂਡ (ਹੇਠਾਂ)"
 
-#: ../printerproperties.py:313
+#: ../printerproperties.py:312
 msgid "One-sided"
 msgstr "ਇੱਕ-ਪਾਸੇ"
 
-#: ../printerproperties.py:314
+#: ../printerproperties.py:313
 msgid "Two-sided (long edge)"
 msgstr "ਦੋ-ਪਾਸਾ (ਲਾਂਗ ਇੱਜ)"
 
-#: ../printerproperties.py:315
+#: ../printerproperties.py:314
 msgid "Two-sided (short edge)"
 msgstr "ਦੋ-ਪਾਸਾ (ਸ਼ੌਰਟ ਇੱਜ)"
 
-#: ../printerproperties.py:320 ../printerproperties.py:325
+#: ../printerproperties.py:319 ../printerproperties.py:324
 msgid "Normal"
 msgstr "ਸਧਾਰਨ"
 
-#: ../printerproperties.py:321
+#: ../printerproperties.py:320
 msgid "Reverse"
 msgstr "ਉਲਟਾ"
 
-#: ../printerproperties.py:324
+#: ../printerproperties.py:323
 msgid "Draft"
 msgstr "ਡਰਾਫਟ"
 
-#: ../printerproperties.py:326
+#: ../printerproperties.py:325
 msgid "High"
 msgstr "ਉੱਚਾ"
 
-#: ../printerproperties.py:348
+#: ../printerproperties.py:347
 msgid "Automatic rotation"
 msgstr "ਆਟੋਮੈਟਿੰਕ ਰੋਟੇਸ਼ਨ"
 
-#: ../printerproperties.py:595
+#: ../printerproperties.py:594
 msgid "CUPS test page"
 msgstr "CUPS ਜਾਂਚ ਪੇਜ਼"
 
-#: ../printerproperties.py:596
+#: ../printerproperties.py:595
 msgid ""
 "Typically shows whether all jets on a print head are functioning and that "
 "the print feed mechanisms are working properly."
@@ -1432,13 +1436,13 @@ msgstr ""
 "ਖਾਸ ਕਰਕੇ ਵੇਖਾਉਂਦਾ ਹੈ ਕਿ ਕੀ ਸਭ ਪਰਿੰਟ ਹੈੱਡ ਉੱਪਰ ਸਭ ਜੈੱਟ ਠੀਕ ਕੰਮ ਕਰਦੇ ਹਨ ਜਾਂ ਨਹੀਂ ਅਤੇ ਪਰਿੰਟ ਫੀਡ "
 "ਕਾਰਵਾਈਆਂ ਠੀਕ ਕੰਮ ਕਰਦੇ ਹਨ ਜਾਂ ਨਹੀਂ।"
 
-#: ../printerproperties.py:603
+#: ../printerproperties.py:602
 #, python-format
 msgid "Printer Properties - '%s' on %s"
 msgstr "ਪਰਿੰਟਰ ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ - '%s' ਨੂੰ %s ਉੱਪਰ"
 
 #. The Conflict button was pressed.
-#: ../printerproperties.py:613
+#: ../printerproperties.py:612
 msgid ""
 "There are conflicting options.\n"
 "Changes can only be applied after\n"
@@ -1448,24 +1452,24 @@ msgstr ""
 "ਤਬਦੀਲੀਆਂ ਸਿਰਫ ਬਾਅਦ ਵਿੱਚ ਲਾਗੀ ਹੋਣਗੀਆਂ\n"
 "ਇਹ ਪ੍ਰਤੀਰੋਧ ਹੱਲ ਹੋ ਗਏ ਹਨ।"
 
-#: ../printerproperties.py:968
+#: ../printerproperties.py:963
 msgid "Installable Options"
 msgstr "ਇੰਸਟਾਲੇਸ਼ਂ ਚੋਣਾਂ"
 
-#: ../printerproperties.py:969 ../ui/PrinterPropertiesDialog.ui.h:41
+#: ../printerproperties.py:964 ../ui/PrinterPropertiesDialog.ui.h:48
 msgid "Printer Options"
 msgstr "ਪਰਿੰਟਰ ਚੋਣ"
 
-#: ../printerproperties.py:1007
+#: ../printerproperties.py:1000
 #, python-format
 msgid "modifying class %s"
 msgstr "ਕਲਾਸ %s ਨੂੰ ਸੋਧ ਰਿਹਾ ਹੈ"
 
-#: ../printerproperties.py:1024
+#: ../printerproperties.py:1018
 msgid "This will delete this class!"
 msgstr "ਇਸ ਨਾਲ ਇਹ ਕਲਾਸ ਹਟਾਈ ਜਾਵੇਗੀ!"
 
-#: ../printerproperties.py:1025
+#: ../printerproperties.py:1019
 msgid "Proceed anyway?"
 msgstr "ਕੀ ਕਿਸੇ ਵੀ ਤਰ੍ਹਾਂ ਵੀ ਜਾਰੀ ਰੱਖਣਾ ਹੈ?"
 
@@ -1473,19 +1477,19 @@ msgstr "ਕੀ ਕਿਸੇ ਵੀ ਤਰ੍ਹਾਂ ਵੀ ਜਾਰੀ ਰੱ
 #. but we have never fetched the server settings to see whether
 #. the server is publishing shared printers.  Fetch the settings
 #. now so that we can update the "not published" label if necessary.
-#: ../printerproperties.py:1118 ../serversettings.py:199
+#: ../printerproperties.py:1112 ../serversettings.py:200
 msgid "fetching server settings"
 msgstr "ਸਰਵਰ ਸੈਟਿੰਗ ਲੈ ਰਿਹਾ ਹੈ"
 
-#: ../printerproperties.py:1201
+#: ../printerproperties.py:1195
 msgid "printing test page"
 msgstr "ਜਾਂਚ ਸਫ਼ਾ ਛਾਪੋ"
 
-#: ../printerproperties.py:1215 ../printerproperties.py:1256
+#: ../printerproperties.py:1209 ../printerproperties.py:1249
 msgid "Not possible"
 msgstr "ਸੰਭਵ ਨਹੀਂ"
 
-#: ../printerproperties.py:1216 ../printerproperties.py:1257
+#: ../printerproperties.py:1210 ../printerproperties.py:1250
 msgid ""
 "The remote server did not accept the print job, most likely because the "
 "printer is not shared."
@@ -1493,43 +1497,51 @@ msgstr ""
 "ਰਿਮੋਟ ਸਰਵਰ ਪਰਿੰਟ ਜੌਬਾਂ ਸਵੀਕਾਰ ਨਹੀਂ ਕਰਦਾ, ਜਿਆਦਾਤਰ ਕਾਰਨ ਹੋ ਸਕਦਾ ਹੈ ਕਿ ਪਰਿੰਟਰ ਸ਼ੇਅਰ ਨਹੀਂ "
 "ਕੀਤਾਂ ਹੁੰਦਾ।"
 
-#: ../printerproperties.py:1228 ../printerproperties.py:1248
+#: ../printerproperties.py:1222 ../printerproperties.py:1241
 msgid "Submitted"
 msgstr "ਭੇਜਿਆ"
 
-#: ../printerproperties.py:1229
+#: ../printerproperties.py:1223
 #, python-format
 msgid "Test page submitted as job %d"
 msgstr "ਜਾਂਚ ਪੇਜ਼ ਨੂੰ ਜੌਬ %d ਦੇ ਤੌਰ ਤੇ ਭੇਜਿਆ ਹੈ"
 
-#: ../printerproperties.py:1241
+#: ../printerproperties.py:1234
 msgid "sending maintenance command"
 msgstr "ਨਿਰਗਾਨੀ ਕਮਾਂਡ ਭੇਜ ਰਿਹਾ ਹੈ"
 
-#: ../printerproperties.py:1249
+#: ../printerproperties.py:1242
 #, python-format
 msgid "Maintenance command submitted as job %d"
 msgstr "ਨਿਗਰਾਨੀ ਕਮਾਂਡ ਜੌਬ %d ਦੇ ਤੌਰ ਤੇ ਦਿੱਤੀ ਗਈ ਹੈ"
 
-#: ../printerproperties.py:1338 ../printerproperties.py:1343
-#: ../printerproperties.py:1440
+#: ../printerproperties.py:1323
+msgid "Raw Queue"
+msgstr ""
+
+#: ../printerproperties.py:1324
+msgid "Unable to get queue details. Treating queue as raw."
+msgstr ""
+
+#: ../printerproperties.py:1336 ../printerproperties.py:1341
+#: ../printerproperties.py:1438
 msgid "Error"
 msgstr "ਗਲਤੀ"
 
-#: ../printerproperties.py:1339
+#: ../printerproperties.py:1337
 msgid "The PPD file for this queue is damaged."
 msgstr "ਇਸ ਕਤਰਾ ਲਈ PPD ਫਾਇਲ ਖਰਾਬ ਹੈ।"
 
-#: ../printerproperties.py:1344
+#: ../printerproperties.py:1342
 msgid "There was a problem connecting to the CUPS server."
 msgstr "CUPS ਸਰਵਰ ਨਾਲ ਜੁੜਨ ਵਿੱਚ ਇੱਕ ਸਮੱਸਿਆ ਸੀ।"
 
-#: ../printerproperties.py:1441
+#: ../printerproperties.py:1439
 #, python-format
 msgid "Option '%s' has value '%s' and cannot be edited."
 msgstr "ਚੋਣ '%s' ਦਾ ਮੁੱਲ '%s' ਹੈ ਅਤੇ ਸੋਧਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ।"
 
-#: ../printerproperties.py:1558
+#: ../printerproperties.py:1557
 msgid "Marker levels are not reported for this printer."
 msgstr "ਮਾਰਕਰ ਲੈਵਲ ਇਸ ਪਰਿੰਟਰ ਲਈ ਰਿਪੋਰਟ ਨਹੀਂ ਕੀਤਾ ਹੈ।"
 
@@ -1542,203 +1554,215 @@ msgstr "%s ਨੂੰ ਵਰਤਣ ਲਈ ਤੁਹਾਨੂੰ ਲਾਗ ਇਨ 
 msgid "Problems?"
 msgstr "ਸਮੱਸਿਆ?"
 
-#: ../serversettings.py:272
+#: ../serversettings.py:273
 msgid "Enter hostname"
 msgstr "ਹੋਸਟ-ਨਾਂ ਦਿਓ"
 
-#: ../serversettings.py:519
+#: ../serversettings.py:524
 msgid "modifying server settings"
 msgstr "ਤਬਦੀਲ ਹੋ ਰਹੀ ਸਰਵਰ ਸੈਟਿੰਗ"
 
-#: ../serversettings.py:560
+#: ../serversettings.py:564
 msgid "Adjust the firewall now to allow all incoming IPP connections?"
 msgstr "ਹੁਣ ਸਭ ਆਉਣ ਵਾਲੇ IPP ਕੁਨੈਕਸ਼ਨਾਂ ਨੂੰ ਮਨਜੂਰ ਕਰਨ ਲਈ ਫਾਇਰਵਾਲ ਸੈੱਟ ਕਰਨੀ ਹੈ?"
 
-#: ../system-config-printer.py:207
+#: ../system-config-printer.py:233
 msgid "_Connect..."
 msgstr "ਜੁੜ ਰਿਹਾ ਹੈ(_C)..."
 
-#: ../system-config-printer.py:208
+#: ../system-config-printer.py:234
 msgid "Choose a different CUPS server"
 msgstr "ਵੱਖਰਾ CUPS ਸਰਵਰ ਚੁਣੋ"
 
-#: ../system-config-printer.py:210
+#: ../system-config-printer.py:236
 msgid "_Settings..."
 msgstr "ਸੈਟਿੰਗ(_S)..."
 
-#: ../system-config-printer.py:211
+#: ../system-config-printer.py:237
 msgid "Adjust server settings"
 msgstr "ਸਰਵਰ ਸੈਟਿੰਗ ਠੀਕ ਕਰੋ"
 
-#: ../system-config-printer.py:213 ../ui/PrintersWindow.ui.h:3
+#: ../system-config-printer.py:239 ../ui/PrintersWindow.ui.h:3
 msgid "_Printer"
 msgstr "ਪਰਿੰਟਰ(_P)"
 
-#: ../system-config-printer.py:215
+#: ../system-config-printer.py:241
 msgid "_Class"
 msgstr "ਕਲਾਸ(_C)"
 
-#: ../system-config-printer.py:220
+#: ../system-config-printer.py:246
 msgid "_Rename"
 msgstr "ਨਾਂ ਬਦਲੋ(_R)"
 
-#: ../system-config-printer.py:222
+#: ../system-config-printer.py:248
 msgid "_Duplicate"
 msgstr "ਡੁਪਲੀਕੇਟ(_D)"
 
-#: ../system-config-printer.py:226
+#: ../system-config-printer.py:252
 msgid "Set As De_fault"
 msgstr "ਮੂਲ ਸੈੱਟ ਕਰੋ(_f)"
 
-#: ../system-config-printer.py:230
+#: ../system-config-printer.py:256
 msgid "_Create class"
 msgstr "ਕਲਾਸ ਬਣਾਓ(_C)"
 
-#: ../system-config-printer.py:232
+#: ../system-config-printer.py:258
 msgid "View Print _Queue"
 msgstr "ਪਰਿੰਟ ਕਤਾਰ ਵੇਖੋਧ(_Q)"
 
-#: ../system-config-printer.py:236
+#: ../system-config-printer.py:262
 msgid "E_nabled"
 msgstr "ਯੋਗ ਹੈ(_N)"
 
-#: ../system-config-printer.py:238
+#: ../system-config-printer.py:264
 msgid "_Shared"
 msgstr "ਸਾਂਝਾ(_S)"
 
-#: ../system-config-printer.py:243
+#: ../system-config-printer.py:269
 msgid "Description"
 msgstr "ਵੇਰਵਾ"
 
-#: ../system-config-printer.py:244 ../troubleshoot/ChooseNetworkPrinter.py:39
+#: ../system-config-printer.py:270 ../troubleshoot/ChooseNetworkPrinter.py:39
 #: ../troubleshoot/ChoosePrinter.py:45
 msgid "Location"
 msgstr "ਟਿਕਾਣਾ"
 
-#: ../system-config-printer.py:245
+#: ../system-config-printer.py:271
 msgid "Manufacturer / Model"
 msgstr "ਨਿਰਮਾਤਾ / ਮਾਡਲ"
 
-#: ../system-config-printer.py:319
+#: ../system-config-printer.py:318 ../ui/PrinterPropertiesDialog.ui.h:41
+#: ../ui/PrintersWindow.ui.h:10 ../ui/ServerSettingsDialog.ui.h:15
+#, fuzzy
+msgid "Add"
+msgstr "ਟਾਂਕ"
+
+#: ../system-config-printer.py:335 ../ui/PrinterPropertiesDialog.ui.h:88
+#: ../ui/SMBBrowseDialog.ui.h:2
+#, fuzzy
+msgid "Refresh"
+msgstr "ਮੁੜ-ਤਾਜ਼ਾ(_R)"
+
+#: ../system-config-printer.py:349
 msgid "_New"
 msgstr "ਨਵਾਂ(_N)"
 
-#: ../system-config-printer.py:667
+#: ../system-config-printer.py:711
 #, python-format
 msgid "Print Settings - %s"
 msgstr "ਪਰਿੰਟ ਸੈਟਿੰਗ - %s"
 
-#: ../system-config-printer.py:670
+#: ../system-config-printer.py:714
 #, python-format
 msgid "Connected to %s"
 msgstr "%s ਨਾਲ ਜੁੜਿਆ"
 
-#: ../system-config-printer.py:721
+#: ../system-config-printer.py:801
 msgid "obtaining queue details"
 msgstr "ਕਤਾਰ ਵੇਰਵਾ ਲੈ ਰਿਹਾ ਹੈ"
 
-#: ../system-config-printer.py:812
+#: ../system-config-printer.py:890
 msgid "Network printer (discovered)"
 msgstr "ਨੈੱਟਵਰਕ ਪਰਿੰਟਰ (ਖੋਜਿਆ ਗਿਆ)"
 
-#: ../system-config-printer.py:815
+#: ../system-config-printer.py:893
 msgid "Network class (discovered)"
 msgstr "ਨੈੱਟਵਰਕ ਕਲਾਸ (ਖੋਜੀ ਗਈ)"
 
-#: ../system-config-printer.py:824
+#: ../system-config-printer.py:902
 msgid "Class"
 msgstr "ਕਲਾਸ"
 
-#: ../system-config-printer.py:827 ../system-config-printer.py:833
+#: ../system-config-printer.py:905 ../system-config-printer.py:911
 #: ../troubleshoot/LocalOrRemote.py:30
 msgid "Network printer"
 msgstr "ਨੈੱਟਵਰਕ ਪਰਿੰਟਰ"
 
-#: ../system-config-printer.py:830
+#: ../system-config-printer.py:908
 msgid "Network print share"
 msgstr "ਨੈੱਟਵਰਕ ਪਰਿੰਟ ਸ਼ੇਅਰ"
 
-#: ../system-config-printer.py:984
+#: ../system-config-printer.py:1062
 msgid "Service framework not available"
 msgstr "ਸਰਵਿਸ ਫਰੇਮਵਰਕ ਉਪਲੱਬਧ ਨਹੀਂ ਹੈ"
 
-#: ../system-config-printer.py:986
+#: ../system-config-printer.py:1064
 msgid "Cannot start service on remote server"
 msgstr "ਰਿਮੋਟ ਸਰਵਰ ਉੱਪਰ ਸਰਵਿਸ ਚਾਲੂ ਨਹੀਂ ਕਰ ਸਕਦਾ"
 
-#: ../system-config-printer.py:1034 ../ui/ConnectingDialog.ui.h:4
+#: ../system-config-printer.py:1112 ../ui/ConnectingDialog.ui.h:5
 #, no-c-format, python-format
 msgid "<i>Opening connection to %s</i>"
 msgstr "<i>%s ਨਾਲ ਕੁਨੈਕਸ਼ਨ ਖੋਲ ਰਿਹਾ ਹੈ</i>"
 
-#: ../system-config-printer.py:1191
+#: ../system-config-printer.py:1275
 msgid "Set Default Printer"
 msgstr "ਮੂਲ ਪਰਿੰਟਰ ਸੈੱਟ ਕਰੋ"
 
-#: ../system-config-printer.py:1193
+#: ../system-config-printer.py:1277
 msgid "Do you want to set this as the system-wide default printer?"
 msgstr "ਕੀ ਤੁਸੀਂ ਸੱਚੀਂ ਇਸਨੂੰ ਸਿਸਟਮ-ਅਧਾਰਿਤ ਮੂਲ ਪਰਿੰਟਰ ਸੈੱਟ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ?"
 
-#: ../system-config-printer.py:1195
+#: ../system-config-printer.py:1279
 msgid "Set as the _system-wide default printer"
 msgstr "ਸਿਸਟਮ-ਅਧਾਰਿਤ ਮੂਲ ਪਰਿੰਟਰ ਸੈੱਟ ਕਰੋ(_s)"
 
-#: ../system-config-printer.py:1197
+#: ../system-config-printer.py:1281
 msgid "_Clear my personal default setting"
 msgstr "ਮੇਰੀ ਨਿੱਜੀ ਮੂਲ ਸੈਟਿੰਗ ਸਾਫ ਕਰੋ(_C)"
 
-#: ../system-config-printer.py:1198
+#: ../system-config-printer.py:1282
 msgid "Set as my _personal default printer"
 msgstr "ਮੇਰੇ ਨਿੱਜੀ ਮੂਲ ਪਰਿੰਟਰ ਦੇ ਤੌਰ ਤੇ ਸੈੱਟ ਕਰੋ(_p)"
 
-#: ../system-config-printer.py:1203
+#: ../system-config-printer.py:1287
 msgid "setting default printer"
 msgstr "ਮੂਲ ਪਰਿੰਟਰ ਸੈੱਟ ਕਰ ਰਿਹਾ ਹੈ"
 
-#: ../system-config-printer.py:1252
+#: ../system-config-printer.py:1340
 msgid "Cannot Rename"
 msgstr "ਨਾਂ ਤਬਦੀਲ ਨਹੀਂ ਕਰ ਸਕਦਾ:"
 
-#: ../system-config-printer.py:1253
+#: ../system-config-printer.py:1341
 msgid "There are queued jobs."
 msgstr "ਕਤਾਰ ਵਿੱਚ ਜੌਬਾਂ ਹਨ।"
 
-#: ../system-config-printer.py:1271
+#: ../system-config-printer.py:1358
 msgid "Renaming will lose history"
 msgstr "ਨਾਂ ਤਬਦੀਲ ਕਰਨ ਨਾਲ ਅਤੀਤ ਨਹੀਂ ਰਹੇਗਾ"
 
-#: ../system-config-printer.py:1273
+#: ../system-config-printer.py:1360
 msgid "Completed jobs will no longer be available for re-printing."
 msgstr "ਮੁਕੰਮਲ ਜੌਬ ਮੁੜ-ਪਰਿੰਟ ਕਰਨ ਲਈ ਉਪਲੱਬਧ ਨਹੀਂ ਰਹੇਗੀ।"
 
-#: ../system-config-printer.py:1386
+#: ../system-config-printer.py:1473
 msgid "renaming printer"
 msgstr "ਪਰਿੰਟਰ ਨਾਂ ਤਬਦੀਲ ਹੋ ਰਿਹਾ ਹੈ"
 
-#: ../system-config-printer.py:1549
+#: ../system-config-printer.py:1636
 #, python-format
 msgid "Really delete class '%s'?"
 msgstr "ਕੀ ਸੱਚੀਂ ਕਲਾਸ '%s' ਹਟਾਉਣੀ ਹੈ?"
 
-#: ../system-config-printer.py:1551
+#: ../system-config-printer.py:1638
 #, python-format
 msgid "Really delete printer '%s'?"
 msgstr "ਕੀ ਸੱਚੀਂ ਪਰਿੰਟਰ %s ਹਟਾਉਣਾ ਹੈ?"
 
-#: ../system-config-printer.py:1555
+#: ../system-config-printer.py:1642
 msgid "Really delete selected destinations?"
 msgstr "ਕੀ ਸੱਚੀਂ ਚੁਣੋ ਟਾਰਗਿਟ ਹਟਾਉਣੇ ਹਨ?"
 
-#: ../system-config-printer.py:1578
+#: ../system-config-printer.py:1663
 #, python-format
 msgid "deleting printer %s"
 msgstr "ਪਰਿੰਟਰ ਹਟਾ ਰਿਹਾ ਹੈ %s"
 
-#: ../system-config-printer.py:1680
+#: ../system-config-printer.py:1754
 msgid "Publish Shared Printers"
 msgstr "ਸ਼ੇਅਰ ਪਰਿੰਟਰ ਪਬਲਿਸ਼ ਕਰੋ"
 
-#: ../system-config-printer.py:1681
+#: ../system-config-printer.py:1755
 msgid ""
 "Shared printers are not available to other people unless the 'Publish shared "
 "printers' option is enabled in the server settings."
@@ -1746,30 +1770,30 @@ msgstr ""
 "Shared printers are not available to other people unless the 'Publish shared "
 "printers' option is enabled in the server settings।"
 
-#: ../system-config-printer.py:1893
+#: ../system-config-printer.py:1969
 msgid "Would you like to print a test page?"
 msgstr "ਕੀ ਤੁਸੀਂ ਜਾਂਚ ਸਫਾ ਪਰਿੰਟ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ?"
 
 #. Not more than 25 characters
-#: ../system-config-printer.py:1895 ../ui/PrinterPropertiesDialog.ui.h:12
+#: ../system-config-printer.py:1971 ../ui/PrinterPropertiesDialog.ui.h:17
 #: ../troubleshoot/PrintTestPage.py:74
 msgid "Print Test Page"
 msgstr "ਜਾਂਚ ਸਫ਼ਾ ਛਾਪੋ"
 
-#: ../system-config-printer.py:1982
+#: ../system-config-printer.py:2063
 msgid "Install driver"
 msgstr "ਡਰਾਇਵਰ ਇੰਸਟਾਲ ਕਰੋ"
 
-#: ../system-config-printer.py:1983 ../troubleshoot/CheckPPDSanity.py:135
+#: ../system-config-printer.py:2064 ../troubleshoot/CheckPPDSanity.py:136
 #, python-format
 msgid "Printer '%s' requires the %s package but it is not currently installed."
 msgstr "ਪਰਿੰਟਰ '%s' ਲਈ %s ਪੈਕੇਜ ਲੋੜੀਂਦਾ ਹੈ ਪਰ ਇਹ ਹਾਲੇ ਇੰਸਟਾਲ ਨਹੀਂ ਹੈ।"
 
-#: ../system-config-printer.py:1998
+#: ../system-config-printer.py:2079
 msgid "Missing driver"
 msgstr "ਡਰਾਇਵਰ ਗੁੰਮ ਹੈ"
 
-#: ../system-config-printer.py:1999
+#: ../system-config-printer.py:2080
 #, python-format
 msgid ""
 "Printer '%s' requires the '%s' program but it is not currently installed.  "
@@ -1822,11 +1846,24 @@ msgstr "ਜਸਵਿੰਦਰ ਸਿੰਘ ਫੂਲੇਵਾਲਾ <j.phulewala
 msgid "Connect to CUPS server"
 msgstr "CUPS ਸਰਵਰ ਨਾਲ ਜੁੜੋ"
 
-#: ../ui/ConnectDialog.ui.h:2
+#: ../ui/ConnectDialog.ui.h:2 ../ui/ConnectingDialog.ui.h:2
+#: ../ui/NewPrinterName.ui.h:2 ../ui/NewPrinterWindow.ui.h:104
+#: ../ui/PrinterPropertiesDialog.ui.h:4 ../ui/ServerSettingsDialog.ui.h:2
+#: ../ui/SMBBrowseDialog.ui.h:3
+#, fuzzy
+msgid "Cancel"
+msgstr "ਰੱਦ ਕਰੋ(_C)"
+
+#: ../ui/ConnectDialog.ui.h:3 ../ui/PrintersWindow.ui.h:13
+#, fuzzy
+msgid "Connect"
+msgstr "ਕੁਨੈਕਸ਼ਨ"
+
+#: ../ui/ConnectDialog.ui.h:4
 msgid "Require _encryption"
 msgstr "ਇਨਕ੍ਰਿਪਸ਼ਨ ਦੀ ਲੋੜ ਹੈ(_e)"
 
-#: ../ui/ConnectDialog.ui.h:3
+#: ../ui/ConnectDialog.ui.h:5
 msgid "CUPS _server:"
 msgstr "CUPS ਸਰਵਰ(_s):"
 
@@ -1834,11 +1871,15 @@ msgstr "CUPS ਸਰਵਰ(_s):"
 msgid "Connecting to CUPS server"
 msgstr "CUPS ਸਰਵਰ ਨਾਲ ਜੁੜ ਰਿਹਾ ਹੈ"
 
-#: ../ui/ConnectingDialog.ui.h:2
+#: ../ui/ConnectingDialog.ui.h:3
 msgid "<span weight=\"bold\" size=\"larger\">Connecting to CUPS server</span>"
 msgstr "<span weight=\"bold\" size=\"larger\">Connecting to CUPS server</span>"
 
-#: ../ui/InstallDialog.ui.h:1
+#: ../ui/InstallDialog.ui.h:1 ../ui/PrinterPropertiesDialog.ui.h:6
+msgid "Close"
+msgstr ""
+
+#: ../ui/InstallDialog.ui.h:2
 msgid "_Install"
 msgstr "ਇੰਸਟਾਲ ਕਰੋ(_I)"
 
@@ -1862,7 +1903,12 @@ msgstr "ਮੁਕੰਮਲ ਜੌਬਾਂ ਵੇਖਾਓ(_c)"
 msgid "Duplicate Printer"
 msgstr "ਡੁਪਲੀਕੇਟ ਪਰਿੰਟਰ"
 
-#: ../ui/NewPrinterName.ui.h:2
+#: ../ui/NewPrinterName.ui.h:3 ../ui/PrinterPropertiesDialog.ui.h:5
+#: ../ui/ServerSettingsDialog.ui.h:3 ../ui/SMBBrowseDialog.ui.h:4
+msgid "OK"
+msgstr ""
+
+#: ../ui/NewPrinterName.ui.h:4
 msgid "New name for the printer"
 msgstr "ਪਰਿੰਟਰ ਲਈ ਨਵਾਂ ਨਾਂ"
 
@@ -2021,42 +2067,46 @@ msgid "SMB"
 msgstr "SMB"
 
 #: ../ui/NewPrinterWindow.ui.h:44
+msgid "Find"
+msgstr ""
+
+#: ../ui/NewPrinterWindow.ui.h:45
 msgid "Searching..."
 msgstr "ਖੋਜ ਰਿਹਾ ਹੈ..."
 
-#: ../ui/NewPrinterWindow.ui.h:46
+#: ../ui/NewPrinterWindow.ui.h:47
 msgid "<b>Network Printer</b>"
 msgstr "<b>ਨੈੱਟਵਰਕ ਪਰਿੰਟਰ</b>"
 
-#: ../ui/NewPrinterWindow.ui.h:47
+#: ../ui/NewPrinterWindow.ui.h:48
 msgid "Network"
 msgstr "ਨੈੱਟਵਰਕ"
 
-#: ../ui/NewPrinterWindow.ui.h:48
+#: ../ui/NewPrinterWindow.ui.h:49
 msgid "Connection"
 msgstr "ਕੁਨੈਕਸ਼ਨ"
 
-#: ../ui/NewPrinterWindow.ui.h:49
+#: ../ui/NewPrinterWindow.ui.h:50
 msgid "Device"
 msgstr "ਜੰਤਰ"
 
-#: ../ui/NewPrinterWindow.ui.h:50
+#: ../ui/NewPrinterWindow.ui.h:51
 msgid "<span weight=\"bold\" size=\"larger\">Choose Driver</span>"
 msgstr "<span weight=\"bold\" size=\"larger\">Choose Driver</span>"
 
-#: ../ui/NewPrinterWindow.ui.h:51
+#: ../ui/NewPrinterWindow.ui.h:52
 msgid "Select printer from database"
 msgstr "ਡਾਟਾਬੇਸ ਵਿੱਚੋਂ ਪਰਿੰਟਰ ਚੁਣੋ"
 
-#: ../ui/NewPrinterWindow.ui.h:52
+#: ../ui/NewPrinterWindow.ui.h:53
 msgid "Provide PPD file"
 msgstr "PPD ਫਾਇਲ ਦਿਓ"
 
-#: ../ui/NewPrinterWindow.ui.h:53
+#: ../ui/NewPrinterWindow.ui.h:54
 msgid "Search for a printer driver to download"
 msgstr "ਡਾਊਨਲੋਡ ਕਰਨ ਲਈ ਪਰਿੰਟਰ ਡਰਾਈਵਰ ਖੋਜੋ"
 
-#: ../ui/NewPrinterWindow.ui.h:54
+#: ../ui/NewPrinterWindow.ui.h:55
 msgid ""
 "The foomatic printer database contains various manufacturer provided "
 "PostScript Printer Description (PPD) files and also can generate PPD files "
@@ -2068,7 +2118,7 @@ msgstr ""
 "(PPD) ਫਾਇਲਾਂ ਹਨ ਅਤੇ ਬਹੁਤ ਸਾਰੇ (ਨਾਨ ਪੋਸਟਸਕਰਿਪਟ) ਪਰਿੰਟਰਾਂ ਲਈ PPD ਫਾਇਲਾਂ ਵੀ ਬਣਾ ਸਕਦਾ ਹੈ। "
 "ਪਰ ਆਮ ਕਰਕੇ ਨਿਰਮਾਤਾ ਦੁਆਰਾ ਦਿੱਤੀਆਂ PPD ਫਾਇਲਾਂ ਖਾਸ ਪਰਿੰਟਰ ਫੀਚਰਾਂ ਨੂੰ ਪਹੁੰਚ ਦਿੰਦੀਆਂ ਹਨ।"
 
-#: ../ui/NewPrinterWindow.ui.h:55
+#: ../ui/NewPrinterWindow.ui.h:56
 msgid ""
 "PostScript Printer Description (PPD) files can often be found on the driver "
 "disk that comes with the printer. For PostScript printers they are often "
@@ -2078,61 +2128,61 @@ msgstr ""
 "ਨਾਲ ਆਈ ਹੈ। ਪੋਸਟਸਕਰਿਪਟ ਪਰਿੰਟਰਾਂ ਲਈ ਇਹ ਆਮ ਕਰਕੇ Windows<sup>&#xAE;</sup> ਡਰਾਈਵਰ ਦਾ "
 "ਹਿੱਸਾ ਹੁੰਦਾ ਹੈ।"
 
-#: ../ui/NewPrinterWindow.ui.h:56
+#: ../ui/NewPrinterWindow.ui.h:57
 msgid "Make and model:"
 msgstr "make ਅਤੇ ਮਾਡਲ:"
 
-#: ../ui/NewPrinterWindow.ui.h:57
+#: ../ui/NewPrinterWindow.ui.h:58
 msgid "_Search"
 msgstr "ਖੋਜ(_S)"
 
-#: ../ui/NewPrinterWindow.ui.h:58
+#: ../ui/NewPrinterWindow.ui.h:59
 msgid "Printer model:"
 msgstr "ਪਰਿੰਟਰ ਮਾਡਲ:"
 
-#: ../ui/NewPrinterWindow.ui.h:59
+#: ../ui/NewPrinterWindow.ui.h:60
 msgid "Comments..."
 msgstr "ਟਿੱਪਣੀ..."
 
-#: ../ui/NewPrinterWindow.ui.h:60
+#: ../ui/NewPrinterWindow.ui.h:61
 msgid "<span weight=\"bold\" size=\"larger\">Choose Class Members</span>"
 msgstr "<span weight=\"bold\" size=\"larger\">ਕਲਾਸ ਮੈਂਬਰ ਚੁਣੋ</span>"
 
-#: ../ui/NewPrinterWindow.ui.h:61 ../ui/PrinterPropertiesDialog.ui.h:37
+#: ../ui/NewPrinterWindow.ui.h:62 ../ui/PrinterPropertiesDialog.ui.h:44
 msgid "move left"
 msgstr "ਖੱਬੇ ਜਾਓ"
 
-#: ../ui/NewPrinterWindow.ui.h:62 ../ui/PrinterPropertiesDialog.ui.h:38
+#: ../ui/NewPrinterWindow.ui.h:63 ../ui/PrinterPropertiesDialog.ui.h:45
 msgid "move right"
 msgstr "ਸੱਜੇ ਜਾਓ"
 
-#: ../ui/NewPrinterWindow.ui.h:63
+#: ../ui/NewPrinterWindow.ui.h:64
 msgid "Class Members"
 msgstr "ਕਲਾਸ ਮੈਂਬਰ"
 
-#: ../ui/NewPrinterWindow.ui.h:64
+#: ../ui/NewPrinterWindow.ui.h:65
 msgid "<span weight=\"bold\" size=\"larger\">Existing Settings</span>"
 msgstr "<span weight=\"bold\" size=\"larger\">Existing Settings</span>"
 
-#: ../ui/NewPrinterWindow.ui.h:65
+#: ../ui/NewPrinterWindow.ui.h:66
 msgid "Try to transfer the current settings"
 msgstr "ਮੌਜੂਦਾ ਸੈਟਿੰਗ ਤੂਦੀਲ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰੋ"
 
-#: ../ui/NewPrinterWindow.ui.h:66
+#: ../ui/NewPrinterWindow.ui.h:67
 msgid "Use the new PPD (Postscript Printer Description) as is."
 msgstr "ਨਵਾਂ PPD (ਪੋਸਟਸਕਰਿਪਟ ਪਰਿੰਟਰ ਡਿਸਕਰਿਪਸ਼ਨ) ਇਸ ਤਰਾਂ ਵਰਤੋ।"
 
-#: ../ui/NewPrinterWindow.ui.h:67
+#: ../ui/NewPrinterWindow.ui.h:68
 msgid ""
 "This way all current option settings will be lost. The default settings of "
 "the new PPD will be used. "
 msgstr "ਇਸ ਤਰਾਂ ਸਭ ਮੌਜੂਦਾ ਚੋਣ ਸੈਟਿੰਗਾਂ ਖਰਾਬ ਹੋ ਜਾਣਗੀਆਂ। ਨਵੇਂ PPD ਦੀ ਮੂਲ ਸੈਟਿੰਗ ਵਰਤੀ ਜਾਵੇਗੀ।"
 
-#: ../ui/NewPrinterWindow.ui.h:68
+#: ../ui/NewPrinterWindow.ui.h:69
 msgid "Try to copy the option settings over from the old PPD. "
 msgstr "ਪੁਰਾਣੇ PPD ਤੋਂ ਚੋਣ ਸੈਟਿੰਗ ਕਾਪੀ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"
 
-#: ../ui/NewPrinterWindow.ui.h:69
+#: ../ui/NewPrinterWindow.ui.h:70
 msgid ""
 "This is done by assuming that options with the same name do have the same "
 "meaning. Settings of options that are not present in the new PPD will be "
@@ -2141,30 +2191,30 @@ msgstr ""
 "ਅਜਿਹਾ ਇਹ ਮੰਨ ਕੇ ਕੀਤਾ ਜਾਂਦਾ ਹੈ ਕਿ ਇੱਕੋ ਨਾਂ ਵਾਲੀਆਂ ਚੋਣਾਂ ਦਾ ਇੱਕੋ ਹੀ ਮਤਲਬ ਹੈ। ਨਵੇਂ PPD ਵਿੱਚ ਗੈਰ-"
 "ਮੌਜੂਦ ਚੋਣਾਂ ਦੀ ਸੈਟਿੰਗ ਖਰਾਬ ਹੋ ਜਾਵੇਗੀ ਅਤੇ ਸਿਰਫ ਨਵੇਂ PPD ਵਿੱਚ ਮੌਜੂਦ ਚੋਣਾਂ ਮੂਲ ਸੈੱਟ ਕੀਤੀਆਂ ਜਾਣਗੀਆਂ।"
 
-#: ../ui/NewPrinterWindow.ui.h:70
+#: ../ui/NewPrinterWindow.ui.h:71
 msgid "Change PPD"
 msgstr "PPD ਤਬਦੀਲ"
 
-#: ../ui/NewPrinterWindow.ui.h:71
+#: ../ui/NewPrinterWindow.ui.h:72
 msgid "<span weight=\"bold\" size=\"larger\">Installable Options</span>"
 msgstr "<span weight=\"bold\" size=\"larger\">Installable Options</span>"
 
-#: ../ui/NewPrinterWindow.ui.h:72
+#: ../ui/NewPrinterWindow.ui.h:73
 msgid ""
 "This driver supports additional hardware that may be installed in the "
 "printer."
 msgstr "ਇਹ ਡਰਾਈਵਰ ਵਾਧੂ ਹਾਰਡਵੇਅਰ ਨੂੰ ਸਹਿਯੋਗ ਦਿੰਦਾ ਹੈ ਜੋ ਪਰਿੰਟਰ ਵਿੱਚ ਇੰਸਟਾਲ ਹੋ ਸਕਦਾ ਹੈ।"
 
-#: ../ui/NewPrinterWindow.ui.h:73 ../ui/PrinterPropertiesDialog.ui.h:40
+#: ../ui/NewPrinterWindow.ui.h:74 ../ui/PrinterPropertiesDialog.ui.h:47
 msgid "Installed Options"
 msgstr "ਇੰਸਟਾਲ ਚੋਣਾਂ"
 
-#: ../ui/NewPrinterWindow.ui.h:74
+#: ../ui/NewPrinterWindow.ui.h:75
 msgid ""
 "For the printer you have selected there are drivers available for download."
 msgstr "ਤੁਹਾਡੇ ਚੁਣੇ ਪਰਿੰਟਰ ਲਈ ਡਰਾਊਵਰ ਡਾਊਨਲੋਡ ਕਰਨ ਵਾਸਤੇ ਉਪਲੱਬਧ ਹਨ।"
 
-#: ../ui/NewPrinterWindow.ui.h:75
+#: ../ui/NewPrinterWindow.ui.h:76
 msgid ""
 "These drivers do not come from your operating system supplier and will not "
 "be covered by their commercial support.  See the support and license terms "
@@ -2173,15 +2223,15 @@ msgstr ""
 "ਇਹ ਡਰਾਈਵਰ ਤੁਹਾਡੇ ਓਪਰੇਟਿੰਗ ਸਿਸਟਮ ਸਪਲਾਇਰ ਤੋਂ ਨਹੀਂ ਆਉਂਦੇ ਅਤੇ ਉਹਨਾਂ ਦੇ ਉਦਯੋਗਿਕ ਸਹਿਯੋਗ ਵਿੱਚ ਕਵਰ "
 "ਨਹੀਂ ਕੀਤੇ ਜਾਂਦੇ।  ਡਰਾਈਵਰ ਸਪਲਾਇਰ ਦੇ ਸਹਿਯੋਗ ਅਤੇ ਲਾਈਸਿੰਸ ਦੀ ਸ਼ਰਤਾਂ ਵੇਖੋ।"
 
-#: ../ui/NewPrinterWindow.ui.h:76
+#: ../ui/NewPrinterWindow.ui.h:77
 msgid "<b>Note</b>"
 msgstr "<b>ਸੂਚਨਾ</b>"
 
-#: ../ui/NewPrinterWindow.ui.h:77
+#: ../ui/NewPrinterWindow.ui.h:78
 msgid "<b>Select Driver</b>"
 msgstr "<b>ਪਰਿੰਟਰ ;gCa</b>"
 
-#: ../ui/NewPrinterWindow.ui.h:78
+#: ../ui/NewPrinterWindow.ui.h:79
 msgid ""
 "With this choice no driver download will be performed. In the next steps a "
 "locally installed driver will be selected."
@@ -2189,153 +2239,169 @@ msgstr ""
 "ਇਸ ਚੋਣ ਨਾਲ ਕੋਈ ਵੀ ਡਰਾਈਵਰ ਡਾਊਨਲੋਡ ਨਹੀਂ ਹੋਵੇਗਾ। ਅਗਲੇ ਪਗ ਵਿੱਚ ਇੱਕ ਲੋਕਲ ਇੰਸਟਾਲ ਕੀਤਾ ਡਰਾਈਵਰ "
 "ਚੁਣਿਆ ਜਾਵੇਗਾ।"
 
-#: ../ui/NewPrinterWindow.ui.h:80 ../ui/PrinterPropertiesDialog.ui.h:2
+#: ../ui/NewPrinterWindow.ui.h:81 ../ui/PrinterPropertiesDialog.ui.h:7
 msgid "Description:"
 msgstr "ਵੇਰਵਾ:"
 
-#: ../ui/NewPrinterWindow.ui.h:81
+#: ../ui/NewPrinterWindow.ui.h:82
 msgid "License:"
 msgstr "ਲਾਈਸੰਸ:"
 
-#: ../ui/NewPrinterWindow.ui.h:82
+#: ../ui/NewPrinterWindow.ui.h:83
 msgid "Supplier:"
 msgstr "ਸਪਲਾਇਰ:"
 
-#: ../ui/NewPrinterWindow.ui.h:83
+#: ../ui/NewPrinterWindow.ui.h:84
 msgid "license"
 msgstr "ਲਾਈਸੰਸ"
 
-#: ../ui/NewPrinterWindow.ui.h:84
+#: ../ui/NewPrinterWindow.ui.h:85
 msgid "short description"
 msgstr "ਸੰਖੇਪ ਵੇਰਵਾ:"
 
-#: ../ui/NewPrinterWindow.ui.h:85
+#: ../ui/NewPrinterWindow.ui.h:86
 msgid "Manufacturer"
 msgstr "ਨਿਰਮਾਤਾ"
 
-#: ../ui/NewPrinterWindow.ui.h:86
+#: ../ui/NewPrinterWindow.ui.h:87
 msgid "supplier"
 msgstr "ਸਪਲਾਇਰ"
 
-#: ../ui/NewPrinterWindow.ui.h:87
+#: ../ui/NewPrinterWindow.ui.h:88
 msgid "Free software"
 msgstr "ਫਰੀ ਸਾਫਟਵੇਅਰ"
 
-#: ../ui/NewPrinterWindow.ui.h:88
+#: ../ui/NewPrinterWindow.ui.h:89
 msgid "Patented algorithms"
 msgstr "ਪੇਟੈਂਟ ਐਲਗੋਰਿਥਮ"
 
-#: ../ui/NewPrinterWindow.ui.h:89
+#: ../ui/NewPrinterWindow.ui.h:90
 msgid "Support:"
 msgstr "ਸਹਿਯੋਗ:"
 
-#: ../ui/NewPrinterWindow.ui.h:90
+#: ../ui/NewPrinterWindow.ui.h:91
 msgid "support contacts"
 msgstr "ਸਹਿਯੋਗੀ ਸੰਪਰਕ"
 
-#: ../ui/NewPrinterWindow.ui.h:91
+#: ../ui/NewPrinterWindow.ui.h:92
 msgid "Text:"
 msgstr "ਪਾਠ:"
 
-#: ../ui/NewPrinterWindow.ui.h:92
+#: ../ui/NewPrinterWindow.ui.h:93
 msgid "Line art:"
 msgstr "ਲਾਈਨ ਆਰਟ:"
 
-#: ../ui/NewPrinterWindow.ui.h:94
+#: ../ui/NewPrinterWindow.ui.h:95
 msgid "Photo:"
 msgstr "ਫੋਟੋ:"
 
-#: ../ui/NewPrinterWindow.ui.h:95
+#: ../ui/NewPrinterWindow.ui.h:96
 msgid "Graphics:"
 msgstr "ਚਿੱਤਰਸ਼ਾਲਾ:"
 
-#: ../ui/NewPrinterWindow.ui.h:96
+#: ../ui/NewPrinterWindow.ui.h:97
 msgid "<b>Output Quality</b>"
 msgstr "<b>ਆਊਟਪੁੱਟ ਕੁਆਲਟੀ</b>"
 
-#: ../ui/NewPrinterWindow.ui.h:97
+#: ../ui/NewPrinterWindow.ui.h:98
 msgid "Yes, I accept this license"
 msgstr "ਹਾਂ, ਮੈਂ ਇਹ ਲਾਈਸੰਸ ਸਵੀਕਾਰ ਕਰ ਰਿਹਾ ਹਾਂ"
 
-#: ../ui/NewPrinterWindow.ui.h:98
+#: ../ui/NewPrinterWindow.ui.h:99
 msgid "No, I do not accept this license"
 msgstr "ਨਾਂ, ਮੈਂ ਇਹ ਲਾਈਸਿੰਸ ਸਵੀਕਾਰ ਨਹੀਂ ਕਰ ਰਿਹਾ ਹਾਂ"
 
-#: ../ui/NewPrinterWindow.ui.h:99
+#: ../ui/NewPrinterWindow.ui.h:100
 msgid "<b>License Terms</b>"
 msgstr "<b>ਲਾਈਸੰਸ ਸ਼ਰਤਾਂ</b>"
 
-#: ../ui/NewPrinterWindow.ui.h:100
+#: ../ui/NewPrinterWindow.ui.h:101
 msgid "Driver details"
 msgstr "ਡਰਾਈਵਰ ਵੇਰਵਾ"
+
+#: ../ui/NewPrinterWindow.ui.h:103
+msgid "Back"
+msgstr ""
+
+#: ../ui/NewPrinterWindow.ui.h:105 ../ui/PrinterPropertiesDialog.ui.h:3
+msgid "Apply"
+msgstr ""
+
+#: ../ui/NewPrinterWindow.ui.h:106
+msgid "Forward"
+msgstr ""
 
 #: ../ui/PrinterPropertiesDialog.ui.h:1
 msgid "Printer Properties"
 msgstr "ਪਰਿੰਟਰ ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:3
+#: ../ui/PrinterPropertiesDialog.ui.h:2
+msgid "Co_nflicts"
+msgstr "ਅਪਵਾਦ(_n)"
+
+#: ../ui/PrinterPropertiesDialog.ui.h:8
 msgid "Location:"
 msgstr "ਟਿਕਾਣਾ:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:4
+#: ../ui/PrinterPropertiesDialog.ui.h:9
 msgid "Device URI:"
 msgstr "ਜੰਤਰ URI:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:5
+#: ../ui/PrinterPropertiesDialog.ui.h:10
 msgid "Printer State:"
 msgstr "ਪਰਿੰਟਰ ਹਾਲਤ:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:6
+#: ../ui/PrinterPropertiesDialog.ui.h:11
 msgid "Change..."
 msgstr "ਬਦਲੋ..."
 
-#: ../ui/PrinterPropertiesDialog.ui.h:7
+#: ../ui/PrinterPropertiesDialog.ui.h:12
 msgid "Make and Model:"
 msgstr "make ਅਤੇ ਮਾਡਲ:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:8
+#: ../ui/PrinterPropertiesDialog.ui.h:13
 msgid "printer state"
 msgstr "ਪ੍ਰਿੰਟਰ ਹਾਲਤ"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:9
+#: ../ui/PrinterPropertiesDialog.ui.h:14
 msgid "make and model"
 msgstr "ਨਿਰਮਾਤਾ ਅਤੇ ਮਾਡਲ"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:10
+#: ../ui/PrinterPropertiesDialog.ui.h:15
 msgid "<b>Settings</b>"
 msgstr "<b>ਸਥਾਪਨ</b>"
 
 #. Not more than 25 characters
-#: ../ui/PrinterPropertiesDialog.ui.h:14
+#: ../ui/PrinterPropertiesDialog.ui.h:19
 msgid "Print Self-Test Page"
 msgstr "ਆਪੇ-ਜਾਂਚ ਸਫਾ ਪਰਿੰਟ ਕਰੋ"
 
 #. Not more than 25 characters
-#: ../ui/PrinterPropertiesDialog.ui.h:16
+#: ../ui/PrinterPropertiesDialog.ui.h:21
 msgid "Clean Print Heads"
 msgstr "ਪਰਿੰਟਰ ਹੈੱਡ ਸਾਫ ਕਰੋ"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:17
+#: ../ui/PrinterPropertiesDialog.ui.h:22
 msgid "<b>Tests and Maintenance</b>"
 msgstr "<b>ਪੜਤਾਲਾਂ ਅਤੇ ਨਿਗਰਾਨੀ</b>"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:18
+#: ../ui/PrinterPropertiesDialog.ui.h:23
 msgid "Settings"
 msgstr "ਸਥਾਪਨ"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:19
+#: ../ui/PrinterPropertiesDialog.ui.h:24
 msgid "Enabled"
 msgstr "ਯੋਗ ਹੈ"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:20
+#: ../ui/PrinterPropertiesDialog.ui.h:25
 msgid "Accepting jobs"
 msgstr "ਕੰਮ ਸਵੀਕਾਰ ਕਰ ਰਿਹਾ ਹੈ"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:21
+#: ../ui/PrinterPropertiesDialog.ui.h:26
 msgid "Shared"
 msgstr "ਸਾਂਝਾ"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:22
+#: ../ui/PrinterPropertiesDialog.ui.h:27
 msgid ""
 "<i>Not published\n"
 "See server settings</i>"
@@ -2343,63 +2409,69 @@ msgstr ""
 "<i>ਪਬਲਿਸ਼ ਨਹੀਂ ਕੀਤਾ\n"
 "ਸਰਵਰ ਸੈਟਿੰਗ ਵੇਖੋ</i>"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:24
+#: ../ui/PrinterPropertiesDialog.ui.h:29
 msgid "<b>State</b>"
 msgstr "<b>ਹਾਲਤ</b>"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:25
-msgid "Error Policy: \t"
+#: ../ui/PrinterPropertiesDialog.ui.h:30
+#, fuzzy
+msgid "Error Policy:"
 msgstr "ਗਲਤੀ ਪਾਲਿਸੀ: \t"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:26
+#: ../ui/PrinterPropertiesDialog.ui.h:31
 msgid "Operation Policy:"
 msgstr "ਓਪਰੇਸ਼ਨ ਪਾਲਿਸੀ:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:27
+#: ../ui/PrinterPropertiesDialog.ui.h:32
 msgid "<b>Policies</b>"
 msgstr "<b>ਨੀਤੀਆਂ</b>"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:28
+#: ../ui/PrinterPropertiesDialog.ui.h:33
 msgid "Starting Banner:"
 msgstr "ਸ਼ੁਰੂਆਤੀ ਬੈਨਰ:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:29
+#: ../ui/PrinterPropertiesDialog.ui.h:34
 msgid "Ending Banner:"
 msgstr "ਆਖਰੀ ਬੈਨਰ:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:30
+#: ../ui/PrinterPropertiesDialog.ui.h:35
 msgid "<b>Banner</b>"
 msgstr "<b>ਬੈਨਰ</b>"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:31
+#: ../ui/PrinterPropertiesDialog.ui.h:36
 msgid "Policies"
 msgstr "ਨੀਤੀਆਂ"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:32
+#: ../ui/PrinterPropertiesDialog.ui.h:37
 msgid "Allow printing for everyone except these users:"
 msgstr "ਇਹਨਾਂ ਯੂਜ਼ਰਾਂ ਨੂੰ ਛੱਡ ਕੇ ਸਭ ਲਈ ਪਰਿੰਟਿੰਗ ਮਨਜੂਰ ਕਰੋ:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:33
+#: ../ui/PrinterPropertiesDialog.ui.h:38
 msgid "Deny printing for everyone except these users:"
 msgstr "ਇਹਨਾਂ ਯੂਜ਼ਰਾਂ ਤੋਂ ਬਿਨਾਂ ਹਰੇਕ ਲਈ ਪਰਿੰਟਿੰਗ ਰੱਦ ਕਰੋ:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:34
+#: ../ui/PrinterPropertiesDialog.ui.h:39
 msgid "user"
 msgstr "ਯੂਜ਼ਰ"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:35
+#: ../ui/PrinterPropertiesDialog.ui.h:40
+#, fuzzy
+msgid "Delete"
+msgstr "ਹਟਾਓ(_D)"
+
+#: ../ui/PrinterPropertiesDialog.ui.h:42
 msgid "Access Control"
 msgstr "ਪਹੁੰਚ ਕੰਟਰੋਲ"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:36
+#: ../ui/PrinterPropertiesDialog.ui.h:43
 msgid "Add or Remove Members"
 msgstr "ਮੈਂਬਰ ਜੋੜੋ ਜਾਂ ਹਟਾਓ"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:39
+#: ../ui/PrinterPropertiesDialog.ui.h:46
 msgid "Members"
 msgstr "ਮੈਂਬਰ"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:42
+#: ../ui/PrinterPropertiesDialog.ui.h:49
 msgid ""
 "Specify the default job options for this printer.  Jobs arriving at this "
 "print server will have these options added if they are not already set by "
@@ -2408,181 +2480,173 @@ msgstr ""
 "ਇਸ ਪਰਿੰਟਰ ਲਈ ਮੂਲ ਜੌਬ ਚੋਣਾਂ ਦਿਓ। ਇਸ ਪਰਿੰਟ ਸਰਵਰ ਉੱਪਰ ਆਉਣ ਵਾਲੀਆਂ ਜੌਬਾਂ ਵਿੱਚ ਇਹ ਚੋਣਾਂ ਸ਼ਾਮਿਲ "
 "ਹੋਣਗੀਆਂ ਜੇ ਇਹ ਪਹਿਲਾਂ ਹੀ ਐਪਲੀਕੇਸ਼ਨ ਦੁਆਰਾ ਸੈੱਟ ਕੀਤੀਆਂ ਹਨ।"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:43
+#: ../ui/PrinterPropertiesDialog.ui.h:50
 msgid "Copies:"
 msgstr "ਕਾਪੀਆਂ:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:44
+#: ../ui/PrinterPropertiesDialog.ui.h:51
 msgid "Orientation:"
 msgstr "ਸਥਿਤੀ:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:45
+#: ../ui/PrinterPropertiesDialog.ui.h:52
 msgid "Pages per side:"
 msgstr "ਪ੍ਰਤੀ ਸਾਈਡ ਪੇਜ਼:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:46
+#: ../ui/PrinterPropertiesDialog.ui.h:53
 msgid "Scale to fit"
 msgstr "ਫਿੱਟ ਕਰਨ ਲਈ ਸਕੇਲ"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:47
+#: ../ui/PrinterPropertiesDialog.ui.h:54
 msgid "Pages per side layout:"
 msgstr "ਪ੍ਰਤੀ ਸਾਈਡ ਲੇਆਊਟ ਪੇਜ਼:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:48
+#: ../ui/PrinterPropertiesDialog.ui.h:55
 msgid "Brightness:"
 msgstr "ਚਮਕਤਾ:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:49
+#: ../ui/PrinterPropertiesDialog.ui.h:56
 msgid "Reset"
 msgstr "ਮੁੜ ਸੈੱਟ"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:50
+#: ../ui/PrinterPropertiesDialog.ui.h:57
 msgid "Finishings:"
 msgstr "ਮੁਕੰਮਲਤਾ:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:51
+#: ../ui/PrinterPropertiesDialog.ui.h:58
 msgid "Job priority:"
 msgstr "ਜੌਬ ਤਰਜੀਹ:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:52
+#: ../ui/PrinterPropertiesDialog.ui.h:59
 msgid "Media:"
 msgstr "ਮੀਡੀਆ:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:53
+#: ../ui/PrinterPropertiesDialog.ui.h:60
 msgid "Sides:"
 msgstr "ਸਾਈਡਾਂ:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:54
+#: ../ui/PrinterPropertiesDialog.ui.h:61
 msgid "Hold until:"
 msgstr "ਜਦੋਂ ਤੱਕ ਰੋਕਣਾ:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:55
+#: ../ui/PrinterPropertiesDialog.ui.h:62
 msgid "Output order:"
 msgstr "ਆਊਟਪੁੱਟ ਔਰਡਰ:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:56
+#: ../ui/PrinterPropertiesDialog.ui.h:63
 msgid "Print quality:"
 msgstr "ਪਰਿੰਟ ਕੁਆਲਟੀ:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:57
+#: ../ui/PrinterPropertiesDialog.ui.h:64
 msgid "Printer resolution:"
 msgstr "ਪਰਿੰਟਰ ਰੈਜ਼ੋਲੂਸ਼ਨ:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:58
+#: ../ui/PrinterPropertiesDialog.ui.h:65
 msgid "Output bin:"
 msgstr "ਆਊਟਪੁੱਟ ਬਿੰਨ:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:59
+#: ../ui/PrinterPropertiesDialog.ui.h:66
 msgid "More"
 msgstr "ਹੋਰ"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:60
+#: ../ui/PrinterPropertiesDialog.ui.h:67
 msgid "<b>Common Options</b>"
 msgstr "<b>ਆਮ ਚੋਣਾਂ</b>"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:61
+#: ../ui/PrinterPropertiesDialog.ui.h:68
 msgid "Scaling:"
 msgstr "ਸਕੇਲਿੰਗ:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:62
+#: ../ui/PrinterPropertiesDialog.ui.h:69
 msgid "Mirror"
 msgstr "ਮਿਰਰ"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:63
+#: ../ui/PrinterPropertiesDialog.ui.h:70
 msgid "Saturation:"
 msgstr "ਸੈਚੂਰੇਸ਼ਨ:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:64
+#: ../ui/PrinterPropertiesDialog.ui.h:71
 msgid "Hue adjustment:"
 msgstr "Hue ਅਨੁਕੂਲਤਾ:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:65
+#: ../ui/PrinterPropertiesDialog.ui.h:72
 msgid "Gamma:"
 msgstr "ਗਾਮਾ:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:66
+#: ../ui/PrinterPropertiesDialog.ui.h:73
 msgid "<b>Image Options</b>"
 msgstr "<b>ਈਮੇਜ਼ ਚੋਣਾਂ</b>"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:67
+#: ../ui/PrinterPropertiesDialog.ui.h:74
 msgid "Characters per inch:"
 msgstr "ਪ੍ਰਤੀ ਇੰਚ ਅੱਖਰ:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:68
+#: ../ui/PrinterPropertiesDialog.ui.h:75
 msgid "Lines per inch:"
 msgstr "ਪ੍ਰਤੀ ਇੰਚ ਲਾਈਨਾਂ:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:69
+#: ../ui/PrinterPropertiesDialog.ui.h:76
 msgid "points"
 msgstr "ਪੁਆਂਇਟ"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:70
-msgid " "
-msgstr " "
-
-#: ../ui/PrinterPropertiesDialog.ui.h:71
+#: ../ui/PrinterPropertiesDialog.ui.h:77
 msgid "Left margin:"
 msgstr "ਖੱਬਾ ਹਾਸ਼ੀਆਂ:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:72
+#: ../ui/PrinterPropertiesDialog.ui.h:78
 msgid "Right margin:"
 msgstr "ਸੱਜਾ ਹਾਸ਼ੀਆ:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:73
+#: ../ui/PrinterPropertiesDialog.ui.h:79
 msgid "Pretty print"
 msgstr "ਪਰੈਟੀ ਪਰਿੰਟ"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:74
+#: ../ui/PrinterPropertiesDialog.ui.h:80
 msgid "Word wrap"
 msgstr "ਸ਼ਬਦ ਲਪੇਟੋ"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:75
+#: ../ui/PrinterPropertiesDialog.ui.h:81
 msgid "Columns:"
 msgstr "ਕਾਲਮ:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:76
+#: ../ui/PrinterPropertiesDialog.ui.h:82
 msgid "Top margin:"
 msgstr "ਆਖਰੀ ਮਾਰਜਨ:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:77
+#: ../ui/PrinterPropertiesDialog.ui.h:83
 msgid "Bottom margin:"
 msgstr "ਹੇਠਲਾ ਹਾਸ਼ੀਆ:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:78
+#: ../ui/PrinterPropertiesDialog.ui.h:84
 msgid "<b>Text Options</b>"
 msgstr "<b>ਪਾਠ ਚੋਣਾਂ</b>"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:79
+#: ../ui/PrinterPropertiesDialog.ui.h:85
 msgid "To add a new option, enter its name in the box below and click to add."
 msgstr "ਨਵੀਂ ਚੋਣ ਸ਼ਾਮਿਲ ਕਰਨ ਲਈ, ਇਸਦਾ ਨਾਂ ਹੈਠਲੇ ਬਾਕਸ ਵਿੱਚ ਦਿਓ ਅਤੇ ਸ਼ਾਮਿਲ ਕਰਨ ਲਈ ਕਲਿੱਕ ਕਰੋ।"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:80
+#: ../ui/PrinterPropertiesDialog.ui.h:86
 msgid "<b>Other Options (Advanced)</b>"
 msgstr "<b>ਹੋਰ ਚੋਣਾਂ (ਤਕਨੀਕੀ)</b>"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:81
+#: ../ui/PrinterPropertiesDialog.ui.h:87
 msgid "Job Options"
 msgstr "ਜਾਬ ਚੋਣ"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:82
+#: ../ui/PrinterPropertiesDialog.ui.h:89
 msgid "<b>Ink/Toner Levels</b>"
 msgstr "<b>ਸਿਆਹੀ/ਟੋਨਰ ਲੈਵਲ</b>"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:83
+#: ../ui/PrinterPropertiesDialog.ui.h:90
 msgid "There are no status messages for this printer."
 msgstr "ਇਸ ਪਰਿੰਟਰ ਲਈ ਕੋਈ ਸਟੇਟਸ ਸੁਨੇਹਾ ਨਹੀਂ ਹੈ।"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:84
+#: ../ui/PrinterPropertiesDialog.ui.h:91
 msgid "<b>Status Messages</b>"
 msgstr "<b>ਹਾਲਤ ਸੁਨੇਹੇ</b>"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:85
+#: ../ui/PrinterPropertiesDialog.ui.h:92
 msgid "Ink/Toner Levels"
 msgstr "ਸਿਆਹੀ/ਟੋਨਰ ਲੈਵਲ"
-
-#: ../ui/PrinterPropertiesDialog.ui.h:86
-msgid "Co_nflicts"
-msgstr "ਅਪਵਾਦ(_n)"
 
 #: ../ui/PrintersWindow.ui.h:1
 msgid "System-Config-Printer"
@@ -2609,17 +2673,21 @@ msgid "_Troubleshoot"
 msgstr "ਸਮੱਸਿਆ-ਨਿਪਟਾਰਾ(_T)"
 
 #: ../ui/PrintersWindow.ui.h:8
+msgid "About"
+msgstr ""
+
+#: ../ui/PrintersWindow.ui.h:9
 msgid "There are no printers configured yet."
 msgstr "ਹਾਲੇ ਤੱਕ ਕੋਈ ਪਰਿੰਟਰ ਸੰਰਚਿਤ ਨਹੀਂ।"
 
-#: ../ui/PrintersWindow.ui.h:9
+#: ../ui/PrintersWindow.ui.h:11
 msgid ""
 "Printing service not available.  Start the service on this computer or "
 "connect to another server."
 msgstr ""
 "ਪਰਿੰਟਿੰਗ ਸਰਵਿਸ ਉਪਲੱਬਧ ਨਹੀਂ ਹੈ। ਇਸ ਕੰਪਿਊਟਰ ਉੱਪਰ ਸਰਵਿਸ ਚਾਲੂ ਕਰੋ ਜਾਂ ਹੋਰ ਸਰਵਰ ਨਾਲ ਜੁੜੋ।"
 
-#: ../ui/PrintersWindow.ui.h:10
+#: ../ui/PrintersWindow.ui.h:12
 msgid "Start Service"
 msgstr "ਸਰਵਿਸ ਚਾਲੂ ਕਰੋ"
 
@@ -2627,47 +2695,47 @@ msgstr "ਸਰਵਿਸ ਚਾਲੂ ਕਰੋ"
 msgid "Server Settings"
 msgstr "ਸਰਵਰ ਸੈਟਿੰਗ"
 
-#: ../ui/ServerSettingsDialog.ui.h:2
+#: ../ui/ServerSettingsDialog.ui.h:4
 msgid "_Show printers shared by other systems"
 msgstr "ਹੋਰ ਸਿਸਟਮਾਂ ਦੁਆਰਾ ਸ਼ੇਅਰ ਕੀਤੇ ਪਰਿੰਟਰ ਵੇਖਾਓ(_S)"
 
-#: ../ui/ServerSettingsDialog.ui.h:3
+#: ../ui/ServerSettingsDialog.ui.h:5
 msgid "_Publish shared printers connected to this system"
 msgstr "ਇਸ ਸਿਸਟਮ ਨਾਲ ਜੁੜੇ ਸ਼ੇਅਰ ਕੀਤੇ ਪਰਿੰਟਰ ਪਬਲਿਸ਼ ਕਰੋ(_P)"
 
-#: ../ui/ServerSettingsDialog.ui.h:4
+#: ../ui/ServerSettingsDialog.ui.h:6
 msgid "Allow printing from the _Internet"
 msgstr "ਇੰਟਰਨੈੱਟ ਤੋਂ ਪਰਿੰਟਿੰਗ ਮਨਜੂਰ ਕਰੋ(_I)"
 
-#: ../ui/ServerSettingsDialog.ui.h:5
+#: ../ui/ServerSettingsDialog.ui.h:7
 msgid "Allow _remote administration"
 msgstr "ਰਿਮੋਟ ਪਰਸ਼ਾਸ਼ਨ ਮਨਜੂਰ ਕਰੋ(_r)"
 
-#: ../ui/ServerSettingsDialog.ui.h:6
+#: ../ui/ServerSettingsDialog.ui.h:8
 msgid "Allow _users to cancel any job (not just their own)"
 msgstr "ਯੂਜ਼ਰਾਂ ਨੂੰ ਕੋਈ ਵੀ ਜੌਬ (ਨਾ ਕਿ ਸਿਰਫ ਉਹਨਾਂ ਦੀ ਆਪਣੀ) ਰੱਦ ਕਰਨ ਲਈ ਮਨਜੂਰ ਕਰੋ(_u)"
 
-#: ../ui/ServerSettingsDialog.ui.h:7
+#: ../ui/ServerSettingsDialog.ui.h:9
 msgid "Save _debugging information for troubleshooting"
 msgstr "ਸਮੱਸਿਆ-ਨਿਪਟਾਰੇ ਲਈ ਡੀਬੱਗਿੰਗ ਜਾਣਕਾਰੀ ਨੂੰ ਸੰਭਾਲੋ(_D)"
 
-#: ../ui/ServerSettingsDialog.ui.h:8
+#: ../ui/ServerSettingsDialog.ui.h:10
 msgid "Do not preserve job history"
 msgstr "ਜੌਬ ਅਤੀਤ ਨਾ ਰੱਖੋ"
 
-#: ../ui/ServerSettingsDialog.ui.h:9
+#: ../ui/ServerSettingsDialog.ui.h:11
 msgid "Preserve job history but not files"
 msgstr "ਜੌਬ ਅਤੀਤ ਰੱਖੋ ਪਰ ਫਾਇਲਾਂ ਨਹੀਂ"
 
-#: ../ui/ServerSettingsDialog.ui.h:10
+#: ../ui/ServerSettingsDialog.ui.h:12
 msgid "Preserve job files (allow reprinting)"
 msgstr "ਜੌਬ ਫਾਇਲਾਂ ਬਰਕਰਾਰ ਰੱਖੋ (ਮੁੜ-ਪਰਿੰਟਿੰਗ ਮਨਜੂਰ ਕਰੋ)"
 
-#: ../ui/ServerSettingsDialog.ui.h:11
+#: ../ui/ServerSettingsDialog.ui.h:13
 msgid "<b>Job history</b>"
 msgstr "<b>ਜੌਬ ਅਤੀਤ</b>"
 
-#: ../ui/ServerSettingsDialog.ui.h:12
+#: ../ui/ServerSettingsDialog.ui.h:14
 msgid ""
 "Usually print servers broadcast their queues. Specify print servers below to "
 "periodically ask for queues instead."
@@ -2675,15 +2743,19 @@ msgstr ""
 "ਆਮ ਕਰਕੇ ਪਰਿੰਟ ਸਰਵਰ ਆਪਣੀਆਂ ਕਤਾਰਾਂ ਬਰਾਡਕਾਸਟ ਕਰਦਾ ਰਹਿੰਦਾ ਹੈ। ਕਤਾਰਾਂ ਲਈ ਲਗਾਤਾਰ ਪੁੱਛਣ ਵਾਸਤੇ "
 "ਹੇਠਾਂ ਪਰਿੰਟ ਸਰਵਰ ਦਿਓ।"
 
-#: ../ui/ServerSettingsDialog.ui.h:13
+#: ../ui/ServerSettingsDialog.ui.h:16
+msgid "Remove"
+msgstr ""
+
+#: ../ui/ServerSettingsDialog.ui.h:17
 msgid "<b>Browse servers</b>"
 msgstr "<b>ਸਰਵਰ ਵੇਖੋ</b>"
 
-#: ../ui/ServerSettingsDialog.ui.h:14
+#: ../ui/ServerSettingsDialog.ui.h:18
 msgid "Advanced Server Settings"
 msgstr "ਤਕਨੀਕੀ ਸਰਵਰ ਸੈਟਿੰਗ"
 
-#: ../ui/ServerSettingsDialog.ui.h:15
+#: ../ui/ServerSettingsDialog.ui.h:19
 msgid "<b>Basic Server Settings</b>"
 msgstr "<b>ਮੁੱਢਲਾ ਸਰਵਰ ਸਥਾਪਨ</b>"
 
@@ -2699,6 +2771,10 @@ msgstr "ਓਹਲੇ(_H)"
 msgid "_Configure Printers"
 msgstr "ਪ੍ਰਿੰਟਰ ਸੰਰਚਨਾ(_C)"
 
+#: ../ui/statusicon_popupmenu.ui.h:3
+msgid "Quit"
+msgstr ""
+
 #: ../ui/WaitWindow.ui.h:1
 msgid "Please Wait"
 msgstr "ਉਡੀਕੋ ਜੀ"
@@ -2711,132 +2787,132 @@ msgstr "ਪਰਿੰਟ ਸੈਟਿੰਗ"
 msgid "Configure printers"
 msgstr "ਪਰਿੰਟਰ ਸੰਰਚਨਾ"
 
-#: ../statereason.py:96
+#: ../statereason.py:109
 msgid "Toner low"
 msgstr "ਟੋਨਰ ਘੱਟ ਹੈ"
 
-#: ../statereason.py:97
+#: ../statereason.py:110
 #, python-format
 msgid "Printer '%s' is low on toner."
 msgstr "ਪਰਿੰਟਰ '%s' ਦੀ ਟੋਨਰ ਘੱਟ ਹੈ।"
 
-#: ../statereason.py:98
+#: ../statereason.py:111
 msgid "Toner empty"
 msgstr "ਟੋਨਰ ਖਾਲੀ"
 
-#: ../statereason.py:99
+#: ../statereason.py:112
 #, python-format
 msgid "Printer '%s' has no toner left."
 msgstr "ਪਰਿੰਟਰ '%s' ਵਿੱਚ ਕੋਈ ਬਾਕੀ ਟੋਨਰ ਨਹੀਂ ਹੈ।"
 
-#: ../statereason.py:100
+#: ../statereason.py:113
 msgid "Cover open"
 msgstr "ਢੱਕਣ ਖੁੱਲਾ ਹੈ"
 
-#: ../statereason.py:101
+#: ../statereason.py:114
 #, python-format
 msgid "The cover is open on printer '%s'."
 msgstr "ਪਰਿਟੰਰ '%s' ਉੱਪਰ ਕਵਰ ਖੁੱਲਾ ਹੈ।"
 
-#: ../statereason.py:102
+#: ../statereason.py:115
 msgid "Door open"
 msgstr "ਦਰਵਾਜਾ ਖੁੱਲਾ ਹੈ"
 
-#: ../statereason.py:103
+#: ../statereason.py:116
 #, python-format
 msgid "The door is open on printer '%s'."
 msgstr "ਪਰਿੰਟਰ '%s' ਉੱਪਰ ਦਰਵਾਜਾ ਖੁੱਲਾ ਹੈ।"
 
-#: ../statereason.py:104
+#: ../statereason.py:117
 msgid "Paper low"
 msgstr "ਪੇਪਰ ਘੱਟ ਹਨ"
 
-#: ../statereason.py:105
+#: ../statereason.py:118
 #, python-format
 msgid "Printer '%s' is low on paper."
 msgstr "ਪਰਿੰਟਰ '%s' ਵਿੱਚ ਪੇਪਰ ਘੱਟ ਹਨ।"
 
-#: ../statereason.py:106
+#: ../statereason.py:119
 msgid "Out of paper"
 msgstr "ਪੇਪਰ ਖਤਮ ਹਨ"
 
-#: ../statereason.py:107
+#: ../statereason.py:120
 #, python-format
 msgid "Printer '%s' is out of paper."
 msgstr "ਪਰਿੰਟਰ '%s' ਦੇ ਪੇਪਰ ਖਤਮ ਹਨ।"
 
-#: ../statereason.py:108
+#: ../statereason.py:121
 msgid "Ink low"
 msgstr "ਸਿਆਹੀ ਘੱਟ ਹੈ"
 
-#: ../statereason.py:109
+#: ../statereason.py:122
 #, python-format
 msgid "Printer '%s' is low on ink."
 msgstr "ਪਰਿੰਟਰ '%s' ਵਿੱਚ ਸਿਆਹੀ ਘੱਟ ਹੈ।"
 
-#: ../statereason.py:110
+#: ../statereason.py:123
 msgid "Ink empty"
 msgstr "ਸਿਆਹੀ ਮੁੱਕੀ ਹੈ"
 
-#: ../statereason.py:111
+#: ../statereason.py:124
 #, python-format
 msgid "Printer '%s' has no ink left."
 msgstr "ਪਰਿੰਟਰ '%s' ਤੇ ਬਾਕੀ ਸਿਆਹੀ ਨਹੀਂ ਹੈ।"
 
-#: ../statereason.py:112
+#: ../statereason.py:125
 msgid "Printer off-line"
 msgstr "ਪਰਿੰਟਰ ਆਫ-ਲਾਈਨ"
 
-#: ../statereason.py:113
+#: ../statereason.py:126
 #, python-format
 msgid "Printer '%s' is currently off-line."
 msgstr "ਪਰਿੰਟਰ '%s' ਹੁਣ ਆਫਲਾਈਨ ਹੈ"
 
-#: ../statereason.py:114
+#: ../statereason.py:127
 msgid "Not connected?"
 msgstr "ਜੁੜਿਆ ਨਹੀਂ?"
 
-#: ../statereason.py:115
+#: ../statereason.py:128
 #, python-format
 msgid "Printer '%s' may not be connected."
 msgstr "ਪਰਿੰਟਰ '%s' ਜੁੜਿਆ ਨਹੀਂ ਹੋ ਸਕਦਾ।"
 
-#: ../statereason.py:116 ../statereason.py:136
+#: ../statereason.py:129 ../statereason.py:149
 msgid "Printer error"
 msgstr "ਪਰਿੰਟਰ ਗਲਤੀ"
 
-#: ../statereason.py:117
+#: ../statereason.py:130
 #, python-format
 msgid "There is a problem on printer '%s'."
 msgstr "ਪਰਿੰਟਰ '%s' ਉੱਪਰ ਕੋਈ ਸਮੱਸਿਆ ਹੈ।"
 
-#: ../statereason.py:119
+#: ../statereason.py:132
 msgid "Printer configuration error"
 msgstr "ਪ੍ਰਿੰਟਰ ਸੰਰਚਨਾ ਗਲਤੀ"
 
-#: ../statereason.py:120
+#: ../statereason.py:133
 #, python-format
 msgid "There is a missing print filter for printer '%s'."
 msgstr "ਪਰਿੰਟਰ '%s' ਲਈ ਪਰਿੰਟ ਫਿਲਟਰ ਗੈਰ-ਮੌਜੂਦ ਹੈ।"
 
-#: ../statereason.py:132
+#: ../statereason.py:145
 msgid "Printer report"
 msgstr "ਪਰਿੰਟਰ ਰਿਪੋਰਟ"
 
-#: ../statereason.py:134
+#: ../statereason.py:147
 msgid "Printer warning"
 msgstr "ਪਰਿੰਟਰ ਚੇਤਾਵਨੀ"
 
-#: ../statereason.py:153
+#: ../statereason.py:166
 #, python-format
 msgid "Printer '%s': '%s'."
 msgstr "ਪਰਿੰਟਰ '%s': '%s'।"
 
-#: ../timedops.py:116 ../timedops.py:196
+#: ../timedops.py:115 ../timedops.py:194
 msgid "Please wait"
 msgstr "ਉਡੀਕੋ ਜੀ।"
 
-#: ../timedops.py:122 ../timedops.py:203
+#: ../timedops.py:121 ../timedops.py:201
 msgid "Gathering information"
 msgstr "ਜਾਣਕਾਰੀ ਇਕੱਠੀ ਕਰ ਰਿਹਾ ਹੈ"
 
@@ -2874,15 +2950,15 @@ msgstr ""
 "ਪਰਿੰਟਿੰਰ ਪਰਬੰਧਨ ਟੂਲ ਵਰਤ ਕੇ ਸਰਵਰ ਸੈਟਿੰਗ ਵਿੱਚ 'ਇਸ ਸਿਸਟਮ ਨਾਲ ਜੁੜੇ ਸ਼ੇਅਰ ਕੀਤੇ ਪਰਿੰਟਰ ਪਬਲਿਸ਼ ਕਰੋ' "
 "ਚੋਣ ਯੋਗ ਕਰੋ।"
 
-#: ../troubleshoot/CheckPPDSanity.py:47 ../applet.py:179
+#: ../troubleshoot/CheckPPDSanity.py:48 ../applet.py:180
 msgid "Install"
 msgstr "ਇੰਸਟਾਲ"
 
-#: ../troubleshoot/CheckPPDSanity.py:99
+#: ../troubleshoot/CheckPPDSanity.py:100
 msgid "Invalid PPD File"
 msgstr "ਗਲਤ PPD ਫਾਇਲ"
 
-#: ../troubleshoot/CheckPPDSanity.py:110
+#: ../troubleshoot/CheckPPDSanity.py:111
 #, python-format
 msgid ""
 "The PPD file for printer '%s' does not conform to the specification.  "
@@ -2890,16 +2966,16 @@ msgid ""
 msgstr "ਪਰਿੰਟਰ '%s' ਲਈ PPD ਫਾਇਲ ਨਿਰਧਾਰਨ ਮੁਤਾਬਕ ਨਹੀਂ ਹੈ।  ਸੰਭਵ ਕਾਰਨ ਇਸ ਤਰਾਂ ਹਨ:"
 
 #. Perhaps cupstestppd is not in the path.
-#: ../troubleshoot/CheckPPDSanity.py:116
+#: ../troubleshoot/CheckPPDSanity.py:117
 #, python-format
 msgid "There is a problem with the PPD file for printer '%s'."
 msgstr "ਪਰਿੰਟਰ '%s' ਲਈ PPD ਫਾਇਲਾਂ ਨਾਲ ਸਮੱਸਿਆ ਹੈ।"
 
-#: ../troubleshoot/CheckPPDSanity.py:126
+#: ../troubleshoot/CheckPPDSanity.py:127
 msgid "Missing Printer Driver"
 msgstr "ਪਰਿੰਟਰ ਡਰਾਇਵਰ ਗੁੰਮ ਹੈ"
 
-#: ../troubleshoot/CheckPPDSanity.py:140
+#: ../troubleshoot/CheckPPDSanity.py:141
 #, python-format
 msgid ""
 "Printer '%s' requires the '%s' program but it is not currently installed."
@@ -2951,11 +3027,11 @@ msgstr ""
 "ਕਿਰਪਾ ਕਰਕੇ ਜੰਤਰ ਚੁਣੋ ਜੋ ਤੁਸੀਂ ਹੇਠਲੀ ਸੂਚੀ ਵਿੱਚੋਂ ਹਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ। ਜੇ ਇਹ ਸੂਚੀ ਵਿੱਚ ਨਹੀਂ ਦਿਸਦਾ, "
 "ਤਾਂ 'ਦਿਸਦਾ ਨਹੀਂ' ਚੁਣੋ।"
 
-#: ../troubleshoot/ErrorLogCheckpoint.py:33
+#: ../troubleshoot/ErrorLogCheckpoint.py:40
 msgid "Debugging"
 msgstr "ਡੀਬੱਗਿੰਗ"
 
-#: ../troubleshoot/ErrorLogCheckpoint.py:34
+#: ../troubleshoot/ErrorLogCheckpoint.py:41
 msgid ""
 "This step will enable debugging output from the CUPS scheduler.  This may "
 "cause the scheduler to restart.  Click the button below to enable debugging."
@@ -2963,23 +3039,33 @@ msgstr ""
 "ਇਹ ਪਗ CUPS ਸ਼ਡਿਊਲਰ ਤੋਂ ਡੀਬੱਗਿੰਗ ਆਊਟਪੁੱਟ ਯੋਗ ਕਰੇਗੀ। ਇਸ ਨਾਲ ਸ਼ਡਿਊਲਰ ਮੁੜ-ਚਾਲੂ ਹੋਵੇਗਾ। ਡੀਬੱਗਿੰਗ "
 "ਯੋਗ ਕਰਨ ਲਈ ਹੇਠਲਾ ਬਟਨ ਦਬਾਓ।"
 
-#: ../troubleshoot/ErrorLogCheckpoint.py:38
+#: ../troubleshoot/ErrorLogCheckpoint.py:45
 msgid "Enable Debugging"
 msgstr "ਡੀਬੱਗਿੰਗ ਯੋਗ ਕਰੋ"
 
-#: ../troubleshoot/ErrorLogCheckpoint.py:217
+#: ../troubleshoot/ErrorLogCheckpoint.py:245
 msgid "Debug logging enabled."
 msgstr "ਡੀਬੱਗ ਲਾਗਿੰਗ ਯੋਗ ਹੈ।"
 
-#: ../troubleshoot/ErrorLogCheckpoint.py:219
+#: ../troubleshoot/ErrorLogCheckpoint.py:247
 msgid "Debug logging was already enabled."
 msgstr "ਡੀਬੱਗ ਲਾਗਿੰਗ ਪਹਿਲਾਂ ਹੀ ਮੌਜੂਦ ਹੈ।"
 
-#: ../troubleshoot/ErrorLogParse.py:31
+#: ../troubleshoot/ErrorLogFetch.py:41
+msgid "Retrieve Journal Entries"
+msgstr ""
+
+#: ../troubleshoot/ErrorLogFetch.py:42
+msgid ""
+"No system journal entries were found. This may be because you are not an "
+"administrator. To fetch journal entries please run this command:"
+msgstr ""
+
+#: ../troubleshoot/ErrorLogParse.py:32
 msgid "Error log messages"
 msgstr "ਗਲਤੀ ਲਾਗ ਸੁਨੇਹੇ"
 
-#: ../troubleshoot/ErrorLogParse.py:32
+#: ../troubleshoot/ErrorLogParse.py:33
 msgid "There are messages in the error log."
 msgstr "ਗਲਤੀ ਲਾਗ ਵਿੱਚ ਸੁਨੇਹੇ ਹਨ।"
 
@@ -2995,11 +3081,11 @@ msgstr ""
 "ਪਰਿੰਟ ਜੌਬ ਲਈ ਪੇਜ਼ ਅਕਾਰ ਪਰਿੰਟਰ ਦਾ ਮੂਲ ਪੇਜ਼ ਅਕਾਰ ਨਹੀਂ ਸੀ।  ਜੇ ਇਹ ਤੁਸੀਂ ਨਹੀਂ ਕੀਤਾ ਤਾਂ ਅਨੁਕੂਲਤਾਂ "
 "ਸਮੱਸਿਆ ਆ ਸਕਦੀ ਹੈ।"
 
-#: ../troubleshoot/Locale.py:45
+#: ../troubleshoot/Locale.py:44
 msgid "Print job page size:"
 msgstr "ਜੌਬ ਪੇਜ਼ ਅਕਾਰ ਪਰਿੰਟ ਕਰੋ:"
 
-#: ../troubleshoot/Locale.py:50
+#: ../troubleshoot/Locale.py:49
 msgid "Printer page size:"
 msgstr "ਪਰਿੰਟਰ ਪੇਜ਼ ਅਕਾਰ:"
 
@@ -3023,24 +3109,24 @@ msgstr "ਕਤਾਰ ਸ਼ੇਅਰ ਨਹੀਂ ਕੀਤੀ"
 msgid "The CUPS printer on the server is not shared."
 msgstr "ਸਰਵਰ ਉੱਪਰ CUPS ਪਰਿੰਟਰ ਸ਼ੇਅਰ ਨਹੀਂ ਕੀਤਾ ਹੈ।"
 
-#: ../troubleshoot/PrinterStateReasons.py:33
+#: ../troubleshoot/PrinterStateReasons.py:34
 msgid "Status Messages"
 msgstr "ਹਾਲਤ ਸੁਨੇਹੇ"
 
-#: ../troubleshoot/PrinterStateReasons.py:34
+#: ../troubleshoot/PrinterStateReasons.py:35
 msgid "There are status messages associated with this queue."
 msgstr "ਇਸ ਕਤਾਰ ਨਾਲ ਸੰਬੰਧਿਤ ਹਾਲਤ ਸੁਨੇਹੇ ਹਨ।"
 
-#: ../troubleshoot/PrinterStateReasons.py:64
+#: ../troubleshoot/PrinterStateReasons.py:65
 #, python-format
 msgid "The printer's state message is: '%s'."
 msgstr "ਪਰਿੰਟਰ ਹਾਲਤ ਸੁਨੇਹਾ ਹੈ: '%s'।"
 
-#: ../troubleshoot/PrinterStateReasons.py:89
+#: ../troubleshoot/PrinterStateReasons.py:90
 msgid "Errors are listed below:"
 msgstr "ਗਲਤੀਆਂ ਹੇਠਾਂ ਦਿੱਤੀਆਂ ਹਨ:"
 
-#: ../troubleshoot/PrinterStateReasons.py:94
+#: ../troubleshoot/PrinterStateReasons.py:95
 msgid "Warnings are listed below:"
 msgstr "ਚੇਤਾਵਨੀਆਂ ਹੇਠਾਂ ਦਿੱਤੀਆਂ ਹਨ:"
 
@@ -3081,7 +3167,7 @@ msgstr "ਨਹੀਂ"
 msgid "Remember to load paper of type '%s' into the printer first."
 msgstr "ਪਹਿਲਾਂ ਪਰਿੰਟਰ ਵਿੱਚ '%s' ਕਿਸਮ ਦੇ ਪੇਪਰ ਲੋਡ ਕਰਨਾ ਯਾਦ ਰੱਖੋ।"
 
-#: ../troubleshoot/PrintTestPage.py:433
+#: ../troubleshoot/PrintTestPage.py:430
 msgid "Error submitting test page"
 msgstr "ਜਾਂਚ ਸਫਾ ਦੇਣ ਵਿੱਚ ਗਲਤੀ"
 
@@ -3193,11 +3279,11 @@ msgstr ""
 msgid "Diagnostic Output (Advanced)"
 msgstr "ਪੜਤਾਲ ਆਊਟਪੁੱਟ (ਤਕਨੀਕੀ)"
 
-#: ../troubleshoot/Shrug.py:96
+#: ../troubleshoot/Shrug.py:93
 msgid "Error saving file"
 msgstr "ਫਾਇਲ ਸੰਭਾਲਣ ਵਿੱਚ ਗਲਤੀ"
 
-#: ../troubleshoot/Shrug.py:97
+#: ../troubleshoot/Shrug.py:94
 msgid "There was an error saving the file:"
 msgstr "ਫਾਇਲ ਸੰਭਾਲਣ ਵਿੱਚ ਗਲਤੀ ਸੀ:"
 
@@ -3217,61 +3303,61 @@ msgstr ""
 msgid "Click 'Forward' to begin."
 msgstr "ਚਾਲੂ ਕਰਨ ਲਈ 'ਅੱਗੇ' ਦਬਾਓ।"
 
-#: ../applet.py:83
+#: ../applet.py:84
 msgid "Configuring new printer"
 msgstr "ਨਵੀਂ ਪਰਿੰਟਰ ਸੰਰਚਨਾ ਕਰੋ"
 
-#: ../applet.py:84
+#: ../applet.py:85
 msgid "Please wait..."
 msgstr "ਉਡੀਕੋ ਜੀ..."
 
 #. name is a URI, no queue was generated, because no suitable
 #. driver was found
-#: ../applet.py:113 ../applet.py:166
+#: ../applet.py:114 ../applet.py:167
 msgid "Missing printer driver"
 msgstr "ਪਰਿੰਟਰ ਡਰਾਇਵਰ ਗੁੰਮ ਹੈ"
 
-#: ../applet.py:120
+#: ../applet.py:121
 #, python-format
 msgid "No printer driver for %s."
 msgstr "%s ਲਈ ਕੋਈ ਪਰਿੰਟਰ ਡਰਾਈਵਰ ਨਹੀਂ ਹੈ।"
 
-#: ../applet.py:122
+#: ../applet.py:123
 msgid "No driver for this printer."
 msgstr "ਇਸ ਪਰਿੰਟਰ ਲਈ ਕੋਈ ਨਵਾਂ ਡਰਾਈਵਰ ਨਹੀਂ ਹੈ।"
 
-#: ../applet.py:164
+#: ../applet.py:165
 msgid "Printer added"
 msgstr "ਪਰਿੰਟਰ ਸ਼ਾਮਿਲ ਹੋ ਗਿਆ ਹੈ"
 
-#: ../applet.py:170
+#: ../applet.py:171
 msgid "Install printer driver"
 msgstr "ਪਰਿੰਟਰ ਡਰਾਇਵਰ ਇੰਸਟਾਲ ਕਰੋ"
 
-#: ../applet.py:171
+#: ../applet.py:172
 #, python-format
 msgid "`%s' requires driver installation: %s."
 msgstr "`%s' ਡਰਾਈਵਰ ਇੰਸਟਾਲੇਸ਼ਨ ਦੀ ਲੋੜ ਹੈ: %s।"
 
-#: ../applet.py:195
+#: ../applet.py:196
 #, python-format
 msgid "`%s' is ready for printing."
 msgstr "`%s' ਪਰਿੰਟਿੰਗ ਲਈ ਤਿਆਰ ਹੈ।"
 
-#: ../applet.py:199 ../applet.py:211
+#: ../applet.py:200 ../applet.py:212
 msgid "Print test page"
 msgstr "ਜਾਂਚ ਸਫ਼ਾ ਛਾਪੋ"
 
-#: ../applet.py:202
+#: ../applet.py:203
 msgid "Configure"
 msgstr "ਸੰਰਚਨਾ"
 
-#: ../applet.py:206
+#: ../applet.py:207
 #, python-format
 msgid "`%s' has been added, using the `%s' driver."
 msgstr "`%s' ਸ਼ਾਮਿਲ ਕੀਤਾ ਗਿਆ ਹੈ, `%s' ਡਰਾਈਵਰ ਵਰਤ ਕੇ।"
 
-#: ../applet.py:214
+#: ../applet.py:215
 msgid "Find driver"
 msgstr "ਡਰਾਇਵਰ ਲੱਭੋ"
 
@@ -3282,3 +3368,18 @@ msgstr "ਪਰਿੰਟ ਕਿਊ ਐਪਲਿਟ"
 #: ../print-applet.desktop.in.h:2
 msgid "System tray icon for managing print jobs"
 msgstr "ਪਰਿੰਟ ਜੌਬ ਪਰਬੰਧਨ ਲਈ ਸਿਸਟਮ ਟਰੇਅ"
+
+#: ../system-config-printer.appdata.xml.in.h:1
+msgid ""
+"With system-config-printer you can add, edit and delete printer queues. It "
+"allows you to choose the connection method and the printer driver."
+msgstr ""
+
+#: ../system-config-printer.appdata.xml.in.h:2
+msgid ""
+"For each queue, you can adjust the default page size and other driver "
+"options, as well as seeing ink/toner levels and status messages."
+msgstr ""
+
+#~ msgid " "
+#~ msgstr " "

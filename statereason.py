@@ -1,6 +1,6 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
-## Copyright (C) 2007, 2008, 2009, 2010, 2012, 2013 Red Hat, Inc.
+## Copyright (C) 2007, 2008, 2009, 2010, 2012, 2013, 2014 Red Hat, Inc.
 ## Authors:
 ##  Tim Waugh <twaugh@redhat.com>
 ##  Jiri Popelka <jpopelka@redhat.com>
@@ -23,7 +23,7 @@ import cups
 import os
 import config
 import gettext
-gettext.install(domain=config.PACKAGE, localedir=config.localedir, unicode=True)
+gettext.install(domain=config.PACKAGE, localedir=config.localedir)
 
 class StateReason:
     REPORT=1
@@ -56,7 +56,20 @@ class StateReason:
             return self.level
 
         if (self.reason.endswith ("-report") or
-            self.reason == "connecting-to-device"):
+            self.reason in ["connecting-to-device",
+                            "cups-ipp-missing-cancel-job",
+                            "cups-ipp-missing-get-job-attributes",
+                            "cups-ipp-missing-get-printer-attributes",
+                            "cups-ipp-missing-job-history",
+                            "cups-ipp-missing-job-id",
+                            "cups-ipp-missing-job-state",
+                            "cups-ipp-missing-operations-supported",
+                            "cups-ipp-missing-print-job",
+                            "cups-ipp-missing-printer-is-accepting-jobs",
+                            "cups-ipp-missing-printer-state-reasons",
+                            "cups-ipp-missing-send-document",
+                            "cups-ipp-missing-validate-job",
+                            "cups-ipp-wrong-http-version"]):
             self.level = self.REPORT
         elif self.reason.endswith ("-warning"):
             self.level = self.WARNING
@@ -156,11 +169,12 @@ class StateReason:
     def get_tuple (self):
         return (self.get_level (), self.get_printer (), self.get_reason ())
 
-    def __cmp__(self, other):
-        if other == None:
-            return 1
-        if other.get_level () != self.get_level ():
-            return cmp (self.get_level (), other.get_level ())
-        if other.get_printer () != self.get_printer ():
-            return cmp (other.get_printer (), self.get_printer ())
-        return cmp (other.get_reason (), self.get_reason ())
+    def __eq__(self, other):
+      if type (other) != type (self):
+            return False
+      return self.get_level () == other.get_level ()
+
+    def __lt__(self, other):
+      if type (other) != type (self):
+            return False
+      return self.get_level () < other.get_level ()

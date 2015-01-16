@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 ## Printing troubleshooter
 
@@ -23,7 +23,7 @@ import locale
 
 from gi.repository import Gtk
 
-from base import *
+from .base import *
 
 class Locale(Question):
     def __init__ (self, troubleshooter):
@@ -33,8 +33,7 @@ class Locale(Question):
                                     "not the printer's default page size.  "
                                     "If this is not intentional it may cause "
                                     "alignment problems."))
-
-        table = Gtk.Table (2, 2)
+        table = Gtk.Table (n_rows=2, n_columns=2)
         table.set_row_spacings (6)
         table.set_col_spacings (6)
         page.pack_start (table, False, False, 0)
@@ -66,7 +65,7 @@ class Locale(Question):
             conf = None
             for conffile in ["/etc/locale.conf", "/etc/sysconfig/i18n"]:
                 try:
-                    conf = file (conffile).readlines ()
+                    conf = open (conffile).readlines ()
                 except IOError:
                     continue
 
@@ -89,8 +88,8 @@ class Locale(Question):
         printer_page_size = None
         try:
             ppd_defs = self.troubleshooter.answers['cups_printer_ppd_defaults']
-            for group, options in ppd_defs.iteritems ():
-                if options.has_key ("PageSize"):
+            for group, options in ppd_defs.items ():
+                if "PageSize" in options:
                     printer_page_size = options["PageSize"]
                     break
 
@@ -111,7 +110,7 @@ class Locale(Question):
             job_page_size = None
             for (test, jobid, printer, doc, status, attrs) in job_status:
                 if test:
-                    if attrs.has_key ("PageSize"):
+                    if "PageSize" in attrs:
                         job_page_size = attrs["PageSize"]
                         self.answers['job_page_size'] = job_page_size
                         if job_page_size != printer_page_size:

@@ -1,6 +1,6 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
-## Copyright (C) 2008, 2009, 2010, 2012 Red Hat, Inc.
+## Copyright (C) 2008, 2009, 2010, 2012, 2014 Red Hat, Inc.
 ## Authors:
 ##  Tim Waugh <twaugh@redhat.com>
 
@@ -20,9 +20,9 @@
 
 import config
 import gettext
-gettext.install(domain=config.PACKAGE, localedir=config.localedir, unicode=True)
+gettext.install(domain=config.PACKAGE, localedir=config.localedir)
 import cupshelpers
-import urllib
+import urllib.parse
 
 import ppdippstr
 
@@ -54,17 +54,21 @@ class PhysicalDevice:
         hostport = None
         host = None
         dnssdhost = None
-        (scheme, rest) = urllib.splittype (uri)
+        (scheme, rest) = urllib.parse.splittype (uri)
         if scheme == 'hp' or scheme == 'hpfax':
+            ipparam = None
             if rest.startswith ("/net/"):
-                (rest, ipparam) = urllib.splitquery (rest[5:])
-                if ipparam != None and ipparam.startswith("ip="):
+                (rest, ipparam) = urllib.parse.splitquery (rest[5:])
+
+            if ipparam != None:
+                if ipparam.startswith("ip="):
                     hostport = ipparam[3:]
+                elif ipparam.startswith ("hostname="):
+                    hostport = ipparam[9:]
+                elif ipparam.startswith("zc="):
+                    dnssdhost = ipparam[3:]
                 else:
-                    if ipparam != None and ipparam.startswith("zc="):
-                        dnssdhost = ipparam[3:]
-                    else:
-                        return None, None
+                    return None, None
             else:
                 return None, None
         elif scheme == 'dnssd' or scheme == 'mdns':
@@ -72,17 +76,13 @@ class PhysicalDevice:
             # name of the printer
             return None, None
         else:
-            (hostport, rest) = urllib.splithost (rest)
+            (hostport, rest) = urllib.parse.splithost (rest)
             if hostport == None:
                 return None, None
 
         if hostport:
-            (host, port) = urllib.splitport (hostport)
+            (host, port) = urllib.parse.splitport (hostport)
 
-        if type (host) == unicode:
-            host = host.encode ('utf-8')
-        if type (dnssdhost) == unicode:
-            dnssdhost = dnssdhost.encode ('utf-8')
         return host, dnssdhost
 
     def add_device (self, device):
@@ -114,7 +114,7 @@ class PhysicalDevice:
                     def count_lower (s):
                         l = s.lower ()
                         n = 0
-                        for i in xrange (len (s)):
+                        for i in range (len (s)):
                             if l[i] != s[i]:
                                 n += 1
                         return n
@@ -158,11 +158,13 @@ class PhysicalDevice:
                 self.dnssd_hostname = dnssdhost;
 
         if (hasattr (device, 'address') and self._network_host == None):
-            if device.address:
-                self._network_host = device.address
+            address = device.address
+            if address:
+                self._network_host = address
         if (hasattr (device, 'hostname') and self.dnssd_hostname == None):
-            if device.hostname:
-                self.dnssd_hostname = device.hostname
+            hostname = device.hostname
+            if hostname:
+                self.dnssd_hostname = hostname
 
     def get_devices (self):
         return self.devices
@@ -224,57 +226,100 @@ class PhysicalDevice:
                                                                self.mdl,
                                                                self.sn)
 
-    def __cmp__(self, other):
-        if other == None or type (other) != type (self):
-            return 1
+    def __eq__(self, other):
+        if type (other) != type (self):
+            return False
 
-        if (self._network_host != None or
-            other._network_host != None):
-            return cmp (self._network_host, other._network_host)
+        if self._network_host != other._network_host:
+            return False
 
         devs = other.get_devices()
         if devs:
-            uris = map (lambda x: x.uri, self.devices)
+            uris = [x.uri for x in self.devices]
             for dev in devs:
                 if dev.uri in uris:
                     # URI match
-                    return 0
+                    return True
 
-        if (other.mfg == '' and other.mdl == '') or \
-           (self.mfg == '' and self.mdl == ''):
+        if ((other.mfg == '' and other.mdl == '') or
+            (self.mfg == ''  and self.mdl == '')):
+            if other.mfg == '' and self.mfg == '':
+                # Both just a backend, not a real physical device.
+                return self.devices[0] == other.devices[0]
+
             # One or other is just a backend, not a real physical device.
-            if other.mfg == '' and other.mdl == '' and \
-               self.mfg == '' and self.mdl == '':
-                return cmp (self.devices[0], other.devices[0])
+            return False
 
-            if other.mfg == '' and other.mdl == '':
-                return -1
-            return 1
+        def split_make_and_model (dev):
+            if dev.mfg == '' or dev.mdl.lower ().startswith (dev.mfg.lower ()):
+                make_and_model = dev.mdl
+            else:
+                make_and_model = "%s %s" % (dev.mfg, dev.mdl)
+            (mfg, mdl) = cupshelpers.ppds.ppdMakeModelSplit (make_and_model)
+            return (cupshelpers.ppds.normalize (mfg),
+                    cupshelpers.ppds.normalize (mdl))
 
-        if self.mfg == '' or self.mdl.lower ().startswith (self.mfg.lower ()):
-            our_make_and_model = self.mdl
-        else:
-            our_make_and_model = "%s %s" % (self.mfg, self.mdl)
-        (our_mfg, our_mdl) = \
-            cupshelpers.ppds.ppdMakeModelSplit (our_make_and_model)
+        (our_mfg, our_mdl) = split_make_and_model (self)
+        (other_mfg, other_mdl) = split_make_and_model (other)
 
-        if other.mfg == '' or \
-                other.mdl.lower ().startswith (other.mfg.lower ()):
-            other_make_and_model = other.mdl
-        else:
-            other_make_and_model = "%s %s" % (other.mfg, other.mdl)
-        (other_mfg, other_mdl) = \
-            cupshelpers.ppds.ppdMakeModelSplit (other_make_and_model)
+        if our_mfg != other_mfg or our_mdl != other_mdl:
+            return False
 
-        mfgcmp = cmp (our_mfg.lower (), other_mfg.lower ())
-        if mfgcmp != 0:
-            return mfgcmp
-        mdlcmp = cmp (our_mdl.lower (), other_mdl.lower ())
-        if mdlcmp != 0:
-            return mdlcmp
         if self.sn == '' or other.sn == '':
-            return 0
-        return cmp (self.sn, other.sn)
+            return True
+
+        return self.sn == other.sn
+
+    def __lt__(self, other):
+        if type (other) != type (self):
+            return False
+
+        if self._network_host != other._network_host:
+            if self._network_host == None:
+                return True
+
+            if other._network_host == None:
+                return False
+
+            return self._network_host < other._network_host
+
+        devs = other.get_devices()
+        if devs:
+            uris = [x.uri for x in self.devices]
+            for dev in devs:
+                if dev.uri in uris:
+                    # URI match, so compare equal. Not less than.
+                    return False
+
+        if ((other.mfg == '' and other.mdl == '') or
+            (self.mfg == ''  and self.mdl == '')):
+            if other.mfg == '' and self.mfg == '':
+                # Both just a backend, not a real physical device.
+                return self.devices[0] < other.devices[0]
+
+            # One or other is just a backend, not a real physical device.
+            return other.mfg == '' and other.mdl == ''
+
+        def split_make_and_model (dev):
+            if dev.mfg == '' or dev.mdl.lower ().startswith (dev.mfg.lower ()):
+                make_and_model = dev.mdl
+            else:
+                make_and_model = "%s %s" % (dev.mfg, dev.mdl)
+            return cupshelpers.ppds.ppdMakeModelSplit (make_and_model)
+
+        (our_mfg, our_mdl) = split_make_and_model (self)
+        (other_mfg, other_mdl) = split_make_and_model (other)
+
+        if our_mfg != other_mfg:
+            return our_mfg < other_mfg
+
+        if our_mdl != other_mdl:
+            return our_mdl < other_mdl
+
+        if self.sn == '' or other.sn == '':
+            return False
+
+        return self.sn < other.sn
 
 if __name__ == '__main__':
     import authconn
@@ -292,7 +337,7 @@ if __name__ == '__main__':
 
     physicaldevices.sort ()
     for physicaldevice in physicaldevices:
-        print physicaldevice.get_info ()
+        print(physicaldevice.get_info ())
         devices = physicaldevice.get_devices ()
         for device in devices:
-            print " ", device
+            print(" ", device)

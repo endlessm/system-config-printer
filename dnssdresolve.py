@@ -1,6 +1,6 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
-## Copyright (C) 2010, 2011, 2012, 2013 Red Hat, Inc.
+## Copyright (C) 2010, 2011, 2012, 2013, 2014 Red Hat, Inc.
 ## Authors:
 ##  Tim Waugh <twaugh@redhat.com>
 
@@ -19,6 +19,7 @@
 ## Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 import dbus, re
+import urllib.parse
 from debug import *
 
 class DNSSDHostNamesResolver:
@@ -33,10 +34,6 @@ class DNSSDHostNamesResolver:
 
     def resolve (self, reply_handler):
 
-        def expandhex (searchres):
-            expr = searchres.group(0)
-            return chr(int(expr[1:], 16))
-
         self._reply_handler = reply_handler
 
         bus = dbus.SystemBus ()
@@ -46,28 +43,22 @@ class DNSSDHostNamesResolver:
             del self._reply_handler
             return
 
-        for uri, device in self._devices.iteritems ():
+        for uri, device in self._devices.items ():
             if not uri.startswith ("dnssd://"):
                 self._unresolved -= 1
                 continue
 
             # We need to resolve the DNS-SD hostname in order to
             # compare with other network devices.
-            p = uri[8:].find ("/")
-            if p == -1:
-                hostname = uri[8:]
-            else:
-                hostname = uri[8:8+p]
-
-            hostname = hostname.encode('utf-8')
-            hostname = re.sub("%(?i)[\dabcdef]{2}", expandhex, hostname)
-
+            result = urllib.parse.urlparse (uri)
+            hostname = result.netloc
             elements = hostname.rsplit (".", 3)
             if len (elements) != 4:
                 self._resolved ()
                 continue
 
             name, stype, protocol, domain = elements
+            name = urllib.parse.unquote (name)
             stype += "." + protocol #  e.g. _printer._tcp
 
             try:
@@ -96,7 +87,7 @@ class DNSSDHostNamesResolver:
 
     def _reply (self, interface, protocol, name, stype, domain,
                 host, aprotocol, address, port, txt, flags):
-        uri = self._device_uri_by_name[(name.encode ('utf-8'), stype, domain)]
+        uri = self._device_uri_by_name[(name, stype, domain)]
         self._devices[uri].address = address
         hostname = host
         p = hostname.find(".")
@@ -134,7 +125,7 @@ if __name__ == '__main__':
             return False
 
         def reply (self, *args):
-            print args
+            print(args)
             self._loop.quit ()
 
     from gi.repository import GObject

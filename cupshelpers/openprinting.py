@@ -1,8 +1,8 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 ## system-config-printer
 
-## Copyright (C) 2008, 2011 Red Hat, Inc.
+## Copyright (C) 2008, 2011, 2014 Red Hat, Inc.
 ## Copyright (C) 2008 Till Kamppeter <till.kamppeter@gmail.com>
 
 ## This program is free software; you can redistribute it and/or modify
@@ -19,7 +19,7 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-import pycurl, urllib, platform, threading, tempfile, traceback
+import pycurl, urllib.request, urllib.parse, urllib.error, platform, threading, tempfile, traceback
 import os, sys
 from xml.etree.ElementTree import XML
 from . import Device
@@ -43,9 +43,13 @@ class _QueryThread (threading.Thread):
         self.parameters = parameters
         self.callback = callback
         self.user_data = user_data
-        self.result = ""
+        self.result = b''
 
         self.setDaemon (True)
+        _debugprint ("+%s" % self)
+
+    def __del__ (self):
+        _debugprint ("-%s" % self)
 
     def run (self):
 
@@ -61,13 +65,13 @@ class _QueryThread (threading.Thread):
         headers = {"Content-type": "application/x-www-form-urlencoded",
                    "Accept": "text/plain"}
         params = ("%s&uilanguage=%s&locale=%s" %
-                  (urllib.urlencode (self.parameters),
+                  (urllib.parse.urlencode (self.parameters),
                    self.parent.language[0],
                    self.parent.language[0]))
         self.url = "https://%s%s?%s" % (self.parent.base_url, query_command, params)
         # Send request
         result = None
-        self.result = ""
+        self.result = b''
         status = 1
         try:
             curl = pycurl.Curl()
@@ -83,6 +87,7 @@ class _QueryThread (threading.Thread):
             self.result = sys.exc_info ()
             if status == None: status = 0
 
+        _debugprint ("%s: query complete" % self)
         if self.callback != None:
             self.callback (status, self.user_data, self.result)
 
@@ -109,6 +114,10 @@ class OpenPrinting:
         self.onlyfree = 1
         self.onlymanufacturer = 0
         _debugprint ("OpenPrinting: Init %s %s %s" % (self.language, self.onlyfree, self.onlymanufacturer))
+        _debugprint ("+%s" % self)
+
+    def __del__ (self):
+        _debugprint ("-%s" % self)
 
     def cancelOperation(self, handle):
         """
@@ -310,7 +319,7 @@ class OpenPrinting:
                     if supportcontacts:
                         dict['supportcontacts'] = supportcontacts
 
-                    if not dict.has_key ('name') or not dict.has_key ('url'):
+                    if 'name' not in dict or 'url' not in dict:
                         continue
 
                     container = driver.find ('functionality')
@@ -390,12 +399,11 @@ def _simple_gui ():
     class QueryApp:
         def __init__(self):
             self.openprinting = OpenPrinting()
-            self.main = Gtk.Dialog ("OpenPrinting query application",
-                                    None,
-                                    Gtk.DialogFlags.MODAL,
-                                    (Gtk.STOCK_CLOSE, Gtk.ResponseType.CLOSE,
-                                     "Search", 10,
-                                     "List", 20))
+            self.main = Gtk.Dialog (title="OpenPrinting query application",
+                                    transient_for=None, modal=True)
+            self.main.add_buttons (Gtk.STOCK_CLOSE, Gtk.ResponseType.CLOSE,
+                                   "Search", 10,
+                                   "List", 20)
             self.main.set_border_width (6)
             self.main.vbox.set_spacing (2)
             vbox = Gtk.VBox.new (False, 6)
@@ -447,7 +455,7 @@ def _simple_gui ():
         def query_callback (self, status, user_data, result):
             Gdk.threads_enter ()
             self.tv.get_buffer ().set_text (str (result))
-            file ("result.xml", "w").write (str (result))
+            open ("result.xml", "w").write (str (result))
             Gdk.threads_leave ()
 
     q = QueryApp()

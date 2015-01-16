@@ -1,7 +1,7 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- python -*-
 
-## Copyright (C) 2008 Red Hat, Inc.
+## Copyright (C) 2008, 2014 Red Hat, Inc.
 ## Copyright (C) 2008 Tim Waugh <twaugh@redhat.com>
 
 ## This program is free software; you can redistribute it and/or modify
@@ -70,10 +70,10 @@ class Driver:
             raise
 
 	if stderr:
-		print >> sys.stderr, stderr
+		print(stderr.decode (), file=sys.stderr)
 
 	ppds = []
-	lines = stdout.split ('\n')
+	lines = stdout.decode ().split ('\n')
 	for line in lines:
 		l = shlex.split (line)
 		if len (l) < 1:
@@ -99,10 +99,10 @@ class Driver:
                 raise
 
             if stderr:
-                print >> sys.stderr, stderr
+                print(stderr.decode (), file=sys.stderr)
 
-            self.files[name] = stdout
-            return stdout
+            self.files[name] = stdout.decode ()
+            return self.files[name]
 
 opts, args = getopt (sys.argv[1:], "m:")
 if len (args) != 1:
@@ -122,7 +122,7 @@ list = d.list ()
 
 if match:
     exp = re.compile (match)
-    list = filter (lambda x: exp.match (x), list)
+    list = [x for x in list if exp.match (x)]
 
 n = len (list)
 i = 0
@@ -165,25 +165,25 @@ for name in list:
         sys.stderr.write ("%3d%%\r" % (100 * i / n))
         sys.stderr.flush ()
     except KeyboardInterrupt:
-        print "Keyboard interrupt\n"
+        print ("Keyboard interrupt\n")
         break
     except TimedOut as e:
         bad.append ((name, e))
-        print "Timed out fetching %s" % name
+        print ("Timed out fetching %s" % name)
     except Exception as e:
         bad.append ((name, e))
-        print "Exception fetching %s: %s" % (name, e)
+        print ("Exception fetching %s: %s" % (name, e))
 
     sys.stdout.flush ()
 
 if len (bad) > 0:
-    print "Bad PPDs:"
+    print ("Bad PPDs:")
     for each in bad:
-        print "  %s (%s)" % each
+        print ("  %s (%s)" % each)
     print
 
 if len (ids) > 0:
-    print "IEEE 1284 Device IDs:"
+    print ("IEEE 1284 Device IDs:")
     for each in ids:
-        print "  %s" % each
+        print ("  %s" % each)
     print

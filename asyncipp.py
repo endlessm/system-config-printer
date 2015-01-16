@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 ## Copyright (C) 2007, 2008, 2009, 2010, 2011, 2012, 2013 Red Hat, Inc.
 ## Copyright (C) 2008 Novell, Inc.
@@ -25,7 +25,7 @@ from gi.repository import GObject
 from gi.repository import GLib
 from gi.repository import Gdk
 from gi.repository import Gtk
-import Queue
+import queue
 
 cups.require ("1.9.60")
 
@@ -33,7 +33,7 @@ import authconn
 from debug import *
 import debug
 import gettext
-gettext.install(domain=config.PACKAGE, localedir=config.localedir, unicode=True)
+gettext.install(domain=config.PACKAGE, localedir=config.localedir)
 
 
 ######
@@ -45,13 +45,13 @@ gettext.install(domain=config.PACKAGE, localedir=config.localedir, unicode=True)
 ### This is the worker thread.
 ###
 class _IPPConnectionThread(threading.Thread):
-    def __init__ (self, queue, conn, reply_handler=None, error_handler=None,
+    def __init__ (self, myqueue, conn, reply_handler=None, error_handler=None,
                   auth_handler=None, user=None, host=None, port=None,
                   encryption=None):
                   
         threading.Thread.__init__ (self)
         self.setDaemon (True)
-        self._queue = queue
+        self._queue = myqueue
         self._conn = conn
         self.host = host
         self.port = port
@@ -59,7 +59,7 @@ class _IPPConnectionThread(threading.Thread):
         self._reply_handler = reply_handler
         self._error_handler = error_handler
         self._auth_handler = auth_handler
-        self._auth_queue = Queue.Queue (1)
+        self._auth_queue = queue.Queue(1)
         self.user = user
         self._destroyed = False
         debugprint ("+%s" % self)
@@ -231,7 +231,7 @@ class IPPConnection:
                   encryption=None, parent=None):
         debugprint ("New IPPConnection")
         self._parent = parent
-        self.queue = Queue.Queue ()
+        self.queue = queue.Queue ()
         self.thread = _IPPConnectionThread (self.queue, self,
                                             reply_handler=reply_handler,
                                             error_handler=error_handler,
@@ -289,13 +289,13 @@ class IPPConnection:
 
     def _call_function (self, fn, *args, **kwds):
         reply_handler = error_handler = auth_handler = False
-        if kwds.has_key ("reply_handler"):
+        if "reply_handler" in kwds:
             reply_handler = kwds["reply_handler"]
             del kwds["reply_handler"]
-        if kwds.has_key ("error_handler"):
+        if "error_handler" in kwds:
             error_handler = kwds["error_handler"]
             del kwds["error_handler"]
-        if kwds.has_key ("auth_handler"):
+        if "auth_handler" in kwds:
             auth_handler = kwds["auth_handler"]
             del kwds["auth_handler"]
 
@@ -459,12 +459,11 @@ class _IPPAuthOperation:
 
         # If we've previously prompted, explain why we're prompting again.
         if self._dialog_shown:
-            d = Gtk.MessageDialog (self._conn.parent,
-                                   Gtk.DialogFlags.MODAL |
-                                   Gtk.DialogFlags.DESTROY_WITH_PARENT,
-                                   Gtk.MessageType.ERROR,
-                                   Gtk.ButtonsType.CLOSE,
-                                   _("Not authorized"))
+            d = Gtk.MessageDialog (parent=self._conn.parent,
+                                   modal=True, destroy_with_parent=True,
+                                   message_type=Gtk.MessageType.ERROR,
+                                   buttons=Gtk.ButtonsType.CLOSE,
+                                   text=_("Not authorized"))
             d.format_secondary_text (_("The password may be incorrect."))
             d.run ()
             d.destroy ()
@@ -555,12 +554,11 @@ class _IPPAuthOperation:
         else:
             msg = _("CUPS server error (%s)") % op
 
-        d = Gtk.MessageDialog (self._conn.parent,
-                               Gtk.DialogFlags.MODAL |
-                               Gtk.DialogFlags.DESTROY_WITH_PARENT,
-                               Gtk.MessageType.ERROR,
-                               Gtk.ButtonsType.NONE,
-                               msg)
+        d = Gtk.MessageDialog (parent=self._conn.parent,
+                               modal=True, destroy_with_parent=True,
+                               message_type=Gtk.MessageType.ERROR,
+                               buttons=Gtk.ButtonsType.NONE,
+                               text=msg)
 
         if self._client_fn == None and type (exc) == RuntimeError:
             # This was a connection failure.
@@ -636,13 +634,13 @@ class IPPAuthConnection(IPPConnection):
 
     def _call_function (self, fn, *args, **kwds):
         reply_handler = error_handler = auth_handler = False
-        if kwds.has_key ("reply_handler"):
+        if "reply_handler" in kwds:
             reply_handler = kwds["reply_handler"]
             del kwds["reply_handler"]
-        if kwds.has_key ("error_handler"):
+        if "error_handler" in kwds:
             error_handler = kwds["error_handler"]
             del kwds["error_handler"]
-        if kwds.has_key ("auth_handler"):
+        if "auth_handler" in kwds:
             auth_handler = kwds["auth_handler"]
             del kwds["auth_handler"]
 
@@ -657,17 +655,16 @@ class IPPAuthConnection(IPPConnection):
 if __name__ == "__main__":
     # Demo
     set_debugging (True)
-    GObject.threads_init ()
     class UI:
         def __init__ (self):
             w = Gtk.Window ()
             w.connect ("destroy", self.destroy)
-            b = Gtk.Button ("Connect")
+            b = Gtk.Button.new_with_label ("Connect")
             b.connect ("clicked", self.connect_clicked)
             vbox = Gtk.VBox ()
             vbox.pack_start (b, False, False, 0)
             w.add (vbox)
-            self.get_devices_button = Gtk.Button ("Get Devices")
+            self.get_devices_button = Gtk.Button.new_with_label ("Get Devices")
             self.get_devices_button.connect ("clicked", self.get_devices)
             self.get_devices_button.set_sensitive (False)
             vbox.pack_start (self.get_devices_button, False, False, 0)

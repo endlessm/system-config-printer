@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 ## Printing troubleshooter
 
@@ -21,7 +21,7 @@
 
 from gi.repository import Gtk
 
-from base import *
+from .base import *
 class Shrug(Question):
     def __init__ (self, troubleshooter):
         Question.__init__ (self, troubleshooter, "Shrug")
@@ -49,7 +49,7 @@ class Shrug(Question):
         box.set_layout (Gtk.ButtonBoxStyle.END)
         page.pack_start (box, False, False, 0)
 
-        self.save = Gtk.Button (stock=Gtk.STOCK_SAVE)
+        self.save = Gtk.Button.new_from_stock (Gtk.STOCK_SAVE)
         box.pack_start (self.save, False, False, 0)
 
         troubleshooter.new_page (page, self)
@@ -67,12 +67,10 @@ class Shrug(Question):
     def on_save_clicked (self, button):
         while True:
             parent = self.troubleshooter.get_window()
-            dialog = Gtk.FileChooserDialog (parent=parent,
-                                            action=Gtk.FileChooserAction.SAVE,
-                                            buttons=(Gtk.STOCK_CANCEL,
-                                                     Gtk.ResponseType.CANCEL,
-                                                     Gtk.STOCK_SAVE,
-                                                     Gtk.ResponseType.OK))
+            dialog = Gtk.FileChooserDialog (transient_for=parent,
+                                            action=Gtk.FileChooserAction.SAVE)
+            dialog.add_buttons (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
+                                Gtk.STOCK_SAVE, Gtk.ResponseType.OK)
             dialog.set_do_overwrite_confirmation (True)
             dialog.set_current_name ("troubleshoot.txt")
             dialog.set_default_response (Gtk.ResponseType.OK)
@@ -83,17 +81,16 @@ class Shrug(Question):
                 return
 
             try:
-                f = file (dialog.get_filename (), "w")
+                f = open (dialog.get_filename (), "w")
                 f.write (self.buffer.get_text (start=self.buffer.get_start_iter (),
                                                end=self.buffer.get_end_iter (),
                                                include_hidden_chars=False))
             except IOError as e:
-                err = Gtk.MessageDialog (parent,
-                                         Gtk.DialogFlags.MODAL |
-                                         Gtk.DialogFlags.DESTROY_WITH_PARENT,
-                                         Gtk.MessageType.ERROR,
-                                         Gtk.ButtonsType.CLOSE,
-                                         _("Error saving file"))
+                err = Gtk.MessageDialog (parent=parent,
+                                         modal=True, destroy_with_parent=True,
+                                         message_type=Gtk.MessageType.ERROR,
+                                         buttons=Gtk.ButtonsType.CLOSE,
+                                         text=_("Error saving file"))
                 err.format_secondary_text (_("There was an error saving "
                                              "the file:") + "\n" +
                                            e.strerror)

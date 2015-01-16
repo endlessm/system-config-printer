@@ -1,8 +1,8 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 ## system-config-printer
 
-## Copyright (C) 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013 Red Hat, Inc.
+## Copyright (C) 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014 Red Hat, Inc.
 ## Authors:
 ##  Tim Waugh <twaugh@redhat.com>
 ##  Florian Festi <ffesti@redhat.com>
@@ -26,23 +26,20 @@ import config
 
 import authconn
 import cupshelpers
+from OpenPrintingRequest import OpenPrintingRequest
 
 import errno
-import sys, os, tempfile, time, traceback, re, httplib
+import sys, os, tempfile, time, traceback, re, http.client
 import locale
 import string
 import subprocess
-import thread
 from timedops import *
 import dbus
 from gi.repository import Gdk
 from gi.repository import Gtk
 import pycurl
-# prefer Python 2 module here, as in Python 2 io.StringIO is broken
-try:
-    from cStringIO import StringIO
-except ImportError:
-    from io import StringIO
+import functools
+from io import StringIO
 
 import cups
 
@@ -59,7 +56,7 @@ from gui import GtkGUI
 from optionwidgets import OptionWidget
 from debug import *
 import probe_printer
-import urllib
+import urllib.request, urllib.parse
 from smburi import SMBURI
 from errordialogs import *
 from PhysicalDevice import PhysicalDevice
@@ -67,9 +64,10 @@ import firewallsettings
 import asyncconn
 import ppdsloader
 import dnssdresolve
+import installpackage
 
 import gettext
-gettext.install(domain=config.PACKAGE, localedir=config.localedir, unicode=True)
+gettext.install(domain=config.PACKAGE, localedir=config.localedir)
 
 
 TEXT_adjust_firewall = _("The firewall may need adjusting in order to "
@@ -78,7 +76,7 @@ TEXT_adjust_firewall = _("The firewall may need adjusting in order to "
 
 def validDeviceURI (uri):
     """Returns True is the provided URI is valid."""
-    (scheme, rest) = urllib.splittype (uri)
+    (scheme, rest) = urllib.parse.splittype (uri)
     if scheme == None or scheme == '':
         return False
     return True
@@ -104,14 +102,14 @@ def getCurrentClassMembers(treeview):
     iter = model.get_iter_first()
     result = []
     while iter:
-        result.append(model.get(iter, 0)[0].decode ('utf-8'))
+        result.append(model.get(iter, 0)[0])
         iter = model.iter_next(iter)
     result.sort()
     return result
 
 def checkNPName(printers, name):
     if not name: return False
-    name = unicode (name.lower())
+    name = name.lower()
     for printer in printers.values():
         if not printer.discovered and printer.name.lower()==name:
             return False
@@ -256,9 +254,6 @@ class NewPrinterGUI(GtkGUI):
         self._searchdialog = None
         self._installdialog = None
 
-        # Synchronisation objects.
-        self.drivers_lock = thread.allocate_lock()
-
         self.getWidgets({"NewPrinterWindow":
                              ["NewPrinterWindow",
                               "ntbkNewPrinter",
@@ -308,6 +303,7 @@ class NewPrinterGUI(GtkGUI):
                               "rbtnNPDownloadableDriverSearch",
                               "entNPDownloadableDriverSearch",
                               "btnNPDownloadableDriverSearch",
+                              "btnNPDownloadableDriverSearch_label",
                               "cmbNPDownloadableDriverFoundPrinters",
                               "tvNPModels",
                               "tvNPDrivers",
@@ -425,13 +421,13 @@ class NewPrinterGUI(GtkGUI):
         self.spinner_count = 0
 
         # Set up OpenPrinting widgets.
-        self.openprinting = cupshelpers.openprinting.OpenPrinting ()
-        self.openprinting_query_handle = None
+        self.opreq = None
+        self.opreq_handlers = None
         combobox = self.cmbNPDownloadableDriverFoundPrinters
         cell = Gtk.CellRendererText()
         combobox.pack_start (cell, True)
         combobox.add_attribute(cell, 'text', 0)
-        if self.DOWNLOADABLE_ONLYFREE:
+        if config.DOWNLOADABLE_ONLYFREE:
             for widget in [self.cbNPDownloadableDriverLicenseFree,
                            self.cbNPDownloadableDriverLicensePatents]:
                 widget.hide ()
@@ -445,7 +441,7 @@ class NewPrinterGUI(GtkGUI):
         else:
             # No known package system, so we only load single PPDs via
             # OpenPrinting
-            self.DOWNLOADABLE_ONLYPPD = True;
+            config.DOWNLOADABLE_ONLYPPD = True
 
         def protect_toggle (toggle_widget):
             active = getattr (toggle_widget, 'protect_active', None)
@@ -469,6 +465,7 @@ class NewPrinterGUI(GtkGUI):
         slct.set_select_function (self.device_select_function, None)
         self.tvNPDevices.set_row_separator_func (self.device_row_separator_fn, None)
         self.tvNPDevices.connect ("row-activated", self.device_row_activated)
+        self.tvNPDevices.connect ("row-expanded", self.device_row_expanded)
 
         # Devices expander
         self.expNPDeviceURIs.connect ("notify::expanded",
@@ -663,9 +660,7 @@ class NewPrinterGUI(GtkGUI):
         combobox = self.cmbNPDownloadableDriverFoundPrinters
         combobox.set_model (Gtk.ListStore (str, str))
         self.entNPDownloadableDriverSearch.set_text ('')
-        button = self.btnNPDownloadableDriverSearch
-        label = button.get_children ()[0].get_children ()[0].get_children ()[1]
-        self.btnNPDownloadableDriverSearch_label = label
+        label = self.btnNPDownloadableDriverSearch_label
         label.set_text (_("Search"))
 
         if self.dialog_mode in ("printer", "printer_with_uri", "class"):
@@ -735,7 +730,7 @@ class NewPrinterGUI(GtkGUI):
 
             if self.dialog_mode == "download_driver":
                 self.ntbkNewPrinter.set_current_page(7)
-                self.nextnptab_rerun = True;
+                self.nextnptab_rerun = True
             else:
                 self.ntbkNewPrinter.set_current_page(2)
                 self.rbtnNPFoomatic.set_active (True)
@@ -750,10 +745,8 @@ class NewPrinterGUI(GtkGUI):
                self.dialog_mode == "download_driver":
                 self.nextNPTab(step = 0)
 
-            if self.dialog_mode == "download_driver" and \
-               self.founddownloadabledrivers == False:
-                self.on_NPCancel(None)
-                return False
+            if self.dialog_mode == "download_driver":
+                return True
 
         if xid == 0 and self.parent:
             self.NewPrinterWindow.set_transient_for (parent)
@@ -848,7 +841,8 @@ class NewPrinterGUI(GtkGUI):
             self.printers = {}
 
         for printer in self.printers.keys():
-            model.append((printer,))
+            if not self.printers[printer].type & cups.CUPS_PRINTER_CLASS:
+                model.append((printer,))
 
     def on_btnNCAddMember_clicked(self, button):
         moveClassMembers(self.tvNCNotMembers, self.tvNCMembers)
@@ -896,9 +890,13 @@ class NewPrinterGUI(GtkGUI):
             self.dec_spinner_task ()
 
         self.NewPrinterWindow.hide()
-        if self.openprinting_query_handle != None:
-            self.openprinting.cancelOperation (self.openprinting_query_handle)
-            self.openprinting_query_handle = None
+        if self.opreq != None:
+            for handler in self.opreq_handlers:
+                self.opreq.disconnect (handler)
+
+            self.opreq_handlers = None
+            self.opreq.cancel ()
+            self.opreq = None
 
         self.device = None
         self.printers = {}
@@ -913,7 +911,7 @@ class NewPrinterGUI(GtkGUI):
 
     def installdriverpackage (self, driver, onlycheckpresence = False):
         pkgs = driver.get('packages', {})
-        arches = pkgs.keys()
+        arches = list(pkgs.keys())
         if len(arches) == 0:
             debugprint('No packages for driver')
             return False
@@ -926,7 +924,7 @@ class NewPrinterGUI(GtkGUI):
         if len(pkgs) != 1:
             debugprint('Returned more than one package, this is currently not handled')
             return False
-        pkg = pkgs.keys()[0]
+        pkg = list(pkgs.keys())[0]
 
         name = ''
         if pkg.endswith('.deb'):
@@ -940,12 +938,12 @@ class NewPrinterGUI(GtkGUI):
         # independent packages are usually PPDs, which we trust enough
         keyid = None
         if 'fingerprint' not in pkgs[pkg]:
-            if self.DOWNLOADABLE_PKG_ONLYSIGNED and arches[0] not in ['all', 'noarch']:
+            if config.DOWNLOADABLE_PKG_ONLYSIGNED and arches[0] not in ['all', 'noarch']:
                 debugprint('Not installing driver as it does not have a GPG fingerprint URL')
                 return False
         else:
             keyid = download_gpg_fingerprint(pkgs[pkg]['fingerprint'])
-            if self.DOWNLOADABLE_PKG_ONLYSIGNED and arches[0] not in ['all', 'noarch'] and not keyid:
+            if config.DOWNLOADABLE_PKG_ONLYSIGNED and arches[0] not in ['all', 'noarch'] and not keyid:
                 debugprint('Not installing driver as it does not have a valid GPG fingerprint')
                 return False
 
@@ -967,11 +965,10 @@ class NewPrinterGUI(GtkGUI):
 
         fmt = _("Installing driver %s") % name
         self._installdialog = Gtk.MessageDialog (parent=self.NewPrinterWindow,
-                                                 flags=Gtk.DialogFlags.MODAL |
-                                                 Gtk.DialogFlags.DESTROY_WITH_PARENT,
+                                                 modal=True, destroy_with_parent=True,
                                                  type=Gtk.MessageType.INFO,
                                                  buttons=Gtk.ButtonsType.CANCEL,
-                                                 message_format=fmt)
+                                                 text=fmt)
 
         self._installdialog.format_secondary_text (_("Installing ..."))
         # Add a progress bar to the message box
@@ -994,15 +991,19 @@ class NewPrinterGUI(GtkGUI):
         ret = True
         try:
             self.p = subprocess.Popen (args, env=new_environ, close_fds=True,
-                                  stdin=file("/dev/null"),
-                                  stdout=subprocess.PIPE,
-                                  stderr=subprocess.PIPE)
+                                       stdin=subprocess.DEVNULL,
+                                       stdout=subprocess.PIPE,
+                                       stderr=subprocess.PIPE)
             # Keep the UI refreshed while we wait for
             # the drivers query to complete.
             (stdout, stderr) = (self.p.stdout, self.p.stderr)
+            done = False
             while self.p.poll() == None:
                 line = stderr.readline ().strip()
                 if (len(line) > 0):
+                    if line == "done":
+                        done = True
+                        break
                     try:
                         percentage = float(line)
                         if percentage > 0:
@@ -1013,7 +1014,7 @@ class NewPrinterGUI(GtkGUI):
                     Gtk.main_iteration ()
                 if not line:
                     time.sleep (0.1)
-            if self.p.returncode != 0:
+            if self.p.returncode != 0 and not done:
                 ret = False
         except:
             # Problem executing command.
@@ -1035,6 +1036,7 @@ class NewPrinterGUI(GtkGUI):
 
     def nextNPTab(self, step=1):
         page_nr = self.ntbkNewPrinter.get_current_page()
+        debugprint ("Next clicked on page %d" % page_nr)
 
         if self.dialog_mode == "class":
             order = [0, 4, 5]
@@ -1053,19 +1055,18 @@ class NewPrinterGUI(GtkGUI):
                         uri = SMBURI (uri=uri[6:]).sanitize_uri ()
 
                         # Does the backend need to be installed?
-                        if ((self._host == 'localhost' or
+                        if (self.nextnptab_rerun == False and
+                            not self.searchedfordriverpackages and
+
+                            (self._host == 'localhost' or
                              self._host[0] == '/') and
                             not os.access ("/usr/lib/cups/backend/smb", os.F_OK)):
-                            p = subprocess.Popen (["gpk-install-package-name",
-                                                   "samba-client"],
-                                                  close_fds=True,
-                                                  stdin=file("/dev/null"),
-                                                  stdout=file("/dev/null"),
-                                                  stderr=file("/dev/null"))
-                            while p.poll () == None:
-                                while Gtk.events_pending ():
-                                    Gtk.main_iteration ()
-                                    time.sleep (0.1)
+                            debugprint ("No smb backend so attempting install")
+                            try:
+                                pk = installpackage.PackageKit ()
+                                pk.InstallPackageName (0, 0, "samba-client")
+                            except:
+                                nonfatalException ()
 
                 if page_nr == 1 or page_nr == 2:
                     self.auto_make, self.auto_model = "", ""
@@ -1102,7 +1103,7 @@ class NewPrinterGUI(GtkGUI):
                         else:
                             port = 631
                         try:
-                            conn = httplib.HTTPConnection(resg[0], port)
+                            conn = http.client.HTTPConnection(resg[0], port)
                             conn.request("GET", "/printers/%s.ppd" % resg[2])
                             resp = conn.getresponse()
                             if resp.status == 200:
@@ -1144,7 +1145,7 @@ class NewPrinterGUI(GtkGUI):
                     treeview = self.tvNPDownloadableDrivers
                     model, iter = treeview.get_selection ().get_selected ()
                     driver = model.get_value (iter, 1)
-                    if driver != None and driver.has_key ('packages'):
+                    if driver != None and 'packages' in driver:
                         # Find the package name, repository, and fingerprint
                         # and install the package
                         if self.installdriverpackage (driver) and \
@@ -1186,9 +1187,13 @@ class NewPrinterGUI(GtkGUI):
                 self.nextnptab_rerun = False
 
                 if page_nr == 1 or page_nr == 2:
-                    if (hasattr (self.device, 'hp_scannable') and
+                    if (self.nextnptab_rerun == False and
+                        hasattr (self.device, 'hp_scannable') and
                         self.device.hp_scannable and
-                        not os.access ("/etc/sane.d/dll.d/hpaio", os.R_OK)):
+                        not os.access ("/etc/sane.d/dll.d/hpaio", os.R_OK) and
+                        not os.access ("/etc/sane.d/dll.d/hplip", os.R_OK)):
+                        debugprint ("No HPLIP sane backend so "
+                                    "attempting install")
                         try:
                             pk = installpackage.PackageKit ()
                             pk.InstallPackageName (0, 0, "libsane-hpaio")
@@ -1237,7 +1242,7 @@ class NewPrinterGUI(GtkGUI):
                                                      self.device.make_and_model)
                         debugprint ("Suitable PPDs found: %s" % repr(fit))
                         ppdnamelist = self.ppds.\
-                            orderPPDNamesByPreference (fit.keys (),
+                            orderPPDNamesByPreference (list(fit.keys ()),
                                                        self.installed_driver_files,
                                                        devid=id_dict, fit=fit)
                         debugprint ("PPDs in priority order: %s" % repr(ppdnamelist))
@@ -1259,7 +1264,7 @@ class NewPrinterGUI(GtkGUI):
 
                             # Search for ppdname with that make-and-model
                             ppds = self.ppds.getInfoFromModel (make, model)
-                            for ppd, info in ppds.iteritems ():
+                            for ppd, info in ppds.items ():
                                 if (_singleton (info.
                                                 get ("ppd-make-and-model")) ==
                                     value):
@@ -1319,65 +1324,43 @@ class NewPrinterGUI(GtkGUI):
                                 debugprint ("nextNPTab: No exact driver match, querying OpenPrinting")
                                 debugprint ('nextNPTab: Searching for "%s"' % devid)
                                 self.searchedfordriverpackages = True
-                                self.drivers_lock.acquire ()
-                                self.openprinting_query_handle = \
-                                    self.openprinting.searchPrinters (devid,
-                                                                      self.openprinting_printers_found)
 
-                                # Wait for the search to finish, so we can react
-                                # on the result
-                                if self.drivers_lock.locked ():
-                                    # Still searching for drivers.
-                                    self._searchdialog_canceled = False
-                                    fmt = _("Searching")
-                                    self._searchdialog = Gtk.MessageDialog (parent=self.NewPrinterWindow,
-                                                                            flags=Gtk.DialogFlags.MODAL |
-                                                                            Gtk.DialogFlags.DESTROY_WITH_PARENT,
-                                                                            type=Gtk.MessageType.INFO,
-                                                                            buttons=Gtk.ButtonsType.CANCEL,
-                                                                            message_format=fmt)
+                                self._searchdialog_canceled = False
+                                fmt = _("Searching")
+                                self._searchdialog = Gtk.MessageDialog (
+                                    parent=self.NewPrinterWindow,
+                                    flags=Gtk.DialogFlags.MODAL |
+                                    Gtk.DialogFlags.DESTROY_WITH_PARENT,
+                                    type=Gtk.MessageType.INFO,
+                                    buttons=Gtk.ButtonsType.CANCEL,
+                                    message_format=fmt)
 
-                                    self._searchdialog.format_secondary_text (_("Searching for drivers"))
+                                self._searchdialog.format_secondary_text (
+                                    _("Searching for drivers"))
 
-                                    self._searchdialog.connect ("response", self._searchdialog_response)
-                                    self._searchdialog.show_all ()
+                                self.opreq = OpenPrintingRequest ()
+                                self._searchdialog.connect (
+                                    "response", self._searchdialog_response)
+                                self._searchdialog.show_all ()
 
-                                    # Keep the UI refreshed while we wait for
-                                    # the drivers query to complete.
-                                    while self.drivers_lock.locked ():
-                                        while Gtk.events_pending ():
-                                            Gtk.main_iteration ()
-                                        time.sleep (0.1)
-
-                                    self._searchdialog.hide ()
-                                    self._searchdialog.destroy ()
-                                    self._searchdialog = None
-                                    while Gtk.events_pending ():
-                                        Gtk.main_iteration ()
-
-                                if self._searchdialog_canceled:
-                                    # Cancel clicked
-                                    self._searchdialog_canceled = False
-                                    self.installed_driver_files = []
-                                    self.searchedfordriverpackages = False
-                                    self.founddownloadabledrivers = False
-                                    self.founddownloadableppd = False
-                                    self.downloadable_printers = []
-                                    ready (self.NewPrinterWindow)
-                                    return
-
-                                # Check whether we have found something
-                                if len (self.downloadable_printers) > 0:
-                                    self.founddownloadabledrivers = True
-                                    if step == 0:
-                                        page_nr = 7;
-
+                                self.opreq_handlers = []
+                                self.opreq_handlers.append (
+                                    self.opreq.connect (
+                                        'finished',
+                                        self.opreq_id_search_done))
+                                self.opreq_handlers.append (
+                                    self.opreq.connect (
+                                        'error',
+                                        self.opreq_id_search_error))
+                                self.opreq.searchPrinters (devid)
+                                return
                 except:
                     nonfatalException ()
 
-                if (self.dialog_mode != "download_driver" and \
-                    not self.remotecupsqueue) or \
-                    self.dialog_mode == "ppd":
+                if (self.dialog_mode == "ppd" or
+                    (self.dialog_mode != "download_driver" and
+                     not self.remotecupsqueue and
+                     page_nr != 7)):
                     self.fillMakeList()
             elif page_nr == 3: # Model has been selected
                 if not self.device.id:
@@ -1482,28 +1465,9 @@ class NewPrinterGUI(GtkGUI):
         if next_page_nr == 6 and not self.installable_options and step<0:
             next_page_nr = order[order.index(next_page_nr)-1]
 
+        debugprint ("Will advance to page %d" % next_page_nr)
         if step >= 0 and next_page_nr == 7: # About to show downloadable drivers
-            if self.drivers_lock.locked ():
-                # Still searching for drivers.
-                self.lblWait.set_markup ('<span weight="bold" size="larger">' +
-                                         _('Searching') + '</span>\n\n' +
-                                         _('Searching for drivers'))
-                self.WaitWindow.set_transient_for (self.NewPrinterWindow)
-                self.WaitWindow.show ()
-                busy (self.WaitWindow)
-                busy (self.NewPrinterWindow)
-
-                # Keep the UI refreshed while we wait for the drivers
-                # query to complete.
-                while self.drivers_lock.locked ():
-                    while Gtk.events_pending ():
-                        Gtk.main_iteration ()
-                    time.sleep (0.1)
-
-                ready (self.NewPrinterWindow)
-                self.WaitWindow.hide ()
-
-            self.fillDownloadableDrivers()
+            self.fillDownloadableDrivers ()
 
         if step >= 0 and next_page_nr == 0: # About to choose a name.
             # Suggest an appropriate name.
@@ -1538,7 +1502,7 @@ class NewPrinterGUI(GtkGUI):
             name = self.makeNameUnique (name)
             self.entNPName.set_text (name)
 
-            if self.entNPDescription.get_text () == '' and descr:
+            if descr:
                 self.entNPDescription.set_text (descr)
 
         self.ntbkNewPrinter.set_current_page(next_page_nr)
@@ -1546,13 +1510,64 @@ class NewPrinterGUI(GtkGUI):
         self.setNPButtons()
 
     def _searchdialog_response (self, dialog, response):
-        if self.drivers_lock.locked ():
-            self.openprinting.cancelOperation (self.openprinting_query_handle)
-            self.openprinting_query_handle = None
-            self.btnNPDownloadableDriverSearch.set_sensitive (True)
-            self.btnNPDownloadableDriverSearch_label.set_text (_("Search"))
-            self.drivers_lock.release ()
-        self._searchdialog_canceled = True
+        # Cancel clicked while performing openprinting search
+
+        self.btnNPDownloadableDriverSearch.set_sensitive (True)
+        self.btnNPDownloadableDriverSearch_label.set_text (_("Search"))
+
+        self.installed_driver_files = []
+        self.searchedfordriverpackages = True
+        self.founddownloadabledrivers = False
+        self.founddownloadableppd = False
+
+        ready (self.NewPrinterWindow)
+
+        # Cancel the openprinting request.
+        GLib.idle_add (self.opreq.cancel)
+
+    def opreq_id_search_done (self, opreq, printers, drivers):
+        for handler in self.opreq_handlers:
+            opreq.disconnect (handler)
+
+        Gdk.threads_enter ()
+
+        try:
+            self.opreq_handlers = None
+            self.opreq = None
+            self._searchdialog.hide ()
+            self._searchdialog.destroy ()
+            self._searchdialog = None
+
+            # Check whether we have found something
+            if len (printers) < 1:
+                # No.
+                ready (self.NewPrinterWindow)
+
+                self.founddownloadabledrivers = False
+                if self.dialog_mode == "download_driver":
+                    self.on_NPCancel(None)
+                else:
+                    self.nextNPTab ()
+            else:
+                self.downloadable_printers = printers
+                self.downloadable_drivers = drivers
+                self.founddownloadabledrivers = True
+
+                try:
+                    self.NewPrinterWindow.show()
+                    self.setNPButtons()
+                    self.fillDownloadableDrivers()
+                except:
+                    nonfatalException ()
+
+                self.nextNPTab ()
+        finally:
+            Gdk.threads_leave ()
+
+    def opreq_id_search_error (self, opreq, status, err):
+        debugprint ("OpenPrinting request failed (%d): %s" % (status,
+                                                              repr (err)))
+        self.opreq_id_search_done (opreq, list(), dict())
 
     def setNPButtons(self):
         nr = self.ntbkNewPrinter.get_current_page()
@@ -1687,7 +1702,8 @@ class NewPrinterGUI(GtkGUI):
                 model, iter = treeview.get_selection ().get_selected ()
                 if not iter:
                     path, column = treeview.get_cursor()
-                    iter = model.get_iter (path)
+                    if path:
+                        iter = model.get_iter (path)
                     #driver = model.get_value (iter, 1)
                 accepted = (iter != None)
 
@@ -1695,7 +1711,7 @@ class NewPrinterGUI(GtkGUI):
 
     def on_entNPName_changed(self, widget):
         # restrict
-        text = unicode (widget.get_text(), 'utf-8')
+        text = widget.get_text()
         new_text = text
         new_text = new_text.replace("/", "")
         new_text = new_text.replace("#", "")
@@ -1753,7 +1769,6 @@ class NewPrinterGUI(GtkGUI):
         self.add_devices (result, current_uri)
 
     def network_devices_reply (self, conn, result, current_uri):
-        self.dec_spinner_task ()
         self.fetchDevices_conn._end_operation ()
         self.fetchDevices_conn.destroy ()
         self.fetchDevices_conn = None
@@ -1761,7 +1776,7 @@ class NewPrinterGUI(GtkGUI):
         # Add the network devices to the list.
         no_more = True
         need_resolving = {}
-        for uri, device in result.iteritems ():
+        for uri, device in result.items ():
             if uri.startswith ("dnssd://"):
                 need_resolving[uri] = device
                 no_more = False
@@ -1773,12 +1788,16 @@ class NewPrinterGUI(GtkGUI):
 
         if len (need_resolving) > 0:
             resolver = dnssdresolve.DNSSDHostNamesResolver (need_resolving)
+            self.inc_spinner_task ()
             resolver.resolve (reply_handler=lambda devices:
                                   self.dnssd_resolve_reply (current_uri,
                                                             devices))
 
+        self.dec_spinner_task ()
+
     def dnssd_resolve_reply (self, current_uri, devices):
         self.add_devices (devices, current_uri, no_more=True)
+        self.dec_spinner_task ()
 
     def get_hpfax_device_id(self, faxuri):
         new_environ = os.environ.copy()
@@ -1788,7 +1807,7 @@ class NewPrinterGUI(GtkGUI):
         debugprint (faxuri + ": " + repr(args))
         try:
             p = subprocess.Popen (args, env=new_environ, close_fds=True,
-                                  stdin=file("/dev/null"),
+                                  stdin=subprocess.DEVNULL,
                                   stdout=subprocess.PIPE,
                                   stderr=subprocess.PIPE)
             (stdout, stderr) = p.communicate ()
@@ -1797,13 +1816,16 @@ class NewPrinterGUI(GtkGUI):
             return None
 
         faxtype = -1
-        for line in stdout.split ("\n"):
+        for line in stdout.decode ().split ("\n"):
             if line.find ("fax-type") == -1:
                 continue
             res = re.search ("(\d+)", line)
             if res:
                 resg = res.groups()
-                faxtype = resg[0]
+                try:
+                    faxtype = int(resg[0])
+                except:
+                    faxtype = -1
             if faxtype >= 0:
                 break
         if faxtype <= 0:
@@ -1818,7 +1840,7 @@ class NewPrinterGUI(GtkGUI):
         debugprint (uri + ": " + repr(args))
         try:
             p = subprocess.Popen (args, close_fds=True,
-                                  stdin=file("/dev/null"),
+                                  stdin=subprocess.DEVNULL,
                                   stdout=subprocess.PIPE,
                                   stderr=subprocess.PIPE)
             (stdout, stderr) = p.communicate ()
@@ -1828,7 +1850,7 @@ class NewPrinterGUI(GtkGUI):
             # Problem executing command.
             return None
 
-        scan_type = stdout.strip ()
+        scan_type = stdout.decode ().strip ()
         fields = scan_type.split ("=", 1)
         if len (fields) < 2:
             return None
@@ -1848,7 +1870,7 @@ class NewPrinterGUI(GtkGUI):
         uri = None
         try:
             p = subprocess.Popen (args, close_fds=True,
-                                  stdin=file("/dev/null"),
+                                  stdin=subprocess.DEVNULL,
                                   stdout=subprocess.PIPE,
                                   stderr=subprocess.PIPE)
             (stdout, stderr) = p.communicate ()
@@ -1858,7 +1880,7 @@ class NewPrinterGUI(GtkGUI):
             # Problem executing command.
             return None
 
-        uri = stdout.strip ()
+        uri = stdout.decode ().strip ()
         return uri
 
     def getNetworkPrinterMakeModel(self, host=None, device=None):
@@ -1888,7 +1910,7 @@ class NewPrinterGUI(GtkGUI):
             stdout = None
             try:
                 p = subprocess.Popen (args, close_fds=True,
-                                      stdin=file("/dev/null"),
+                                      stdin=subprocess.DEVNULL,
                                       stdout=subprocess.PIPE,
                                       stderr=subprocess.PIPE)
                 (stdout, stderr) = p.communicate ()
@@ -1899,9 +1921,7 @@ class NewPrinterGUI(GtkGUI):
                 pass
 
             if stdout != None:
-                line = stdout.strip ()
-                if isinstance(line, bytes):
-                    line = line.decode('utf-8', 'replace')
+                line = stdout.decode ().strip ()
                 words = probe_printer.wordsep (line)
                 n = len (words)
                 if n < 4:
@@ -1971,30 +1991,10 @@ class NewPrinterGUI(GtkGUI):
         column = self.tvNPDevices.get_column (0)
         self.tvNPDevices.set_cursor (Gtk.TreePath(), column, False)
 
-        allowed = True
         self.current_uri = current_uri
-        try:
-            if (self._host == 'localhost' or
-                self._host[0] == '/'):
-                self.firewall = firewallsettings.FirewallD ()
-                if not self.firewall.running:
-                    self.firewall = firewallsettings.SystemConfigFirewall ()
-
-                debugprint ("Examining firewall")
-                self.firewall.read (reply_handler=self.on_firewall_read,
-                                    error_handler=lambda x:
-                                    self.start_fetching_devices())
-                allowed = False
-            else:
-                # This is a remote server.  Nothing we can do about
-                # the firewall there.
-                allowed = True
-        except (dbus.DBusException, Exception):
-            nonfatalException ()
-
-        if allowed:
-            debugprint ("Fetching devices (no firewall service")
-            self.start_fetching_devices ()
+        self.firewall = None
+        debugprint ("Fetching devices")
+        self.start_fetching_devices ()
 
     def on_firewall_read (self, data):
         f = self.firewall
@@ -2018,12 +2018,11 @@ class NewPrinterGUI(GtkGUI):
             if not allowed:
                 debugprint ("Asking for permission to adjust firewall:\n%s" %
                             secondary_text)
-                dialog = Gtk.MessageDialog (self.NewPrinterWindow,
-                                            Gtk.DialogFlags.MODAL |
-                                            Gtk.DialogFlags.DESTROY_WITH_PARENT,
-                                            Gtk.MessageType.QUESTION,
-                                            Gtk.ButtonsType.NONE,
-                                            _("Adjust Firewall"))
+                dialog = Gtk.MessageDialog (parent=self.NewPrinterWindow,
+                                            modal=True, destroy_with_parent=True,
+                                            message_type=Gtk.MessageType.QUESTION,
+                                            buttons=Gtk.ButtonsType.NONE,
+                                            text= _("Adjust Firewall"))
                 dialog.format_secondary_markup (secondary_text)
                 dialog.add_buttons (_("Do It Later"), Gtk.ResponseType.NO,
                                     _("Adjust Firewall"), Gtk.ResponseType.YES)
@@ -2033,8 +2032,7 @@ class NewPrinterGUI(GtkGUI):
             nonfatalException ()
 
         if allowed:
-            debugprint ("Firewall all OK; fetching devices")
-            self.start_fetching_devices ()
+            debugprint ("Firewall all OK, no changes needed")
 
     def adjust_firewall_response (self, dialog, response):
         dialog.destroy ()
@@ -2042,8 +2040,10 @@ class NewPrinterGUI(GtkGUI):
             self.firewall.add_service (firewallsettings.IPP_SERVER_SERVICE)
             self.firewall.write ()
 
-        debugprint ("Fetching devices after firewall dialog response")
-        self.start_fetching_devices ()
+        debugprint ("Fetching network devices after firewall dialog response")
+        self.fetchDevices_conn = asyncconn.Connection ()
+        self.fetchDevices_conn._begin_operation (_("fetching device list"))
+        self.fetchDevices (network=True)
 
     def start_fetching_devices (self):
         self.fetchDevices_conn = asyncconn.Connection ()
@@ -2053,9 +2053,9 @@ class NewPrinterGUI(GtkGUI):
 
     def add_devices (self, devices, current_uri, no_more=False):
         if current_uri:
-            if devices.has_key (current_uri):
+            if current_uri in devices:
                 current = devices.pop(current_uri)
-            elif devices.has_key (current_uri.replace (":9100", "")):
+            elif current_uri.replace (":9100", "") in devices:
                 current_uri = current_uri.replace (":9100", "")
                 current = devices.pop(current_uri)
             elif no_more:
@@ -2064,7 +2064,7 @@ class NewPrinterGUI(GtkGUI):
             else:
                 current_uri = None
 
-        devices = devices.values()
+        devices = list(devices.values())
 
         for device in devices:
             if device.type == "socket":
@@ -2079,7 +2079,7 @@ class NewPrinterGUI(GtkGUI):
                 device.uri = "hpfax"
             return device
 
-        devices = map (replace_generic, devices)
+        devices = list(map (replace_generic, devices))
 
         # Mark duplicate URIs for deletion
         for i in range (len (devices) - 1):
@@ -2098,10 +2098,9 @@ class NewPrinterGUI(GtkGUI):
                         device1.uri = "delete"
                     else:
                         device2.uri = "delete"
-        devices = filter(lambda x: x.uri not in ("hp", "hpfax",
+        devices = [x for x in devices if x.uri not in ("hp", "hpfax",
                                                  "hal", "beh",
-                                                 "scsi", "http", "delete"),
-                         devices)
+                                                 "scsi", "http", "delete")]
         newdevices = []
         for device in devices:
             physicaldevice = PhysicalDevice (device)
@@ -2399,8 +2398,14 @@ class NewPrinterGUI(GtkGUI):
             del self.expanding_row
             ready (self.SMBBrowseDialog)
 
+    def set_btnSMBVerify_sensitivity (self, on):
+        self.btnSMBVerify.set_sensitive (PYSMB_AVAILABLE and on)
+        if not PYSMB_AVAILABLE or not on:
+            self.btnSMBVerify.set_tooltip_text (_("Verification requires the "
+                                                  "%s module") % "pysmbc")
+
     def on_entSMBURI_changed (self, ent):
-        allowed_chars = string.ascii_letters+string.digits+'_-./:@%'
+        allowed_chars = string.ascii_letters+string.digits+'_-./:%[]@'
         self.entry_changed(ent, allowed_chars)
         uri = ent.get_text ()
         (group, host, share, user, password) = SMBURI (uri=uri).separate ()
@@ -2415,7 +2420,7 @@ class NewPrinterGUI(GtkGUI):
         elif self.entSMBUsername.get_text () == '':
             self.rbtnSMBAuthPrompt.set_active(True)
 
-        self.btnSMBVerify.set_sensitive(bool(uri))
+        self.set_btnSMBVerify_sensitivity (bool(uri))
         self.setNPButtons ()
 
     def on_tvSMBBrowser_cursor_changed(self, widget):
@@ -2444,12 +2449,11 @@ class NewPrinterGUI(GtkGUI):
             allowed = f.check_samba_client_allowed ()
             secondary_text = TEXT_adjust_firewall + "\n\n"
             if not allowed:
-                dialog = Gtk.MessageDialog (self.NewPrinterWindow,
-                                            Gtk.DialogFlags.MODAL |
-                                            Gtk.DialogFlags.DESTROY_WITH_PARENT,
-                                            Gtk.MessageType.QUESTION,
-                                            Gtk.ButtonsType.NONE,
-                                            _("Adjust Firewall"))
+                dialog = Gtk.MessageDialog (parent=self.NewPrinterWindow,
+                                            modal=True, destroy_with_parent=True,
+                                            message_type=Gtk.MessageType.QUESTION,
+                                            buttons=Gtk.ButtonsType.NONE,
+                                            text=_("Adjust Firewall"))
                 secondary_text += ("- " +
                                    _("Allow all incoming SMB/CIFS "
                                      "browse packets"))
@@ -2538,7 +2542,7 @@ class NewPrinterGUI(GtkGUI):
                     pass
 
                 f = ctx.open ("smb://%s/%s" % (host, share),
-                              os.O_RDWR, 0777)
+                              os.O_RDWR, 0o777)
                 accessible = True
             else:
                 # May need to prompt.
@@ -2551,7 +2555,7 @@ class NewPrinterGUI(GtkGUI):
                 while smbc_auth.perform_authentication () > 0:
                     try:
                         f = ctx.open ("smb://%s/%s" % (host, share),
-                                      os.O_RDWR, 0777)
+                                      os.O_RDWR, 0o777)
                         accessible = True
                     except Exception as e:
                         smbc_auth.failed (e)
@@ -2581,11 +2585,7 @@ class NewPrinterGUI(GtkGUI):
 
     def entry_changed(self, entry, allowed_chars):
         "Remove all chars from entry's text that are not in allowed_chars."
-        try:
-            allowed_chars = unicode (allowed_chars, 'utf-8')
-        except UnicodeDecodeError:
-            allowed_chars = unicode (allowed_chars)
-        origtext = unicode (entry.get_text(), 'utf-8')
+        origtext = entry.get_text()
         new_text = origtext
         for char in origtext:
             if char not in allowed_chars:
@@ -2595,12 +2595,12 @@ class NewPrinterGUI(GtkGUI):
             entry.set_text(new_text)
 
     def on_entNPTDevice_changed(self, ent):
-        allowed_chars = string.ascii_letters+string.digits+'_-./:%()@?=&'
+        allowed_chars = string.ascii_letters+string.digits+'_-./:%[]()@?=&'
         self.entry_changed(ent, allowed_chars)
         self.setNPButtons()
 
     def on_entNPTJetDirectHostname_changed(self, ent):
-        allowed_chars = string.ascii_letters+string.digits+'_-.'
+        allowed_chars = string.ascii_letters+string.digits+'_-.:%[]'
         self.entry_changed(ent, allowed_chars)
         self.setNPButtons()
 
@@ -2633,6 +2633,41 @@ class NewPrinterGUI(GtkGUI):
         else:
             view.expand_row (path, False)
 
+    def device_row_expanded (self, view, iter, path):
+        model = view.get_model ()
+        if not model or not iter:
+            return
+
+        network_path = model.get_path (self.devices_network_iter)
+        if path == network_path and self.firewall == None:
+            # Still discovering devices?
+            if self.spinner_count > 0:
+                debugprint ("Skipping firewall adjustment: "
+                            "discovery in progress")
+                return
+
+            # Any network printers found?
+            for physdev in self.devices:
+                for device in physdev.get_devices ():
+                    if (device.device_class == 'network' and
+                        device.uri != device.type):
+                        debugprint ("Skipping firewall adjustment: "
+                                    "network printers found")
+                        return
+
+            # If not, ask about the firewall
+            try:
+                if (self._host == 'localhost' or
+                    self._host[0] == '/'):
+                    self.firewall = firewallsettings.FirewallD ()
+                    if not self.firewall.running:
+                        self.firewall = firewallsettings.SystemConfigFirewall ()
+
+                    debugprint ("Examining firewall")
+                    self.firewall.read (reply_handler=self.on_firewall_read)
+            except (dbus.DBusException, Exception):
+                nonfatalException ()
+
     def device_select_function (self, selection, model, path, *UNUSED):
         """
         Allow this path to be selected as long as there
@@ -2664,6 +2699,7 @@ class NewPrinterGUI(GtkGUI):
         physicaldevice = model.get_value (iter, 1)
         if physicaldevice == None:
             return
+        show_uris = True
         for device in physicaldevice.get_devices ():
             if device.type == "parallel":
                 device.menuentry = _("Parallel Port")
@@ -2683,9 +2719,9 @@ class NewPrinterGUI(GtkGUI):
             elif device.type == "socket":
                 device.menuentry = _("AppSocket/HP JetDirect")
             elif device.type == "lpd":
-                (scheme, rest) = urllib.splittype (device.uri)
-                (hostport, rest) = urllib.splithost (rest)
-                (queue, rest) = urllib.splitquery (rest)
+                (scheme, rest) = urllib.parse.splittype (device.uri)
+                (hostport, rest) = urllib.parse.splithost (rest)
+                (queue, rest) = urllib.parse.splitquery (rest)
                 if queue != '':
                     if queue[0] == '/':
                         queue = queue[1:]
@@ -2698,9 +2734,9 @@ class NewPrinterGUI(GtkGUI):
             elif device.type == "smb":
                 device.menuentry = _("Windows Printer via SAMBA")
             elif device.type == "ipp":
-                (scheme, rest) = urllib.splittype (device.uri)
-                (hostport, rest) = urllib.splithost (rest)
-                (queue, rest) = urllib.splitquery (rest)
+                (scheme, rest) = urllib.parse.splittype (device.uri)
+                (hostport, rest) = urllib.parse.splithost (rest)
+                (queue, rest) = urllib.parse.splitquery (rest)
                 if queue != '':
                     if queue[0] == '/':
                         queue = queue[1:]
@@ -2713,15 +2749,15 @@ class NewPrinterGUI(GtkGUI):
             elif device.type == "http" or device.type == "https":
                 device.menuentry = _("HTTP")
             elif device.type == "dnssd" or device.type == "mdns":
-                (scheme, rest) = urllib.splittype (device.uri)
-                (name, rest) = urllib.splithost (rest)
-                (cupsqueue, rest) = urllib.splitquery (rest)
+                (scheme, rest) = urllib.parse.splittype (device.uri)
+                (name, rest) = urllib.parse.splithost (rest)
+                (cupsqueue, rest) = urllib.parse.splitquery (rest)
                 if cupsqueue != '' and cupsqueue[0] == '/':
                     cupsqueue = cupsqueue[1:]
                 if cupsqueue == 'cups':
                     device.menuentry = _("Remote CUPS printer via DNS-SD")
                     if device.info != '':
-                         device.menuentry += " (%s)" % device.info
+                        device.menuentry += " (%s)" % device.info
                 else:
                     protocol = None
                     if name.find("._ipp") != -1:
@@ -2737,6 +2773,7 @@ class NewPrinterGUI(GtkGUI):
                         device.menuentry = \
                             _("Network printer via DNS-SD")
             else:
+                show_uris = False
                 device.menuentry = device.uri
 
         model = Gtk.ListStore (str,                    # URI description
@@ -2766,10 +2803,10 @@ class NewPrinterGUI(GtkGUI):
                 elif device.type in ["socket", "lpd", "ipp", "dnssd", "mdns"]:
                     # This is a network printer.
                     if host == None and device.type in ["socket", "lpd", "ipp"]:
-                        (scheme, rest) = urllib.splittype (device.uri)
-                        (hostport, rest) = urllib.splithost (rest)
+                        (scheme, rest) = urllib.parse.splittype (device.uri)
+                        (hostport, rest) = urllib.parse.splithost (rest)
                         if hostport != None:
-                            (host, port) = urllib.splitport (hostport)
+                            (host, port) = urllib.parse.splitport (hostport)
                     if host:
                         is_network = True
                         remotecups = ((device.uri.startswith('dnssd:') or \
@@ -2786,7 +2823,11 @@ class NewPrinterGUI(GtkGUI):
                         device_dict['device-id'] = device.id
                         device_dict['device-location'] = device.location
 
-            if not hp_drivable and is_network and not remotecups:
+            if not hp_drivable and is_network and not remotecups and \
+               (not device.make_and_model or \
+                device.make_and_model == "Unknown" or \
+                device.make_and_model.lower ().startswith ("hp") or \
+                device.make_and_model.lower ().startswith ("hewlett")):
                 if (hasattr (physicaldevice, "dnssd_hostname") and \
                     physicaldevice.dnssd_hostname):
                     hpliphost = physicaldevice.dnssd_hostname
@@ -2798,6 +2839,10 @@ class NewPrinterGUI(GtkGUI):
                     dev = cupshelpers.Device (hplipuri, **device_dict)
                     dev.menuentry = "HP Linux Imaging and Printing (HPLIP)"
                     physicaldevice.add_device (dev)
+
+                    # Can we scan using this device?
+                    if self.get_hplip_scan_type_for_uri (device.uri):
+                        hp_scannable = True
 
                     # Now check to see if we can also send faxes using
                     # this device.
@@ -2812,7 +2857,8 @@ class NewPrinterGUI(GtkGUI):
                             "HP Linux Imaging and Printing (HPLIP)"
                         physicaldevice.add_device (faxdev)
 
-            physicaldevice.hp_scannable = True
+            if hp_scannable:
+                physicaldevice.hp_scannable = True
             physicaldevice.checked_hplip = True
 
         device.hp_scannable = getattr (physicaldevice, 'hp_scannable', None)
@@ -2824,7 +2870,7 @@ class NewPrinterGUI(GtkGUI):
             n += 1
         column = self.tvNPDeviceURIs.get_column (0)
         self.tvNPDeviceURIs.set_cursor (Gtk.TreePath(), column, False)
-        if n > 1:
+        if show_uris:
             self.expNPDeviceURIs.show_all ()
         else:
             self.expNPDeviceURIs.hide ()
@@ -2864,9 +2910,9 @@ class NewPrinterGUI(GtkGUI):
                 text = _("Local printer detected by the "
                          "Hardware Abstraction Layer (HAL).")
             elif device.type == "dnssd" or device.type == "mdns":
-                (scheme, rest) = urllib.splittype (device.uri)
-                (name, rest) = urllib.splithost (rest)
-                (cupsqueue, rest) = urllib.splitquery (rest)
+                (scheme, rest) = urllib.parse.splittype (device.uri)
+                (name, rest) = urllib.parse.splithost (rest)
+                (cupsqueue, rest) = urllib.parse.splitquery (rest)
                 if cupsqueue != '' and cupsqueue[0] == '/':
                     cupsqueue = cupsqueue[1:]
                 if cupsqueue == 'cups':
@@ -2888,12 +2934,12 @@ class NewPrinterGUI(GtkGUI):
 
             self.lblNPDeviceDescription.set_text (text)
         elif device.type=="socket":
-            (scheme, rest) = urllib.splittype (device.uri)
+            (scheme, rest) = urllib.parse.splittype (device.uri)
             host = ''
             port = 9100
             if scheme == "socket":
-                (hostport, rest) = urllib.splithost (rest)
-                (host, port) = urllib.splitnport (hostport, defport=port)
+                (hostport, rest) = urllib.parse.splithost (rest)
+                (host, port) = urllib.parse.splitnport (hostport, defport=port)
                 debugprint ("socket: host is %s, port is %s" % (host,
                                                                 repr (port)))
                 if device.location != '':
@@ -2916,13 +2962,13 @@ class NewPrinterGUI(GtkGUI):
                     (self.cmbNPTSerialBits, "bits"),
                     (self.cmbNPTSerialParity, "parity"),
                     (self.cmbNPTSerialFlow, "flow")):
-                    if option_dict.has_key(name): # option given in URI?
+                    if name in option_dict: # option given in URI?
                         model = widget.get_model()
                         iter = model.get_iter_first()
                         nr = 0
                         while iter:
                             value = model.get(iter,1)[0]
-                            if unicode (value) == unicode (option_dict[name]):
+                            if str (value) == str (option_dict[name]):
                                 break
                             iter = model.iter_next(iter)
                             nr += 1
@@ -2959,7 +3005,7 @@ class NewPrinterGUI(GtkGUI):
             self.entSMBUsername.set_text ('')
             self.entSMBPassword.set_text ('')
             self.entSMBURI.set_text(device.uri[6:])
-            self.btnSMBVerify.set_sensitive(True)
+            self.set_btnSMBVerify_sensitivity (True)
         else:
             if device.uri:
                 self.entNPTDevice.set_text(device.uri)
@@ -3038,7 +3084,7 @@ class NewPrinterGUI(GtkGUI):
             self.entNPTDevice.set_position (-1)
             return
 
-        allowed_chars = string.ascii_letters+string.digits+'_-.'
+        allowed_chars = string.ascii_letters+string.digits+'_-.:%[]'
         self.entry_changed(ent, allowed_chars)
         s = ent.get_text ()
         self.btnNetworkFind.set_sensitive (len (s) > 0)
@@ -3183,10 +3229,15 @@ class NewPrinterGUI(GtkGUI):
             page = 2
         self.ntbkPPDSource.set_current_page (page)
 
-        if not rbtn3 and self.openprinting_query_handle:
+        if not rbtn3 and self.opreq:
             # Need to cancel a search in progress.
-            self.openprinting.cancelOperation (self.openprinting_query_handle)
-            self.openprinting_query_handle = None
+            for handler in self.opreq_handlers:
+                self.opreq.disconnect (handler)
+
+            self.opreq_handlers = None
+            self.opreq.cancel ()
+            self.opreq = None
+
             self.btnNPDownloadableDriverSearch.set_sensitive (True)
             self.btnNPDownloadableDriverSearch_label.set_text (_("Search"))
             # Clear printer list.
@@ -3199,7 +3250,7 @@ class NewPrinterGUI(GtkGUI):
                        self.cmbNPDownloadableDriverFoundPrinters]:
             widget.set_sensitive(rbtn3)
         self.btnNPDownloadableDriverSearch.\
-            set_sensitive (rbtn3 and (self.openprinting_query_handle == None))
+            set_sensitive (rbtn3 and (self.opreq == None))
 
         self.setNPButtons()
 
@@ -3208,116 +3259,44 @@ class NewPrinterGUI(GtkGUI):
 
     def on_btnNPDownloadableDriverSearch_clicked(self, widget):
         self.searchedfordriverpackages = True
-        if self.openprinting_query_handle != None:
-            self.openprinting.cancelOperation (self.openprinting_query_handle)
-            self.openprinting_query_handle = None
+        if self.opreq != None:
+            for handler in self.opreq_handlers:
+                self.opreq.disconnect (handler)
+
+            self.opreq_handlers = None
+            self.opreq.cancel ()
+            self.opreq = None
 
         widget.set_sensitive (False)
         label = self.btnNPDownloadableDriverSearch_label
         label.set_text (_("Searching"))
         searchterm = self.entNPDownloadableDriverSearch.get_text ()
         debugprint ('Searching for "%s"' % repr (searchterm))
-        self.drivers_lock.acquire ()
-        self.openprinting_query_handle = \
-            self.openprinting.searchPrinters (searchterm,
-                                              self.openprinting_printers_found)
+        self.opreq = OpenPrintingRequest ()
+        self.opreq_handlers = []
+        self.opreq_handlers.append (
+            self.opreq.connect ('finished',
+                                self.opreq_user_search_done))
+        self.opreq_handlers.append (
+            self.opreq.connect ('error',
+                                self.opreq_user_search_error))
+        self.opreq.searchPrinters (searchterm)
         self.cmbNPDownloadableDriverFoundPrinters.set_sensitive (False)
 
-    def openprinting_printers_found (self, status, user_data, printers):
-        if status != 0:
-            # Should report error.
-            print "HTTP Status %d" % status
-            print printers
-            print traceback.extract_tb(printers[2], limit=None)
-            self.downloadable_printers = []
-            self.openprinting_drivers_found ()
-            return
+    def opreq_user_search_done (self, opreq, printers, drivers):
+        for handler in self.opreq_handlers:
+            opreq.disconnect (handler)
 
-        self.openprinting_query_handle = None
-        self.downloadable_printers_unchecked = map (lambda x:
-                                                        (x, printers[x]),
-                                                    printers)
-        self.downloadable_printers = []
-        self.downloadable_drivers = dict() # by printer id of dict
+        self.opreq_handlers = None
+        self.opreq = None
 
-        # Kick off a search for drivers for each model.
-        if not self.openprinting_query_next_printer ():
-            self.openprinting_drivers_found ()
+        self.founddownloadabledrivers = True
+        self.downloadable_printers = printers
+        self.downloadable_drivers = drivers
 
-    def openprinting_query_next_printer (self):
-        """
-        If there are more printers to query, kick off a query and
-        return True.
-
-        Otherwise return False.
-        """
-
-        try:
-            a = self.downloadable_printers_unchecked.pop ()
-            (printer_id, printer_name) = a
-        except IndexError:
-            debugprint ("All printer driver queries finished")
-            return False
-
-        if self.DOWNLOADABLE_ONLYFREE:
-            self.openprinting.onlyfree = 1
-        else:
-            self.openprinting.onlyfree = 0
-
-        extra_options = dict()
-        if self.DOWNLOADABLE_ONLYPPD:
-            extra_options['onlyppdfiles'] = '1'
-        else:
-            extra_options['onlydownload'] = '1'
-            extra_options['packagesystem'] = self.packagesystem
-
-        debugprint ("Querying drivers for %s" % printer_id)
-        self.openprinting_query_handle = \
-            self.openprinting.listDrivers (printer_id,
-                                           self.openprinting_printer_drivers_found,
-                                           user_data=(printer_id, printer_name),
-                                           extra_options=extra_options)
-
-        return True
-
-    def openprinting_printer_drivers_found (self, status, user_data, drivers):
-        self.openprinting_query_handle = None
-        if status != 0:
-            print "HTTP Status %d" % status
-            print drivers
-            print traceback.extract_tb(drivers[2], limit=None)
-            self.downloadable_printers = []
-            self.openprinting_drivers_found ()
-            return
-
-        if drivers:
-            debugprint (" - drivers found")
-            for driverkey in drivers.keys ():
-                driver = drivers[driverkey]
-                if ((not driver.has_key ('ppds') or
-                     len(driver['ppds']) <= 0) and
-                    (self.DOWNLOADABLE_ONLYPPD or
-                     (not self.installdriverpackage (driver,
-                                                     onlycheckpresence =
-                                                     True)))):
-                    # Driver entry without installable resources (Package or
-                    # PPD), remove it
-                    del drivers[driverkey]
-                    debugprint ("Removed invalid driver entry %s" %
-                                driverkey)
-            if len(drivers) > 0:
-                debugprint (" - drivers with installable resources found")
-                (printer_id, printer_name) = user_data
-                self.downloadable_drivers[printer_id] = drivers
-                self.downloadable_printers.append (user_data)
-
-        if not self.openprinting_query_next_printer ():
-            self.openprinting_drivers_found ()
-
-    def openprinting_drivers_found (self):
         button = self.btnNPDownloadableDriverSearch
         label = self.btnNPDownloadableDriverSearch_label
-        #Gdk.threads_enter ()
+        Gdk.threads_enter ()
         try:
             label.set_text (_("Search"))
             button.set_sensitive (True)
@@ -3336,7 +3315,7 @@ class NewPrinterGUI(GtkGUI):
             for printer_id, printer_name in self.downloadable_printers:
                 sorted_list.append ((printer_id, printer_name))
 
-            sorted_list.sort (lambda x, y: cups.modelSort (x[1], y[1]))
+            sorted_list.sort (key=functools.cmp_to_key(lambda x, y: cups.modelSort (x[1], y[1])))
             sought = self.entNPDownloadableDriverSearch.get_text ().lower ()
             select_index = 0
             for id, name in sorted_list:
@@ -3353,22 +3332,25 @@ class NewPrinterGUI(GtkGUI):
         except:
             nonfatalException()
 
-        #Gdk.threads_leave ()
+        Gdk.threads_leave ()
 
-        # Lock may have been released when printer list was changed,
-        # or we may have caught an exception before that.
-        if (self.drivers_lock.locked ()):
-            self.drivers_lock.release ()
+    def opreq_user_search_error (self, opreq, status, err):
+        debugprint ("OpenPrinting request failed (%d): %s" % (status,
+                                                              repr (err)))
+        self.opreq_user_search_done (opreq, list(), dict())
 
     def on_cmbNPDownloadableDriverFoundPrinters_changed(self, widget):
         self.setNPButtons ()
 
-        if self.openprinting_query_handle != None:
-            self.openprinting.cancelOperation (self.openprinting_query_handle)
-            self.openprinting_query_handle = None
+        if self.opreq != None:
+            for handler in self.opreq_handlers:
+                self.opreq.disconnect (handler)
+
+            self.opreq_handlers = None
+            self.opreq.cancel ()
+            self.opreq = None
             self.btnNPDownloadableDriverSearch.set_sensitive (True)
             self.btnNPDownloadableDriverSearch_label.set_text (_("Search"))
-            self.drivers_lock.release()
 
     def fillDownloadableDrivers(self):
         self.downloadable_driver_for_printer = None
@@ -3551,7 +3533,7 @@ class NewPrinterGUI(GtkGUI):
             # driver preference list.
             make_and_model = pmake + " " + pmodel
             ppds = self.ppds.getInfoFromModel(pmake, pmodel)
-            ppdnames = ppds.keys ()
+            ppdnames = list(ppds.keys ())
 
             files = self.installed_driver_files
             try:
@@ -3679,14 +3661,15 @@ class NewPrinterGUI(GtkGUI):
         model, iter = selection.get_selected ()
         if not iter:
             path, column = widget.get_cursor()
-            iter = model.get_iter (path)
+            if iter:
+                iter = model.get_iter (path)
+            else:
+                return
         driver = model.get_value (iter, 1)
         if driver == 0:
             self.ntbkNPDownloadableDriverProperties.set_current_page(0)
             self.setNPButtons()
             return
-        import pprint
-        pprint.pprint (driver)
         self.ntbkNPDownloadableDriverProperties.set_current_page(1)
         supplier = driver.get('supplier', _("OpenPrinting"))
         vendor = self.cbNPDownloadableDriverSupplierVendor
@@ -3716,7 +3699,7 @@ class NewPrinterGUI(GtkGUI):
             hs = self.__dict__.get ("hsDownloadableDriverPerf%s" % field)
             unknown = self.__dict__.get ("lblDownloadableDriverPerf%sUnknown"
                                          % field)
-            if functionality.has_key (key):
+            if key in functionality:
                 if hs:
                     try:
                         value = int (functionality[key])
@@ -3731,7 +3714,7 @@ class NewPrinterGUI(GtkGUI):
                 hs.hide ()
                 unknown.show_all ()
         supportcontacts = ""
-        if driver.has_key ('supportcontacts'):
+        if 'supportcontacts' in driver:
             for supportentry in driver['supportcontacts']:
                 if supportentry['name']:
                     supportcontact = " - " + supportentry['name']
@@ -3753,7 +3736,7 @@ class NewPrinterGUI(GtkGUI):
         if not supportcontacts:
             supportcontacts = _("No support contacts known")
         self.lblNPDownloadableDriverSupportContacts.set_text (supportcontacts)
-        if driver.has_key ('licensetext'):
+        if 'licensetext' in driver:
             self.frmNPDownloadableDriverLicenseTerms.show ()
             terms = driver.get('licensetext', _("Not specified."))
             self.tvNPDownloadableDriverLicense.get_buffer ().set_text (terms)
@@ -3771,7 +3754,7 @@ class NewPrinterGUI(GtkGUI):
             terms = driver.get('licensetext', _("Not specified."))
             self.tvNPDownloadableDriverLicense.get_buffer ().set_text (terms)
 
-        if driver.has_key('ppds') and len(driver["ppds"]) > 0:
+        if 'ppds' in driver and len(driver["ppds"]) > 0:
             self.founddownloadableppd = True
         else:
             self.founddownloadableppd = False
@@ -3794,19 +3777,19 @@ class NewPrinterGUI(GtkGUI):
                 treeview = self.tvNPDownloadableDrivers
                 model, iter = treeview.get_selection ().get_selected ()
                 driver = model.get_value (iter, 1)
-                if driver != None and driver.has_key ('ppds'):
+                if driver != 0 and 'ppds' in driver:
                     # Only need to download a PPD.
                     if (len(driver['ppds']) > 0):
                         file_to_download = driver['ppds'][0]
                         debugprint ("ppd file to download [" + file_to_download+ "]")
                         file_to_download = file_to_download.strip()
                         if (len(file_to_download) > 0):
-                            ppdurlobj = urllib.urlopen(file_to_download)
+                            ppdurlobj = urllib.request.urlopen(file_to_download)
                             ppdcontent = ppdurlobj.read()
                             ppdurlobj.close()
                             (tmpfd, ppdname) = tempfile.mkstemp()
                             debugprint(ppdname)
-                            ppdfile = os.fdopen(tmpfd, 'w')
+                            ppdfile = os.fdopen(tmpfd, 'wb')
                             ppdfile.write(ppdcontent)
                             ppdfile.close()
                             ppd = cups.PPD(ppdname)
@@ -3844,11 +3827,11 @@ class NewPrinterGUI(GtkGUI):
                     p = subprocess.Popen (['/usr/bin/cupstestppd',
                                            '-rvv', filename],
                                           close_fds=True,
-                                          stdin=file("/dev/null"),
+                                          stdin=subprocess.DEVNULL,
                                           stdout=subprocess.PIPE,
                                           stderr=subprocess.PIPE)
                     (stdout, stderr) = p.communicate ()
-                    err += stdout
+                    err += stdout.decode ()
                 except:
                     # Problem executing command.
                     raise
@@ -3862,7 +3845,7 @@ class NewPrinterGUI(GtkGUI):
 
         debugprint("ppd: " + repr(ppd))
 
-        if isinstance(ppd, str) or isinstance(ppd, unicode):
+        if isinstance(ppd, str):
             self.cups._begin_operation (_("fetching PPD"))
             try:
                 if ppd != "raw":
@@ -3903,8 +3886,7 @@ class NewPrinterGUI(GtkGUI):
             if group.name != "InstallableOptions":
                 continue
             self.installable_options = True
-
-            table = Gtk.Table(1, 3, False)
+            table = Gtk.Table(n_rows=1, n_columns=3, homogeneous=False)
             table.set_col_spacings(6)
             table.set_row_spacings(6)
             container.add(table)
@@ -3954,9 +3936,9 @@ class NewPrinterGUI(GtkGUI):
             self.dec_spinner_task ()
 
         if self.dialog_mode in ("class", "printer", "printer_with_uri"):
-            name = unicode (self.entNPName.get_text(), 'utf-8')
-            location = unicode (self.entNPLocation.get_text(), 'utf-8')
-            info = unicode (self.entNPDescription.get_text(), 'utf-8')
+            name = self.entNPName.get_text()
+            location = self.entNPLocation.get_text()
+            info = self.entNPDescription.get_text()
         else:
             name = self._name
 
@@ -3988,7 +3970,7 @@ class NewPrinterGUI(GtkGUI):
                 return
 
             # write Installable Options to ppd
-            for option in self.options.itervalues():
+            for option in self.options.values():
                 option.writeback()
 
             busy (self.NewPrinterWindow)
@@ -3996,13 +3978,17 @@ class NewPrinterGUI(GtkGUI):
                 Gtk.main_iteration ()
             self.cups._begin_operation (_("adding printer %s") % name)
             try:
-                if isinstance(ppd, str) or isinstance(ppd, unicode):
+                if isinstance(ppd, str):
                     self.cups.addPrinter(name, ppdname=ppd,
                          device=uri, info=info, location=location)
                 elif ppd is None: # raw queue
                     self.cups.addPrinter(name, device=uri,
                                          info=info, location=location)
                 else:
+                    # Note: LC_MESSAGES is used here to determine the
+                    # page size instead of LC_PAPER. This is not
+                    # really correct, but it's what CUPS does so to
+                    # avoid confusion we'll follow that method.
                     cupshelpers.setPPDPageSize(ppd, self.language[0])
                     self.cups.addPrinter(name, ppd=ppd, device=uri,
                                          info=info, location=location)
@@ -4053,7 +4039,7 @@ class NewPrinterGUI(GtkGUI):
             # set ppd on server and retrieve it
             # cups doesn't offer a way to just download a ppd ;(=
             raw = False
-            if isinstance(ppd, str) or isinstance(ppd, unicode):
+            if isinstance(ppd, str):
                 if self.rbtnChangePPDasIs.get_active():
                     # To use the PPD as-is we need to prevent CUPS copying
                     # the old options over.  Do this by setting it to a
@@ -4092,7 +4078,7 @@ class NewPrinterGUI(GtkGUI):
                     cupshelpers.setPPDPageSize(ppd, self.language[0])
 
                 # write Installable Options to ppd
-                for option in self.options.itervalues():
+                for option in self.options.values():
                     option.writeback()
 
                 try:
@@ -4155,7 +4141,6 @@ if __name__ == '__main__':
     import locale
     locale.setlocale (locale.LC_ALL, "")
     ppdippstr.init ()
-    GObject.threads_init ()
     set_debugging (True)
     cupshelpers.set_debugprint_fn (debugprint)
 

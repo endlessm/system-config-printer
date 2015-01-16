@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 ## system-config-printer
 ## CUPS backend
@@ -24,7 +24,7 @@
 import errno
 import config
 import gettext
-gettext.install(domain=config.PACKAGE, localedir=config.localedir, unicode=True)
+gettext.install(domain=config.PACKAGE, localedir=config.localedir)
 from gi.repository import Gtk
 import os
 import pwd
@@ -83,11 +83,10 @@ class AuthContext:
         self.auth_called = False
 
         if self.dialog_shown:
-            d = Gtk.MessageDialog (self.parent,
-                                   Gtk.DialogFlags.MODAL |
-                                   Gtk.DialogFlags.DESTROY_WITH_PARENT,
-                                   Gtk.MessageType.ERROR,
-                                   Gtk.ButtonsType.CLOSE)
+            d = Gtk.MessageDialog (parent=self.parent,
+                                   modal=True, destroy_with_parent=True,
+                                   message_type=Gtk.MessageType.ERROR,
+                                   buttons=Gtk.ButtonsType.CLOSE)
             d.set_title (_("Not authorized"))
             d.set_markup ('<span weight="bold" size="larger">' +
                           _("Not authorized") + '</span>\n\n' +
@@ -96,10 +95,11 @@ class AuthContext:
             d.destroy ()
 
         # After that, prompt
-        d = Gtk.Dialog (_("Authentication"), self.parent,
-                        Gtk.DialogFlags.MODAL,
-                        (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
-                         Gtk.STOCK_OK, Gtk.ResponseType.OK))
+        d = Gtk.Dialog (title=_("Authentication"),
+                        transient_for=self.parent,
+                        modal=True)
+        d.add_buttons (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
+                         Gtk.STOCK_OK, Gtk.ResponseType.OK)
         d.set_default_response (Gtk.ResponseType.OK)
         d.set_border_width (6)
         d.set_resizable (False)
@@ -119,7 +119,7 @@ class AuthContext:
         label.set_line_wrap (True)
         vbox.pack_start (label, False, False, 0)
 
-        table = Gtk.Table (3, 2)
+        table = Gtk.Table (n_rows=3, n_columns=2)
         table.set_row_spacings (6)
         table.set_col_spacings (6)
         table.attach (Gtk.Label(label=_("Username:")), 0, 1, 0, 1, 0, 0)

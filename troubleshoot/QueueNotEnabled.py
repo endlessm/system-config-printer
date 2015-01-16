@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 ## Printing troubleshooter
 
@@ -22,7 +22,7 @@
 from gi.repository import Gtk
 
 import cups
-from base import *
+from .base import *
 class QueueNotEnabled(Question):
     def __init__ (self, troubleshooter):
         Question.__init__ (self, troubleshooter, "Queue not enabled?")
