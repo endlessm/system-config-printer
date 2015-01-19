@@ -1,6 +1,6 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
-## Copyright (C) 2006, 2007, 2008, 2010, 2012 Red Hat, Inc.
+## Copyright (C) 2006, 2007, 2008, 2010, 2012, 2014 Red Hat, Inc.
 ## Author: Tim Waugh <twaugh@redhat.com>
 
 ## This program is free software; you can redistribute it and/or modify
@@ -41,21 +41,23 @@ class UserDefaultPrinter:
             return
 
         try:
-            opts = file (self.lpoptions).readlines ()
+            opt_file = open(self.lpoptions)
+            opts = opt_file.readlines ()
         except IOError:
             return
 
         for i in range (len (opts)):
             if opts[i].startswith ("Default "):
                 opts[i] = "Dest " + opts[i][8:]
-        file (self.lpoptions, "w").writelines (opts)
+        open (self.lpoptions, "w").writelines (opts)
 
     def get (self):
         if not self.lpoptions:
             return None
 
         try:
-            opts = file (self.lpoptions).readlines ()
+            opt_file = open(self.lpoptions)
+            opts = opt_file.readlines ()
         except IOError:
             return None
 
@@ -73,13 +75,13 @@ class UserDefaultPrinter:
     def set (self, default):
         p = subprocess.Popen ([ "lpoptions", "-d", default ],
                               close_fds=True,
-                              stdin=file ("/dev/null"),
-                              stdout=file ("/dev/null", "w"),
+                              stdin=subprocess.DEVNULL,
+                              stdout=subprocess.DEVNULL,
                               stderr=subprocess.PIPE)
         (stdout, stderr) = p.communicate ()
         exitcode = p.wait ()
         if exitcode != 0:
-            raise RuntimeError (exitcode, stderr.strip ())
+            raise RuntimeError (exitcode, stderr.decode ().strip ())
         return
 
     def __repr__ (self):
@@ -99,12 +101,12 @@ class UserDefaultPrompt:
         self.set_default_fn = set_default_fn
         self.refresh_fn = refresh_fn
         self.name = name
-        dialog = Gtk.Dialog (title,
-                             parent,
-                             Gtk.DialogFlags.MODAL |
-                             Gtk.DialogFlags.DESTROY_WITH_PARENT,
-                             (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
-                              Gtk.STOCK_OK, Gtk.ResponseType.OK))
+        dialog = Gtk.Dialog (title=title,
+                             transient_for=parent,
+                             modal=True,
+                             destroy_with_parent=True)
+        dialog.add_buttons (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
+                              Gtk.STOCK_OK, Gtk.ResponseType.OK)
         dialog.set_default_response (Gtk.ResponseType.OK)
         dialog.set_border_width (6)
         dialog.set_resizable (False)
@@ -164,7 +166,7 @@ class UserDefaultPrompt:
             try:
                 self.userdef.set (self.name)
             except Exception as e:
-                print "Error setting default: %s" % repr (e)
+                print("Error setting default: %s" % repr (e))
 
             self.refresh_fn ()
 

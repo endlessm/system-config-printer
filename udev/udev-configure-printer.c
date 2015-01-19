@@ -1,6 +1,6 @@
 /* -*- Mode: C; c-file-style: "gnu" -*-
  * udev-configure-printer - a udev callout to configure print queues
- * Copyright (C) 2009, 2010, 2011, 2012 Red Hat, Inc.
+ * Copyright (C) 2009, 2010, 2011, 2012, 2014 Red Hat, Inc.
  * Author: Tim Waugh <twaugh@redhat.com>
  *
  * This program is free software; you can redistribute it and/or modify
@@ -168,6 +168,7 @@ struct device_id
 /* Device URI schemes in decreasing order of preference. */
 static const char *device_uri_types[] =
   {
+    "ipp",
     "hp",
     "usb",
   };
@@ -184,6 +185,13 @@ device_uri_type (const char *uri)
       break;
 
   return i;
+}
+
+static void
+zero_device_uris (struct device_uris *uris)
+{
+  uris->n_uris = 0;
+  uris->uri = NULL;
 }
 
 static void
@@ -443,7 +451,7 @@ free_usb_uri_map (struct usb_uri_map *map)
 }
 
 static void
-free_device_id (struct device_id *id)
+clear_device_id (struct device_id *id)
 {
   free (id->full_device_id);
   free (id->mfg);
@@ -525,6 +533,45 @@ device_file_filter(const struct dirent *entry)
 {
   return ((strstr(entry->d_name, "lp") != NULL) ? 1 : 0);
 }
+
+static void
+get_vidpidserial_from_parents (struct udev_device *child,
+		       const char **vid,
+		       const char **pid,
+		       const char **serial)
+{
+  struct udev_device *parent = child;
+
+  while (parent != NULL)
+    {
+      const char *maybe_vid = NULL;
+      const char *maybe_pid = NULL;
+      const char *maybe_serial = NULL;
+
+      maybe_vid = udev_device_get_sysattr_value (parent, "idVendor");
+      maybe_pid = udev_device_get_sysattr_value (parent, "idProduct");
+      maybe_serial = udev_device_get_sysattr_value (parent, "serial");
+
+      if (!maybe_vid && !maybe_pid && !maybe_serial)
+        {
+          //parent = udev_device_get_parent (parent);
+          parent = udev_device_get_parent (parent);
+	  continue;
+	}
+      else if (!maybe_vid || !maybe_pid || !maybe_serial)
+        {
+          syslog (LOG_ERR, "Printer does not have vid, pid, and serial");
+          exit(1);
+        }
+
+      *vid = strdup (maybe_vid);
+      *pid = strdup (maybe_pid);
+      *serial = strdup (maybe_serial);
+      break;
+    }
+}
+
+
 
 static char *
 get_ieee1284_id_from_child (struct udev *udev, struct udev_device *parent)
@@ -732,27 +779,13 @@ get_ieee1284_id_using_libusb (struct udev_device *dev,
 }
 
 static char *
-device_id_from_devpath (struct udev *udev, const char *devpath,
-			const struct usb_uri_map *map,
-			struct device_id *id,
-			char *usbserial, size_t usbseriallen,
-			char *usblpdev, size_t usblpdevlen)
+new_syspath(const char *devpath)
 {
-  struct usb_uri_map_entry *entry;
-  struct udev_device *dev;
-  const char *serial;
+  char *syspath;
   size_t syslen, devpathlen;
-  char *syspath, *devicefilepath;
-  const char *device_id = NULL;
-  char *usb_device_devpath;
-  char *usblpdevpos, *dest;
-  struct dirent **namelist;
-  int num_names;
-
-  id->full_device_id = id->mfg = id->mdl = id->sern = NULL;
-
   syslen = strlen ("/sys");
   devpathlen = strlen (devpath);
+
   syspath = malloc (syslen + devpathlen + 1);
   if (syspath == NULL)
     {
@@ -762,6 +795,17 @@ device_id_from_devpath (struct udev *udev, const char *devpath,
   memcpy (syspath, "/sys", syslen);
   memcpy (syspath + syslen, devpath, devpathlen);
   syspath[syslen + devpathlen] = '\0';
+  return syspath;
+}
+
+static char *
+new_devicefilepath (const char *syspath,
+                    const char *devpath)
+{
+  char *devicefilepath;
+  size_t syslen, devpathlen;
+  syslen = strlen ("/sys");
+  devpathlen = strlen (devpath);
 
   devicefilepath = malloc (syslen + devpathlen + 5);
   if (devicefilepath == NULL)
@@ -772,6 +816,37 @@ device_id_from_devpath (struct udev *udev, const char *devpath,
   memcpy (devicefilepath, syspath, syslen + devpathlen);
   memcpy (devicefilepath + syslen + devpathlen, "/usb", 4);
   devicefilepath[syslen + devpathlen + 4] = '\0';
+
+  return devicefilepath;
+}
+
+static int
+is_related_devpath (const char *parent_devpath, const char *child_devpath)
+{
+	size_t len = strlen (parent_devpath);
+	int status = strncmp (parent_devpath, child_devpath, len);
+	return status == 0;
+}
+
+static char *
+device_id_from_devpath (struct udev *udev, const char *devpath,
+			const struct usb_uri_map *map,
+			struct device_id *id,
+			char *usbserial, size_t usbseriallen,
+			char *usblpdev, size_t usblpdevlen)
+{
+  struct usb_uri_map_entry *entry;
+  struct udev_device *dev;
+  const char *serial;
+  char *syspath, *devicefilepath;
+  const char *device_id = NULL;
+  char *usb_device_devpath;
+  char *usblpdevpos, *dest;
+  struct dirent **namelist;
+  int num_names;
+
+  syspath = new_syspath (devpath);
+  devicefilepath = new_devicefilepath (syspath, devpath);
 
   /* For devices under control of the usblp kernel module we read out the number
    * of the /dev/usb/lp* device file, as there can be queues set up with 
@@ -825,6 +900,7 @@ device_id_from_devpath (struct udev *udev, const char *devpath,
        * exit.
        */
       syslog (LOG_DEBUG, "Device already handled");
+      free (usb_device_devpath);
       return NULL;
     }
 
@@ -856,7 +932,6 @@ device_id_from_bluetooth (const char *bdaddr, struct device_id *id)
   char *device_id;
   gchar *argv[4];
 
-  id->full_device_id = id->mfg = id->mdl = id->sern = NULL;
   argv[0] = g_strdup ("/usr/lib/cups/backend/bluetooth");
   argv[1] = g_strdup ("--get-deviceid");
   argv[2] = g_strdup (bdaddr);
@@ -986,6 +1061,58 @@ cupsDoRequestOrDie (http_t *http,
 }
 
 static int
+is_ipp_uri (const char *uri)
+{
+  return strncmp (uri, "ipp://", 6) == 0;
+}
+
+static int
+is_ippusb_uri(const char *uri)
+{
+  int pos = 0;
+  if (strncmp("ipp://localhost:", uri, 16))
+	  return -1;
+  pos += 16;
+
+  while (uri[pos] && isdigit(uri[pos]))
+    pos++;
+
+  if (strncmp("/ipp/print", uri + pos, 10))
+    return -2;
+  pos += 10;
+
+  if ('?' != uri[pos++])
+    return -3;
+
+  if (strncmp("isippoverusb=true&serial=", uri + pos, 25))
+    return -4;
+  pos += 25;
+
+  while (uri[pos] && uri[pos] != '&')
+    pos++;
+  if ('&' != uri[pos++])
+    return -5;
+
+  if (strncmp("vid=", uri + pos, 4))
+    return -6;
+
+  while (uri[pos] && uri[pos] != '&')
+    pos++;
+  if ('&' != uri[pos++])
+    return -7;
+
+  if (strncmp("pid=", uri + pos, 4))
+    return -8;
+
+  while (uri[pos] && uri[pos] != '&')
+    pos++;
+  if (uri[pos] != '\0')
+    return -9;
+
+  return 1;
+}
+
+static int
 find_matching_device_uris (struct device_id *id,
 			   const char *usbserial,
 			   struct device_uris *uris,
@@ -1005,7 +1132,6 @@ find_matching_device_uris (struct device_id *id,
     "dnssd",
     "http",
     "https",
-    "ipp",
     "lpd",
     "ncp",
     "parallel",
@@ -1015,8 +1141,8 @@ find_matching_device_uris (struct device_id *id,
     "socket",
   };
 
-  uris->n_uris = uris_noserial.n_uris = all_uris.n_uris = 0;
-  uris->uri = uris_noserial.uri = all_uris.uri = NULL;
+  zero_device_uris (&uris_noserial);
+  zero_device_uris (&all_uris);
 
   /* Leave the bus to settle. */
   sleep (1);
@@ -1087,6 +1213,11 @@ find_matching_device_uris (struct device_id *id,
 
       if (i == sizeof (device_uri_types) / sizeof (device_uri_types[0]))
 	/* Not what we want to match against.  Ignore this one. */
+	device_uri = NULL;
+
+      if (device_uri && is_ipp_uri (device_uri)     > 0 &&
+                        is_ippusb_uri (device_uri) <= 0)
+	/* Was not an ipp uri we created */
 	device_uri = NULL;
 
       /* Now check the manufacturer and model names. */
@@ -1338,6 +1469,30 @@ normalize_device_uri(const char *str_orig)
   return str;
 }
 
+static int
+is_same_ippusb_uri(const char *uri, const char *uri2)
+{
+  int pos = 0;
+  int pos2 = 0;
+  // ipp://localhost:
+  if (strncmp(uri, uri2, 16))
+    return -1;
+  pos += 16;
+  pos2 += 16;
+
+  // Skip port numbers
+  while (isdigit(uri[pos]))
+    pos++;
+  while (isdigit(uri2[pos2]))
+    pos2++;
+
+  // Check serial, vendor id, and product id
+  if (strcmp(uri + pos, uri2 + pos2))
+    return -2;
+
+  return 1;
+}
+
 /* Call a function for each queue with the given device-uri and printer-state.
  * Returns the number of queues with a matching device-uri. */
 static size_t
@@ -1442,60 +1597,86 @@ for_each_matching_queue (struct device_uris *device_uris,
 	   for this printer (shouldn't happen). */
 	goto skip;
 
+      if (is_ipp_uri(this_device_uri) > 0 && is_ippusb_uri(this_device_uri) <= 0)
+      {
+        goto skip;
+      }
+
       this_device_uri_n = normalize_device_uri(this_device_uri);
       pi1 = strstr (this_device_uri, "interface=");
       ps1 = strstr (this_device_uri, "serial=");
       for (i = 0; i < device_uris->n_uris; i++)
 	{
-	  device_uri_n = normalize_device_uri(device_uris->uri[i]);
-	  /* As for the same device different URIs can come out when the
-	     device is accessed via the usblp kernel module or via low-
-	     level USB (libusb) we cannot simply compare URIs, must
-	     consider also URIs as equal if one has an "interface"
-	     or "serial" attribute and the other not. If both have
-	     the attribute it must naturally match. We check which attributes
-             are there and this way determine up to which length the two URIs
-             must match. Here we can assume that if a URI has an "interface"
-	     attribute it has also a "serial" attribute, as this URI is
-	     an URI obtained via libusb and these always have a "serial"
-	     attribute. usblp-based URIs never have an "interface"
-	     attribute.*/
-	  pi2 = strstr (device_uris->uri[i], "interface=");
-	  ps2 = strstr (device_uris->uri[i], "serial=");
-	  if (pi1 && !pi2)
-	    l = strlen(device_uris->uri[i]);
-	  else if (!pi1 && pi2)
-	    l = strlen(this_device_uri);
-	  else if (ps1 && !ps2)
-	    l = strlen(device_uris->uri[i]);
-	  else if (!ps1 && ps2)
-	    l = strlen(this_device_uri);
-	  else if (strlen(this_device_uri) > strlen(device_uris->uri[i]))
-	    l = strlen(this_device_uri);
-	  else
-	    l = strlen(device_uris->uri[i]);
-	  if (firstqueue == 1)
+          int does_match = 0;
+
+	  if (is_ippusb_uri (device_uris->uri[i]) > 0 ||
+              is_ippusb_uri (this_device_uri) > 0)
 	    {
-	      syslog (LOG_DEBUG, "URI of detected printer: %s, normalized: %s",
-		      device_uris->uri[i], device_uri_n);
-	      if (i == 0 && strlen(usblpdev) > 0)
-		syslog (LOG_DEBUG,
-			"Consider also queues with \"%s\" or \"%s\" in their URIs as matching",
-			usblpdevstr1, usblpdevstr2);
+              does_match = 0 < is_same_ippusb_uri (device_uris->uri[i],
+                                               this_device_uri);
+              /* IPP over USB must be
+	       * readded each time to
+	       * update the port num */
 	    }
+	  else
+            {
+	      device_uri_n = normalize_device_uri(device_uris->uri[i]);
+	      /* As for the same device different URIs can come out when the
+	         device is accessed via the usblp kernel module or via low-
+	         level USB (libusb) we cannot simply compare URIs, must
+	         consider also URIs as equal if one has an "interface"
+	         or "serial" attribute and the other not. If both have
+	         the attribute it must naturally match. We check which attributes
+                 are there and this way determine up to which length the two URIs
+                 must match. Here we can assume that if a URI has an "interface"
+	         attribute it has also a "serial" attribute, as this URI is
+	         an URI obtained via libusb and these always have a "serial"
+	         attribute. usblp-based URIs never have an "interface"
+	         attribute.*/
+	      pi2 = strstr (device_uris->uri[i], "interface=");
+	      ps2 = strstr (device_uris->uri[i], "serial=");
+	      if (pi1 && !pi2)
+	        l = strlen(device_uris->uri[i]);
+	      else if (!pi1 && pi2)
+	        l = strlen(this_device_uri);
+	      else if (ps1 && !ps2)
+	        l = strlen(device_uris->uri[i]);
+	      else if (!ps1 && ps2)
+	        l = strlen(this_device_uri);
+	      else if (strlen(this_device_uri) > strlen(device_uris->uri[i]))
+	        l = strlen(this_device_uri);
+	      else
+	        l = strlen(device_uris->uri[i]);
+	      if (firstqueue == 1)
+	        {
+	          syslog (LOG_DEBUG, "URI of detected printer: %s, normalized: %s",
+	                device_uris->uri[i], device_uri_n);
+	          if (i == 0 && strlen(usblpdev) > 0)
+	            syslog (LOG_DEBUG,
+	             "Consider also queues with \"%s\" or \"%s\" in their URIs as matching",
+	             usblpdevstr1, usblpdevstr2);
+	        }
+
+	      does_match =
+	        (!strncmp (device_uris->uri[i], this_device_uri, l)) ||
+	         (strstr (device_uri_n, this_device_uri_n) ==
+	          device_uri_n) ||
+	         (strstr (this_device_uri_n, device_uri_n) ==
+	          this_device_uri_n) ||
+	         ((strlen(usblpdev) > 0) &&
+	          ((strstr (this_device_uri, usblpdevstr1) != NULL) ||
+	          (strstr (this_device_uri, usblpdevstr2) != NULL)));
+
+	      if (does_match)
+	        matched++;
+	    }
+
 	  if (i == 0)
 	    syslog (LOG_DEBUG, "URI of print queue: %s, normalized: %s",
-		    this_device_uri, this_device_uri_n);
-	  if ((!strncmp (device_uris->uri[i], this_device_uri, l)) ||
-	      (strstr (device_uri_n, this_device_uri_n) ==
-	       device_uri_n) ||
-	      (strstr (this_device_uri_n, device_uri_n) ==
-	       this_device_uri_n) ||
-	      ((strlen(usblpdev) > 0) &&
-	       ((strstr (this_device_uri, usblpdevstr1) != NULL) ||
-	       (strstr (this_device_uri, usblpdevstr2) != NULL))))
+              this_device_uri, this_device_uri_n);
+
+	  if (does_match)
 	    {
-	      matched++;
 	      syslog (LOG_DEBUG, "Queue %s has matching device URI",
 		      this_printer_uri);
 	      if (((flags & MATCH_ONLY_DISABLED) &&
@@ -1584,22 +1765,330 @@ bluetooth_verify_address (const char *bdaddr)
 }
 
 static int
+is_ippusb_driver_installed ()
+{
+	return system ("ippusbxd -h") == 0;
+}
+
+static int
+is_ippusb_interface(const struct libusb_interface_descriptor *interf)
+{
+  return interf->bInterfaceClass == 0x07 &&
+         interf->bInterfaceSubClass == 0x01 &&
+         interf->bInterfaceProtocol == 0x04;
+}
+
+static int
+count_ippoverusb_interfaces(struct libusb_config_descriptor *config)
+{
+  int count = 0;
+  uint8_t interface_i;
+
+  for (interface_i = 0;
+       interface_i < config->bNumInterfaces;
+       interface_i++)
+    {
+      int alt_i;
+      const struct libusb_interface *interface = NULL;
+      interface = &config->interface[interface_i];
+
+      for (alt_i = 0;
+           alt_i < interface->num_altsetting;
+           alt_i++)
+        {
+          const struct libusb_interface_descriptor *alt = NULL;
+          alt = &interface->altsetting[alt_i];
+
+          if (is_ippusb_interface (alt) > 0)
+            continue;
+
+          count++;
+          break;
+        }
+    }
+
+  return count;
+}
+
+static struct udev_device *
+get_udev_device_from_devpath (struct udev *udev,
+                              const char *devpath)
+{
+  struct udev_device *dev = NULL;
+  char *syspath = NULL;
+
+  syspath = new_syspath (devpath);
+  if (syspath == NULL)
+    goto cleanup;
+
+  dev = udev_device_new_from_syspath (udev, syspath);
+
+cleanup:
+  if (syspath != NULL)
+    free(syspath);
+
+  return dev;
+}
+
+static int
+is_ippusb_printer (struct udev_device *dev)
+{
+  const char *idVendorStr = NULL;
+  const char *idProductStr = NULL;
+  const char *serial = NULL;
+  unsigned long idVendor, idProduct;
+  char *end;
+  int conf_i = 0, numdevs = 0, dev_i;
+  libusb_device **list = NULL;
+  struct libusb_device_descriptor devdesc;
+  char libusbserial[1024];
+  int is_ippusb = 0;
+
+  if (dev == NULL)
+    {
+      syslog (LOG_ERR, "No device was given");
+      exit (1);
+    }
+
+  get_vidpidserial_from_parents(dev, &idVendorStr, &idProductStr, &serial);
+  if (!idVendorStr || !idProductStr || !serial)
+    {
+      syslog (LOG_ERR, "Missing sysattr %s",
+	      idVendorStr ?
+	      (idProductStr ? "serial" : "idProduct") : "idVendor");
+      return 0;
+    }
+
+  idVendor = strtoul (idVendorStr, &end, 16);
+  if (end == idVendorStr)
+    return 0;
+
+  idProduct = strtoul (idProductStr, &end, 16);
+  if (end == idProductStr)
+    return 0;
+
+  libusb_init (NULL);
+  numdevs = libusb_get_device_list(NULL, &list);
+  for (dev_i = 0; dev_i < numdevs; dev_i ++)
+    {
+      struct libusb_device_handle *handle = NULL;
+      struct libusb_device *device = list[dev_i];
+
+      if (libusb_get_device_descriptor (device, &devdesc) < 0)
+        continue;
+
+      if (!devdesc.bNumConfigurations ||
+          !devdesc.idVendor ||
+	  !devdesc.idProduct)
+        continue;
+
+      if (devdesc.idVendor != idVendor ||
+	  devdesc.idProduct != idProduct)
+        continue;
+
+      if (libusb_open (device, &handle) < 0)
+        continue;
+
+      if ((libusb_get_string_descriptor_ascii (handle,
+                                               devdesc.iSerialNumber,
+                                               (unsigned char *)libusbserial,
+                                               sizeof(libusbserial))) > 0 &&
+          strcmp(serial, libusbserial) != 0)
+        {
+          libusb_close (handle);
+          continue;
+        }
+
+      for (conf_i = 0; !is_ippusb && conf_i < devdesc.bNumConfigurations; conf_i ++)
+        {
+          struct libusb_config_descriptor *conf = NULL;
+          if (libusb_get_config_descriptor (device, conf_i, &conf) < 0)
+            continue;
+
+	  if (count_ippoverusb_interfaces (conf) > 0)
+            is_ippusb = 1;
+	}
+
+      libusb_close (handle);
+
+      // Our Device has already been searched
+      break;
+    }
+
+  libusb_free_device_list (list, 1);
+  libusb_exit (NULL);
+
+  return is_ippusb;
+}
+
+static char *
+new_ippusb_uri_string (struct udev_device *dev,
+		       unsigned int port)
+{
+  char *string = NULL;
+  size_t size = 0;
+  size_t sprintf_size = 0;
+  const char *vid, *pid, *serial;
+  get_vidpidserial_from_parents(dev, &vid, &pid, &serial);
+  if (!vid || !pid || !serial)
+    {
+      syslog (LOG_ERR, "Failed to get vid & pid & serial");
+      exit (1);
+    }
+
+  size += strlen ("ipp://localhost:/ipp/print?isippoverusb=true&serial=");
+  size += 20; // max digits in a port
+  size += strlen (serial);
+  size += 5 + strlen (vid); // &vid=xxxx
+  size += 5 + strlen (pid); // &pid=xxxx
+  size += 1; // \0
+  string = malloc (size * sizeof(*string));
+  if (string == NULL)
+    {
+      syslog (LOG_ERR, "Failed to alloc string for ippusb mockup");
+      exit (1);
+    }
+
+  sprintf_size = snprintf (string, size,
+   "ipp://localhost:%u/ipp/print?isippoverusb=true&serial=%s&vid=%s&pid=%s",
+   port, serial, vid, pid);
+  if (sprintf_size >= size)
+    {
+      syslog (LOG_ERR, "Failed to generate ippusb uri str, %lu vs %lu",
+		      sprintf_size, size);
+      exit (1);
+    }
+
+  return string;
+}
+
+static char *
+new_mockup_ippusb_uri (struct udev_device *dev)
+{
+  return new_ippusb_uri_string(dev, 0);
+}
+
+static void
+find_ippusb_uri (struct udev_device *dev,
+                 struct device_uris *uris,
+                 struct usb_uri_map *map)
+{
+  char *mock_uri = new_mockup_ippusb_uri (dev);
+  add_device_uri (uris, mock_uri);
+}
+
+static int
+is_only_alphanum (const char *serial)
+{
+  size_t i = 0;
+  while (serial[i] != '\0')
+    {
+      char ch = serial[i++];
+      if (!isdigit(ch) && !isalpha(ch))
+          return 0;
+    }
+  return 1;
+}
+
+char *
+new_ippusb_call_str (const char *serial,
+                       const char *vid,
+		       const char *pid)
+{
+  size_t size = 0;
+  size_t sprintf_size = 0;
+  const char *vid_prefix = "ippusbxd -l -v ";
+  const char *pid_prefix = " -m ";
+  const char *serial_prefix = " -s ";
+  char *call = NULL;
+  size += strlen(vid_prefix);
+  size += strlen(vid);
+  size += strlen(pid_prefix);
+  size += strlen(pid);
+  size += strlen(serial_prefix);
+  size += strlen(serial);
+  size += 1; // \0
+
+  call = malloc(size * sizeof(*call));
+  if (call == NULL)
+    {
+      syslog (LOG_ERR, "Failed to alloc string for call");
+      exit (1);
+    }
+  sprintf_size = snprintf(call, size, "%s%s%s%s%s%s",
+   vid_prefix, vid,
+   pid_prefix, pid,
+   serial_prefix, serial);
+  if (sprintf_size >= size)
+    {
+      syslog (LOG_ERR, "Failed to create call string");
+      exit(1);
+    }
+
+  return call;
+}
+
+static char *
+do_launch_ippusb_driver (struct udev_device *dev)
+{
+  unsigned int port = 0;
+  FILE *port_pipe;
+  int scan_status;
+  char *uri;
+  const char *vid;
+  const char *pid;
+  const char *serial;
+  get_vidpidserial_from_parents (dev, &vid, &pid, &serial);
+
+  if (!vid || !pid || !serial ||
+      !is_only_alphanum (serial) ||
+      !is_only_alphanum (vid) ||
+      !is_only_alphanum (pid))
+    {
+      syslog (LOG_ERR, "Invalid params for usb device");
+      exit (1);
+    }
+
+  char *ippusbxd_call_str = new_ippusb_call_str(serial, vid, pid);
+  port_pipe = popen(ippusbxd_call_str, "r");
+  if (port_pipe == NULL)
+    {
+      syslog (LOG_ERR, "Failed to run ippusb driver");
+      exit (1);
+    }
+  free(ippusbxd_call_str);
+
+  scan_status = fscanf(port_pipe, "%u|", &port);
+  if (scan_status != 1 || port == 0)
+    {
+      syslog (LOG_ERR, "Failed to read ippusb port (%d)", scan_status);
+      exit (1);
+    }
+
+  uri = new_ippusb_uri_string(dev, port);
+  return uri;
+}
+
+static int
 do_add (const char *cmd, const char *devaddr)
 {
   struct device_id id;
   struct device_uris device_uris;
   struct usb_uri_map *map;
-  struct udev *udev;
+  struct udev *udev = NULL;
   char *devpath = NULL;
   char *usb_device_devpath = NULL;
   char usbserial[256];
   char usblpdev[8] = "";
   gboolean is_bluetooth;
 
+  zero_device_uris (&device_uris);
+
   syslog (LOG_DEBUG, "add %s", devaddr);
 
   is_bluetooth = bluetooth_verify_address (devaddr);
 
+  id.full_device_id = id.mfg = id.mdl = id.sern = NULL;
   map = read_usb_uri_map ();
   if (is_bluetooth) {
     usbserial[0] = '\0';
@@ -1620,33 +2109,56 @@ do_add (const char *cmd, const char *devaddr)
     usb_device_devpath = device_id_from_devpath (udev, devpath, map, &id,
 						 usbserial, sizeof (usbserial),
 						 usblpdev, sizeof (usblpdev));
-    g_free (devpath);
-    udev_unref (udev);
   }
 
   if (!id.mfg || !id.mdl)
-    return 1;
+    {
+      clear_device_id (&id);
+      return 1;
+    }
 
   syslog (LOG_DEBUG, "MFG:%s MDL:%s SERN:%s serial:%s", id.mfg, id.mdl,
 	  id.sern ? id.sern : "-", usbserial[0] ? usbserial : "-");
 
-  if (!is_bluetooth)
+  if (is_bluetooth)
     {
-      find_matching_device_uris (&id, usbserial, &device_uris, usb_device_devpath,
-				 map);
-      free (usb_device_devpath);
-    } else {
       char *device_uri;
 
-      device_uri = uri_from_bdaddr (devpath);
+      device_uri = uri_from_bdaddr (devaddr);
       add_device_uri (&device_uris, device_uri);
       g_free (device_uri);
+    }
+  else
+    {
+      struct udev_device *dev;
+
+      /* Find IPPUSB uris */
+      dev = get_udev_device_from_devpath (udev, devpath);
+      if (dev == NULL)
+        {
+          syslog (LOG_ERR, "failed to get device from devpath");
+	  exit (1);
+	}
+
+      if (is_ippusb_driver_installed() > 0 &&
+          is_ippusb_printer(dev) > 0)
+        {
+          find_ippusb_uri (dev, &device_uris, map);
+        }
+      udev_device_unref (dev);
+
+      /* Find HP & USB uris */
+      find_matching_device_uris (&id, usbserial,
+	                             &device_uris, usb_device_devpath,
+                                     map);
+
+      free (usb_device_devpath);
     }
 
   if (device_uris.n_uris == 0)
     {
       syslog (LOG_ERR, "no corresponding CUPS device found");
-      free_device_id (&id);
+      clear_device_id (&id);
       return 0;
     }
 
@@ -1676,25 +2188,46 @@ do_add (const char *cmd, const char *devaddr)
 	    }
 	}
 
+      if (is_ippusb_uri (device_uris.uri[0]) > 0)
+        {
+          // launch the driver!
+          struct udev_device *dev;
+          dev = get_udev_device_from_devpath (udev, devpath);
+
+	  free (device_uris.uri[0]);
+	  device_uris.uri[0] = do_launch_ippusb_driver(dev);
+	}
+      if (udev != NULL)
+        udev_unref (udev);
+
       argv[0] = argv0;
       argv[1] = id.full_device_id;
       for (i = 0; i < device_uris.n_uris; i++)
+      {
 	argv[i + 2] = device_uris.uri[i];
+      }
       argv[i + 2] = NULL;
 
       syslog (LOG_DEBUG, "About to add queue for %s", argv[2]);
-      strcpy (argv0, cmd);
+      strncpy (argv0, cmd, sizeof (argv0));
+      argv0[sizeof (argv0) - 1] = '\0';
       p = strrchr (argv0, '/');
       if (p++ == NULL)
 	p = argv0;
 
-      strcpy (p, "udev-add-printer");
+      strncpy (p, "udev-add-printer", sizeof (argv0) - (p - argv0));
+      argv0[sizeof (argv0) - 1] = '\0';
 
       execv (argv0, argv);
       syslog (LOG_ERR, "Failed to execute %s", argv0);
+      free (argv);
+      exit (1);
     }
 
-  free_device_id (&id);
+  if (udev != NULL)
+    udev_unref (udev);
+  g_free (devpath);
+  clear_device_id (&id);
   free_device_uris (&device_uris);
   return 0;
 }
@@ -1702,7 +2235,7 @@ do_add (const char *cmd, const char *devaddr)
 static void
 remove_queue (const char *printer_uri)
 {
-  /* Disable it. */
+  /* Delete it. */
   http_t *cups = httpConnectEncrypt (cupsServer (), ippPort (),
 				     cupsEncryption ());
   ipp_t *request, *answer;
@@ -1734,7 +2267,7 @@ remove_queue (const char *printer_uri)
 static void
 disable_queue (const char *printer_uri, void *context)
 {
-  /* Disable it. */
+  /* Delete it. */
   http_t *cups = httpConnectEncrypt (cupsServer (), ippPort (),
 				     cupsEncryption ());
   ipp_t *request, *answer;
@@ -1780,7 +2313,7 @@ do_remove (const char *devaddr)
       char *device_uri;
 
       device_uri = uri_from_bdaddr (devaddr);
-      remove_queue (devpath);
+      remove_queue (device_uri);
       g_free (device_uri);
       return 0;
     }
@@ -1804,7 +2337,7 @@ do_remove (const char *devaddr)
   prev = &map->entries;
   for (entry = map->entries; entry; entry = entry->next)
     {
-      if (!strcmp (entry->devpath, devpath))
+      if (is_related_devpath (devpath, entry->devpath))
 	{
 	  uris = &entry->uris;
 	  break;

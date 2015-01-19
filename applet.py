@@ -1,6 +1,6 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
-## Copyright (C) 2007, 2008, 2009, 2010, 2011, 2012, 2013 Red Hat, Inc.
+## Copyright (C) 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014 Red Hat, Inc.
 ## Author: Tim Waugh <twaugh@redhat.com>
 
 ## This program is free software; you can redistribute it and/or modify
@@ -18,6 +18,7 @@
 ## Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 import cups
+from functools import reduce
 cups.require ("1.9.42")
 import sys
 sys.path.append("/usr/share/system-config-printer")
@@ -34,7 +35,7 @@ import cupshelpers.installdriver
 
 DOMAIN="system-config-printer"
 import gettext
-gettext.install(domain=DOMAIN, unicode=True)
+gettext.install(domain=DOMAIN)
 try:
     locale.setlocale (locale.LC_ALL, "")
 except locale.Error as e:
@@ -275,7 +276,7 @@ class NewPrinterNotification(dbus.service.Object):
         # let's try not to inflate the process size.
         import os
         try:
-            print "Waiting for child %d" % pid
+            print("Waiting for child %d" % pid)
             (pid, status) = os.waitpid (pid, os.WNOHANG)
             if pid == 0:
                 # Run this timer again.
@@ -287,11 +288,11 @@ class NewPrinterNotification(dbus.service.Object):
 
 PROGRAM_NAME="system-config-printer-applet"
 def show_help ():
-    print "usage: %s [--help|--version|--debug]" % PROGRAM_NAME
+    print("usage: %s [--help|--version|--debug]" % PROGRAM_NAME)
 
 def show_version ():
     import config
-    print "%s %s" % (PROGRAM_NAME, config.VERSION)
+    print("%s %s" % (PROGRAM_NAME, config.VERSION))
     
 ####
 #### Main program entry
@@ -320,15 +321,30 @@ class RunLoop:
         self.session_bus = session_bus
         self.loop = loop
         self.timer = None
-        system_bus.add_signal_receiver (self.handle_dbus_signal,
-                                        path=self.DBUS_PATH,
-                                        dbus_interface=self.DBUS_IFACE)
+        try:
+            system_bus.add_signal_receiver (self.handle_dbus_signal,
+                                            path=self.DBUS_PATH,
+                                            dbus_interface=self.DBUS_IFACE)
+        except DBusException as e:
+            try:
+                print ("%s: failed to add D-Bus signal receiver: %s" \
+                        % (PROGRAM_NAME, e), file=sys.stderr)
+            finally:
+                sys.exit (1)
+
         self.check_for_jobs ()
 
     def remove_signal_receiver (self):
-        self.system_bus.remove_signal_receiver (self.handle_dbus_signal,
-                                                path=self.DBUS_PATH,
-                                                dbus_interface=self.DBUS_IFACE)
+        try:
+            self.system_bus.remove_signal_receiver (self.handle_dbus_signal,
+                                                    path=self.DBUS_PATH,
+                                                    dbus_interface=self.DBUS_IFACE)
+        except DBusException as e:
+            try:
+                print ("%s: failed to remove D-Bus signal receiver: %s" \
+                        % (PROGRAM_NAME, e), file=sys.stderr)
+            except:
+                pass
 
     def run (self):
         self.loop.run ()
@@ -360,7 +376,7 @@ class RunLoop:
                 debugprint ("Job applet is %s" % path)
             except dbus.DBusException as e:
                 try:
-                    print e
+                    print(e)
                 except:
                     pass
 
@@ -391,8 +407,8 @@ if __name__ == '__main__':
     # Must be done before connecting to D-Bus (for some reason).
     if not Notify.init (PROGRAM_NAME):
         try:
-            print >> sys.stderr, ("%s: unable to initialize pynotify" %
-                                  PROGRAM_NAME)
+            print(("%s: unable to initialize pynotify" %
+                                  PROGRAM_NAME), file=sys.stderr)
         except:
             pass
 
@@ -401,8 +417,8 @@ if __name__ == '__main__':
         system_bus = dbus.SystemBus()
     except:
         try:
-            print >> sys.stderr, ("%s: failed to connect to system D-Bus" %
-                                  PROGRAM_NAME)
+            print(("%s: failed to connect to system D-Bus" %
+                                  PROGRAM_NAME), file=sys.stderr)
         finally:
             sys.exit (1)
 
@@ -412,8 +428,8 @@ if __name__ == '__main__':
         session_bus.add_signal_receiver (monitor_session)
     except:
         try:
-            print >> sys.stderr, ("%s: failed to connect to "
-                                  "session D-Bus" % PROGRAM_NAME)
+            print(("%s: failed to connect to "
+                                  "session D-Bus" % PROGRAM_NAME), file=sys.stderr)
         finally:
             sys.exit (1)
 
@@ -421,9 +437,9 @@ if __name__ == '__main__':
         NewPrinterNotification(system_bus, session_bus)
     except:
         try:
-            print >> sys.stderr, ("%s: failed to start "
+            print(("%s: failed to start "
                                   "NewPrinterNotification service" %
-                                  PROGRAM_NAME)
+                                  PROGRAM_NAME), file=sys.stderr)
         except:
             pass
 
@@ -432,9 +448,9 @@ if __name__ == '__main__':
         cupshelpers.installdriver.PrinterDriversInstaller(system_bus)
     except Exception as e:
         try:
-            print >> sys.stderr, ("%s: failed to start "
+            print(("%s: failed to start "
                                   "PrinterDriversInstaller service: "
-                                  "%s" % (PROGRAM_NAME, e))
+                                  "%s" % (PROGRAM_NAME, e)), file=sys.stderr)
         except:
             pass
 

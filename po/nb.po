@@ -6,58 +6,58 @@
 # Dimitris Glezos <glezos@transifex.com>, 2011
 # Espen Stefansen <espenas@gmail.com>, 2007
 # Even Kristoffer Mjøs <ekgutten@gmail.com>, 2012
-# Kjartan Maraas <kmaraas@gnome.org>, 2000,2012-2013
 # Kjartan Maraas <kmaraas@gnome.org>, 2011
 # Trond Eivind Glomsrød <teg@redhat.com>, 2007
 msgid ""
 msgstr ""
 "Project-Id-Version: system-config-printer\n"
 "Report-Msgid-Bugs-To: https://bugzilla.redhat.com/bugzilla\n"
-"POT-Creation-Date: 2013-10-22 13:06+0100\n"
-"PO-Revision-Date: 2013-03-22 18:06+0000\n"
-"Last-Translator: twaugh <twaugh@redhat.com>\n"
-"Language-Team: Norwegian Bokmål <i18n-nb@lister.ping.uio.no>\n"
+"POT-Creation-Date: 2014-11-04 12:07+0000\n"
+"PO-Revision-Date: 2014-10-23 11:00+0000\n"
+"Last-Translator: Tim Waugh <twaugh@redhat.com>\n"
+"Language-Team: Norwegian Bokmål (http://www.transifex.com/projects/p/system-"
+"config-printer/language/nb/)\n"
 "Language: nb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../asyncipp.py:467 ../authconn.py:446 ../authconn.py:448
-#: ../errordialogs.py:67 ../pysmb.py:91 ../pysmb.py:93
+#: ../asyncipp.py:466 ../authconn.py:447 ../authconn.py:449
+#: ../errordialogs.py:63 ../pysmb.py:90 ../pysmb.py:92
 msgid "Not authorized"
 msgstr "Ikke autorisert"
 
-#: ../asyncipp.py:468 ../authconn.py:449 ../pysmb.py:94
+#: ../asyncipp.py:467 ../authconn.py:450 ../pysmb.py:93
 msgid "The password may be incorrect."
 msgstr "Passordet kan være feil."
 
-#: ../asyncipp.py:479 ../authconn.py:470
+#: ../asyncipp.py:478 ../authconn.py:471
 #, python-format
 msgid "Authentication (%s)"
 msgstr "Autentisering (%s)"
 
-#: ../asyncipp.py:554 ../authconn.py:297 ../errordialogs.py:58
-#: ../errordialogs.py:72
+#: ../asyncipp.py:553 ../authconn.py:300 ../errordialogs.py:54
+#: ../errordialogs.py:68
 msgid "CUPS server error"
 msgstr "Feil med CUPS-tjener"
 
-#: ../asyncipp.py:556 ../authconn.py:295
+#: ../asyncipp.py:555 ../authconn.py:298
 #, python-format
 msgid "CUPS server error (%s)"
 msgstr "Feil med CUPS-tjener (%s)"
 
-#: ../asyncipp.py:573 ../authconn.py:306 ../errordialogs.py:59
-#: ../troubleshoot/PrintTestPage.py:434
+#: ../asyncipp.py:571 ../authconn.py:308 ../errordialogs.py:55
+#: ../troubleshoot/PrintTestPage.py:431
 #, python-format
 msgid "There was an error during the CUPS operation: '%s'."
 msgstr "Det oppstod en feil under utførelse av CUPS-operasjon: «%s»."
 
-#: ../asyncipp.py:576 ../authconn.py:309
+#: ../asyncipp.py:574 ../authconn.py:311
 msgid "Retry"
 msgstr "Prøv igjen"
 
-#: ../asyncipp.py:593 ../authconn.py:253 ../authconn.py:277
+#: ../asyncipp.py:591 ../authconn.py:254 ../authconn.py:280
 msgid "Operation canceled"
 msgstr "Operasjon avbrutt"
 
@@ -74,7 +74,7 @@ msgid "Domain:"
 msgstr "Domene:"
 
 #. After that, prompt
-#: ../authconn.py:47 ../authconn.py:472 ../pysmb.py:99
+#: ../authconn.py:47 ../authconn.py:473 ../pysmb.py:98
 msgid "Authentication"
 msgstr "Autentisering<"
 
@@ -82,7 +82,7 @@ msgstr "Autentisering<"
 msgid "Remember password"
 msgstr "Husk passord"
 
-#: ../errordialogs.py:68
+#: ../errordialogs.py:64
 msgid ""
 "The password may be incorrect, or the server may be configured to deny "
 "remote administration."
@@ -90,36 +90,36 @@ msgstr ""
 "Passordet kan være feil eller tjeneren kan være konfigurert til å nekte "
 "ekstern administrasjon."
 
-#: ../errordialogs.py:74
+#: ../errordialogs.py:70
 msgid "Bad request"
 msgstr "Ugyldig forespørsel"
 
-#: ../errordialogs.py:76
+#: ../errordialogs.py:72
 msgid "Not found"
 msgstr "Ikke funnet"
 
-#: ../errordialogs.py:78
+#: ../errordialogs.py:74
 msgid "Request timeout"
 msgstr "Tidsavbrudd for forespørsel"
 
-#: ../errordialogs.py:80
+#: ../errordialogs.py:76
 msgid "Upgrade required"
 msgstr "Oppdatering kreves"
 
-#: ../errordialogs.py:82
+#: ../errordialogs.py:78
 msgid "Server error"
 msgstr "Feil med tjener"
 
-#: ../errordialogs.py:84 ../system-config-printer.py:672
+#: ../errordialogs.py:80 ../system-config-printer.py:716
 msgid "Not connected"
 msgstr "Ikke tilkoblet"
 
-#: ../errordialogs.py:86
+#: ../errordialogs.py:82
 #, python-format
 msgid "status %s"
 msgstr "status %s"
 
-#: ../errordialogs.py:88
+#: ../errordialogs.py:84
 #, python-format
 msgid "There was an HTTP error: %s."
 msgstr "Det oppsto en HTTP-feil: %s."
@@ -156,15 +156,15 @@ msgstr "Avbryt jobb"
 msgid "Do you really want to cancel this job?"
 msgstr "Vil du virkelig avbryte denne jobben?"
 
-#: ../jobviewer.py:202
+#: ../jobviewer.py:201
 msgid "Keep Printing"
 msgstr "Fortsett utskrift"
 
-#: ../jobviewer.py:269
+#: ../jobviewer.py:268
 msgid "deleting job"
 msgstr "sletter jobb"
 
-#: ../jobviewer.py:271
+#: ../jobviewer.py:270
 msgid "canceling job"
 msgstr "avbryter jobb"
 
@@ -228,7 +228,7 @@ msgstr "Autentiser"
 msgid "_View Attributes"
 msgstr "_Vis attributter"
 
-#: ../jobviewer.py:386 ../jobviewer.py:595
+#: ../jobviewer.py:386 ../jobviewer.py:596
 msgid "Close this window"
 msgstr "Lukk dette vinduet"
 
@@ -244,7 +244,7 @@ msgstr "Bruker"
 msgid "Document"
 msgstr "Dokument"
 
-#: ../jobviewer.py:452 ../system-config-printer.py:818
+#: ../jobviewer.py:452 ../system-config-printer.py:896
 #: ../troubleshoot/PrintTestPage.py:86
 msgid "Printer"
 msgstr "Skriver"
@@ -279,14 +279,14 @@ msgstr "alle jobber"
 msgid "Document Print Status (%s)"
 msgstr "Utskriftsstatus for dokument (%s)"
 
-#: ../jobviewer.py:585
+#: ../jobviewer.py:586
 msgid "Job attributes"
 msgstr "Attributter for jobb"
 
-#: ../jobviewer.py:720 ../jobviewer.py:1046 ../jobviewer.py:1787
-#: ../jobviewer.py:1817 ../jobviewer.py:2205 ../jobviewer.py:2210
-#: ../jobviewer.py:2224 ../jobviewer.py:2304 ../printerproperties.py:1648
-#: ../ui/NewPrinterWindow.ui.h:93 ../troubleshoot/ChooseNetworkPrinter.py:102
+#: ../jobviewer.py:721 ../jobviewer.py:1068 ../jobviewer.py:1850
+#: ../jobviewer.py:1880 ../jobviewer.py:2273 ../jobviewer.py:2282
+#: ../jobviewer.py:2304 ../jobviewer.py:2388 ../printerproperties.py:1648
+#: ../ui/NewPrinterWindow.ui.h:94 ../troubleshoot/ChooseNetworkPrinter.py:102
 #: ../troubleshoot/ChooseNetworkPrinter.py:103
 #: ../troubleshoot/ChooseNetworkPrinter.py:106
 #: ../troubleshoot/ChooseNetworkPrinter.py:107
@@ -296,203 +296,203 @@ msgstr "Attributter for jobb"
 msgid "Unknown"
 msgstr "Ukjent"
 
-#: ../jobviewer.py:726
+#: ../jobviewer.py:727
 msgid "a minute ago"
 msgstr "ett minutt siden"
 
-#: ../jobviewer.py:729
+#: ../jobviewer.py:730
 #, python-format
 msgid "%d minutes ago"
 msgstr "%d minutter siden"
 
-#: ../jobviewer.py:733
+#: ../jobviewer.py:734
 msgid "an hour ago"
 msgstr "en time siden"
 
-#: ../jobviewer.py:735
+#: ../jobviewer.py:736
 #, python-format
 msgid "%d hours ago"
 msgstr "%d timer siden"
 
-#: ../jobviewer.py:739
+#: ../jobviewer.py:740
 msgid "yesterday"
 msgstr "i går"
 
-#: ../jobviewer.py:741
+#: ../jobviewer.py:742
 #, python-format
 msgid "%d days ago"
 msgstr "%d dager siden"
 
-#: ../jobviewer.py:745
+#: ../jobviewer.py:746
 msgid "last week"
 msgstr "sist uke"
 
-#: ../jobviewer.py:747
+#: ../jobviewer.py:748
 #, python-format
 msgid "%d weeks ago"
 msgstr "%d uker siden"
 
-#: ../jobviewer.py:995 ../jobviewer.py:1078
+#: ../jobviewer.py:1016 ../jobviewer.py:1100
 msgid "authenticating job"
 msgstr "autentiserer jobb"
 
-#: ../jobviewer.py:1044
+#: ../jobviewer.py:1066
 #, python-format
 msgid "Authentication required for printing document `%s' (job %d)"
 msgstr "Autentisering kreves for å skrive ut dokument «%s» (jobb %d)"
 
-#: ../jobviewer.py:1342
+#: ../jobviewer.py:1366
 msgid "holding job"
 msgstr "holder tilbake jobb"
 
-#: ../jobviewer.py:1368
+#: ../jobviewer.py:1392
 msgid "releasing job"
 msgstr "slipper løs jobb"
 
 #. give the default filename some meaningful name
-#: ../jobviewer.py:1426
+#: ../jobviewer.py:1454
 msgid "retrieved"
 msgstr "hentet"
 
-#: ../jobviewer.py:1436
+#: ../jobviewer.py:1464
 msgid "Save File"
 msgstr "Lagre fil"
 
-#: ../jobviewer.py:1516 ../system-config-printer.py:242
+#: ../jobviewer.py:1579 ../system-config-printer.py:268
 #: ../ui/NewPrinterWindow.ui.h:9 ../troubleshoot/ChooseNetworkPrinter.py:37
 #: ../troubleshoot/ChoosePrinter.py:43 ../troubleshoot/DeviceListed.py:43
 msgid "Name"
 msgstr "Navn"
 
-#: ../jobviewer.py:1519
+#: ../jobviewer.py:1582
 msgid "Value"
 msgstr "Verdi"
 
-#: ../jobviewer.py:1643
+#: ../jobviewer.py:1706
 msgid "No documents queued"
 msgstr "Ingen dokumenter i kø"
 
-#: ../jobviewer.py:1645
+#: ../jobviewer.py:1708
 msgid "1 document queued"
 msgstr "1 dokument i kø"
 
-#: ../jobviewer.py:1647
+#: ../jobviewer.py:1710
 #, python-format
 msgid "%d documents queued"
 msgstr "%d dokumenter i kø"
 
-#: ../jobviewer.py:1703
+#: ../jobviewer.py:1766
 #, python-format
 msgid "processing / pending:   %d / %d"
 msgstr "prosesserer / utestående:   %d / %d"
 
-#: ../jobviewer.py:1818
+#: ../jobviewer.py:1881
 msgid "Document printed"
 msgstr "Dokument skrevet ut"
 
-#: ../jobviewer.py:1819
+#: ../jobviewer.py:1882
 #, python-format
 msgid "Document `%s' has been sent to `%s' for printing."
 msgstr "Dokument «%s» er sendt til «%s» for utskrift."
 
-#: ../jobviewer.py:1981
+#: ../jobviewer.py:2044
 #, python-format
 msgid "There was a problem sending document `%s' (job %d) to the printer."
 msgstr ""
 "Det oppstod et problem ved sending av dokument «%s» (jobb %d) til skriveren."
 
-#: ../jobviewer.py:1985
+#: ../jobviewer.py:2048
 #, python-format
 msgid "There was a problem processing document `%s' (job %d)."
 msgstr "Det oppsto et problem under prosessering av dokument «%s» (jobb %d)."
 
 #. Give up and use the provided message untranslated.
-#: ../jobviewer.py:1992
+#: ../jobviewer.py:2055
 #, python-format
 msgid "There was a problem printing document `%s' (job %d): `%s'."
 msgstr "Det oppsto et problem under utskrift av dokument «%s» (jobb %d): «%s»."
 
-#: ../jobviewer.py:1999 ../jobviewer.py:2015
+#: ../jobviewer.py:2062 ../jobviewer.py:2079
 msgid "Print Error"
 msgstr "Feil med utskrift"
 
-#: ../jobviewer.py:2000
+#: ../jobviewer.py:2064
 msgid "_Diagnose"
 msgstr "_Diagnose"
 
-#: ../jobviewer.py:2021
+#: ../jobviewer.py:2085
 #, python-format
 msgid "The printer called `%s' has been disabled."
 msgstr "Skriver med navn «%s» er deaktivert."
 
-#: ../jobviewer.py:2216
+#: ../jobviewer.py:2292
 msgid "disabled"
 msgstr "deaktivert"
 
-#: ../jobviewer.py:2238
+#: ../jobviewer.py:2322
 msgid "Held for authentication"
 msgstr "Holdt tilbake for autentisering"
 
-#: ../jobviewer.py:2240 ../troubleshoot/PrintTestPage.py:44
+#: ../jobviewer.py:2324 ../troubleshoot/PrintTestPage.py:44
 msgid "Held"
 msgstr "Holdt"
 
-#: ../jobviewer.py:2276
+#: ../jobviewer.py:2360
 #, python-format
 msgid "Held until %s"
 msgstr "Hold tilbake til %s"
 
-#: ../jobviewer.py:2281
+#: ../jobviewer.py:2365
 msgid "Held until day-time"
 msgstr "Holdt tilbake til dag-tid"
 
-#: ../jobviewer.py:2283
+#: ../jobviewer.py:2367
 msgid "Held until evening"
 msgstr "Holdt tilbake til i kveld"
 
-#: ../jobviewer.py:2285
+#: ../jobviewer.py:2369
 msgid "Held until night-time"
 msgstr "Holdt tilbake til natt"
 
-#: ../jobviewer.py:2287
+#: ../jobviewer.py:2371
 msgid "Held until second shift"
 msgstr "Holdt tilbake til andre skift"
 
-#: ../jobviewer.py:2289
+#: ../jobviewer.py:2373
 msgid "Held until third shift"
 msgstr "Holdt tilbake til tredje skift"
 
-#: ../jobviewer.py:2291
+#: ../jobviewer.py:2375
 msgid "Held until weekend"
 msgstr "Holdt tilbake til helg"
 
-#: ../jobviewer.py:2294 ../troubleshoot/PrintTestPage.py:43
+#: ../jobviewer.py:2378 ../troubleshoot/PrintTestPage.py:43
 msgid "Pending"
 msgstr "Venter"
 
-#: ../jobviewer.py:2295 ../printerproperties.py:72
-#: ../system-config-printer.py:126 ../troubleshoot/PrintTestPage.py:45
+#: ../jobviewer.py:2379 ../printerproperties.py:72
+#: ../system-config-printer.py:131 ../troubleshoot/PrintTestPage.py:45
 msgid "Processing"
 msgstr "Prosesserer"
 
-#: ../jobviewer.py:2296 ../printerproperties.py:76
-#: ../system-config-printer.py:128 ../troubleshoot/PrintTestPage.py:46
+#: ../jobviewer.py:2380 ../printerproperties.py:76
+#: ../system-config-printer.py:133 ../troubleshoot/PrintTestPage.py:46
 msgid "Stopped"
 msgstr "Stoppet"
 
-#: ../jobviewer.py:2297 ../troubleshoot/PrintTestPage.py:47
+#: ../jobviewer.py:2381 ../troubleshoot/PrintTestPage.py:47
 msgid "Canceled"
 msgstr "Kansellert"
 
-#: ../jobviewer.py:2298 ../troubleshoot/PrintTestPage.py:48
+#: ../jobviewer.py:2382 ../troubleshoot/PrintTestPage.py:48
 msgid "Aborted"
 msgstr "Avbrutt"
 
-#: ../jobviewer.py:2299 ../troubleshoot/PrintTestPage.py:49
+#: ../jobviewer.py:2383 ../troubleshoot/PrintTestPage.py:49
 msgid "Completed"
 msgstr "Ferdig"
 
-#: ../newprinter.py:75
+#: ../newprinter.py:73
 msgid ""
 "The firewall may need adjusting in order to detect network printers.  Adjust "
 "the firewall now?"
@@ -500,188 +500,186 @@ msgstr ""
 "Brannmur trenger kanskje justering for at nettverksskriver skal kunne "
 "gjenkjennes. Juster brannmur nå?"
 
-#: ../newprinter.py:352 ../newprinter.py:363 ../newprinter.py:369
-#: ../newprinter.py:374
+#: ../newprinter.py:348 ../newprinter.py:359 ../newprinter.py:365
+#: ../newprinter.py:370
 msgid "Default"
 msgstr "Forvalg"
 
 #. See section 4.2.6 of this document for explanation of finishing types:
 #. ftp://ftp.pwg.org/pub/pwg/candidates/cs-ippfinishings10-20010205-5100.1.pdf
-#: ../newprinter.py:364 ../newprinter.py:375 ../newprinter.py:3707
-#: ../ppdippstr.py:65 ../printerproperties.py:281
+#: ../newprinter.py:360 ../newprinter.py:371 ../newprinter.py:3692
+#: ../ppdippstr.py:65 ../printerproperties.py:280
 msgid "None"
 msgstr "Ingen"
 
-#: ../newprinter.py:365
+#: ../newprinter.py:361
 msgid "Odd"
 msgstr "Ulik"
 
-#: ../newprinter.py:366
+#: ../newprinter.py:362
 msgid "Even"
 msgstr "Lik"
 
-#: ../newprinter.py:376
+#: ../newprinter.py:372
 msgid "XON/XOFF (Software)"
 msgstr "XON/XOFF (programvare)"
 
-#: ../newprinter.py:377
+#: ../newprinter.py:373
 msgid "RTS/CTS (Hardware)"
 msgstr "RTS/CTS (maskinvare)"
 
-#: ../newprinter.py:378
+#: ../newprinter.py:374
 msgid "DTR/DSR (Hardware)"
 msgstr "DTR/DSR (maskinvare)"
 
-#: ../newprinter.py:396 ../printerproperties.py:235
+#: ../newprinter.py:392 ../printerproperties.py:234
 msgid "Members of this class"
 msgstr "Medlemmer av denne klassen"
 
-#: ../newprinter.py:398 ../printerproperties.py:236
+#: ../newprinter.py:394 ../printerproperties.py:235
 msgid "Others"
 msgstr "Andre"
 
-#: ../newprinter.py:399
+#: ../newprinter.py:395
 msgid "Devices"
 msgstr "Enheter"
 
-#: ../newprinter.py:400
+#: ../newprinter.py:396
 msgid "Connections"
 msgstr "Tilkoblinger"
 
-#: ../newprinter.py:401
+#: ../newprinter.py:397
 msgid "Makes"
 msgstr "Merker"
 
-#: ../newprinter.py:402
+#: ../newprinter.py:398
 msgid "Models"
 msgstr "Modeller"
 
-#: ../newprinter.py:403
+#: ../newprinter.py:399
 msgid "Drivers"
 msgstr "Drivere"
 
-#: ../newprinter.py:404 ../ui/NewPrinterWindow.ui.h:101
+#: ../newprinter.py:400 ../ui/NewPrinterWindow.ui.h:102
 msgid "Downloadable Drivers"
 msgstr "Nedlastbare drivere"
 
-#: ../newprinter.py:482
+#: ../newprinter.py:479
 msgid "Browsing not available (pysmbc not installed)"
 msgstr "Kan ikke bla gjennom skrivere (pysmbc er ikke installert)"
 
 #. SMB list columns
-#: ../newprinter.py:488
+#: ../newprinter.py:485
 msgid "Share"
 msgstr "Share"
 
-#: ../newprinter.py:494
+#: ../newprinter.py:491
 msgid "Comment"
 msgstr "Kommentar"
 
-#: ../newprinter.py:509
+#: ../newprinter.py:506
 msgid ""
 "PostScript Printer Description files (*.ppd, *.PPD, *.ppd.gz, *.PPD.gz, *."
 "PPD.GZ)"
 msgstr ""
 "PostScript skriverbeskrivelse (*.ppd, *.PPD, *.ppd.gz, *.PPD.gz, *.PPD.GZ)"
 
-#: ../newprinter.py:518
+#: ../newprinter.py:515
 msgid "All files (*)"
 msgstr "Alle filer (*)"
 
-#: ../newprinter.py:669 ../newprinter.py:1551 ../newprinter.py:3189
-#: ../newprinter.py:3320 ../newprinter.py:3368 ../applet.py:127
+#: ../newprinter.py:664 ../newprinter.py:1516 ../newprinter.py:3242
+#: ../newprinter.py:3301 ../newprinter.py:3353 ../applet.py:128
 msgid "Search"
 msgstr "Søk"
 
-#: ../newprinter.py:696 ../newprinter.py:718 ../ui/NewPrinterWindow.ui.h:1
+#: ../newprinter.py:691 ../newprinter.py:713 ../ui/NewPrinterWindow.ui.h:1
 msgid "New Printer"
 msgstr "Ny skriver"
 
-#: ../newprinter.py:704
+#: ../newprinter.py:699
 msgid "New Class"
 msgstr "Ny klasse"
 
-#: ../newprinter.py:709
+#: ../newprinter.py:704
 msgid "Change Device URI"
 msgstr "Endre URI for enhet"
 
-#: ../newprinter.py:716
+#: ../newprinter.py:711
 msgid "Change Driver"
 msgstr "Endre driver"
 
-#: ../newprinter.py:720
-#, fuzzy
+#: ../newprinter.py:715
 msgid "Download Printer Driver"
-msgstr "Nedlastbare drivere"
+msgstr ""
 
-#: ../newprinter.py:729 ../newprinter.py:2048
+#: ../newprinter.py:724 ../newprinter.py:2045 ../newprinter.py:2050
 msgid "fetching device list"
 msgstr "henter enhetsliste"
 
-#: ../newprinter.py:968
-#, fuzzy, python-format
+#: ../newprinter.py:966
+#, python-format
 msgid "Installing driver %s"
-msgstr "Installer driver"
+msgstr ""
 
-#: ../newprinter.py:976
-#, fuzzy
+#: ../newprinter.py:973
 msgid "Installing ..."
-msgstr "Installer"
+msgstr ""
 
-#: ../newprinter.py:1332 ../newprinter.py:1487 ../newprinter.py:2996
-#: ../newprinter.py:3215 ../ppdsloader.py:86
+#: ../newprinter.py:1329 ../newprinter.py:3044 ../newprinter.py:3272
+#: ../ppdsloader.py:86
 msgid "Searching"
 msgstr "Søker"
 
-#: ../newprinter.py:1340 ../newprinter.py:1488 ../ppdsloader.py:94
+#: ../newprinter.py:1339 ../ppdsloader.py:93
 msgid "Searching for drivers"
 msgstr "Søker etter drivere"
 
 #. device-info
 #. PhysicalDevice obj
 #. Separator?
-#: ../newprinter.py:1947
+#: ../newprinter.py:1969
 msgid "Enter URI"
 msgstr "Oppgi URI"
 
-#: ../newprinter.py:1952
+#: ../newprinter.py:1974
 msgid "Network Printer"
 msgstr "Nettverksskriver"
 
-#: ../newprinter.py:1956
+#: ../newprinter.py:1978
 msgid "Find Network Printer"
 msgstr "Finn nettverksskriver"
 
-#: ../newprinter.py:2008
+#: ../newprinter.py:2010
 msgid "Allow all incoming IPP Browse packets"
 msgstr "Tillat alle innkommende IPP-pakker for lesing"
 
-#: ../newprinter.py:2013
+#: ../newprinter.py:2015
 msgid "Allow all incoming mDNS traffic"
 msgstr "Tillat all innkommende mDNS-trafikk"
 
-#: ../newprinter.py:2024 ../newprinter.py:2027 ../newprinter.py:2450
-#: ../newprinter.py:2456 ../serversettings.py:559 ../serversettings.py:564
+#: ../newprinter.py:2025 ../newprinter.py:2028 ../newprinter.py:2456
+#: ../newprinter.py:2462 ../serversettings.py:563 ../serversettings.py:568
 msgid "Adjust Firewall"
 msgstr "Juster brannmur"
 
-#: ../newprinter.py:2026 ../newprinter.py:2455
+#: ../newprinter.py:2027 ../newprinter.py:2461
 msgid "Do It Later"
 msgstr "Gjør det senere"
 
-#: ../newprinter.py:2135 ../newprinter.py:3601
+#: ../newprinter.py:2136 ../newprinter.py:3585
 msgid " (Current)"
 msgstr " (aktiv)"
 
-#: ../newprinter.py:2205
+#: ../newprinter.py:2206
 msgid "Scanning..."
 msgstr "Søker..."
 
-#: ../newprinter.py:2261
+#: ../newprinter.py:2262
 msgid "No Print Shares"
 msgstr "Ingen delte utskriftsressurser"
 
-#: ../newprinter.py:2262
+#: ../newprinter.py:2263
 msgid ""
 "There were no print shares found.  Please check that the Samba service is "
 "marked as trusted in your firewall configuration."
@@ -689,106 +687,111 @@ msgstr ""
 "Ingen delte skrivere ble funnet. Vennligst sjekk at Samba-tjenesten er "
 "merket for tillit i brannmurkonfigurasjonen."
 
-#: ../newprinter.py:2452
+#: ../newprinter.py:2404
+#, python-format
+msgid "Verification requires the %s module"
+msgstr ""
+
+#: ../newprinter.py:2458
 msgid "Allow all incoming SMB/CIFS browse packets"
 msgstr "Tillat alle innkommende SMB/CIFS-lesepakker"
 
-#: ../newprinter.py:2568
+#: ../newprinter.py:2574
 msgid "Print Share Verified"
 msgstr "Delt skriver verifisert"
 
-#: ../newprinter.py:2569
+#: ../newprinter.py:2575
 msgid "This print share is accessible."
 msgstr "Denne delte skriveren er tilgjengelig."
 
-#: ../newprinter.py:2574
+#: ../newprinter.py:2580
 msgid "This print share is not accessible."
 msgstr "Denne delte skriveren kan ikke aksesseres."
 
-#: ../newprinter.py:2577
+#: ../newprinter.py:2583
 msgid "Print Share Inaccessible"
 msgstr "Delt skriver er ikke tilgjengelig"
 
-#: ../newprinter.py:2667
+#: ../newprinter.py:2705
 msgid "Parallel Port"
 msgstr "Parallellport"
 
-#: ../newprinter.py:2669
+#: ../newprinter.py:2707
 msgid "Serial Port"
 msgstr "Seriellport"
 
-#: ../newprinter.py:2671
+#: ../newprinter.py:2709
 msgid "USB"
 msgstr "USB"
 
-#: ../newprinter.py:2673
+#: ../newprinter.py:2711
 msgid "Bluetooth"
 msgstr "Bluetooth"
 
-#: ../newprinter.py:2675 ../newprinter.py:2678
+#: ../newprinter.py:2713 ../newprinter.py:2716
 msgid "HP Linux Imaging and Printing (HPLIP)"
 msgstr "HP Linux Imaging and Printing (HPLIP)"
 
-#: ../newprinter.py:2677 ../newprinter.py:2807 ../newprinter.py:2809
-#: ../system-config-printer.py:821
+#: ../newprinter.py:2715 ../newprinter.py:2854 ../newprinter.py:2856
+#: ../system-config-printer.py:899
 msgid "Fax"
 msgstr "Faks"
 
-#: ../newprinter.py:2680
+#: ../newprinter.py:2718
 msgid "Hardware Abstraction Layer (HAL)"
 msgstr "Hardware Abstraction Layer (HAL)."
 
-#: ../newprinter.py:2682 ../ppdippstr.py:178
+#: ../newprinter.py:2720 ../ppdippstr.py:178
 msgid "AppSocket/HP JetDirect"
 msgstr "AppSocket/HP JetDirect"
 
-#: ../newprinter.py:2691
+#: ../newprinter.py:2729
 #, python-format
 msgid "LPD/LPR queue '%s'"
 msgstr "LPD-/LPR-kø «%s»"
 
-#: ../newprinter.py:2694
+#: ../newprinter.py:2732
 msgid "LPD/LPR queue"
 msgstr "LPD-/LPR-kø"
 
-#: ../newprinter.py:2697 ../ppdippstr.py:184
+#: ../newprinter.py:2735 ../ppdippstr.py:184
 msgid "Windows Printer via SAMBA"
 msgstr "Windows-skriver via SAMBA"
 
-#: ../newprinter.py:2708 ../newprinter.py:2710
+#: ../newprinter.py:2746 ../newprinter.py:2748
 msgid "IPP"
 msgstr "IPP"
 
-#: ../newprinter.py:2712
+#: ../newprinter.py:2750
 msgid "HTTP"
 msgstr "HTTP"
 
-#: ../newprinter.py:2720 ../newprinter.py:2871
+#: ../newprinter.py:2758 ../newprinter.py:2919
 msgid "Remote CUPS printer via DNS-SD"
 msgstr "Ekstern CUPS-skriver via DNS-SD"
 
-#: ../newprinter.py:2732 ../newprinter.py:2881
+#: ../newprinter.py:2770 ../newprinter.py:2929
 #, python-format
 msgid "%s network printer via DNS-SD"
 msgstr "%s nettverksskriver via DNS-SD"
 
-#: ../newprinter.py:2736 ../newprinter.py:2883
+#: ../newprinter.py:2774 ../newprinter.py:2931
 msgid "Network printer via DNS-SD"
 msgstr "Nettverksskriver via DNS-SD"
 
-#: ../newprinter.py:2850
+#: ../newprinter.py:2898
 msgid "A printer connected to the parallel port."
 msgstr "En skriver koblet til en parallellport."
 
-#: ../newprinter.py:2852
+#: ../newprinter.py:2900
 msgid "A printer connected to a USB port."
 msgstr "En skriver koblet til en USB port."
 
-#: ../newprinter.py:2854
+#: ../newprinter.py:2902
 msgid "A printer connected via Bluetooth."
 msgstr "En skriver koblet til via Bluetooth."
 
-#: ../newprinter.py:2856
+#: ../newprinter.py:2904
 msgid ""
 "HPLIP software driving a printer, or the printer function of a multi-"
 "function device."
@@ -796,7 +799,7 @@ msgstr ""
 "HPLIP-programvare som kjører en skriver eller skriverfunksjonen i en "
 "multifunksjonsenhet."
 
-#: ../newprinter.py:2859
+#: ../newprinter.py:2907
 msgid ""
 "HPLIP software driving a fax machine, or the fax function of a multi-"
 "function device."
@@ -804,51 +807,51 @@ msgstr ""
 "HPLIP-programvare som driver en faksmaskin eller faksfunksjonen på en "
 "multifunksjonsenhet."
 
-#: ../newprinter.py:2862
+#: ../newprinter.py:2910
 msgid "Local printer detected by the Hardware Abstraction Layer (HAL)."
 msgstr "Lokal skriver gjenkjent av Hardware Abstraction Layer (HAL)."
 
-#: ../newprinter.py:2997
+#: ../newprinter.py:3045
 msgid "Searching for printers"
 msgstr "Søker etter skrivere"
 
-#: ../newprinter.py:3103 ../ui/NewPrinterWindow.ui.h:45
+#: ../newprinter.py:3151 ../ui/NewPrinterWindow.ui.h:46
 msgid "No printer was found at that address."
 msgstr "Ingen skriver ble funnet på den adressen."
 
-#: ../newprinter.py:3325
+#: ../newprinter.py:3306
 msgid "-- Select from search results --"
 msgstr "-- Velg fra søkeresultatene --"
 
-#: ../newprinter.py:3327
+#: ../newprinter.py:3308
 msgid "-- No matches found --"
 msgstr "-- Ingen treff funnet --"
 
-#: ../newprinter.py:3417 ../ui/NewPrinterWindow.ui.h:79
+#: ../newprinter.py:3401 ../ui/NewPrinterWindow.ui.h:80
 msgid "Local Driver"
 msgstr "Lokal driver"
 
-#: ../newprinter.py:3449 ../newprinter.py:3512 ../newprinter.py:3610
+#: ../newprinter.py:3433 ../newprinter.py:3496 ../newprinter.py:3594
 msgid " (recommended)"
 msgstr " (anbefalt)"
 
-#: ../newprinter.py:3642
+#: ../newprinter.py:3626
 msgid "This PPD is generated by foomatic."
 msgstr "Denne PPDen er generert av foomatic."
 
-#: ../newprinter.py:3689
+#: ../newprinter.py:3674
 msgid "OpenPrinting"
 msgstr "OpenPrinting"
 
-#: ../newprinter.py:3700
+#: ../newprinter.py:3685
 msgid "Distributable"
 msgstr "Distribuerbar"
 
-#: ../newprinter.py:3742
+#: ../newprinter.py:3727
 msgid ", "
 msgstr ", "
 
-#: ../newprinter.py:3747
+#: ../newprinter.py:3732
 #, python-format
 msgid ""
 "\n"
@@ -857,20 +860,20 @@ msgstr ""
 "\n"
 "(%s)"
 
-#: ../newprinter.py:3752
+#: ../newprinter.py:3737
 msgid "No support contacts known"
 msgstr "Ingen brukerstøttekontakter kjent"
 
-#: ../newprinter.py:3756 ../newprinter.py:3769
+#: ../newprinter.py:3741 ../newprinter.py:3754
 msgid "Not specified."
 msgstr "Ikke spesifisert."
 
 #. Foomatic database problem of some sort.
-#: ../newprinter.py:3817
+#: ../newprinter.py:3802
 msgid "Database error"
 msgstr "Database-feil"
 
-#: ../newprinter.py:3818
+#: ../newprinter.py:3803
 #, python-format
 msgid "The '%s' driver cannot be used with printer '%s %s'."
 msgstr "Driveren '%s' kan ikke brukes sammen med skriver '%s' %s."
@@ -878,45 +881,45 @@ msgstr "Driveren '%s' kan ikke brukes sammen med skriver '%s' %s."
 #. This printer references some XML that is not
 #. installed by default.  Point the user at the
 #. package they need to install.
-#: ../newprinter.py:3828
+#: ../newprinter.py:3813
 #, python-format
 msgid "You will need to install the '%s' package in order to use this driver."
 msgstr "Du er nødt til å installere pakken '%s' for å bruke denne skriveren."
 
 #. This error came from trying to open the PPD file.
-#: ../newprinter.py:3835
+#: ../newprinter.py:3820
 msgid "PPD error"
 msgstr "PPD-feil"
 
-#: ../newprinter.py:3837
+#: ../newprinter.py:3822
 msgid "Failed to read PPD file.  Possible reason follows:"
 msgstr "Kunne ikke lese PPD-fil. Mulige årsaker følger:"
 
 #. Failed to get PPD downloaded from OpenPrinting XXX
-#: ../newprinter.py:3855
+#: ../newprinter.py:3840
 msgid "Downloadable drivers"
 msgstr "Nedlastbare drivere"
 
-#: ../newprinter.py:3856
+#: ../newprinter.py:3841
 msgid "Failed to download PPD."
 msgstr "Klarte ikke å laste ned PPD."
 
-#: ../newprinter.py:3864
+#: ../newprinter.py:3849
 msgid "fetching PPD"
 msgstr "henter PPD"
 
-#: ../newprinter.py:3893 ../newprinter.py:3931
+#: ../newprinter.py:3878 ../newprinter.py:3915
 msgid "No Installable Options"
 msgstr "Ingen installerbare alternativer"
 
-#: ../newprinter.py:3995
+#: ../newprinter.py:3979
 #, python-format
 msgid "adding printer %s"
 msgstr "legger til skriver %s"
 
-#: ../newprinter.py:4020 ../newprinter.py:4032 ../newprinter.py:4050
-#: ../printerproperties.py:1009 ../system-config-printer.py:1606
-#: ../system-config-printer.py:1639
+#: ../newprinter.py:4008 ../newprinter.py:4020 ../newprinter.py:4038
+#: ../printerproperties.py:1002 ../system-config-printer.py:1688
+#: ../system-config-printer.py:1718
 #, python-format
 msgid "modifying printer %s"
 msgstr "endrer skriver %s"
@@ -1214,220 +1217,220 @@ msgstr "Seriellport #1"
 msgid "LPT #1"
 msgstr "LPT #1"
 
-#: ../ppdsloader.py:156
+#: ../ppdsloader.py:159
 msgid "fetching PPDs"
 msgstr "henter PPDer"
 
-#: ../printerproperties.py:70 ../system-config-printer.py:125
+#: ../printerproperties.py:70 ../system-config-printer.py:130
 msgid "Idle"
 msgstr "Ledig"
 
-#: ../printerproperties.py:74 ../system-config-printer.py:127
+#: ../printerproperties.py:74 ../system-config-printer.py:132
 msgid "Busy"
 msgstr "Opptatt"
 
 #. Printer state reasons list
-#: ../printerproperties.py:215
+#: ../printerproperties.py:214
 msgid "Message"
 msgstr "Beskjed"
 
-#: ../printerproperties.py:237
+#: ../printerproperties.py:236
 msgid "Users"
 msgstr "Brukere"
 
-#: ../printerproperties.py:260
+#: ../printerproperties.py:259
 msgid "Portrait (no rotation)"
 msgstr "Portrett (ingen rotering)"
 
-#: ../printerproperties.py:261
+#: ../printerproperties.py:260
 msgid "Landscape (90 degrees)"
 msgstr "Landskap (90 grader)"
 
-#: ../printerproperties.py:262
+#: ../printerproperties.py:261
 msgid "Reverse landscape (270 degrees)"
 msgstr "Omvendt landskap (270 grader)"
 
-#: ../printerproperties.py:263
+#: ../printerproperties.py:262
 msgid "Reverse portrait (180 degrees)"
 msgstr "Omvendt portrett (180 grader)"
 
-#: ../printerproperties.py:269
+#: ../printerproperties.py:268
 msgid "Left to right, top to bottom"
 msgstr "Venstre til høyre, topp til bunn"
 
-#: ../printerproperties.py:270
+#: ../printerproperties.py:269
 msgid "Left to right, bottom to top"
 msgstr "Venstre til høyre, bunn til topp"
 
-#: ../printerproperties.py:271
+#: ../printerproperties.py:270
 msgid "Right to left, top to bottom"
 msgstr "Høyre til venstre, topp til bunn"
 
-#: ../printerproperties.py:272
+#: ../printerproperties.py:271
 msgid "Right to left, bottom to top"
 msgstr "Høyre til venstre, bunn til topp"
 
-#: ../printerproperties.py:273
+#: ../printerproperties.py:272
 msgid "Top to bottom, left to right"
 msgstr "Topp til bunn, venstre til høyre"
 
-#: ../printerproperties.py:274
+#: ../printerproperties.py:273
 msgid "Top to bottom, right to left"
 msgstr "Topp til bunn, høyre til venstre"
 
-#: ../printerproperties.py:275
+#: ../printerproperties.py:274
 msgid "Bottom to top, left to right"
 msgstr "Bunn til topp, venstre til høyre"
 
-#: ../printerproperties.py:276
+#: ../printerproperties.py:275
 msgid "Bottom to top, right to left"
 msgstr "Bunn til topp, høyre til venstre"
 
-#: ../printerproperties.py:282
+#: ../printerproperties.py:281
 msgid "Staple"
 msgstr "Stift"
 
-#: ../printerproperties.py:283
+#: ../printerproperties.py:282
 msgid "Punch"
 msgstr "Stans ut"
 
-#: ../printerproperties.py:284
+#: ../printerproperties.py:283
 msgid "Cover"
 msgstr "Lokk"
 
-#: ../printerproperties.py:285
+#: ../printerproperties.py:284
 msgid "Bind"
 msgstr "Innbinding"
 
-#: ../printerproperties.py:286
+#: ../printerproperties.py:285
 msgid "Saddle stitch"
 msgstr "Ryggstifting"
 
-#: ../printerproperties.py:287
+#: ../printerproperties.py:286
 msgid "Edge stitch"
 msgstr "Stift ved kant"
 
-#: ../printerproperties.py:288
+#: ../printerproperties.py:287
 msgid "Fold"
 msgstr "Fold"
 
-#: ../printerproperties.py:289
+#: ../printerproperties.py:288
 msgid "Trim"
 msgstr "Trim"
 
-#: ../printerproperties.py:290
+#: ../printerproperties.py:289
 msgid "Bale"
 msgstr "Bunke"
 
-#: ../printerproperties.py:291
+#: ../printerproperties.py:290
 msgid "Booklet maker"
 msgstr "Lag hefte"
 
-#: ../printerproperties.py:292
+#: ../printerproperties.py:291
 msgid "Job offset"
 msgstr "Jobbavstand"
 
-#: ../printerproperties.py:293
+#: ../printerproperties.py:292
 msgid "Staple (top left)"
 msgstr "Stift (oppe til venstre)"
 
-#: ../printerproperties.py:294
+#: ../printerproperties.py:293
 msgid "Staple (bottom left)"
 msgstr "Stift (nede til venstre)"
 
-#: ../printerproperties.py:295
+#: ../printerproperties.py:294
 msgid "Staple (top right)"
 msgstr "Stift (oppe til høyre)"
 
-#: ../printerproperties.py:296
+#: ../printerproperties.py:295
 msgid "Staple (bottom right)"
 msgstr "Stift (nede til høyre)"
 
-#: ../printerproperties.py:297
+#: ../printerproperties.py:296
 msgid "Edge stitch (left)"
 msgstr "Kantstift (venstre)"
 
-#: ../printerproperties.py:298
+#: ../printerproperties.py:297
 msgid "Edge stitch (top)"
 msgstr "Kantstift (topp)"
 
-#: ../printerproperties.py:299
+#: ../printerproperties.py:298
 msgid "Edge stitch (right)"
 msgstr "Kantstift (høyre)"
 
-#: ../printerproperties.py:300
+#: ../printerproperties.py:299
 msgid "Edge stitch (bottom)"
 msgstr "Kantstift (bunn)"
 
-#: ../printerproperties.py:301
+#: ../printerproperties.py:300
 msgid "Staple dual (left)"
 msgstr "Dobbel stift (venstre)"
 
-#: ../printerproperties.py:302
+#: ../printerproperties.py:301
 msgid "Staple dual (top)"
 msgstr "Dobbel stift (topp)"
 
-#: ../printerproperties.py:303
+#: ../printerproperties.py:302
 msgid "Staple dual (right)"
 msgstr "Dobbel stift (høyre)"
 
-#: ../printerproperties.py:304
+#: ../printerproperties.py:303
 msgid "Staple dual (bottom)"
 msgstr "Dobbel stift (bunn)"
 
-#: ../printerproperties.py:305
+#: ../printerproperties.py:304
 msgid "Bind (left)"
 msgstr "Bind (venstre)"
 
-#: ../printerproperties.py:306
+#: ../printerproperties.py:305
 msgid "Bind (top)"
 msgstr "Bind (topp)"
 
-#: ../printerproperties.py:307
+#: ../printerproperties.py:306
 msgid "Bind (right)"
 msgstr "Bind (høyre)"
 
-#: ../printerproperties.py:308
+#: ../printerproperties.py:307
 msgid "Bind (bottom)"
 msgstr "Bind (bunn)"
 
-#: ../printerproperties.py:313
+#: ../printerproperties.py:312
 msgid "One-sided"
 msgstr "Ensidig"
 
-#: ../printerproperties.py:314
+#: ../printerproperties.py:313
 msgid "Two-sided (long edge)"
 msgstr "Tosidig (lang kant)"
 
-#: ../printerproperties.py:315
+#: ../printerproperties.py:314
 msgid "Two-sided (short edge)"
 msgstr "Tosidig (kort kant)"
 
-#: ../printerproperties.py:320 ../printerproperties.py:325
+#: ../printerproperties.py:319 ../printerproperties.py:324
 msgid "Normal"
 msgstr "Normal"
 
-#: ../printerproperties.py:321
+#: ../printerproperties.py:320
 msgid "Reverse"
 msgstr "Omvendt"
 
-#: ../printerproperties.py:324
+#: ../printerproperties.py:323
 msgid "Draft"
 msgstr "Skisse"
 
-#: ../printerproperties.py:326
+#: ../printerproperties.py:325
 msgid "High"
 msgstr "Høy"
 
-#: ../printerproperties.py:348
+#: ../printerproperties.py:347
 msgid "Automatic rotation"
 msgstr "Automatisk rotasjon"
 
-#: ../printerproperties.py:595
+#: ../printerproperties.py:594
 msgid "CUPS test page"
 msgstr "CUPS testside"
 
-#: ../printerproperties.py:596
+#: ../printerproperties.py:595
 msgid ""
 "Typically shows whether all jets on a print head are functioning and that "
 "the print feed mechanisms are working properly."
@@ -1435,13 +1438,13 @@ msgstr ""
 "Viser typisk om alle dysene på et skriverhode fungerer og at "
 "utskriftsmekanismene virker korrekt."
 
-#: ../printerproperties.py:603
+#: ../printerproperties.py:602
 #, python-format
 msgid "Printer Properties - '%s' on %s"
 msgstr "Egenskaper for skriver - «%s» på %s"
 
 #. The Conflict button was pressed.
-#: ../printerproperties.py:613
+#: ../printerproperties.py:612
 msgid ""
 "There are conflicting options.\n"
 "Changes can only be applied after\n"
@@ -1451,24 +1454,24 @@ msgstr ""
 "Endringer kan kun aktiveres etter\n"
 "at disse konfliktene er løst."
 
-#: ../printerproperties.py:968
+#: ../printerproperties.py:963
 msgid "Installable Options"
 msgstr "Installerbare alternativer"
 
-#: ../printerproperties.py:969 ../ui/PrinterPropertiesDialog.ui.h:41
+#: ../printerproperties.py:964 ../ui/PrinterPropertiesDialog.ui.h:48
 msgid "Printer Options"
 msgstr "Alternativer for skriver"
 
-#: ../printerproperties.py:1007
+#: ../printerproperties.py:1000
 #, python-format
 msgid "modifying class %s"
 msgstr "endrer klasse %s"
 
-#: ../printerproperties.py:1024
+#: ../printerproperties.py:1018
 msgid "This will delete this class!"
 msgstr "Dette vil slette denne klassen!"
 
-#: ../printerproperties.py:1025
+#: ../printerproperties.py:1019
 msgid "Proceed anyway?"
 msgstr "Fortsett likevel?"
 
@@ -1476,19 +1479,19 @@ msgstr "Fortsett likevel?"
 #. but we have never fetched the server settings to see whether
 #. the server is publishing shared printers.  Fetch the settings
 #. now so that we can update the "not published" label if necessary.
-#: ../printerproperties.py:1118 ../serversettings.py:199
+#: ../printerproperties.py:1112 ../serversettings.py:200
 msgid "fetching server settings"
 msgstr "henter innstillinger for tjener"
 
-#: ../printerproperties.py:1201
+#: ../printerproperties.py:1195
 msgid "printing test page"
 msgstr "skriver ut testside"
 
-#: ../printerproperties.py:1215 ../printerproperties.py:1256
+#: ../printerproperties.py:1209 ../printerproperties.py:1249
 msgid "Not possible"
 msgstr "Ikke mulig"
 
-#: ../printerproperties.py:1216 ../printerproperties.py:1257
+#: ../printerproperties.py:1210 ../printerproperties.py:1250
 msgid ""
 "The remote server did not accept the print job, most likely because the "
 "printer is not shared."
@@ -1496,43 +1499,51 @@ msgstr ""
 "Ekstern tjener tok ikke imot jobben. Sannsynligvis fordi skriveren ikke er "
 "delt."
 
-#: ../printerproperties.py:1228 ../printerproperties.py:1248
+#: ../printerproperties.py:1222 ../printerproperties.py:1241
 msgid "Submitted"
 msgstr "Sendt"
 
-#: ../printerproperties.py:1229
+#: ../printerproperties.py:1223
 #, python-format
 msgid "Test page submitted as job %d"
 msgstr "Testside sendt som jobb %d"
 
-#: ../printerproperties.py:1241
+#: ../printerproperties.py:1234
 msgid "sending maintenance command"
 msgstr "sender vedlikeholdskommando"
 
-#: ../printerproperties.py:1249
+#: ../printerproperties.py:1242
 #, python-format
 msgid "Maintenance command submitted as job %d"
 msgstr "Vedlikeholdskommando sendt som jobb %d"
 
-#: ../printerproperties.py:1338 ../printerproperties.py:1343
-#: ../printerproperties.py:1440
+#: ../printerproperties.py:1323
+msgid "Raw Queue"
+msgstr ""
+
+#: ../printerproperties.py:1324
+msgid "Unable to get queue details. Treating queue as raw."
+msgstr ""
+
+#: ../printerproperties.py:1336 ../printerproperties.py:1341
+#: ../printerproperties.py:1438
 msgid "Error"
 msgstr "Feil"
 
-#: ../printerproperties.py:1339
+#: ../printerproperties.py:1337
 msgid "The PPD file for this queue is damaged."
 msgstr "PPD-filen for denne køen er ødelagt."
 
-#: ../printerproperties.py:1344
+#: ../printerproperties.py:1342
 msgid "There was a problem connecting to the CUPS server."
 msgstr "Det oppstod et problem ved tilkobling til CUPS-tjeneren."
 
-#: ../printerproperties.py:1441
+#: ../printerproperties.py:1439
 #, python-format
 msgid "Option '%s' has value '%s' and cannot be edited."
 msgstr "Alternativ «%s» har verdi «%s» og kan ikke redigeres."
 
-#: ../printerproperties.py:1558
+#: ../printerproperties.py:1557
 msgid "Marker levels are not reported for this printer."
 msgstr "Blekknivå rapporteres ikke for denne skriveren."
 
@@ -1545,203 +1556,215 @@ msgstr "Du må logge inn for å få tilgang til %s."
 msgid "Problems?"
 msgstr "Problemer?"
 
-#: ../serversettings.py:272
+#: ../serversettings.py:273
 msgid "Enter hostname"
 msgstr "Oppgi vertsnavn"
 
-#: ../serversettings.py:519
+#: ../serversettings.py:524
 msgid "modifying server settings"
 msgstr "endrer innstillinger for tjener"
 
-#: ../serversettings.py:560
+#: ../serversettings.py:564
 msgid "Adjust the firewall now to allow all incoming IPP connections?"
 msgstr "Juster brannmuren for å tillate alle innkommende IPP-tilkoblinger nå?"
 
-#: ../system-config-printer.py:207
+#: ../system-config-printer.py:233
 msgid "_Connect..."
 msgstr "_Koble til …"
 
-#: ../system-config-printer.py:208
+#: ../system-config-printer.py:234
 msgid "Choose a different CUPS server"
 msgstr "Velg en annen CUPS-tjener"
 
-#: ../system-config-printer.py:210
+#: ../system-config-printer.py:236
 msgid "_Settings..."
 msgstr "Inn_stillinger …"
 
-#: ../system-config-printer.py:211
+#: ../system-config-printer.py:237
 msgid "Adjust server settings"
 msgstr "Juster innstillinger for tjener"
 
-#: ../system-config-printer.py:213 ../ui/PrintersWindow.ui.h:3
+#: ../system-config-printer.py:239 ../ui/PrintersWindow.ui.h:3
 msgid "_Printer"
 msgstr "S_kriver"
 
-#: ../system-config-printer.py:215
+#: ../system-config-printer.py:241
 msgid "_Class"
 msgstr "_Klasse"
 
-#: ../system-config-printer.py:220
+#: ../system-config-printer.py:246
 msgid "_Rename"
 msgstr "End_re navn"
 
-#: ../system-config-printer.py:222
+#: ../system-config-printer.py:248
 msgid "_Duplicate"
 msgstr "_Dupliser"
 
-#: ../system-config-printer.py:226
+#: ../system-config-printer.py:252
 msgid "Set As De_fault"
 msgstr "Sett som _forvalg"
 
-#: ../system-config-printer.py:230
+#: ../system-config-printer.py:256
 msgid "_Create class"
 msgstr "_Lag klasse"
 
-#: ../system-config-printer.py:232
+#: ../system-config-printer.py:258
 msgid "View Print _Queue"
 msgstr "Vis utskrifts_kø"
 
-#: ../system-config-printer.py:236
+#: ../system-config-printer.py:262
 msgid "E_nabled"
 msgstr "A_ktivert"
 
-#: ../system-config-printer.py:238
+#: ../system-config-printer.py:264
 msgid "_Shared"
 msgstr "_Delt"
 
-#: ../system-config-printer.py:243
+#: ../system-config-printer.py:269
 msgid "Description"
 msgstr "Beskrivelse"
 
-#: ../system-config-printer.py:244 ../troubleshoot/ChooseNetworkPrinter.py:39
+#: ../system-config-printer.py:270 ../troubleshoot/ChooseNetworkPrinter.py:39
 #: ../troubleshoot/ChoosePrinter.py:45
 msgid "Location"
 msgstr "Lokasjon"
 
-#: ../system-config-printer.py:245
+#: ../system-config-printer.py:271
 msgid "Manufacturer / Model"
 msgstr "Produsent / modell"
 
-#: ../system-config-printer.py:319
+#: ../system-config-printer.py:318 ../ui/PrinterPropertiesDialog.ui.h:41
+#: ../ui/PrintersWindow.ui.h:10 ../ui/ServerSettingsDialog.ui.h:15
+#, fuzzy
+msgid "Add"
+msgstr "Ulik"
+
+#: ../system-config-printer.py:335 ../ui/PrinterPropertiesDialog.ui.h:88
+#: ../ui/SMBBrowseDialog.ui.h:2
+#, fuzzy
+msgid "Refresh"
+msgstr "Oppdate_r"
+
+#: ../system-config-printer.py:349
 msgid "_New"
 msgstr "_Ny"
 
-#: ../system-config-printer.py:667
+#: ../system-config-printer.py:711
 #, python-format
 msgid "Print Settings - %s"
 msgstr "Innstillinger for utskrift - %s"
 
-#: ../system-config-printer.py:670
+#: ../system-config-printer.py:714
 #, python-format
 msgid "Connected to %s"
 msgstr "Koblet til %s"
 
-#: ../system-config-printer.py:721
+#: ../system-config-printer.py:801
 msgid "obtaining queue details"
 msgstr "henter detaljer om kø"
 
-#: ../system-config-printer.py:812
+#: ../system-config-printer.py:890
 msgid "Network printer (discovered)"
 msgstr "Nettverksskriver (oppdaget)"
 
-#: ../system-config-printer.py:815
+#: ../system-config-printer.py:893
 msgid "Network class (discovered)"
 msgstr "Nettverksklasse (oppdaget)"
 
-#: ../system-config-printer.py:824
+#: ../system-config-printer.py:902
 msgid "Class"
 msgstr "Klasse"
 
-#: ../system-config-printer.py:827 ../system-config-printer.py:833
+#: ../system-config-printer.py:905 ../system-config-printer.py:911
 #: ../troubleshoot/LocalOrRemote.py:30
 msgid "Network printer"
 msgstr "Nettverksskriver"
 
-#: ../system-config-printer.py:830
+#: ../system-config-printer.py:908
 msgid "Network print share"
 msgstr "Delt nettverksskriver"
 
-#: ../system-config-printer.py:984
+#: ../system-config-printer.py:1062
 msgid "Service framework not available"
 msgstr "Tjenesterammeverk er ikke tilgjengelig"
 
-#: ../system-config-printer.py:986
+#: ../system-config-printer.py:1064
 msgid "Cannot start service on remote server"
 msgstr "Kan ikke starte tjeneste på ekstern tjener"
 
-#: ../system-config-printer.py:1034 ../ui/ConnectingDialog.ui.h:4
+#: ../system-config-printer.py:1112 ../ui/ConnectingDialog.ui.h:5
 #, no-c-format, python-format
 msgid "<i>Opening connection to %s</i>"
 msgstr "<i>Åpner tilkobling til %s</i>"
 
-#: ../system-config-printer.py:1191
+#: ../system-config-printer.py:1275
 msgid "Set Default Printer"
 msgstr "Sett forvalgt skriver"
 
-#: ../system-config-printer.py:1193
+#: ../system-config-printer.py:1277
 msgid "Do you want to set this as the system-wide default printer?"
 msgstr "Vil du sette denne som forvalgt skriver for hele systemet?"
 
-#: ../system-config-printer.py:1195
+#: ../system-config-printer.py:1279
 msgid "Set as the _system-wide default printer"
 msgstr "Sett som forvalgt skriver for _systemet"
 
-#: ../system-config-printer.py:1197
+#: ../system-config-printer.py:1281
 msgid "_Clear my personal default setting"
 msgstr "_Tøm mine personlige forvalgte innstillinger"
 
-#: ../system-config-printer.py:1198
+#: ../system-config-printer.py:1282
 msgid "Set as my _personal default printer"
 msgstr "Set som min _personlige forvalgte skriver"
 
-#: ../system-config-printer.py:1203
+#: ../system-config-printer.py:1287
 msgid "setting default printer"
 msgstr "setter forvalgt skriver"
 
-#: ../system-config-printer.py:1252
+#: ../system-config-printer.py:1340
 msgid "Cannot Rename"
 msgstr "Kan ikke endre navn"
 
-#: ../system-config-printer.py:1253
+#: ../system-config-printer.py:1341
 msgid "There are queued jobs."
 msgstr "Det ligger jobber i kø."
 
-#: ../system-config-printer.py:1271
+#: ../system-config-printer.py:1358
 msgid "Renaming will lose history"
 msgstr "Endring av navn vil medføre tap av historikk"
 
-#: ../system-config-printer.py:1273
+#: ../system-config-printer.py:1360
 msgid "Completed jobs will no longer be available for re-printing."
 msgstr "Fullførte jobber vil ikke være tilgjengelige for ny utskrift."
 
-#: ../system-config-printer.py:1386
+#: ../system-config-printer.py:1473
 msgid "renaming printer"
 msgstr "endrer navn på skriver"
 
-#: ../system-config-printer.py:1549
+#: ../system-config-printer.py:1636
 #, python-format
 msgid "Really delete class '%s'?"
 msgstr "Vil du virkelig slette klassen «%s»?"
 
-#: ../system-config-printer.py:1551
+#: ../system-config-printer.py:1638
 #, python-format
 msgid "Really delete printer '%s'?"
 msgstr "Vil du virkelig slette skriver «%s»?"
 
-#: ../system-config-printer.py:1555
+#: ../system-config-printer.py:1642
 msgid "Really delete selected destinations?"
 msgstr "Vil du virkelig slette valgte mål?"
 
-#: ../system-config-printer.py:1578
+#: ../system-config-printer.py:1663
 #, python-format
 msgid "deleting printer %s"
 msgstr "sletter skriver %s"
 
-#: ../system-config-printer.py:1680
+#: ../system-config-printer.py:1754
 msgid "Publish Shared Printers"
 msgstr "Publiser delte skrivere"
 
-#: ../system-config-printer.py:1681
+#: ../system-config-printer.py:1755
 msgid ""
 "Shared printers are not available to other people unless the 'Publish shared "
 "printers' option is enabled in the server settings."
@@ -1749,30 +1772,30 @@ msgstr ""
 "Delte skrivere er ikke tilgjengelige for andre med mindre alternativet "
 "«Publiser delte skrivere» er slått på under tjenerinnstillinger."
 
-#: ../system-config-printer.py:1893
+#: ../system-config-printer.py:1969
 msgid "Would you like to print a test page?"
 msgstr "Vil du skrive ut en testside?"
 
 #. Not more than 25 characters
-#: ../system-config-printer.py:1895 ../ui/PrinterPropertiesDialog.ui.h:12
+#: ../system-config-printer.py:1971 ../ui/PrinterPropertiesDialog.ui.h:17
 #: ../troubleshoot/PrintTestPage.py:74
 msgid "Print Test Page"
 msgstr "Skriv ut testside"
 
-#: ../system-config-printer.py:1982
+#: ../system-config-printer.py:2063
 msgid "Install driver"
 msgstr "Installer driver"
 
-#: ../system-config-printer.py:1983 ../troubleshoot/CheckPPDSanity.py:135
+#: ../system-config-printer.py:2064 ../troubleshoot/CheckPPDSanity.py:136
 #, python-format
 msgid "Printer '%s' requires the %s package but it is not currently installed."
 msgstr "Skriver «%s» er avhengig av pakke %s, men den er ikke installert."
 
-#: ../system-config-printer.py:1998
+#: ../system-config-printer.py:2079
 msgid "Missing driver"
 msgstr "Mangler driver"
 
-#: ../system-config-printer.py:1999
+#: ../system-config-printer.py:2080
 #, python-format
 msgid ""
 "Printer '%s' requires the '%s' program but it is not currently installed.  "
@@ -1827,11 +1850,24 @@ msgstr "Kjartan Maraas <kmaraas@broadpark.no>"
 msgid "Connect to CUPS server"
 msgstr "Koble til CUPS-tjener"
 
-#: ../ui/ConnectDialog.ui.h:2
+#: ../ui/ConnectDialog.ui.h:2 ../ui/ConnectingDialog.ui.h:2
+#: ../ui/NewPrinterName.ui.h:2 ../ui/NewPrinterWindow.ui.h:104
+#: ../ui/PrinterPropertiesDialog.ui.h:4 ../ui/ServerSettingsDialog.ui.h:2
+#: ../ui/SMBBrowseDialog.ui.h:3
+#, fuzzy
+msgid "Cancel"
+msgstr "A_vbryt"
+
+#: ../ui/ConnectDialog.ui.h:3 ../ui/PrintersWindow.ui.h:13
+#, fuzzy
+msgid "Connect"
+msgstr "Tilkobling"
+
+#: ../ui/ConnectDialog.ui.h:4
 msgid "Require _encryption"
 msgstr "Krev krypt_ering"
 
-#: ../ui/ConnectDialog.ui.h:3
+#: ../ui/ConnectDialog.ui.h:5
 msgid "CUPS _server:"
 msgstr "CUPS-_tjener:"
 
@@ -1839,11 +1875,15 @@ msgstr "CUPS-_tjener:"
 msgid "Connecting to CUPS server"
 msgstr "Kobler til CUPS-tjener"
 
-#: ../ui/ConnectingDialog.ui.h:2
+#: ../ui/ConnectingDialog.ui.h:3
 msgid "<span weight=\"bold\" size=\"larger\">Connecting to CUPS server</span>"
 msgstr "<span weight=\"bold\" size=\"larger\">Kobler til CUPS-tjener</span>"
 
-#: ../ui/InstallDialog.ui.h:1
+#: ../ui/InstallDialog.ui.h:1 ../ui/PrinterPropertiesDialog.ui.h:6
+msgid "Close"
+msgstr ""
+
+#: ../ui/InstallDialog.ui.h:2
 msgid "_Install"
 msgstr "_Installer"
 
@@ -1867,7 +1907,12 @@ msgstr "Vis _fullførte jobber"
 msgid "Duplicate Printer"
 msgstr "Dupliser skriver"
 
-#: ../ui/NewPrinterName.ui.h:2
+#: ../ui/NewPrinterName.ui.h:3 ../ui/PrinterPropertiesDialog.ui.h:5
+#: ../ui/ServerSettingsDialog.ui.h:3 ../ui/SMBBrowseDialog.ui.h:4
+msgid "OK"
+msgstr ""
+
+#: ../ui/NewPrinterName.ui.h:4
 msgid "New name for the printer"
 msgstr "Nytt navn for skriveren"
 
@@ -2026,42 +2071,46 @@ msgid "SMB"
 msgstr "SMB"
 
 #: ../ui/NewPrinterWindow.ui.h:44
+msgid "Find"
+msgstr ""
+
+#: ../ui/NewPrinterWindow.ui.h:45
 msgid "Searching..."
 msgstr "Søker..."
 
-#: ../ui/NewPrinterWindow.ui.h:46
+#: ../ui/NewPrinterWindow.ui.h:47
 msgid "<b>Network Printer</b>"
 msgstr "<b>Nettverksskriver</b>"
 
-#: ../ui/NewPrinterWindow.ui.h:47
+#: ../ui/NewPrinterWindow.ui.h:48
 msgid "Network"
 msgstr "Nettverk"
 
-#: ../ui/NewPrinterWindow.ui.h:48
+#: ../ui/NewPrinterWindow.ui.h:49
 msgid "Connection"
 msgstr "Tilkobling"
 
-#: ../ui/NewPrinterWindow.ui.h:49
+#: ../ui/NewPrinterWindow.ui.h:50
 msgid "Device"
 msgstr "Enhet"
 
-#: ../ui/NewPrinterWindow.ui.h:50
+#: ../ui/NewPrinterWindow.ui.h:51
 msgid "<span weight=\"bold\" size=\"larger\">Choose Driver</span>"
 msgstr "<span weight=\"bold\" size=\"larger\">Velg driver</span>"
 
-#: ../ui/NewPrinterWindow.ui.h:51
+#: ../ui/NewPrinterWindow.ui.h:52
 msgid "Select printer from database"
 msgstr "Velg skriver fra database"
 
-#: ../ui/NewPrinterWindow.ui.h:52
+#: ../ui/NewPrinterWindow.ui.h:53
 msgid "Provide PPD file"
 msgstr "Oppgi PPD-fil"
 
-#: ../ui/NewPrinterWindow.ui.h:53
+#: ../ui/NewPrinterWindow.ui.h:54
 msgid "Search for a printer driver to download"
 msgstr "Søk etter en skriverdriver å laste ned"
 
-#: ../ui/NewPrinterWindow.ui.h:54
+#: ../ui/NewPrinterWindow.ui.h:55
 msgid ""
 "The foomatic printer database contains various manufacturer provided "
 "PostScript Printer Description (PPD) files and also can generate PPD files "
@@ -2070,269 +2119,285 @@ msgid ""
 "printer."
 msgstr ""
 
-#: ../ui/NewPrinterWindow.ui.h:55
+#: ../ui/NewPrinterWindow.ui.h:56
 msgid ""
 "PostScript Printer Description (PPD) files can often be found on the driver "
 "disk that comes with the printer. For PostScript printers they are often "
 "part of the Windows<sup>®</sup> driver."
 msgstr ""
 
-#: ../ui/NewPrinterWindow.ui.h:56
+#: ../ui/NewPrinterWindow.ui.h:57
 msgid "Make and model:"
 msgstr "Type og modell:"
 
-#: ../ui/NewPrinterWindow.ui.h:57
+#: ../ui/NewPrinterWindow.ui.h:58
 msgid "_Search"
 msgstr "_Søk"
 
-#: ../ui/NewPrinterWindow.ui.h:58
+#: ../ui/NewPrinterWindow.ui.h:59
 msgid "Printer model:"
 msgstr "Skrivermodell:"
 
-#: ../ui/NewPrinterWindow.ui.h:59
+#: ../ui/NewPrinterWindow.ui.h:60
 msgid "Comments..."
 msgstr "Kommentarer..."
 
-#: ../ui/NewPrinterWindow.ui.h:60
+#: ../ui/NewPrinterWindow.ui.h:61
 msgid "<span weight=\"bold\" size=\"larger\">Choose Class Members</span>"
 msgstr "<span weight=\"bold\" size=\"larger\">Velg medlemmer i klasse</span>"
 
-#: ../ui/NewPrinterWindow.ui.h:61 ../ui/PrinterPropertiesDialog.ui.h:37
+#: ../ui/NewPrinterWindow.ui.h:62 ../ui/PrinterPropertiesDialog.ui.h:44
 msgid "move left"
 msgstr "flytt til venstre"
 
-#: ../ui/NewPrinterWindow.ui.h:62 ../ui/PrinterPropertiesDialog.ui.h:38
+#: ../ui/NewPrinterWindow.ui.h:63 ../ui/PrinterPropertiesDialog.ui.h:45
 msgid "move right"
 msgstr "flytt til høyre"
 
-#: ../ui/NewPrinterWindow.ui.h:63
+#: ../ui/NewPrinterWindow.ui.h:64
 msgid "Class Members"
 msgstr "Klassemedlemmer"
 
-#: ../ui/NewPrinterWindow.ui.h:64
+#: ../ui/NewPrinterWindow.ui.h:65
 msgid "<span weight=\"bold\" size=\"larger\">Existing Settings</span>"
 msgstr ""
 "<span weight=\"bold\" size=\"larger\">Eksisterende innstillinger</span>"
 
-#: ../ui/NewPrinterWindow.ui.h:65
+#: ../ui/NewPrinterWindow.ui.h:66
 msgid "Try to transfer the current settings"
 msgstr "Prøv å overføre nåværende innstillinger"
 
-#: ../ui/NewPrinterWindow.ui.h:66
+#: ../ui/NewPrinterWindow.ui.h:67
 msgid "Use the new PPD (Postscript Printer Description) as is."
 msgstr "Bruk den nye PPD (Postscript Printer Description) som den er."
 
-#: ../ui/NewPrinterWindow.ui.h:67
+#: ../ui/NewPrinterWindow.ui.h:68
 msgid ""
 "This way all current option settings will be lost. The default settings of "
 "the new PPD will be used. "
 msgstr ""
 
-#: ../ui/NewPrinterWindow.ui.h:68
+#: ../ui/NewPrinterWindow.ui.h:69
 msgid "Try to copy the option settings over from the old PPD. "
 msgstr "Prøv å kopiere innstillinger for alternativet fra den gamle PPDen. "
 
-#: ../ui/NewPrinterWindow.ui.h:69
+#: ../ui/NewPrinterWindow.ui.h:70
 msgid ""
 "This is done by assuming that options with the same name do have the same "
 "meaning. Settings of options that are not present in the new PPD will be "
 "lost and options only present in the new PPD will be set to default."
 msgstr ""
 
-#: ../ui/NewPrinterWindow.ui.h:70
+#: ../ui/NewPrinterWindow.ui.h:71
 msgid "Change PPD"
 msgstr "Bytt PPD"
 
-#: ../ui/NewPrinterWindow.ui.h:71
+#: ../ui/NewPrinterWindow.ui.h:72
 msgid "<span weight=\"bold\" size=\"larger\">Installable Options</span>"
 msgstr ""
 "<span weight=\"bold\" size=\"larger\">Installerbare alternativer</span>"
 
-#: ../ui/NewPrinterWindow.ui.h:72
+#: ../ui/NewPrinterWindow.ui.h:73
 msgid ""
 "This driver supports additional hardware that may be installed in the "
 "printer."
 msgstr ""
 "Denne driveren støtter ekstra maskinvare som kan være installert i skriveren."
 
-#: ../ui/NewPrinterWindow.ui.h:73 ../ui/PrinterPropertiesDialog.ui.h:40
+#: ../ui/NewPrinterWindow.ui.h:74 ../ui/PrinterPropertiesDialog.ui.h:47
 msgid "Installed Options"
 msgstr "Installerte alternativer"
 
-#: ../ui/NewPrinterWindow.ui.h:74
+#: ../ui/NewPrinterWindow.ui.h:75
 msgid ""
 "For the printer you have selected there are drivers available for download."
 msgstr ""
 "Det finnes drivere tilgjengelig for nedlasting for skriveren du har valgt."
 
-#: ../ui/NewPrinterWindow.ui.h:75
+#: ../ui/NewPrinterWindow.ui.h:76
 msgid ""
 "These drivers do not come from your operating system supplier and will not "
 "be covered by their commercial support.  See the support and license terms "
 "of the driver's supplier."
 msgstr ""
 
-#: ../ui/NewPrinterWindow.ui.h:76
+#: ../ui/NewPrinterWindow.ui.h:77
 msgid "<b>Note</b>"
 msgstr "<b>Merknad</b>"
 
-#: ../ui/NewPrinterWindow.ui.h:77
+#: ../ui/NewPrinterWindow.ui.h:78
 msgid "<b>Select Driver</b>"
 msgstr "<b>Velg driver</b>"
 
-#: ../ui/NewPrinterWindow.ui.h:78
+#: ../ui/NewPrinterWindow.ui.h:79
 msgid ""
 "With this choice no driver download will be performed. In the next steps a "
 "locally installed driver will be selected."
 msgstr ""
 
-#: ../ui/NewPrinterWindow.ui.h:80 ../ui/PrinterPropertiesDialog.ui.h:2
+#: ../ui/NewPrinterWindow.ui.h:81 ../ui/PrinterPropertiesDialog.ui.h:7
 msgid "Description:"
 msgstr "Beskrivelse:"
 
-#: ../ui/NewPrinterWindow.ui.h:81
+#: ../ui/NewPrinterWindow.ui.h:82
 msgid "License:"
 msgstr "Lisens:"
 
-#: ../ui/NewPrinterWindow.ui.h:82
+#: ../ui/NewPrinterWindow.ui.h:83
 msgid "Supplier:"
 msgstr "Leverandør:"
 
-#: ../ui/NewPrinterWindow.ui.h:83
+#: ../ui/NewPrinterWindow.ui.h:84
 msgid "license"
 msgstr "lisens"
 
-#: ../ui/NewPrinterWindow.ui.h:84
+#: ../ui/NewPrinterWindow.ui.h:85
 msgid "short description"
 msgstr "kort beskrivelse"
 
-#: ../ui/NewPrinterWindow.ui.h:85
+#: ../ui/NewPrinterWindow.ui.h:86
 msgid "Manufacturer"
 msgstr "Produsent"
 
-#: ../ui/NewPrinterWindow.ui.h:86
+#: ../ui/NewPrinterWindow.ui.h:87
 msgid "supplier"
 msgstr "leverandør"
 
-#: ../ui/NewPrinterWindow.ui.h:87
+#: ../ui/NewPrinterWindow.ui.h:88
 msgid "Free software"
 msgstr "Fri programvare"
 
-#: ../ui/NewPrinterWindow.ui.h:88
+#: ../ui/NewPrinterWindow.ui.h:89
 msgid "Patented algorithms"
 msgstr "Patenterte algoritmer"
 
-#: ../ui/NewPrinterWindow.ui.h:89
+#: ../ui/NewPrinterWindow.ui.h:90
 msgid "Support:"
 msgstr "Støtte:"
 
-#: ../ui/NewPrinterWindow.ui.h:90
+#: ../ui/NewPrinterWindow.ui.h:91
 msgid "support contacts"
 msgstr "brukerstøttekontakter"
 
-#: ../ui/NewPrinterWindow.ui.h:91
+#: ../ui/NewPrinterWindow.ui.h:92
 msgid "Text:"
 msgstr "Tekst:"
 
-#: ../ui/NewPrinterWindow.ui.h:92
+#: ../ui/NewPrinterWindow.ui.h:93
 msgid "Line art:"
 msgstr "Linjekunst:"
 
-#: ../ui/NewPrinterWindow.ui.h:94
+#: ../ui/NewPrinterWindow.ui.h:95
 msgid "Photo:"
 msgstr "Foto:"
 
-#: ../ui/NewPrinterWindow.ui.h:95
+#: ../ui/NewPrinterWindow.ui.h:96
 msgid "Graphics:"
 msgstr "Grafikk:"
 
-#: ../ui/NewPrinterWindow.ui.h:96
+#: ../ui/NewPrinterWindow.ui.h:97
 msgid "<b>Output Quality</b>"
 msgstr "<b>Utskriftskvalitet</b>"
 
-#: ../ui/NewPrinterWindow.ui.h:97
+#: ../ui/NewPrinterWindow.ui.h:98
 msgid "Yes, I accept this license"
 msgstr "Ja, jeg godtar denne lisensen"
 
-#: ../ui/NewPrinterWindow.ui.h:98
+#: ../ui/NewPrinterWindow.ui.h:99
 msgid "No, I do not accept this license"
 msgstr "Nei, jeg godtar ikke denne lisensen"
 
-#: ../ui/NewPrinterWindow.ui.h:99
+#: ../ui/NewPrinterWindow.ui.h:100
 msgid "<b>License Terms</b>"
 msgstr "<b>Lisensbetingelser</b>"
 
-#: ../ui/NewPrinterWindow.ui.h:100
+#: ../ui/NewPrinterWindow.ui.h:101
 msgid "Driver details"
 msgstr "Detaljer for driver"
+
+#: ../ui/NewPrinterWindow.ui.h:103
+msgid "Back"
+msgstr ""
+
+#: ../ui/NewPrinterWindow.ui.h:105 ../ui/PrinterPropertiesDialog.ui.h:3
+msgid "Apply"
+msgstr ""
+
+#: ../ui/NewPrinterWindow.ui.h:106
+msgid "Forward"
+msgstr ""
 
 #: ../ui/PrinterPropertiesDialog.ui.h:1
 msgid "Printer Properties"
 msgstr "Egenskaper for skriver"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:3
+#: ../ui/PrinterPropertiesDialog.ui.h:2
+msgid "Co_nflicts"
+msgstr "I ko_nflikt med"
+
+#: ../ui/PrinterPropertiesDialog.ui.h:8
 msgid "Location:"
 msgstr "Lokasjon:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:4
+#: ../ui/PrinterPropertiesDialog.ui.h:9
 msgid "Device URI:"
 msgstr "URI til enhet:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:5
+#: ../ui/PrinterPropertiesDialog.ui.h:10
 msgid "Printer State:"
 msgstr "Tilstand for skriver:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:6
+#: ../ui/PrinterPropertiesDialog.ui.h:11
 msgid "Change..."
 msgstr "Bytt..."
 
-#: ../ui/PrinterPropertiesDialog.ui.h:7
+#: ../ui/PrinterPropertiesDialog.ui.h:12
 msgid "Make and Model:"
 msgstr "Type og modell:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:8
+#: ../ui/PrinterPropertiesDialog.ui.h:13
 msgid "printer state"
 msgstr "skrivertilstand"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:9
+#: ../ui/PrinterPropertiesDialog.ui.h:14
 msgid "make and model"
 msgstr "merke og modell"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:10
+#: ../ui/PrinterPropertiesDialog.ui.h:15
 msgid "<b>Settings</b>"
 msgstr "<b>Innstillinger</b>"
 
 #. Not more than 25 characters
-#: ../ui/PrinterPropertiesDialog.ui.h:14
+#: ../ui/PrinterPropertiesDialog.ui.h:19
 msgid "Print Self-Test Page"
 msgstr "Skriv ut testside"
 
 #. Not more than 25 characters
-#: ../ui/PrinterPropertiesDialog.ui.h:16
+#: ../ui/PrinterPropertiesDialog.ui.h:21
 msgid "Clean Print Heads"
 msgstr "Rens skrivehoder"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:17
+#: ../ui/PrinterPropertiesDialog.ui.h:22
 msgid "<b>Tests and Maintenance</b>"
 msgstr "<b>Tester og vedlikehold</b>"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:18
+#: ../ui/PrinterPropertiesDialog.ui.h:23
 msgid "Settings"
 msgstr "Innstillinger"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:19
+#: ../ui/PrinterPropertiesDialog.ui.h:24
 msgid "Enabled"
 msgstr "Aktivert"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:20
+#: ../ui/PrinterPropertiesDialog.ui.h:25
 msgid "Accepting jobs"
 msgstr "Godtar jobber"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:21
+#: ../ui/PrinterPropertiesDialog.ui.h:26
 msgid "Shared"
 msgstr "Delt"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:22
+#: ../ui/PrinterPropertiesDialog.ui.h:27
 msgid ""
 "<i>Not published\n"
 "See server settings</i>"
@@ -2340,244 +2405,242 @@ msgstr ""
 "<i>Ikke publisert\n"
 "Se tjenerinnstillinger</i>"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:24
+#: ../ui/PrinterPropertiesDialog.ui.h:29
 msgid "<b>State</b>"
 msgstr "<b>Tilstand</b>"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:25
-msgid "Error Policy: \t"
+#: ../ui/PrinterPropertiesDialog.ui.h:30
+#, fuzzy
+msgid "Error Policy:"
 msgstr "Regelsett for feil: »"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:26
+#: ../ui/PrinterPropertiesDialog.ui.h:31
 msgid "Operation Policy:"
 msgstr "Regelverk for bruk:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:27
+#: ../ui/PrinterPropertiesDialog.ui.h:32
 msgid "<b>Policies</b>"
 msgstr "<b>Retningslinjer</b>"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:28
+#: ../ui/PrinterPropertiesDialog.ui.h:33
 msgid "Starting Banner:"
 msgstr "Starter forside:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:29
+#: ../ui/PrinterPropertiesDialog.ui.h:34
 msgid "Ending Banner:"
 msgstr "Avsluttende omslagstekst:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:30
+#: ../ui/PrinterPropertiesDialog.ui.h:35
 msgid "<b>Banner</b>"
 msgstr "<b>Forside</b>"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:31
+#: ../ui/PrinterPropertiesDialog.ui.h:36
 msgid "Policies"
 msgstr "Regelverk"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:32
+#: ../ui/PrinterPropertiesDialog.ui.h:37
 msgid "Allow printing for everyone except these users:"
 msgstr "Tillat utskrifter for alle unntatt disse brukerene:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:33
+#: ../ui/PrinterPropertiesDialog.ui.h:38
 msgid "Deny printing for everyone except these users:"
 msgstr "Nekt utskrift for alle unntatt disse brukerene:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:34
+#: ../ui/PrinterPropertiesDialog.ui.h:39
 msgid "user"
 msgstr "bruker"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:35
+#: ../ui/PrinterPropertiesDialog.ui.h:40
+#, fuzzy
+msgid "Delete"
+msgstr "_Slett"
+
+#: ../ui/PrinterPropertiesDialog.ui.h:42
 msgid "Access Control"
 msgstr "Tilgangskontroll"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:36
+#: ../ui/PrinterPropertiesDialog.ui.h:43
 msgid "Add or Remove Members"
 msgstr "Legg til eller fjern medlemmer"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:39
+#: ../ui/PrinterPropertiesDialog.ui.h:46
 msgid "Members"
 msgstr "Medlemmer"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:42
+#: ../ui/PrinterPropertiesDialog.ui.h:49
 msgid ""
 "Specify the default job options for this printer.  Jobs arriving at this "
 "print server will have these options added if they are not already set by "
 "the application."
 msgstr ""
 
-#: ../ui/PrinterPropertiesDialog.ui.h:43
+#: ../ui/PrinterPropertiesDialog.ui.h:50
 msgid "Copies:"
 msgstr "Kopier:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:44
+#: ../ui/PrinterPropertiesDialog.ui.h:51
 msgid "Orientation:"
 msgstr "Orientering:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:45
+#: ../ui/PrinterPropertiesDialog.ui.h:52
 msgid "Pages per side:"
 msgstr "Sider per side:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:46
+#: ../ui/PrinterPropertiesDialog.ui.h:53
 msgid "Scale to fit"
 msgstr "Tilpasset skalering"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:47
+#: ../ui/PrinterPropertiesDialog.ui.h:54
 msgid "Pages per side layout:"
 msgstr "Sider per side utforming:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:48
+#: ../ui/PrinterPropertiesDialog.ui.h:55
 msgid "Brightness:"
 msgstr "Lysstyrke:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:49
+#: ../ui/PrinterPropertiesDialog.ui.h:56
 msgid "Reset"
 msgstr "Nullstill"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:50
+#: ../ui/PrinterPropertiesDialog.ui.h:57
 msgid "Finishings:"
 msgstr "Fullføring:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:51
+#: ../ui/PrinterPropertiesDialog.ui.h:58
 msgid "Job priority:"
 msgstr "Jobb-prioritet:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:52
+#: ../ui/PrinterPropertiesDialog.ui.h:59
 msgid "Media:"
 msgstr "Medie:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:53
+#: ../ui/PrinterPropertiesDialog.ui.h:60
 msgid "Sides:"
 msgstr "Sider:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:54
+#: ../ui/PrinterPropertiesDialog.ui.h:61
 msgid "Hold until:"
 msgstr "Hold tilbake til:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:55
+#: ../ui/PrinterPropertiesDialog.ui.h:62
 msgid "Output order:"
 msgstr "Utskriftsrekkefølge:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:56
+#: ../ui/PrinterPropertiesDialog.ui.h:63
 msgid "Print quality:"
 msgstr "Utskriftskvalitet:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:57
+#: ../ui/PrinterPropertiesDialog.ui.h:64
 msgid "Printer resolution:"
 msgstr "Oppløsing for skriver:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:58
+#: ../ui/PrinterPropertiesDialog.ui.h:65
 msgid "Output bin:"
 msgstr "Utdatakurv:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:59
+#: ../ui/PrinterPropertiesDialog.ui.h:66
 msgid "More"
 msgstr "Mer"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:60
+#: ../ui/PrinterPropertiesDialog.ui.h:67
 msgid "<b>Common Options</b>"
 msgstr "<b>Vanlige alternativer</b>"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:61
+#: ../ui/PrinterPropertiesDialog.ui.h:68
 msgid "Scaling:"
 msgstr "Skalering:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:62
+#: ../ui/PrinterPropertiesDialog.ui.h:69
 msgid "Mirror"
 msgstr "Speil"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:63
+#: ../ui/PrinterPropertiesDialog.ui.h:70
 msgid "Saturation:"
 msgstr "Metning:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:64
+#: ../ui/PrinterPropertiesDialog.ui.h:71
 msgid "Hue adjustment:"
 msgstr "Justering av glød:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:65
+#: ../ui/PrinterPropertiesDialog.ui.h:72
 msgid "Gamma:"
 msgstr "Gamma:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:66
+#: ../ui/PrinterPropertiesDialog.ui.h:73
 msgid "<b>Image Options</b>"
 msgstr "<b>Bildealternativer</b>"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:67
+#: ../ui/PrinterPropertiesDialog.ui.h:74
 msgid "Characters per inch:"
 msgstr "Tegn per tomme:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:68
+#: ../ui/PrinterPropertiesDialog.ui.h:75
 msgid "Lines per inch:"
 msgstr "Linjer per tomme:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:69
+#: ../ui/PrinterPropertiesDialog.ui.h:76
 msgid "points"
 msgstr "punkter"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:70
-msgid " "
-msgstr " "
-
-#: ../ui/PrinterPropertiesDialog.ui.h:71
+#: ../ui/PrinterPropertiesDialog.ui.h:77
 msgid "Left margin:"
 msgstr "Venstre marg"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:72
+#: ../ui/PrinterPropertiesDialog.ui.h:78
 msgid "Right margin:"
 msgstr "Høyre marg:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:73
+#: ../ui/PrinterPropertiesDialog.ui.h:79
 msgid "Pretty print"
 msgstr "Skriv ut _igjen"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:74
+#: ../ui/PrinterPropertiesDialog.ui.h:80
 msgid "Word wrap"
 msgstr "Ordbryting"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:75
+#: ../ui/PrinterPropertiesDialog.ui.h:81
 msgid "Columns:"
 msgstr "Kolonner:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:76
+#: ../ui/PrinterPropertiesDialog.ui.h:82
 msgid "Top margin:"
 msgstr "Toppmarg:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:77
+#: ../ui/PrinterPropertiesDialog.ui.h:83
 msgid "Bottom margin:"
 msgstr "Bunnmarg:"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:78
+#: ../ui/PrinterPropertiesDialog.ui.h:84
 msgid "<b>Text Options</b>"
 msgstr "<b>Alternativer for tekst</b>"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:79
+#: ../ui/PrinterPropertiesDialog.ui.h:85
 msgid "To add a new option, enter its name in the box below and click to add."
 msgstr ""
 
-#: ../ui/PrinterPropertiesDialog.ui.h:80
+#: ../ui/PrinterPropertiesDialog.ui.h:86
 msgid "<b>Other Options (Advanced)</b>"
 msgstr "<b>Andre alternativer (avansert)</b>"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:81
+#: ../ui/PrinterPropertiesDialog.ui.h:87
 msgid "Job Options"
 msgstr "Alternativer for jobb"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:82
+#: ../ui/PrinterPropertiesDialog.ui.h:89
 msgid "<b>Ink/Toner Levels</b>"
 msgstr "<b>Nivå for blekk/toner</b>"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:83
+#: ../ui/PrinterPropertiesDialog.ui.h:90
 msgid "There are no status messages for this printer."
 msgstr "Det finnes ingen statusmeldinger for denne skriveren."
 
-#: ../ui/PrinterPropertiesDialog.ui.h:84
+#: ../ui/PrinterPropertiesDialog.ui.h:91
 msgid "<b>Status Messages</b>"
 msgstr "<b>Statusmeldinger</b>"
 
-#: ../ui/PrinterPropertiesDialog.ui.h:85
+#: ../ui/PrinterPropertiesDialog.ui.h:92
 msgid "Ink/Toner Levels"
 msgstr "Nivå for blekk/toner"
-
-#: ../ui/PrinterPropertiesDialog.ui.h:86
-msgid "Co_nflicts"
-msgstr "I ko_nflikt med"
 
 #: ../ui/PrintersWindow.ui.h:1
 msgid "System-Config-Printer"
@@ -2604,10 +2667,14 @@ msgid "_Troubleshoot"
 msgstr "_Feilsøk"
 
 #: ../ui/PrintersWindow.ui.h:8
+msgid "About"
+msgstr ""
+
+#: ../ui/PrintersWindow.ui.h:9
 msgid "There are no printers configured yet."
 msgstr "Ingen skrivere er konfigurert ennå."
 
-#: ../ui/PrintersWindow.ui.h:9
+#: ../ui/PrintersWindow.ui.h:11
 msgid ""
 "Printing service not available.  Start the service on this computer or "
 "connect to another server."
@@ -2615,7 +2682,7 @@ msgstr ""
 "Utskriftstjenesten er ikke tilgjengelig. Start tjenesten på denne "
 "datamaskinen eller koble til en annen tjener."
 
-#: ../ui/PrintersWindow.ui.h:10
+#: ../ui/PrintersWindow.ui.h:12
 msgid "Start Service"
 msgstr "Start tjeneste"
 
@@ -2623,61 +2690,65 @@ msgstr "Start tjeneste"
 msgid "Server Settings"
 msgstr "Innstillinger for tjener"
 
-#: ../ui/ServerSettingsDialog.ui.h:2
+#: ../ui/ServerSettingsDialog.ui.h:4
 msgid "_Show printers shared by other systems"
 msgstr "Vi_s skrivere delt ut av andre systemer"
 
-#: ../ui/ServerSettingsDialog.ui.h:3
+#: ../ui/ServerSettingsDialog.ui.h:5
 msgid "_Publish shared printers connected to this system"
 msgstr "_Publiser delte skrivere som er koblet til dette systemet"
 
-#: ../ui/ServerSettingsDialog.ui.h:4
+#: ../ui/ServerSettingsDialog.ui.h:6
 msgid "Allow printing from the _Internet"
 msgstr "Tillat utskrifter fra _internett"
 
-#: ../ui/ServerSettingsDialog.ui.h:5
+#: ../ui/ServerSettingsDialog.ui.h:7
 msgid "Allow _remote administration"
 msgstr "Tillat ekste_rn administrasjon"
 
-#: ../ui/ServerSettingsDialog.ui.h:6
+#: ../ui/ServerSettingsDialog.ui.h:8
 msgid "Allow _users to cancel any job (not just their own)"
 msgstr "La br_ukere avbryte alle jobber (ikke bare sine egne)"
 
-#: ../ui/ServerSettingsDialog.ui.h:7
+#: ../ui/ServerSettingsDialog.ui.h:9
 msgid "Save _debugging information for troubleshooting"
 msgstr "Lagre feilsø_kingsinformasjon for videre feilsøking"
 
-#: ../ui/ServerSettingsDialog.ui.h:8
+#: ../ui/ServerSettingsDialog.ui.h:10
 msgid "Do not preserve job history"
 msgstr "Ikke behold historikk om jobber"
 
-#: ../ui/ServerSettingsDialog.ui.h:9
+#: ../ui/ServerSettingsDialog.ui.h:11
 msgid "Preserve job history but not files"
 msgstr "Behold historikk om jobber, men ikke filer"
 
-#: ../ui/ServerSettingsDialog.ui.h:10
+#: ../ui/ServerSettingsDialog.ui.h:12
 msgid "Preserve job files (allow reprinting)"
 msgstr "Behold jobb-filer (gjør det mulig å skrive ut på nytt)"
 
-#: ../ui/ServerSettingsDialog.ui.h:11
+#: ../ui/ServerSettingsDialog.ui.h:13
 msgid "<b>Job history</b>"
 msgstr "<b>Jobb-historikk</b>"
 
-#: ../ui/ServerSettingsDialog.ui.h:12
+#: ../ui/ServerSettingsDialog.ui.h:14
 msgid ""
 "Usually print servers broadcast their queues. Specify print servers below to "
 "periodically ask for queues instead."
 msgstr ""
 
-#: ../ui/ServerSettingsDialog.ui.h:13
+#: ../ui/ServerSettingsDialog.ui.h:16
+msgid "Remove"
+msgstr ""
+
+#: ../ui/ServerSettingsDialog.ui.h:17
 msgid "<b>Browse servers</b>"
 msgstr "<b>Bla gjennom tjenere</b>"
 
-#: ../ui/ServerSettingsDialog.ui.h:14
+#: ../ui/ServerSettingsDialog.ui.h:18
 msgid "Advanced Server Settings"
 msgstr "Avanserte innstillinger for tjener"
 
-#: ../ui/ServerSettingsDialog.ui.h:15
+#: ../ui/ServerSettingsDialog.ui.h:19
 msgid "<b>Basic Server Settings</b>"
 msgstr "<b>Grunnleggende innstillinger for tjener</b>"
 
@@ -2693,6 +2764,10 @@ msgstr "Sk_jul"
 msgid "_Configure Printers"
 msgstr "_Konfigurer skrivere"
 
+#: ../ui/statusicon_popupmenu.ui.h:3
+msgid "Quit"
+msgstr ""
+
 #: ../ui/WaitWindow.ui.h:1
 msgid "Please Wait"
 msgstr "Vennligst vent"
@@ -2705,132 +2780,132 @@ msgstr "Innstillinger for utskrift"
 msgid "Configure printers"
 msgstr "Konfigurer skrivere"
 
-#: ../statereason.py:96
+#: ../statereason.py:109
 msgid "Toner low"
 msgstr "Lite toner"
 
-#: ../statereason.py:97
+#: ../statereason.py:110
 #, python-format
 msgid "Printer '%s' is low on toner."
 msgstr "Skriver '%s' har lite toner igjen"
 
-#: ../statereason.py:98
+#: ../statereason.py:111
 msgid "Toner empty"
 msgstr "Tomt for toner"
 
-#: ../statereason.py:99
+#: ../statereason.py:112
 #, python-format
 msgid "Printer '%s' has no toner left."
 msgstr "Skriver '%s' har ikke toner igjen"
 
-#: ../statereason.py:100
+#: ../statereason.py:113
 msgid "Cover open"
 msgstr "Lokket er åpent"
 
-#: ../statereason.py:101
+#: ../statereason.py:114
 #, python-format
 msgid "The cover is open on printer '%s'."
 msgstr "Lokket er åpent på skriver '%s'."
 
-#: ../statereason.py:102
+#: ../statereason.py:115
 msgid "Door open"
 msgstr "Dør åpen"
 
-#: ../statereason.py:103
+#: ../statereason.py:116
 #, python-format
 msgid "The door is open on printer '%s'."
 msgstr "Døren er åpen på skriver «%s»."
 
-#: ../statereason.py:104
+#: ../statereason.py:117
 msgid "Paper low"
 msgstr "Lite papir"
 
-#: ../statereason.py:105
+#: ../statereason.py:118
 #, python-format
 msgid "Printer '%s' is low on paper."
 msgstr "Skriver '%s' har lite papir"
 
-#: ../statereason.py:106
+#: ../statereason.py:119
 msgid "Out of paper"
 msgstr "Ute av papir"
 
-#: ../statereason.py:107
+#: ../statereason.py:120
 #, python-format
 msgid "Printer '%s' is out of paper."
 msgstr "Skriver '%s' er tom for papir"
 
-#: ../statereason.py:108
+#: ../statereason.py:121
 msgid "Ink low"
 msgstr "Lite blekk"
 
-#: ../statereason.py:109
+#: ../statereason.py:122
 #, python-format
 msgid "Printer '%s' is low on ink."
 msgstr "Skriver '%s' har lite blekk igjen"
 
-#: ../statereason.py:110
+#: ../statereason.py:123
 msgid "Ink empty"
 msgstr "Tomt for blekk"
 
-#: ../statereason.py:111
+#: ../statereason.py:124
 #, python-format
 msgid "Printer '%s' has no ink left."
 msgstr "Skriver '%s' er tom for blekk"
 
-#: ../statereason.py:112
+#: ../statereason.py:125
 msgid "Printer off-line"
 msgstr "Skriver er frakoblet"
 
-#: ../statereason.py:113
+#: ../statereason.py:126
 #, python-format
 msgid "Printer '%s' is currently off-line."
 msgstr "Skriver '%s' er frakoblet."
 
-#: ../statereason.py:114
+#: ../statereason.py:127
 msgid "Not connected?"
 msgstr "Ikke tilkoblet?"
 
-#: ../statereason.py:115
+#: ../statereason.py:128
 #, python-format
 msgid "Printer '%s' may not be connected."
 msgstr "Skriver '%s' er kanskje ikke tilkoblet."
 
-#: ../statereason.py:116 ../statereason.py:136
+#: ../statereason.py:129 ../statereason.py:149
 msgid "Printer error"
 msgstr "Skriverfeil"
 
-#: ../statereason.py:117
+#: ../statereason.py:130
 #, python-format
 msgid "There is a problem on printer '%s'."
 msgstr "Det er problemer på skriver «%s»."
 
-#: ../statereason.py:119
+#: ../statereason.py:132
 msgid "Printer configuration error"
 msgstr "Feil med skriverkonfigurasjon"
 
-#: ../statereason.py:120
+#: ../statereason.py:133
 #, python-format
 msgid "There is a missing print filter for printer '%s'."
 msgstr "Det mangler et utskriftsfilter for skriver «%s»."
 
-#: ../statereason.py:132
+#: ../statereason.py:145
 msgid "Printer report"
 msgstr "Skriverrapport"
 
-#: ../statereason.py:134
+#: ../statereason.py:147
 msgid "Printer warning"
 msgstr "Skriveradvarsel"
 
-#: ../statereason.py:153
+#: ../statereason.py:166
 #, python-format
 msgid "Printer '%s': '%s'."
 msgstr "Skriver '%s': '%s'"
 
-#: ../timedops.py:116 ../timedops.py:196
+#: ../timedops.py:115 ../timedops.py:194
 msgid "Please wait"
 msgstr "Vennligst vent"
 
-#: ../timedops.py:122 ../timedops.py:203
+#: ../timedops.py:121 ../timedops.py:201
 msgid "Gathering information"
 msgstr "Henter informasjon"
 
@@ -2866,15 +2941,15 @@ msgid ""
 "server settings using the printing administration tool."
 msgstr ""
 
-#: ../troubleshoot/CheckPPDSanity.py:47 ../applet.py:179
+#: ../troubleshoot/CheckPPDSanity.py:48 ../applet.py:180
 msgid "Install"
 msgstr "Installer"
 
-#: ../troubleshoot/CheckPPDSanity.py:99
+#: ../troubleshoot/CheckPPDSanity.py:100
 msgid "Invalid PPD File"
 msgstr "Ugyldig PPD-fil"
 
-#: ../troubleshoot/CheckPPDSanity.py:110
+#: ../troubleshoot/CheckPPDSanity.py:111
 #, python-format
 msgid ""
 "The PPD file for printer '%s' does not conform to the specification.  "
@@ -2882,16 +2957,16 @@ msgid ""
 msgstr ""
 
 #. Perhaps cupstestppd is not in the path.
-#: ../troubleshoot/CheckPPDSanity.py:116
+#: ../troubleshoot/CheckPPDSanity.py:117
 #, python-format
 msgid "There is a problem with the PPD file for printer '%s'."
 msgstr "Det er problemer med PPD-filen for skriver «%s»."
 
-#: ../troubleshoot/CheckPPDSanity.py:126
+#: ../troubleshoot/CheckPPDSanity.py:127
 msgid "Missing Printer Driver"
 msgstr "Mangler skriverdriver"
 
-#: ../troubleshoot/CheckPPDSanity.py:140
+#: ../troubleshoot/CheckPPDSanity.py:141
 #, python-format
 msgid ""
 "Printer '%s' requires the '%s' program but it is not currently installed."
@@ -2938,33 +3013,43 @@ msgid ""
 "appear in the list, select 'Not listed'."
 msgstr ""
 
-#: ../troubleshoot/ErrorLogCheckpoint.py:33
+#: ../troubleshoot/ErrorLogCheckpoint.py:40
 msgid "Debugging"
 msgstr "Feilsøking"
 
-#: ../troubleshoot/ErrorLogCheckpoint.py:34
+#: ../troubleshoot/ErrorLogCheckpoint.py:41
 msgid ""
 "This step will enable debugging output from the CUPS scheduler.  This may "
 "cause the scheduler to restart.  Click the button below to enable debugging."
 msgstr ""
 
-#: ../troubleshoot/ErrorLogCheckpoint.py:38
+#: ../troubleshoot/ErrorLogCheckpoint.py:45
 msgid "Enable Debugging"
 msgstr "Slå på feilsøking"
 
-#: ../troubleshoot/ErrorLogCheckpoint.py:217
+#: ../troubleshoot/ErrorLogCheckpoint.py:245
 msgid "Debug logging enabled."
 msgstr "Logging av feilsøkingsinformasjon aktivert."
 
-#: ../troubleshoot/ErrorLogCheckpoint.py:219
+#: ../troubleshoot/ErrorLogCheckpoint.py:247
 msgid "Debug logging was already enabled."
 msgstr "Logging for feilsøking var allerede slått på."
 
-#: ../troubleshoot/ErrorLogParse.py:31
+#: ../troubleshoot/ErrorLogFetch.py:41
+msgid "Retrieve Journal Entries"
+msgstr ""
+
+#: ../troubleshoot/ErrorLogFetch.py:42
+msgid ""
+"No system journal entries were found. This may be because you are not an "
+"administrator. To fetch journal entries please run this command:"
+msgstr ""
+
+#: ../troubleshoot/ErrorLogParse.py:32
 msgid "Error log messages"
 msgstr "Logg med feilmeldinger"
 
-#: ../troubleshoot/ErrorLogParse.py:32
+#: ../troubleshoot/ErrorLogParse.py:33
 msgid "There are messages in the error log."
 msgstr "Det finnes meldinger i feilloggen."
 
@@ -2978,11 +3063,11 @@ msgid ""
 "this is not intentional it may cause alignment problems."
 msgstr ""
 
-#: ../troubleshoot/Locale.py:45
+#: ../troubleshoot/Locale.py:44
 msgid "Print job page size:"
 msgstr "Sidestørrelse for utskriftsjobb:"
 
-#: ../troubleshoot/Locale.py:50
+#: ../troubleshoot/Locale.py:49
 msgid "Printer page size:"
 msgstr "Sidestørrelse for skriver:"
 
@@ -3007,24 +3092,24 @@ msgstr "Køen er ikke delt"
 msgid "The CUPS printer on the server is not shared."
 msgstr "CUPS-skriver på tjeneren er ikke delt."
 
-#: ../troubleshoot/PrinterStateReasons.py:33
+#: ../troubleshoot/PrinterStateReasons.py:34
 msgid "Status Messages"
 msgstr "Statusmeldinger"
 
-#: ../troubleshoot/PrinterStateReasons.py:34
+#: ../troubleshoot/PrinterStateReasons.py:35
 msgid "There are status messages associated with this queue."
 msgstr "Det finnes statusmeldinger assosiert med denne køen."
 
-#: ../troubleshoot/PrinterStateReasons.py:64
+#: ../troubleshoot/PrinterStateReasons.py:65
 #, python-format
 msgid "The printer's state message is: '%s'."
 msgstr "Skriverens tilstandsmelding er: «%s»."
 
-#: ../troubleshoot/PrinterStateReasons.py:89
+#: ../troubleshoot/PrinterStateReasons.py:90
 msgid "Errors are listed below:"
 msgstr "Feilene er listet under:"
 
-#: ../troubleshoot/PrinterStateReasons.py:94
+#: ../troubleshoot/PrinterStateReasons.py:95
 msgid "Warnings are listed below:"
 msgstr "Advarsler er listet under:"
 
@@ -3063,7 +3148,7 @@ msgstr "Nei"
 msgid "Remember to load paper of type '%s' into the printer first."
 msgstr "Husk å legge i papir av type «%s» i skriveren først."
 
-#: ../troubleshoot/PrintTestPage.py:433
+#: ../troubleshoot/PrintTestPage.py:430
 msgid "Error submitting test page"
 msgstr "Feil ved sending av testside"
 
@@ -3171,11 +3256,11 @@ msgstr ""
 msgid "Diagnostic Output (Advanced)"
 msgstr "Diagnoseutskrift (avansert)"
 
-#: ../troubleshoot/Shrug.py:96
+#: ../troubleshoot/Shrug.py:93
 msgid "Error saving file"
 msgstr "Feil ved lagring av fil"
 
-#: ../troubleshoot/Shrug.py:97
+#: ../troubleshoot/Shrug.py:94
 msgid "There was an error saving the file:"
 msgstr "Det oppsto en feil ved lagring av filen:"
 
@@ -3195,61 +3280,61 @@ msgstr ""
 msgid "Click 'Forward' to begin."
 msgstr "Klikk «Fremover» for å starte."
 
-#: ../applet.py:83
+#: ../applet.py:84
 msgid "Configuring new printer"
 msgstr "Konfigurerer ny skriver"
 
-#: ../applet.py:84
+#: ../applet.py:85
 msgid "Please wait..."
 msgstr "Vennligst vent …"
 
 #. name is a URI, no queue was generated, because no suitable
 #. driver was found
-#: ../applet.py:113 ../applet.py:166
+#: ../applet.py:114 ../applet.py:167
 msgid "Missing printer driver"
 msgstr "Mangler skriverdriver"
 
-#: ../applet.py:120
+#: ../applet.py:121
 #, python-format
 msgid "No printer driver for %s."
 msgstr "Ingen skriverdriver for %s."
 
-#: ../applet.py:122
+#: ../applet.py:123
 msgid "No driver for this printer."
 msgstr "Har ingen driver for denne skriveren."
 
-#: ../applet.py:164
+#: ../applet.py:165
 msgid "Printer added"
 msgstr "Skriver lagt til"
 
-#: ../applet.py:170
+#: ../applet.py:171
 msgid "Install printer driver"
 msgstr "Installer skriverdriver"
 
-#: ../applet.py:171
+#: ../applet.py:172
 #, python-format
 msgid "`%s' requires driver installation: %s."
 msgstr "«%s» krever installasjon av driver: %s."
 
-#: ../applet.py:195
+#: ../applet.py:196
 #, python-format
 msgid "`%s' is ready for printing."
 msgstr "«%s» er klar for utskrift."
 
-#: ../applet.py:199 ../applet.py:211
+#: ../applet.py:200 ../applet.py:212
 msgid "Print test page"
 msgstr "Skriv ut testside"
 
-#: ../applet.py:202
+#: ../applet.py:203
 msgid "Configure"
 msgstr "Konfigurer"
 
-#: ../applet.py:206
+#: ../applet.py:207
 #, python-format
 msgid "`%s' has been added, using the `%s' driver."
 msgstr "«%s» er lagt til. Bruker driver «%s»."
 
-#: ../applet.py:214
+#: ../applet.py:215
 msgid "Find driver"
 msgstr "Finn driver"
 
@@ -3261,32 +3346,17 @@ msgstr "Panelprogram for utskriftskø"
 msgid "System tray icon for managing print jobs"
 msgstr "Varselikon for utskriftsjobber for systemområdet"
 
-#~ msgid "1200"
-#~ msgstr "1200"
+#: ../system-config-printer.appdata.xml.in.h:1
+msgid ""
+"With system-config-printer you can add, edit and delete printer queues. It "
+"allows you to choose the connection method and the printer driver."
+msgstr ""
 
-#~ msgid "2400"
-#~ msgstr "2400"
+#: ../system-config-printer.appdata.xml.in.h:2
+msgid ""
+"For each queue, you can adjust the default page size and other driver "
+"options, as well as seeing ink/toner levels and status messages."
+msgstr ""
 
-#~ msgid "4800"
-#~ msgstr "4800"
-
-#~ msgid "9600"
-#~ msgstr "9600"
-
-#~ msgid "19200"
-#~ msgstr "19200"
-
-#~ msgid "38400"
-#~ msgstr "38400"
-
-#~ msgid "57600"
-#~ msgstr "57600"
-
-#~ msgid "115200"
-#~ msgstr "115200"
-
-#~ msgid "8"
-#~ msgstr "8"
-
-#~ msgid "7"
-#~ msgstr "7"
+#~ msgid " "
+#~ msgstr " "

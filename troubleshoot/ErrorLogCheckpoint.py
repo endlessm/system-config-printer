@@ -1,8 +1,8 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 ## Printing troubleshooter
 
-## Copyright (C) 2008, 2009 Red Hat, Inc.
+## Copyright (C) 2008, 2009, 2014 Red Hat, Inc.
 ## Author: Tim Waugh <twaugh@redhat.com>
 
 ## This program is free software; you can redistribute it and/or modify
@@ -24,9 +24,16 @@ from gi.repository import Gtk
 import cups
 import os
 import tempfile
+import datetime
 import time
 from timedops import TimedOperation, OperationCanceled
-from base import *
+from .base import *
+
+try:
+    from systemd import journal
+except:
+    journal = False
+
 class ErrorLogCheckpoint(Question):
     def __init__ (self, troubleshooter):
         Question.__init__ (self, troubleshooter, "Error log checkpoint")
@@ -35,7 +42,7 @@ class ErrorLogCheckpoint(Question):
                                     "from the CUPS scheduler.  This may "
                                     "cause the scheduler to restart.  Click "
                                     "the button below to enable debugging."))
-        button = Gtk.Button (_("Enable Debugging"))
+        button = Gtk.Button.new_with_label (_("Enable Debugging"))
         buttonbox = Gtk.HButtonBox ()
         buttonbox.set_border_width (0)
         buttonbox.set_layout (Gtk.ButtonBoxStyle.START)
@@ -54,10 +61,11 @@ class ErrorLogCheckpoint(Question):
                                             False):
             return
 
-        c = self.troubleshooter.answers['_authenticated_connection']
+        f = self.troubleshooter.answers['_authenticated_connection_factory']
+        c = f.get_connection ()
         c._set_lock (False)
         settings = c.adminGetServerSettings ()
-        if len (settings.keys ()) == 0:
+        if len (list(settings.keys ())) == 0:
             return
 
         settings[cups.CUPS_SERVER_DEBUG_LOGGING] = '0'
@@ -92,7 +100,7 @@ class ErrorLogCheckpoint(Question):
 
         self.forward_allowed = False
         self.label.set_text ('')
-        if len (settings.keys ()) == 0:
+        if len (list(settings.keys ())) == 0:
             # Requires root
             return True
         else:
@@ -123,7 +131,7 @@ class ErrorLogCheckpoint(Question):
 
         parent = self.troubleshooter.get_window ()
         self.answers.update (self.persistent_answers)
-        if self.answers.has_key ('error_log_checkpoint'):
+        if 'error_log_checkpoint' in self.answers:
             return self.answers
 
         (tmpfd, tmpfname) = tempfile.mkstemp ()
@@ -133,25 +141,45 @@ class ErrorLogCheckpoint(Question):
                                       args=('/admin/log/error_log', tmpfname),
                                       parent=parent)
             self.op.run ()
-        except RuntimeError:
+        except (RuntimeError, cups.IPPError) as e:
+            self.answers['error_log_checkpoint_exc'] = e
+            try:
+                os.remove (tmpfname)
+            except OSError:
+                pass
+        except cups.HTTPError as e:
+            self.answers['error_log_checkpoint_exc'] = e
             try:
                 os.remove (tmpfname)
             except OSError:
                 pass
 
-            return self.answers
-        except cups.IPPError:
-            try:
-                os.remove (tmpfname)
-            except OSError:
-                pass
+            # Abandon the CUPS connection and make another.
+            answers = self.troubleshooter.answers
+            factory = answers['_authenticated_connection_factory']
+            self.authconn = factory.get_connection ()
+            self.answers['_authenticated_connection'] = self.authconn
 
-            return self.answers
+        try:
+            statbuf = os.stat (tmpfname)
+            os.remove (tmpfname)
+        except OSError:
+            statbuf = [0, 0, 0, 0, 0, 0, 0]
 
-        statbuf = os.stat (tmpfname)
-        os.remove (tmpfname)
         self.answers['error_log_checkpoint'] = statbuf[6]
         self.persistent_answers['error_log_checkpoint'] = statbuf[6]
+
+        if journal:
+            j = journal.Reader ()
+            j.seek_tail ()
+            cursor = j.get_previous ()['__CURSOR']
+            self.answers['error_log_cursor'] = cursor
+            self.persistent_answers['error_log_cursor'] = cursor
+            now = datetime.datetime.fromtimestamp (time.time ())
+            timestamp = now.strftime ("%F %T")
+            self.answers['error_log_timestamp'] = timestamp
+            self.persistent_answers['error_log_timestamp'] = timestamp
+
         return self.answers
 
     def can_click_forward (self):

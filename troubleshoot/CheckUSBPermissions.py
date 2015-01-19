@@ -1,8 +1,8 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 ## Printing troubleshooter
 
-## Copyright (C) 2008, 2009, 2010 Red Hat, Inc.
+## Copyright (C) 2008, 2009, 2010, 2014 Red Hat, Inc.
 ## Authors:
 ##  Tim Waugh <twaugh@redhat.com>
 
@@ -24,8 +24,8 @@ import glob
 import os
 import subprocess
 from timedops import TimedSubprocess
-import urllib
-from base import *
+import urllib.parse
+from .base import *
 from gi.repository import Gtk
 
 class CheckUSBPermissions(Question):
@@ -47,7 +47,7 @@ class CheckUSBPermissions(Question):
         else:
             return False
 
-        (scheme, rest) = urllib.splittype (device_uri)
+        (scheme, rest) = urllib.parse.splittype (device_uri)
         if scheme not in ['hp', 'hpfax', 'usb', 'hal']:
             return False
 
@@ -69,7 +69,7 @@ class CheckUSBPermissions(Question):
                                        args=[LSUSB, "-v"],
                                        close_fds=True,
                                        env=new_environ,
-                                       stdin=file("/dev/null"),
+                                       stdin=subprocess.DEVNULL,
                                        stdout=subprocess.PIPE,
                                        stderr=subprocess.PIPE)
             (lsusb_stdout, lsusb_stderr, result) = self.op.run ()
@@ -135,8 +135,8 @@ class CheckUSBPermissions(Question):
         paths = []
         if not scheme.startswith ('hp'):
             paths.extend (glob.glob ("/dev/usb/lp?"))
-        for mfr_id, mdls in dev_by_id.iteritems ():
-            for mdl_id, devs in mdls.iteritems ():
+        for mfr_id, mdls in dev_by_id.items ():
+            for mdl_id, devs in mdls.items ():
                 for dev in devs:
                     path = "/dev/bus/usb/%s/%s" % (dev['bus'], dev['dev'])
                     paths.append (path)
@@ -149,11 +149,11 @@ class CheckUSBPermissions(Question):
                                            args=[GETFACL, path],
                                            close_fds=True,
                                            env=new_environ,
-                                           stdin=file("/dev/null"),
+                                           stdin=subprocess.DEVNULL,
                                            stdout=subprocess.PIPE,
                                            stderr=subprocess.PIPE)
                 (getfacl_stdout, getfacl_stderr, result) = self.op.run ()
-                output = filter (lambda x: len (x) > 0, getfacl_stdout)
+                output = [x for x in getfacl_stdout if len (x) > 0]
             except:
                 # Problem executing command.
                 output = []

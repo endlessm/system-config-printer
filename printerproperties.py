@@ -1,8 +1,8 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 ## system-config-printer
 
-## Copyright (C) 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013 Red Hat, Inc.
+## Copyright (C) 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014 Red Hat, Inc.
 ## Authors:
 ##  Tim Waugh <twaugh@redhat.com>
 ##  Florian Festi <ffesti@redhat.com>
@@ -29,7 +29,7 @@ from gi.repository import Gtk
 import cups
 import locale
 import gettext
-gettext.install(domain=config.PACKAGE, localedir=config.localedir, unicode=True)
+gettext.install(domain=config.PACKAGE, localedir=config.localedir)
 
 import cupshelpers, options
 from gi.repository import GObject
@@ -141,7 +141,6 @@ class PrinterPropertiesDialog(GtkGUI):
                               "swPOptions",
                               "lblPOptions",
                               "vbPOptions",
-                              "algnClassMembers",
                               "vbClassMembers",
                               "lblClassMembers",
                               "tvClassMembers",
@@ -518,10 +517,10 @@ class PrinterPropertiesDialog(GtkGUI):
         if collection:
             collection = [collection]
         else:
-            collection = self.signal_ids.keys ()
+            collection = list(self.signal_ids.keys ())
 
         for coll in collection:
-            if self.signal_ids.has_key (coll):
+            if coll in self.signal_ids:
                 for (obj, signal_id) in self.signal_ids[coll]:
                     obj.disconnect (signal_id)
 
@@ -616,13 +615,11 @@ class PrinterPropertiesDialog(GtkGUI):
             message += "\n\n"
             for option in self.conflicts:
                 message += option.option.text + "\n"
-
-            dialog = Gtk.MessageDialog(self.dialog,
-                                       Gtk.DialogFlags.DESTROY_WITH_PARENT |
-                                       Gtk.DialogFlags.MODAL,
-                                       Gtk.MessageType.WARNING,
-                                       Gtk.ButtonsType.CLOSE,
-                                       message)
+            dialog = Gtk.MessageDialog(parent=self.dialog,
+                                       modal=True, destroy_with_parent=True,
+                                       message_type=Gtk.MessageType.WARNING,
+                                       buttons=Gtk.ButtonsType.CLOSE,
+                                       text=message)
             dialog.run()
             dialog.destroy()
             return
@@ -670,7 +667,7 @@ class PrinterPropertiesDialog(GtkGUI):
             iter = widget.get_active_iter()
             value = model.get_value (iter, 1)
         else:
-            raise ValueError, "Widget type not supported (yet)"
+            raise ValueError("Widget type not supported (yet)")
 
         p = self.printer
         old_values = {
@@ -688,9 +685,6 @@ class PrinterPropertiesDialog(GtkGUI):
             }
 
         old_value = old_values[widget]
-
-        if type (old_value) == unicode:
-            old_value = old_value.encode ('utf-8')
 
         if old_value == value:
             self.changed.discard(widget)
@@ -783,7 +777,7 @@ class PrinterPropertiesDialog(GtkGUI):
         option = self.job_options_buttons[button]
         option.reset ()
         # Remember to set this option for removal in the IPP request.
-        if self.server_side_options.has_key (option.name):
+        if option.name in self.server_side_options:
             del self.server_side_options[option.name]
         if option.is_changed ():
             self.changed.add(option)
@@ -800,7 +794,7 @@ class PrinterPropertiesDialog(GtkGUI):
             self.server_side_options[option.name] = option
             self.changed.add(option)
         else:
-            if self.server_side_options.has_key (option.name):
+            if option.name in self.server_side_options:
                 del self.server_side_options[option.name]
             self.changed.discard(option)
         self.setDataButtonState()
@@ -829,7 +823,8 @@ class PrinterPropertiesDialog(GtkGUI):
                                     yoptions=0)
             opt.selector.set_sensitive (editable)
 
-            btn = Gtk.Button(stock=Gtk.STOCK_REMOVE)
+            btn = Gtk.Button.new_from_icon_name (Gtk.STOCK_REMOVE,
+                                                 Gtk.IconSize.BUTTON)
             btn.connect("clicked", self.on_btnJOOtherRemove_clicked)
             btn.pyobject = opt
             btn.set_sensitive (editable)
@@ -1000,8 +995,6 @@ class PrinterPropertiesDialog(GtkGUI):
             parent = self.dialog
         class_deleted = False
         name = printer.name
-        if isinstance (name, bytes):
-            name = name.decode ('utf-8')
 
         if printer.is_class:
             self.cups._begin_operation (_("modifying class %s") % name)
@@ -1019,9 +1012,10 @@ class PrinterPropertiesDialog(GtkGUI):
                 new_members = newprinter.getCurrentClassMembers(self.tvClassMembers)
                 if not new_members:
                     dialog = Gtk.MessageDialog(
-                        flags=0, type=Gtk.MessageType.WARNING,
-                        buttons=Gtk.ButtonsType.NONE,
-                        message_format=_("This will delete this class!"))
+                            flags=0,
+                            message_type=Gtk.MessageType.WARNING,
+                            buttons=Gtk.ButtonsType.NONE,
+                            text=_("This will delete this class!"))
                     dialog.format_secondary_text(_("Proceed anyway?"))
                     dialog.add_buttons (Gtk.STOCK_CANCEL, Gtk.ResponseType.NO,
                                         Gtk.STOCK_DELETE, Gtk.ResponseType.YES)
@@ -1043,9 +1037,9 @@ class PrinterPropertiesDialog(GtkGUI):
                 for member in old_members:
                     self.cups.deletePrinterFromClass(member, name)
 
-            location = self.entPLocation.get_text().decode ('utf-8')
-            info = self.entPDescription.get_text().decode ('utf-8')
-            device_uri = self.entPDevice.get_text().decode ('utf-8')
+            location = self.entPLocation.get_text()
+            info = self.entPDescription.get_text()
+            device_uri = self.entPDevice.get_text()
 
             enabled = self.chkPEnabled.get_active()
             accepting = self.chkPAccepting.get_active()
@@ -1094,7 +1088,7 @@ class PrinterPropertiesDialog(GtkGUI):
             for option in printer.attributes:
                 if option not in self.server_side_options:
                     printer.unsetOption(option)
-            for option in self.server_side_options.itervalues():
+            for option in self.server_side_options.values():
                 if (option.is_changed() or
                     (saveall and
                      option.get_current_value () != option.get_default())):
@@ -1110,7 +1104,7 @@ class PrinterPropertiesDialog(GtkGUI):
         self.cups._end_operation ()
         self.changed = set() # of options
 
-        if not self.cups._use_pk and not self.__dict__.has_key ("server_settings"):
+        if not self.cups._use_pk and "server_settings" not in self.__dict__:
             # We can authenticate with the server correctly at this point,
             # but we have never fetched the server settings to see whether
             # the server is publishing shared printers.  Fetch the settings
@@ -1136,7 +1130,7 @@ class PrinterPropertiesDialog(GtkGUI):
 
     def getPrinterSettings(self):
         #self.ppd.markDefaults()
-        for option in self.options.itervalues():
+        for option in self.options.values():
             option.writeback()
 
     ### Printer Properties tree view signal handlers
@@ -1235,36 +1229,32 @@ class PrinterPropertiesDialog(GtkGUI):
             # Printer has been deleted meanwhile
             return
 
-        (tmpfd, tmpfname) = tempfile.mkstemp ()
-        os.write (tmpfd, "#CUPS-COMMAND\n%s\n" % command)
-        os.close (tmpfd)
-        self.cups._begin_operation (_("sending maintenance command"))
-        try:
-            format = "application/vnd.cups-command"
-            job_id = self.cups.printTestPage (printer.name,
-                                              format=format,
-                                              file=tmpfname,
-                                              user=cups.getUser ())
-            show_info_dialog (_("Submitted"),
-                              _("Maintenance command submitted as "
-                                "job %d") % job_id,
-                              parent=self.parent)
-        except cups.IPPError as e:
-            (e, msg) = e.args
-            if (e == cups.IPP_NOT_AUTHORIZED and
-                self.printer.name != 'localhost'):
-                show_error_dialog (_("Not possible"),
-                                   _("The remote server did not accept "
-                                     "the print job, most likely "
-                                     "because the printer is not "
-                                     "shared."),
-                                   self.parent)
-            else:
-                show_IPP_Error(e, msg, self.parent)
-
-        self.cups._end_operation ()
-
-        os.unlink (tmpfname)
+        with tempfile.NamedTemporaryFile(mode='wt') as tmpfile:
+            tmpfile.write ("#CUPS-COMMAND\n%s\n" % command)
+            self.cups._begin_operation (_("sending maintenance command"))
+            try:
+                format = "application/vnd.cups-command"
+                job_id = self.cups.printTestPage (printer.name,
+                                                  format=format,
+                                                  file=tmpfile.name,
+                                                  user=cups.getUser ())
+                show_info_dialog (_("Submitted"),
+                                  _("Maintenance command submitted as "
+                                    "job %d") % job_id,
+                                  parent=self.parent)
+            except cups.IPPError as e:
+                (e, msg) = e.args
+                if (e == cups.IPP_NOT_AUTHORIZED and
+                    self.printer.name != 'localhost'):
+                    show_error_dialog (_("Not possible"),
+                                       _("The remote server did not accept "
+                                         "the print job, most likely "
+                                         "because the printer is not "
+                                         "shared."),
+                                       self.parent)
+                else:
+                    show_IPP_Error(e, msg, self.parent)
+            self.cups._end_operation ()
 
     def on_btnSelfTest_clicked(self, button):
         self.maintenance_command ("PrintSelfTestPage")
@@ -1328,13 +1318,21 @@ class PrinterPropertiesDialog(GtkGUI):
                 # Some IPP error other than IPP_NOT_FOUND.
                 show_IPP_Error(e, m, self.parent)
 
+            if e in [cups.IPP_SERVICE_UNAVAILABLE,
+                     cups.IPP_INTERNAL_ERROR]:
+                show_dialog(_("Raw Queue"),
+                            _("Unable to get queue details. Treating queue "
+                              "as raw."),
+                            Gtk.MessageType.ERROR,
+                            self.parent)
+
             # Treat it as a raw queue.
             self.ppd = False
         except RuntimeError as e:
             # Either the underlying cupsGetPPD2() function returned
             # NULL without setting an IPP error (so it'll be something
             # like a failed connection), or the PPD could not be parsed.
-            if e.message.startswith ("ppd"):
+            if str (e).startswith ("ppd"):
                 show_error_dialog (_("Error"),
                                    _("The PPD file for this queue "
                                      "is damaged."),
@@ -1420,7 +1418,7 @@ class PrinterPropertiesDialog(GtkGUI):
                 option.reinit (None)
             else:
                 try:
-                    if self.printer.possible_attributes.has_key (option.name):
+                    if option.name in self.printer.possible_attributes:
                         supported = self.printer.\
                                     possible_attributes[option.name][1]
                         # Set the option widget.
@@ -1449,13 +1447,13 @@ class PrinterPropertiesDialog(GtkGUI):
         self.other_job_options = []
         self.draw_other_job_options (editable=editable)
         for option in self.printer.attributes.keys ():
-            if self.server_side_options.has_key (option):
+            if option in self.server_side_options:
                 continue
             if option == "output-mode":
                 # Not settable
                 continue
             value = self.printer.attributes[option]
-            if self.printer.possible_attributes.has_key (option):
+            if option in self.printer.possible_attributes:
                 supported = self.printer.possible_attributes[option][1]
             else:
                 if isinstance (value, bool):
@@ -1527,9 +1525,10 @@ class PrinterPropertiesDialog(GtkGUI):
                 except TypeError as s:
                     debugprint ("%s value not coercible to %s: %s" %
                                 (attr, typ, s))
-                    val = map (lambda x: 0.0, val)
+                    val = [0.0 for x in val]
 
-            marker_info[attr] = val
+            marker_info[attr] = [0.0 if (typ != str and x < 0) \
+	                             else x for x in val]
             if num_markers == 0 or len (val) < num_markers:
                 num_markers = len (val)
 
@@ -1540,12 +1539,12 @@ class PrinterPropertiesDialog(GtkGUI):
                             (marker_info[attr][num_markers:], attr))
                 del marker_info[attr][num_markers:]
 
-        markers = map (lambda color, name, type, level:
+        markers = list(map (lambda color, name, type, level:
                            (color, name, type, level),
                        marker_info['marker-colors'],
                        marker_info['marker-names'],
                        marker_info['marker-types'],
-                       marker_info['marker-levels'])
+                       marker_info['marker-levels']))
         debugprint (markers)
 
         can_refresh = (printer.type & cups.CUPS_PRINTER_COMMANDS) != 0
@@ -1566,8 +1565,8 @@ class PrinterPropertiesDialog(GtkGUI):
             rows = 1 + (cols - 1) / 4
             if cols > 4:
                 cols = 4
-            table = Gtk.Table (rows=rows,
-                               columns=cols,
+            table = Gtk.Table (n_rows=round(rows),
+                               n_columns=cols,
                                homogeneous=True)
             table.set_col_spacings (6)
             table.set_row_spacings (12)
@@ -1643,6 +1642,7 @@ class PrinterPropertiesDialog(GtkGUI):
     def updatePrinterProperties(self):
         debugprint ("update printer properties")
         printer = self.printer
+        self.entPDevice.set_text(printer.device_uri)
         self.entPMakeModel.set_text(printer.make_and_model)
         state = self.printer_states.get (printer.state,
                                          _("Unknown"))
@@ -1689,7 +1689,7 @@ class PrinterPropertiesDialog(GtkGUI):
 
     def fillPrinterOptions(self, name, editable):
         # remove Class membership tab
-        tab_nr = self.ntbkPrinter.page_num(self.algnClassMembers)
+        tab_nr = self.ntbkPrinter.page_num(self.vbClassMembers)
         if tab_nr != -1:
             self.ntbkPrinter.remove_page(tab_nr)
 
@@ -1744,7 +1744,7 @@ class PrinterPropertiesDialog(GtkGUI):
                 frame.add (container)
                 tab_label = self.lblPOptions
 
-            table = Gtk.Table(1, 3, False)
+            table = Gtk.Table(n_rows=1, n_columns=3, homogeneous=False)
             table.set_col_spacings(6)
             table.set_row_spacings(6)
             container.add(table)
@@ -1790,7 +1790,7 @@ class PrinterPropertiesDialog(GtkGUI):
                 self.ntbkPrinter.remove_page(tab_nr)
 
         # check for conflicts
-        for option in self.options.itervalues():
+        for option in self.options.values():
             conflicts = option.checkConflicts()
             if conflicts:
                 self.conflicts.add(option)
@@ -1810,9 +1810,9 @@ class PrinterPropertiesDialog(GtkGUI):
             self.ntbkPrinter.remove_page(tab_nr)
 
         # insert Member Tab
-        if self.ntbkPrinter.page_num(self.algnClassMembers) == -1:
+        if self.ntbkPrinter.page_num(self.vbClassMembers) == -1:
             self.ntbkPrinter.insert_page(
-                self.algnClassMembers, self.lblClassMembers,
+                self.vbClassMembers, self.lblClassMembers,
                 self.static_tabs)
 
         model_members = self.tvClassMembers.get_model()
@@ -1826,7 +1826,7 @@ class PrinterPropertiesDialog(GtkGUI):
             if name != self.printer.name:
                 if name in self.printer.class_members:
                     model_members.append((name, ))
-                else:
+                elif not self.printer.type & cups.CUPS_PRINTER_CLASS:
                     model_not_members.append((name, ))
 
     def on_btnClassAddMember_clicked(self, button):
@@ -1943,7 +1943,7 @@ if __name__ == '__main__':
     import sys
 
     if len (sys.argv) < 2:
-        print "Specify queue name"
+        print("Specify queue name")
         sys.exit (1)
 
     set_debugging (True)

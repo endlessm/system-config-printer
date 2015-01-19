@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 ## system-config-printer
 
@@ -62,10 +62,7 @@ class FirewallD:
             self.running = False
 
     def _get_active_zone (self):
-        zones = self._fw.getActiveZones().keys()
-        # remove immutable zones
-        zones = [z for z in zones if not self._fw.isImmutable(z)]
-
+        zones = list(self._fw.getActiveZones().keys())
         if not zones:
             debugprint ("FirewallD: no changeable zone")
             return None
@@ -186,7 +183,7 @@ class SystemConfigFirewall:
                     return
 
                 p = self._fw.read ()
-                self._fw_data = json.loads (p.encode ('utf-8'))
+                self._fw_data = json.loads (p)
             except (dbus.exceptions.DBusException, AttributeError, ValueError) as e:
                 self._fw_data = (None, None)
                 if error_handler:
@@ -206,7 +203,7 @@ class SystemConfigFirewall:
 
     def reply_handler (self, result):
         try:
-            self._fw_data = json.loads (result.encode ('utf-8'))
+            self._fw_data = json.loads (result)
         except ValueError as e:
             self.error_handler (e)
             return

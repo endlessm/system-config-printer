@@ -1,6 +1,6 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
-## Copyright (C) 2007, 2008, 2009, 2010, 2011, 2013 Red Hat, Inc.
+## Copyright (C) 2007, 2008, 2009, 2010, 2011, 2013, 2014 Red Hat, Inc.
 ## Author: Tim Waugh <twaugh@redhat.com>
 
 ## This program is free software; you can redistribute it and/or modify
@@ -28,7 +28,7 @@ import os
 from errordialogs import *
 from debug import *
 import gettext
-gettext.install(domain=config.PACKAGE, localedir=config.localedir, unicode=True)
+gettext.install(domain=config.PACKAGE, localedir=config.localedir)
 N_ = lambda x: x
 
 cups.require("1.9.60")
@@ -62,14 +62,14 @@ class AuthDialog(Gtk.Dialog):
         vbox.pack_start (self.prompt_label, False, False, 0)
 
         num_fields = len (auth_info_required)
-        table = Gtk.Table (num_fields, 2)
+        table = Gtk.Table (n_rows=num_fields, n_columns=2)
         table.set_row_spacings (6)
         table.set_col_spacings (6)
 
         self.field_entry = []
         for i in range (num_fields):
             field = auth_info_required[i]
-            label = Gtk.Label (_(self.AUTH_FIELD.get (field, field)))
+            label = Gtk.Label (label=_(self.AUTH_FIELD.get (field, field)))
             label.set_alignment (0, 0.5)
             table.attach (label, 0, 1, i, i + 1)
             entry = Gtk.Entry ()
@@ -83,7 +83,7 @@ class AuthDialog(Gtk.Dialog):
         self.vbox.pack_start (hbox, False, False, 0)
 
         if allow_remember:
-            cb = Gtk.CheckButton (_("Remember password"))
+            cb = Gtk.CheckButton.new_with_label (_("Remember password"))
             cb.set_active (False)
             vbox.pack_start (cb, False, False, 0)
             self.remember_checkbox = cb
@@ -102,7 +102,7 @@ class AuthDialog(Gtk.Dialog):
             self.field_entry[i].set_text (auth_info[i])
 
     def get_auth_info (self):
-        return map (lambda x: x.get_text (), self.field_entry)
+        return [x.get_text () for x in self.field_entry]
 
     def get_remember_password (self):
         try:
@@ -218,6 +218,9 @@ class Connection:
                 continue
             setattr (self, fname, self._make_binding (fname, fn))
 
+    def _using_polkit (self):
+        return isinstance (self._connection, cupspk.Connection)
+
     def _make_binding (self, fname, fn):
         return lambda *args, **kwds: self._authloop (fname, fn, *args, **kwds)
 
@@ -247,8 +250,6 @@ class Connection:
                 break
             except cups.IPPError as e:
                 (e, m) = e.args
-                if isinstance(m, bytes):
-                    m = m.decode('utf-8', 'replace')
                 if self._use_pk and m == 'pkcancel':
                     raise cups.IPPError (0, _("Operation canceled"))
 
@@ -257,6 +258,8 @@ class Connection:
                                          e == cups.IPP_AUTHENTICATION_CANCELED):
                     self._failed (e == cups.IPP_FORBIDDEN)
                 elif not self._cancel and e == cups.IPP_SERVICE_UNAVAILABLE:
+                    debugprint ("Got IPP_SERVICE_UNAVAILABLE")
+                    debugprint (m)
                     if self._lock:
                         self._gui_event.clear ()
                         GLib.timeout_add (1, self._ask_retry_server_error, m)
@@ -296,15 +299,14 @@ class Connection:
         except IndexError:
             msg = _("CUPS server error")
 
-        d = Gtk.MessageDialog (self._parent,
-                               Gtk.DialogFlags.MODAL |
-                               Gtk.DialogFlags.DESTROY_WITH_PARENT,
-                               Gtk.MessageType.ERROR,
-                               Gtk.ButtonsType.NONE,
-                               msg)
-                               
+        d = Gtk.MessageDialog (parent=self._parent,
+                               modal=True, destroy_with_parent=True,
+                               message_type=Gtk.MessageType.ERROR,
+                               buttons=Gtk.ButtonsType.NONE,
+                               text=msg)
+
         d.format_secondary_text (_("There was an error during the "
-                                   "CUPS operation: '%s'." % message))
+                                   "CUPS operation: '%s'.") % message)
         d.add_buttons (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
                        _("Retry"), Gtk.ResponseType.OK)
         d.set_default_response (Gtk.ResponseType.OK)
@@ -438,11 +440,10 @@ class Connection:
     def _show_not_authorized_dialog (self):
         if self._lock:
             Gdk.threads_enter ()
-        d = Gtk.MessageDialog (self._parent,
-                               Gtk.DialogFlags.MODAL |
-                               Gtk.DialogFlags.DESTROY_WITH_PARENT,
-                               Gtk.MessageType.ERROR,
-                               Gtk.ButtonsType.CLOSE)
+        d = Gtk.MessageDialog (parent=self._parent,
+                               modal=True, destroy_with_parent=True,
+                               message_type=Gtk.MessageType.ERROR,
+                               buttons=Gtk.ButtonsType.CLOSE)
         d.set_title (_("Not authorized"))
         d.set_markup ('<span weight="bold" size="larger">' +
                       _("Not authorized") + '</span>\n\n' +
@@ -515,6 +516,6 @@ if __name__ == '__main__':
     c = TimedOperation (Connection, args=(None,)).run ()
     debugprint ("Connected")
     c._set_lock (True)
-    print TimedOperation (c.getFile,
+    print(TimedOperation (c.getFile,
                           args=('/admin/conf/cupsd.conf',
-                                '/dev/stdout')).run ()
+                                '/dev/stdout')).run ())

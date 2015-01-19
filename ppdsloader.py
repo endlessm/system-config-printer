@@ -1,8 +1,8 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 ## system-config-printer
 
-## Copyright (C) 2010, 2011, 2012, 2013 Red Hat, Inc.
+## Copyright (C) 2010, 2011, 2012, 2013, 2014 Red Hat, Inc.
 ## Author: Tim Waugh <twaugh@redhat.com>
 
 ## This program is free software; you can redistribute it and/or modify
@@ -31,7 +31,7 @@ import asyncconn
 from debug import debugprint
 import config
 import gettext
-gettext.install(domain=config.PACKAGE, localedir=config.localedir, unicode=True)
+gettext.install(domain=config.PACKAGE, localedir=config.localedir)
 
 class PPDsLoader(GObject.GObject):
     """
@@ -85,11 +85,10 @@ class PPDsLoader(GObject.GObject):
 
         fmt = _("Searching")
         self._dialog = Gtk.MessageDialog (parent=parent,
-                                          flags=Gtk.DialogFlags.MODAL |
-                                          Gtk.DialogFlags.DESTROY_WITH_PARENT,
-                                          type=Gtk.MessageType.INFO,
+                                          modal=True, destroy_with_parent=True,
+                                          message_type=Gtk.MessageType.INFO,
                                           buttons=Gtk.ButtonsType.CANCEL,
-                                          message_format=fmt)
+                                          text=fmt)
 
         self._dialog.format_secondary_text (_("Searching for drivers"))
 
@@ -101,7 +100,11 @@ class PPDsLoader(GObject.GObject):
         if self._device_id:
             self._devid_dict = cupshelpers.parseDeviceID (self._device_id)
 
-        if self._local_cups and self._device_id and self._bus:
+        if (self._local_cups and
+            self._device_id and
+            self._devid_dict["MFG"] and
+            self._devid_dict["MDL"] and
+            self._bus):
             self._gpk_device_id = "MFG:%s;MDL:%s;" % (self._devid_dict["MFG"],
                                                       self._devid_dict["MDL"])
             self._query_packagekit ()
@@ -171,7 +174,7 @@ class PPDsLoader(GObject.GObject):
                                          self._device_make_and_model)
 
             ppdnamelist = ppds.\
-                orderPPDNamesByPreference (fit.keys (),
+                orderPPDNamesByPreference (list(fit.keys ()),
                                            self._installed_files,
                                            devid=self._devid_dict,
                                            fit=fit)
@@ -181,6 +184,8 @@ class PPDsLoader(GObject.GObject):
             if (self._bus and
                 not fit[ppdname].startswith ("exact") and
                 not self._jockey_queried and
+                self._devid_dict["MFG"] and
+                self._devid_dict["MDL"] and
                 self._local_cups):
                 # Try to install packages using jockey if
                 # - there's no appropriate driver (PPD) locally available
@@ -282,7 +287,7 @@ if __name__ == "__main__":
     class Foo:
         def __init__ (self):
             w = Gtk.Window ()
-            b = Gtk.Button ("Go")
+            b = Gtk.Button.new_with_label ("Go")
             w.add (b)
             b.connect ('clicked', self.go)
             w.connect ('delete-event', Gtk.main_quit)
@@ -299,15 +304,14 @@ if __name__ == "__main__":
             self._window.destroy ()
             Gtk.main_quit ()
             exc = ppdsloader.get_error ()
-            print exc
+            print(exc)
             ppds = ppdsloader.get_ppds ()
             if ppds != None:
-                print len (ppds)
+                print(len (ppds))
 
             ppdsloader.destroy ()
 
     from debug import set_debugging
     set_debugging (True)
-    GObject.threads_init ()
     Foo ()
     Gtk.main ()

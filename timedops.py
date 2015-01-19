@@ -1,6 +1,6 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
-## Copyright (C) 2008, 2009, 2010, 2012 Red Hat, Inc.
+## Copyright (C) 2008, 2009, 2010, 2012, 2014 Red Hat, Inc.
 ## Authors:
 ##  Tim Waugh <twaugh@redhat.com>
 
@@ -27,13 +27,12 @@ import subprocess
 import threading
 import config
 import gettext
-gettext.install(domain=config.PACKAGE, localedir=config.localedir, unicode=True)
+gettext.install(domain=config.PACKAGE, localedir=config.localedir)
 from debug import *
 
 # Initialise threading for D-Bus.  This is needed as long as it is
 # used from two separate threads.  We only do this in a few places
 # now, but in particular the troubleshooter does this (bug #662047).
-GObject.threads_init ()
 Gdk.threads_init ()
 dbus.mainloop.glib.threads_init ()
 
@@ -77,7 +76,8 @@ class TimedSubprocess(Timed):
         self.timeout_source = GLib.timeout_add (self.timeout,
                                                 self.do_timeout)
         Gtk.main ()
-        GLib.source_remove (self.timeout_source)
+        if self.timeout_source:
+            GLib.source_remove (self.timeout_source)
         if self.show_dialog:
             GLib.source_remove (self.wait_source)
         for source in self.io_source:
@@ -89,31 +89,30 @@ class TimedSubprocess(Timed):
                 self.subp.poll ())
 
     def do_timeout (self):
+        self.timeout_source = None
         Gtk.main_quit ()
         return False
 
     def watcher (self, source, condition):
         if condition & GLib.IO_IN:
             buffer = self.output.get (source, '')
-            buffer += source.read ()
+            buffer += (source.read ()).decode("utf-8")
             self.output[source] = buffer
 
         if condition & GLib.IO_HUP:
             self.watchers -= 1
             if self.watchers == 0:
                 Gtk.main_quit ()
-                return False
 
         return True
 
     def show_wait_window (self):
         Gdk.threads_enter ()
-        wait = Gtk.MessageDialog (self.parent,
-                                  Gtk.DialogFlags.MODAL |
-                                  Gtk.DialogFlags.DESTROY_WITH_PARENT,
-                                  Gtk.MessageType.INFO,
-                                  Gtk.ButtonsType.CANCEL,
-                                  _("Please wait"))
+        wait = Gtk.MessageDialog (parent=self.parent,
+                                  modal=True, destroy_with_parent=True,
+                                  message_type=Gtk.MessageType.INFO,
+                                  buttons=Gtk.ButtonsType.CANCEL,
+                                  text=_("Please wait"))
         wait.connect ("delete_event", lambda *args: False)
         wait.connect ("response", self.wait_window_response)
         if self.parent:
@@ -188,12 +187,11 @@ class TimedOperation(Timed):
             raise RuntimeError
 
         if self.show_dialog:
-            wait = Gtk.MessageDialog (self.parent,
-                                      Gtk.DialogFlags.MODAL |
-                                      Gtk.DialogFlags.DESTROY_WITH_PARENT,
-                                      Gtk.MessageType.INFO,
-                                      Gtk.ButtonsType.CANCEL,
-                                      _("Please wait"))
+            wait = Gtk.MessageDialog (parent=self.parent,
+                                      modal=True, destroy_with_parent=True,
+                                      message_type=Gtk.MessageType.INFO,
+                                      buttons=Gtk.ButtonsType.CANCEL,
+                                      text=_("Please wait"))
             wait.connect ("delete_event", lambda *args: False)
             wait.connect ("response", self._wait_window_response)
             if self.parent:
@@ -205,7 +203,8 @@ class TimedOperation(Timed):
 
         self.timeout_source = GLib.timeout_add (50, self._check_thread)
         Gtk.main ()
-        GLib.source_remove (self.timeout_source)
+        if self.timeout_source:
+            GLib.source_remove (self.timeout_source)
         if self.show_dialog:
             wait.destroy ()
 
@@ -217,6 +216,7 @@ class TimedOperation(Timed):
             return True
 
         # Thread has finished.  Stop the sub-loop or trigger callback.
+        self.timeout_source = False
         if self.use_callback:
             if self.callback != None:
                 if self.context != None:

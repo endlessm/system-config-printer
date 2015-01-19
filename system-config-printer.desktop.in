@@ -1,5 +1,5 @@
 [Desktop Entry]
-_Name=Print Settings
+_Name=Printers
 _Comment=Configure printers
 Exec=system-config-printer
 Terminal=false
@@ -7,3 +7,9 @@ Type=Application
 Icon=printer
 NoDisplay=true
 StartupNotify=true
+NotShowIn=KDE;GNOME;
+X-Ubuntu-Gettext-Domain=system-config-printer
+Categories=GNOME;GTK;Settings;HardwareSettings;X-GNOME-Settings-Panel;X-Unity-Settings-Panel;
+X-GNOME-Settings-Panel=printing
+X-Unity-Settings-Panel=printing
+Keywords=Printer;Queue;Print;Paper;Ink;Toner;

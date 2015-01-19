@@ -1,8 +1,8 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 ## Printing troubleshooter
 
-## Copyright (C) 2008, 2009, 2010 Red Hat, Inc.
+## Copyright (C) 2008, 2009, 2010, 2014 Red Hat, Inc.
 ## Authors:
 ##  Tim Waugh <twaugh@redhat.com>
 
@@ -28,7 +28,8 @@ import installpackage
 import os
 import subprocess
 from timedops import TimedOperation, TimedSubprocess
-from base import *
+from .base import *
+from functools import reduce
 
 class CheckPPDSanity(Question):
     def __init__ (self, troubleshooter):
@@ -44,7 +45,7 @@ class CheckPPDSanity(Question):
 
         box = Gtk.HButtonBox ()
         box.set_layout (Gtk.ButtonBoxStyle.START)
-        self.install_button = Gtk.Button (_("Install"))
+        self.install_button = Gtk.Button.new_with_label (_("Install"))
         box.add (self.install_button)
         # Although we want this hidden initially,
         # troubleshooter.new_page will call show_all() on the widget
@@ -102,7 +103,7 @@ class CheckPPDSanity(Question):
                 self.op = TimedSubprocess (parent=parent,
                                            args=['cupstestppd', '-rvv', tmpf],
                                            close_fds=True,
-                                           stdin=file("/dev/null"),
+                                           stdin=subprocess.DEVNULL,
                                            stdout=subprocess.PIPE,
                                            stderr=subprocess.PIPE)
                 result = self.op.run ()

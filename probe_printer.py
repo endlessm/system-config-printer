@@ -1,8 +1,8 @@
 ## system-config-printer
 
-## Copyright (C) 2006, 2007, 2008, 2009, 2010, 2011, 2012 Red Hat, Inc.
+## Copyright (C) 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2014 Red Hat, Inc.
 ## Copyright (C) 2006 Florian Festi <ffesti@redhat.com>
-## Copyright (C) 2007, 2008, 2009 Tim Waugh <twaugh@redhat.com>
+## Copyright (C) 2007, 2008, 2009, 2014 Tim Waugh <twaugh@redhat.com>
 
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -131,14 +131,14 @@ class LpdServer:
         s = open_socket(self.hostname, 515)
         if not s:
             return None
-        print name
+        print(name)
         
         try:
-            s.send('\2%s\n' % name) # cmd send job to queue
-            data = s.recv(1024) # receive status
-            print repr(data)
+            s.send(('\2%s\n' % name).encode('UTF-8'))  # cmd send job to queue
+            data = s.recv(1024).decode('UTF-8')  # receive status
+            print(repr(data))
         except socket.error as msg:
-            print msg
+            print(msg)
             try:
                 s.close ()
             except:
@@ -148,7 +148,7 @@ class LpdServer:
 
         if len(data)>0 and ord(data[0])==0:
             try:
-                s.send('\1\n') # abort job again
+                s.send(b'\1\n')  # abort job again
                 s.close ()
             except:
                 pass
@@ -272,15 +272,14 @@ class PrinterFinder:
 
     def _probe_snmp (self):
         # Run the CUPS SNMP backend, pointing it at the host.
-        null = file ("/dev/null", "r+")
         try:
             debugprint ("snmp: trying")
             p = subprocess.Popen (args=["/usr/lib/cups/backend/snmp",
                                         self.hostname],
                                   close_fds=True,
-                                  stdin=null,
+                                  stdin=subprocess.DEVNULL,
                                   stdout=subprocess.PIPE,
-                                  stderr=null)
+                                  stderr=subprocess.DEVNULL)
         except OSError as e:
             debugprint ("snmp: no good")
             if e == errno.ENOENT:
@@ -297,7 +296,7 @@ class PrinterFinder:
             debugprint ("snmp: no good")
             return
 
-        for line in stdout.split ('\n'):
+        for line in stdout.decode ().split ('\n'):
             words = wordsep (line)
             n = len (words)
             if n == 6:
@@ -357,14 +356,21 @@ class PrinterFinder:
         debugprint ("lpd: done")
 
     def _probe_hplip (self):
-        null = file ("/dev/null", "r+")
+        if ('device-make-and-model' in self._cached_attributes and \
+            self._cached_attributes['device-make-and-model'] != "Unknown" and \
+            not self._cached_attributes['device-make-and-model'].lower ().startswith ("hp") and \
+            not self._cached_attributes['device-make-and-model'].lower ().startswith ("hewlett")):
+            debugprint ("hplip: no good (Non-HP printer: %s)" %
+                        self._cached_attributes['device-make-and-model'])
+            return
+
         try:
             debugprint ("hplip: trying")
             p = subprocess.Popen (args=["hp-makeuri", "-c", self.hostname],
                                   close_fds=True,
-                                  stdin=null,
+                                  stdin=subprocess.DEVNULL,
                                   stdout=subprocess.PIPE,
-                                  stderr=null)
+                                  stderr=subprocess.DEVNULL)
         except OSError as e:
             if e == errno.ENOENT:
                 return
@@ -380,7 +386,7 @@ class PrinterFinder:
             debugprint ("hplip: no good")
             return
 
-        uri = stdout.strip ()
+        uri = stdout.decode ().strip ()
         debugprint ("hplip: uri is %s" % uri)
         if uri.find (":") != -1:
             self._new_device(uri, uri)
@@ -482,7 +488,7 @@ class PrinterFinder:
             debugprint ("ipp: done")
             return
 
-        for name, queue in printers.iteritems ():
+        for name, queue in printers.items ():
             uri = queue['printer-uri-supported']
             info = queue['printer-info']
             location = queue['printer-location']
@@ -493,7 +499,7 @@ class PrinterFinder:
 if __name__ == '__main__':
     import sys
     if len (sys.argv) < 2:
-        print "Need printer address"
+        print("Need printer address")
         sys.exit (1)
 
     set_debugging (True)
