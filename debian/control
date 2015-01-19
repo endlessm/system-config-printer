@@ -70,7 +70,6 @@ Depends: ${shlibs:Depends},
          gir1.2-gtk-3.0,
          gir1.2-notify-0.7,
          gir1.2-pango-1.0,
-         packagekit-system-interface
 Conflicts: system-config-printer
 Replaces: system-config-printer
 Description: Printer configuration GUI
