@@ -23,7 +23,6 @@ Architecture: all
 Depends: ${shlibs:Depends},
          ${python3:Depends},
          python3-cups (>= 1.9.60),
-         python3-smbc,
          python3-dbus,
          python3-cupshelpers
 Recommends: system-config-printer-udev,
