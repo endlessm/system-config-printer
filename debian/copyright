@@ -1,14 +1,14 @@
 This package was debianized by Jani Monoses <jani@ubuntu.com> on
-Fri,  8 Sep 2006 12:08:23 +0300.
+Fri,  8 Sep 2006 12:08:23 +0300 
 
 It was downloaded from http://cyberelk.net/tim/data/system-config-printer/
 
 Upstream Author: Tim Waugh <twaugh@redhat.com>
                  Florian Festi <ffesti@redhat.com>
 
-Copyright: 1996-2006 Red Hat, Inc
-           2002-2006 Tim Waugh
-           2006 Florian Festi
+Copyright: 1996-2008 Red Hat, Inc
+           2002-2008 Tim Waugh
+	   2006-2007 Florian Festi
           
 
 License:
