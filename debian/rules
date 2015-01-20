@@ -11,8 +11,8 @@ include /usr/share/cdbs/1/rules/autoreconf.mk
 DEB_CONFIGURE_EXTRA_FLAGS := --sbindir=/usr/bin --with-udev-rules PYINSTALL_FLAGS=--install-layout=deb
 DEB_MAKE_INSTALL_TARGET := install DESTDIR=$(DEB_DESTDIR) udevrulesdir=/lib/udev/rules.d udevhelperdir=/lib/udev
 
-binary-install/python-cupshelpers::
-	dh_python2 -ppython-cupshelpers
+binary-install/python3-cupshelpers::
+	dh_python3 -ppython3-cupshelpers
 
 # Generate the service file before the build so we substitute the
 # correct path to the udev helper.
