@@ -1052,7 +1052,7 @@ class NewPrinterGUI(GtkGUI):
                             debugprint ("No smb backend so attempting install")
                             try:
                                 pk = installpackage.PackageKit ()
-                                pk.InstallPackageName (0, 0, "smbclient")
+                                pk.InstallPackageName (0, 0, "samba-client")
                             except:
                                 nonfatalException ()
 
