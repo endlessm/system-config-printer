@@ -24,7 +24,8 @@ from gi.repository import GLib
 from gi.repository import Gdk
 from gi.repository import Gtk
 import os
-import tempfile
+from shutil import copyfileobj
+from tempfile import NamedTemporaryFile
 from debug import *
 
 cups.require ("1.9.50")
@@ -85,18 +86,14 @@ class PPDCache:
         # PPD object from it, then remove the file.  This way we don't
         # leave temporary files around even though we are caching...
         f.seek (0)
-        (tmpfd, tmpfname) = tempfile.mkstemp ()
-        tmpf = open (tmpfname, "w")
-        tmpf.writelines (f.readlines ())
-        del tmpf
-        os.close (tmpfd)
-        try:
-            ppd = cups.PPD (tmpfname)
-            os.unlink (tmpfname)
-            self._schedule_callback (callback, name, ppd, None)
-        except Exception as e:
-            os.unlink (tmpfname)
-            self._schedule_callback (callback, name, None, e)
+        with NamedTemporaryFile () as tmpf:
+            copyfileobj (f, tmpf)
+
+            try:
+                ppd = cups.PPD (tmpf.file)
+                self._schedule_callback (callback, name, ppd, None)
+            except Exception as e:
+                self._schedule_callback (callback, name, None, e)
 
     def _connect (self, callback=None):
         self._connecting = True
@@ -112,7 +109,7 @@ class PPDCache:
             # Store an open file object, then remove the actual file.
             # This way we don't leave temporary files around.
             try:
-                self._cache[name] = open (result)
+                self._cache[name] = open (result, "rb")
                 debugprint ("%s: caching %s (fd %d)" %
                             (self, result,
                              self._cache[name].fileno()))
@@ -143,7 +140,7 @@ class PPDCache:
                 # file.  This way we don't leave temporary files
                 # around.
                 try:
-                    self._cache[name] = open (filename)
+                    self._cache[name] = open (filename, "rb")
                     debugprint ("%s: caching %s (fd %d) "
                                 "(%s) - %s" % (self, filename,
                                                self._cache[name].fileno (),

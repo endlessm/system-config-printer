@@ -1,5 +1,5 @@
 
-## Copyright (C) 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014 Red Hat, Inc.
+## Copyright (C) 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015 Red Hat, Inc.
 ## Authors:
 ##  Tim Waugh <twaugh@redhat.com>
 ##  Jiri Popelka <jpopelka@redhat.com>
@@ -315,7 +315,7 @@ class JobViewer (GtkGUI):
                                    'job-printer-uri',
                                    'job-state',
                                    'time-at-creation',
-                                   'auth-info-required'
+                                   'auth-info-required',
                                    'job-preserved'])
 
     __gsignals__ = {
@@ -864,8 +864,13 @@ class JobViewer (GtkGUI):
             s = int (jstate)
 
             if s in [cups.IPP_JOB_HELD, cups.IPP_JOB_STOPPED]:
-                jattrs = ['job-state', 'job-hold-until']
+                jattrs = ['job-state', 'job-hold-until', 'job-printer-uri']
                 pattrs = ['auth-info-required', 'device-uri']
+                # The current job-printer-uri may differ from the one that
+                # is returned when we request it over the connection.
+                # So while we use it to query the printer attributes we
+                # Update it afterwards to make sure that we really
+                # have the one cups uses in the job attributes.
                 uri = data.get ('job-printer-uri')
                 c = authconn.Connection (self.JobsWindow,
                                          host=self.host,
@@ -2381,7 +2386,7 @@ class JobViewer (GtkGUI):
                           cups.IPP_JOB_CANCELED: _("Canceled"),
                           cups.IPP_JOB_ABORTED: _("Aborted"),
                           cups.IPP_JOB_COMPLETED: _("Completed") }[s]
-            except IndexError:
+            except KeyError:
                 pass
 
         if state == None:
