@@ -1016,7 +1016,7 @@ class GUI(GtkGUI):
                                                   copy.get_height (),
                                                   0, 0,
                                                   1.0, 1.0,
-                                                  GdkPixbuf.InterpType.NEAREST, 255)
+                                                  GdkPixbuf.InterpType.BILINEAR, 255)
                         pixbuf = copy
                     except GLib.GError:
                         debugprint ("No %s icon available" % def_emblem)
@@ -1032,7 +1032,7 @@ class GUI(GtkGUI):
                                                 copy.get_width () / 2,
                                                 copy.get_height () / 2,
                                                 1.0, 1.0,
-                                                GdkPixbuf.InterpType.NEAREST, 255)
+                                                GdkPixbuf.InterpType.BILINEAR, 255)
                         pixbuf = copy
                     except GLib.GError:
                         debugprint ("No %s icon available" % emblem)
