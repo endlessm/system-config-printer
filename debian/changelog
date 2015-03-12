@@ -1,3 +1,13 @@
+system-config-printer (1.5.5-0endless1) eos; urgency=low
+
+  * Updated to latest upstream release.
+  * debian/control:
+    - Added eos-config-printer as dependency of system-config-printer-common
+  * debian/system-config-printer-common.install:
+    - Include eosdriverinstaller.py in the list of modules to install
+
+ -- Mario Sanchez Prada <mario@endlessm.com>  Thu, 12 Mar 2015 18:57:08 +0000
+
 system-config-printer (1.5.4+20141212-0ubuntu1) vivid; urgency=medium
 
   * New upstream release
