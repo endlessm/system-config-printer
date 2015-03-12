@@ -86,6 +86,7 @@ clean-local:
 nobase_pkgdata_SCRIPTS=				\
 	check-device-ids.py			\
 	pysmb.py				\
+	eosdriverinstaller.py			\
 	scp-dbus-service.py			\
 	system-config-printer.py		\
 	install-printerdriver.py		\
