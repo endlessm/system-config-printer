@@ -33,6 +33,7 @@ import sys, os, tempfile, time, traceback, re, http.client
 import locale
 import string
 import subprocess
+import queue
 from timedops import *
 import dbus
 from gi.repository import Gdk
@@ -57,6 +58,7 @@ from debug import *
 import probe_printer
 import urllib.request, urllib.parse
 from smburi import SMBURI
+from eosdriverinstaller import DriverInstallerThread
 from errordialogs import *
 from PhysicalDevice import PhysicalDevice
 import firewallsettings
@@ -72,6 +74,19 @@ gettext.install(domain=config.PACKAGE, localedir=config.localedir)
 TEXT_adjust_firewall = _("The firewall may need adjusting in order to "
                          "detect network printers.  Adjust the "
                          "firewall now?")
+
+# This is the only type supported by eos-config-printer for now
+EOS_DRIVER_TYPE_OPENPRINTING = 1
+
+# Helper function to avoid having issues in case the new
+# WITH_EOS_INTEGRATION configuration is not defined
+def hasEOSIntegration():
+    try:
+        return config.WITH_EOS_INTEGRATION == True
+    except AttributeError:
+        debugprint(repr(e))
+
+    return False
 
 def validDeviceURI (uri):
     """Returns True is the provided URI is valid."""
@@ -242,6 +257,7 @@ class NewPrinterGUI(GtkGUI):
         self.recommended_model_selected = False
         self._searchdialog = None
         self._installdialog = None
+        self._installdialogcancelled = False
 
         self.getWidgets({"NewPrinterWindow":
                              ["NewPrinterWindow",
@@ -936,12 +952,18 @@ class NewPrinterGUI(GtkGUI):
                 debugprint('Not installing driver as it does not have a valid GPG fingerprint')
                 return False
 
-        repo = pkgs[pkg].get('repositories', {}).get(self.packageinstaller)
-        if not repo:
-            debugprint('Local package system %s not found in %s' %
-                       (self.packageinstaller,
-                        repr (pkgs[pkg].get('repositories', {}))))
-            return False
+        if hasEOSIntegration():
+            url = pkgs[pkg]['url']
+            if not url:
+                debugprint('Package URL not found: %s' % repr(url))
+                return False
+        else:
+            repo = pkgs[pkg].get('repositories', {}).get(self.packageinstaller)
+            if not repo:
+                debugprint('Local package system %s not found in %s' %
+                           (self.packageinstaller,
+                            repr (pkgs[pkg].get('repositories', {}))))
+                return False
 
         if onlycheckpresence:
             return True
@@ -968,7 +990,10 @@ class NewPrinterGUI(GtkGUI):
         self._installdialog.show_all ()
 
         # Perform the actual installation of the printer driver
-        ret = self.do_installdriverpackage (name, repo, keyid)
+        if hasEOSIntegration():
+            ret = self.do_installdriverpackage_EOS (name, url, keyid)
+        else:
+            ret = self.do_installdriverpackage (name, repo, keyid)
 
         if self._installdialog:
             self._installdialog.hide ()
@@ -1035,8 +1060,65 @@ class NewPrinterGUI(GtkGUI):
 
         return ret
 
+    def do_installdriverpackage_EOS(self, name, url, keyid):
+        debugprint('Installing driver %s from URL: %s; Key ID: %s' %
+                   (repr(name), repr(url), repr(keyid)))
+
+        ret = False
+        self._installdialogcancelled = False
+        try:
+            # Launch a separate thread to take care of this while
+            # we keep the UI refreshed, waiting for results
+            p_queue = queue.Queue()
+            thread = DriverInstallerThread (EOS_DRIVER_TYPE_OPENPRINTING, url, keyid, p_queue)
+            thread.start()
+
+            while True:
+                # Exit the loop if the thread died for any reason
+                if not thread.is_alive():
+                    debugprint("Thread died unexpectedly")
+                    break
+
+                if self._installdialogcancelled:
+                    debugprint("Install driver dialog cancelled")
+                    break
+
+                # Update progress bar and check info from thread
+                self._installdialog._progress_bar.pulse()
+                try:
+                    (reply_type, result) = p_queue.get(timeout=0.1)
+                    if reply_type == 'error':
+                        debugprint("Error installing a driver: %s" % repr(result))
+                    elif reply_type == 'installed_files':
+                        self.installed_driver_files = result
+                        debugprint('Driver successfully installed. Installed files: %s'
+                                   % self.installed_driver_files)
+                        ret = True
+                    else:
+                        # This should not ever happen
+                        debugprint("Unknown response received from child thread")
+
+                    # Tell the thread we are done with the data
+                    p_queue.task_done()
+                    break
+
+                except queue.Empty:
+                    # Not an answer yet: update UI and keep going
+                    while Gtk.events_pending ():
+                        Gtk.main_iteration ()
+                    time.sleep (0.1)
+
+        except Exception as e:
+            # Problem executing command.
+            debugprint("Error while trying to install a driver: %s" % repr(e))
+            ret = False
+
+        return ret
+
     def _installdialog_response (self, dialog, response):
-        self.p.terminate ()
+        if not hasEOSIntegration():
+            self.p.terminate ()
+        self._installdialogcancelled = True
 
     def nextNPTab(self, step=1):
         page_nr = self.ntbkNewPrinter.get_current_page()

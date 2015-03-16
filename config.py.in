@@ -28,3 +28,6 @@ DOWNLOADABLE_ONLYPPD=False
 DOWNLOADABLE_ONLYFREE=False
 DOWNLOADABLE_PKG_ONLYSIGNED=True
 packagesystem = None # discovered at runtime
+
+# EndlessOS specific configuration options
+WITH_EOS_INTEGRATION=True
