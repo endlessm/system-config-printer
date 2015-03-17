@@ -24,7 +24,7 @@ from gi.repository import Gtk
 
 import cups
 import os
-import tempfile
+from tempfile import NamedTemporaryFile
 import datetime
 import time
 from timedops import TimedOperation
@@ -66,21 +66,21 @@ class ErrorLogFetch(Question):
             prompt = c._get_prompt_allowed ()
             c._set_prompt_allowed (False)
             c._connect ()
-            (tmpfd, tmpfname) = tempfile.mkstemp ()
-            os.close (tmpfd)
-            success = False
-            try:
-                c.getFile ('/admin/log/error_log', tmpfname)
-                success = True
-            except cups.HTTPError:
+            with tempfile.NamedTemporaryFile (delete=False) as tmpf:
+                success = False
                 try:
-                    os.remove (tmpfname)
-                except OSError:
-                    pass
+                    c.getFile ('/admin/log/error_log', tmpf.file)
+                    success = True
+                except cups.HTTPError:
+                    try:
+                        os.remove (tmpf.file)
+                    except OSError:
+                        pass
 
-            c._set_prompt_allowed (prompt)
-            if success:
-                return tmpfname
+                c._set_prompt_allowed (prompt)
+                if success:
+                    return tmpf.file
+
             return None
 
         now = datetime.datetime.fromtimestamp (time.time ()).strftime ("%F %T")
@@ -135,7 +135,7 @@ class ErrorLogFetch(Question):
 
             r = journal.Reader ()
             r.seek_cursor (cursor)
-            r.add_match (_COMM="cupsd")
+            r.add_match (_SYSTEMD_UNIT="cups.service")
             self.answers['journal'] = [journal_format (x) for x in r]
 
         if checkpoint != None:
@@ -152,7 +152,7 @@ class ErrorLogFetch(Question):
 
         if (len (self.answers.get ('journal', [])) +
             len (self.answers.get ('error_log', []))) == 0:
-            cmd = ("su -c 'journalctl _COMM=cupsd "
+            cmd = ("su -c 'journalctl -u cups.service "
                    "--since=\"%s\" --until=\"%s\"' > troubleshoot-logs.txt" %
                    (answers['error_log_timestamp'], now))
             self.entry.set_text (cmd)
