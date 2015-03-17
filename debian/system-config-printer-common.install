@@ -4,6 +4,7 @@ debian/tmp/usr/share/system-config-printer/check-device-ids.py
 debian/tmp/usr/share/system-config-printer/config.py
 debian/tmp/usr/share/system-config-printer/debug.py
 debian/tmp/usr/share/system-config-printer/dnssdresolve.py
+debian/tmp/usr/share/system-config-printer/eosdriverinstaller.py
 debian/tmp/usr/share/system-config-printer/firewallsettings.py
 debian/tmp/usr/share/system-config-printer/installpackage.py
 debian/tmp/usr/share/system-config-printer/monitor.py

@@ -24,7 +24,8 @@ Depends: ${shlibs:Depends},
          ${python3:Depends},
          python3-cups (>= 1.9.60),
          python3-dbus,
-         python3-cupshelpers
+         python3-cupshelpers,
+         eos-config-printer
 Recommends: system-config-printer-udev,
             avahi-utils
 Conflicts: system-config-printer,
