@@ -397,7 +397,7 @@ test-xml-validity.sh:	FORCE
 
 nosetests.sh:	FORCE
 	echo "#!/bin/bash" > "$@"
-	echo "nosetests-3.4" >> "$@"
+	echo "nosetests3" >> "$@"
 	chmod 755 "$@"
 
 TESTS = test-xml-validity.sh test-ppd-module.sh nosetests.sh
