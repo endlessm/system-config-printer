@@ -25,7 +25,7 @@ Depends: ${shlibs:Depends},
          ${python3:Depends},
          python3-cups (>= 1.9.60),
          python3-dbus,
-         python3-cupshelpers,
+         python3-cupshelpers (= ${source:Version}),
          eos-config-printer
 Recommends: system-config-printer-udev,
             avahi-utils
@@ -44,7 +44,7 @@ Depends: ${shlibs:Depends},
          ${python3:Depends},
          python3-cups (>= 1.9.55),
          python3-dbus,
-         python3-cupshelpers
+         python3-cupshelpers (= ${source:Version})
 Recommends: cups-filters-ippusbxd
 Description: Printer auto-configuration facility based on udev
  A CUPS printer configuration tool and status applet.
