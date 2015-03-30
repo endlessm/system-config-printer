@@ -1,3 +1,11 @@
+system-config-printer (1.5.5-0endless2) eos; urgency=low
+
+  * debian/system-config-printer-common.install:
+    - Include translations by adding /usr/share/locale to this package
+  [endlessm/eos-shell#4849]
+
+ -- Mario Sanchez Prada <mario@endlessm.com>  Mon, 30 Mar 2015 12:06:46 +0100
+
 system-config-printer (1.5.5-0endless1) eos; urgency=low
 
   * Updated to latest upstream release.
