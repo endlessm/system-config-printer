@@ -20,6 +20,7 @@ debian/tmp/usr/share/system-config-printer/statereason.py
 debian/tmp/usr/share/system-config-printer/xml/*
 debian/tmp/etc/dbus-1/system.d/*.conf
 debian/tmp/usr/share/dbus-1
+debian/tmp/usr/share/locale
 debian/tmp/usr/bin/scp-dbus-service
 
 debian/local/source_system-config-printer.py /usr/share/apport/package-hooks/
