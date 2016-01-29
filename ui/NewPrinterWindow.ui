@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.18.3 -->
+<!-- Generated with glade 3.19.0 -->
 <interface>
   <requires lib="gtk+" version="3.0"/>
   <object class="GtkWindow" id="NewPrinterWindow">
@@ -30,10 +30,10 @@
                   <object class="GtkLabel" id="label238">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="xalign">0</property>
                     <property name="label" translatable="yes">&lt;span weight="bold" size="larger"&gt;Describe Printer&lt;/span&gt;</property>
                     <property name="use_markup">True</property>
                     <property name="wrap">True</property>
+                    <property name="xalign">0</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -65,8 +65,8 @@
                               <object class="GtkLabel" id="label87">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
                                 <property name="label" translatable="yes">Short name for this printer such as "laserjet"</property>
+                                <property name="xalign">0</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -123,8 +123,8 @@
                               <object class="GtkLabel" id="label88">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
                                 <property name="label" translatable="yes">Human-readable description such as "HP LaserJet with Duplexer"</property>
+                                <property name="xalign">0</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -180,8 +180,8 @@
                               <object class="GtkLabel" id="label89">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
                                 <property name="label" translatable="yes">Human-readable location such as "Lab 1"</property>
+                                <property name="xalign">0</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -249,10 +249,10 @@
                   <object class="GtkLabel" id="label231">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="xalign">0</property>
                     <property name="label" translatable="yes">&lt;span weight="bold" size="larger"&gt;Select Device&lt;/span&gt;</property>
                     <property name="use_markup">True</property>
                     <property name="wrap">True</property>
+                    <property name="xalign">0</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -316,9 +316,9 @@
                                         <property name="can_focus">False</property>
                                         <property name="margin_start">12</property>
                                         <property name="margin_top">6</property>
-                                        <property name="xalign">0</property>
                                         <property name="label" translatable="yes">Device description.</property>
                                         <property name="wrap">True</property>
+                                        <property name="xalign">0</property>
                                       </object>
                                     </child>
                                     <child type="label">
@@ -435,8 +435,8 @@ ipp://printer.mydomain/ipp</property>
                                       <object class="GtkLabel" id="label202">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="xalign">0</property>
                                         <property name="label" translatable="yes">Host:</property>
+                                        <property name="xalign">0</property>
                                       </object>
                                       <packing>
                                         <property name="x_options">GTK_FILL</property>
@@ -447,8 +447,8 @@ ipp://printer.mydomain/ipp</property>
                                       <object class="GtkLabel" id="label203">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="xalign">0</property>
                                         <property name="label" translatable="yes">Port number:</property>
+                                        <property name="xalign">0</property>
                                         <accessibility>
                                           <relation type="label-for" target="entNPTJetDirectPort"/>
                                         </accessibility>
@@ -542,8 +542,8 @@ ipp://printer.mydomain/ipp</property>
                                       <object class="GtkLabel" id="label200">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="xalign">0</property>
                                         <property name="label" translatable="yes">Host:</property>
+                                        <property name="xalign">0</property>
                                       </object>
                                       <packing>
                                         <property name="x_options">GTK_FILL</property>
@@ -554,8 +554,8 @@ ipp://printer.mydomain/ipp</property>
                                       <object class="GtkLabel" id="label201">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="xalign">0</property>
                                         <property name="label" translatable="yes">Queue:</property>
+                                        <property name="xalign">0</property>
                                       </object>
                                       <packing>
                                         <property name="top_attach">1</property>
@@ -720,8 +720,8 @@ ipp://printer.mydomain/ipp</property>
                                       <object class="GtkLabel" id="label43">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="xalign">0</property>
                                         <property name="label" translatable="yes">Baud Rate</property>
+                                        <property name="xalign">0</property>
                                       </object>
                                       <packing>
                                         <property name="x_options">GTK_FILL</property>
@@ -732,8 +732,8 @@ ipp://printer.mydomain/ipp</property>
                                       <object class="GtkLabel" id="label44">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="xalign">0</property>
                                         <property name="label" translatable="yes">Parity</property>
+                                        <property name="xalign">0</property>
                                       </object>
                                       <packing>
                                         <property name="top_attach">1</property>
@@ -746,8 +746,8 @@ ipp://printer.mydomain/ipp</property>
                                       <object class="GtkLabel" id="label45">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="xalign">0</property>
                                         <property name="label" translatable="yes">Data Bits</property>
+                                        <property name="xalign">0</property>
                                       </object>
                                       <packing>
                                         <property name="top_attach">2</property>
@@ -760,8 +760,8 @@ ipp://printer.mydomain/ipp</property>
                                       <object class="GtkLabel" id="label46">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="xalign">0</property>
                                         <property name="label" translatable="yes">Flow Control</property>
+                                        <property name="xalign">0</property>
                                       </object>
                                       <packing>
                                         <property name="top_attach">3</property>
@@ -931,9 +931,9 @@ ipp://printer.mydomain/ipp</property>
                                           <object class="GtkLabel" id="lblSMBHint">
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
-                                            <property name="xalign">0</property>
                                             <property name="label" translatable="yes">&lt;i&gt;smb://[workgroup/]server[:port]/printer&lt;/i&gt;</property>
                                             <property name="use_markup">True</property>
+                                            <property name="xalign">0</property>
                                           </object>
                                           <packing>
                                             <property name="expand">False</property>
@@ -1028,8 +1028,8 @@ ipp://printer.mydomain/ipp</property>
                                                   <object class="GtkLabel" id="label133">
                                                     <property name="visible">True</property>
                                                     <property name="can_focus">False</property>
-                                                    <property name="xalign">0</property>
                                                     <property name="label" translatable="yes">Password:</property>
+                                                    <property name="xalign">0</property>
                                                     <accessibility>
                                                       <relation type="label-for" target="entSMBPassword"/>
                                                     </accessibility>
@@ -1045,8 +1045,8 @@ ipp://printer.mydomain/ipp</property>
                                                   <object class="GtkLabel" id="label132">
                                                     <property name="visible">True</property>
                                                     <property name="can_focus">False</property>
-                                                    <property name="xalign">0</property>
                                                     <property name="label" translatable="yes">Username:</property>
+                                                    <property name="xalign">0</property>
                                                     <accessibility>
                                                       <relation type="label-for" target="entSMBUsername"/>
                                                     </accessibility>
@@ -1198,8 +1198,8 @@ ipp://printer.mydomain/ipp</property>
                                           <object class="GtkLabel" id="label2235">
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
-                                            <property name="xalign">0</property>
                                             <property name="label" translatable="yes">Host:</property>
+                                            <property name="xalign">0</property>
                                           </object>
                                           <packing>
                                             <property name="x_options">GTK_FILL</property>
@@ -1252,8 +1252,8 @@ ipp://printer.mydomain/ipp</property>
                                         <child>
                                           <object class="GtkLabel" id="lblNetworkFindSearching">
                                             <property name="can_focus">False</property>
-                                            <property name="xalign">0</property>
                                             <property name="label" translatable="yes">Searching...</property>
+                                            <property name="xalign">0</property>
                                           </object>
                                           <packing>
                                             <property name="expand">False</property>
@@ -1264,9 +1264,9 @@ ipp://printer.mydomain/ipp</property>
                                         <child>
                                           <object class="GtkLabel" id="lblNetworkFindNotFound">
                                             <property name="can_focus">False</property>
-                                            <property name="xalign">0</property>
                                             <property name="label" translatable="yes">No printer was found at that address.</property>
                                             <property name="use_markup">True</property>
+                                            <property name="xalign">0</property>
                                           </object>
                                           <packing>
                                             <property name="expand">False</property>
@@ -1393,10 +1393,10 @@ ipp://printer.mydomain/ipp</property>
                   <object class="GtkLabel" id="label232">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="xalign">0</property>
                     <property name="label" translatable="yes">&lt;span weight="bold" size="larger"&gt;Choose Driver&lt;/span&gt;</property>
                     <property name="use_markup">True</property>
                     <property name="wrap">True</property>
+                    <property name="xalign">0</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -1489,9 +1489,9 @@ ipp://printer.mydomain/ipp</property>
                               <object class="GtkLabel" id="label105">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
                                 <property name="label" translatable="yes">The foomatic printer database contains various manufacturer provided PostScript Printer Description (PPD) files and also can generate PPD files for a large number of (non PostScript) printers. But in general manufacturer provided PPD files provide better access to the specific features of the printer.</property>
                                 <property name="wrap">True</property>
+                                <property name="xalign">0</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -1544,10 +1544,10 @@ ipp://printer.mydomain/ipp</property>
                               <object class="GtkLabel" id="label103">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
                                 <property name="label" translatable="yes">PostScript Printer Description (PPD) files can often be found on the driver disk that comes with the printer. For PostScript printers they are often part of the Windows&lt;sup&gt;®&lt;/sup&gt; driver.</property>
                                 <property name="use_markup">True</property>
                                 <property name="wrap">True</property>
+                                <property name="xalign">0</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -1607,8 +1607,8 @@ ipp://printer.mydomain/ipp</property>
                               <object class="GtkLabel" id="label206">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
                                 <property name="label" translatable="yes">Make and model:</property>
+                                <property name="xalign">0</property>
                               </object>
                               <packing>
                                 <property name="x_options">GTK_FILL</property>
@@ -1691,8 +1691,8 @@ ipp://printer.mydomain/ipp</property>
                               <object class="GtkLabel" id="label208">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
                                 <property name="label" translatable="yes">Printer model:</property>
+                                <property name="xalign">0</property>
                               </object>
                               <packing>
                                 <property name="top_attach">1</property>
@@ -1773,10 +1773,10 @@ ipp://printer.mydomain/ipp</property>
                   <object class="GtkLabel" id="label233">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="xalign">0</property>
                     <property name="label" translatable="yes">&lt;span weight="bold" size="larger"&gt;Choose Driver&lt;/span&gt;</property>
                     <property name="use_markup">True</property>
                     <property name="wrap">True</property>
+                    <property name="xalign">0</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -1906,10 +1906,10 @@ ipp://printer.mydomain/ipp</property>
                   <object class="GtkLabel" id="label234">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="xalign">0</property>
                     <property name="label" translatable="yes">&lt;span weight="bold" size="larger"&gt;Choose Class Members&lt;/span&gt;</property>
                     <property name="use_markup">True</property>
                     <property name="wrap">True</property>
+                    <property name="xalign">0</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -1964,7 +1964,7 @@ ipp://printer.mydomain/ipp</property>
                                 <property name="can_focus">False</property>
                                 <property name="icon_name">gtk-go-back</property>
                               </object>
-			    </child>
+                            </child>
                             <child internal-child="accessible">
                               <object class="AtkObject" id="btnNCAddMember-atkobject">
                                 <property name="AtkObject::accessible-description" translatable="yes">move left</property>
@@ -2067,10 +2067,10 @@ ipp://printer.mydomain/ipp</property>
                   <object class="GtkLabel" id="label235">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="xalign">0</property>
                     <property name="label" translatable="yes">&lt;span weight="bold" size="larger"&gt;Existing Settings&lt;/span&gt;</property>
                     <property name="use_markup">True</property>
                     <property name="wrap">True</property>
+                    <property name="xalign">0</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -2088,8 +2088,8 @@ ipp://printer.mydomain/ipp</property>
                       <object class="GtkLabel" id="label116">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="xalign">0</property>
                         <property name="label" translatable="yes">Try to transfer the current settings</property>
+                        <property name="xalign">0</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -2118,9 +2118,9 @@ ipp://printer.mydomain/ipp</property>
                       <object class="GtkLabel" id="label117">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="xalign">0</property>
                         <property name="label" translatable="yes">This way all current option settings will be lost. The default settings of the new PPD will be used. </property>
                         <property name="wrap">True</property>
+                        <property name="xalign">0</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -2149,9 +2149,9 @@ ipp://printer.mydomain/ipp</property>
                       <object class="GtkLabel" id="label118">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="xalign">0</property>
                         <property name="label" translatable="yes">This is done by assuming that options with the same name do have the same meaning. Settings of options that are not present in the new PPD will be lost and options only present in the new PPD will be set to default.</property>
                         <property name="wrap">True</property>
+                        <property name="xalign">0</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -2201,10 +2201,10 @@ ipp://printer.mydomain/ipp</property>
                           <object class="GtkLabel" id="label236">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="xalign">0</property>
                             <property name="label" translatable="yes">&lt;span weight="bold" size="larger"&gt;Installable Options&lt;/span&gt;</property>
                             <property name="use_markup">True</property>
                             <property name="wrap">True</property>
+                            <property name="xalign">0</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -2221,8 +2221,8 @@ ipp://printer.mydomain/ipp</property>
                               <object class="GtkLabel" id="label193">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
                                 <property name="label" translatable="yes">This driver supports additional hardware that may be installed in the printer.</property>
+                                <property name="xalign">0</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -2318,10 +2318,10 @@ ipp://printer.mydomain/ipp</property>
                   <object class="GtkLabel" id="label237">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="xalign">0</property>
                     <property name="label" translatable="yes">&lt;span weight="bold" size="larger"&gt;Choose Driver&lt;/span&gt;</property>
                     <property name="use_markup">True</property>
                     <property name="wrap">True</property>
+                    <property name="xalign">0</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -2345,8 +2345,8 @@ ipp://printer.mydomain/ipp</property>
                           <object class="GtkLabel" id="label211">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="xalign">0</property>
                             <property name="label" translatable="yes">For the printer you have selected there are drivers available for download.</property>
+                            <property name="xalign">0</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -2365,9 +2365,9 @@ ipp://printer.mydomain/ipp</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="margin_start">12</property>
-                                <property name="xalign">0</property>
                                 <property name="label" translatable="yes">These drivers do not come from your operating system supplier and will not be covered by their commercial support.  See the support and license terms of the driver's supplier.</property>
                                 <property name="wrap">True</property>
+                                <property name="xalign">0</property>
                               </object>
                             </child>
                             <child type="label">
@@ -2406,9 +2406,9 @@ ipp://printer.mydomain/ipp</property>
                               <object class="GtkLabel" id="label214">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
                                 <property name="label" translatable="yes">&lt;b&gt;Select Driver&lt;/b&gt;</property>
                                 <property name="use_markup">True</property>
+                                <property name="xalign">0</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -2453,9 +2453,9 @@ ipp://printer.mydomain/ipp</property>
                               <object class="GtkLabel" id="label218">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
                                 <property name="label" translatable="yes">With this choice no driver download will be performed. In the next steps a locally installed driver will be selected.</property>
                                 <property name="wrap">True</property>
+                                <property name="xalign">0</property>
                               </object>
                               <packing>
                                 <property name="tab_fill">False</property>
@@ -2490,8 +2490,8 @@ ipp://printer.mydomain/ipp</property>
                                       <object class="GtkLabel" id="label225">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="xalign">0</property>
                                         <property name="label" translatable="yes">Description:</property>
+                                        <property name="xalign">0</property>
                                       </object>
                                       <packing>
                                         <property name="top_attach">2</property>
@@ -2504,8 +2504,8 @@ ipp://printer.mydomain/ipp</property>
                                       <object class="GtkLabel" id="label222">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="xalign">0</property>
                                         <property name="label" translatable="yes">License:</property>
+                                        <property name="xalign">0</property>
                                       </object>
                                       <packing>
                                         <property name="top_attach">1</property>
@@ -2518,8 +2518,8 @@ ipp://printer.mydomain/ipp</property>
                                       <object class="GtkLabel" id="label221">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="xalign">0</property>
                                         <property name="label" translatable="yes">Supplier:</property>
+                                        <property name="xalign">0</property>
                                       </object>
                                       <packing>
                                         <property name="x_options">GTK_FILL</property>
@@ -2530,10 +2530,10 @@ ipp://printer.mydomain/ipp</property>
                                       <object class="GtkLabel" id="lblNPDownloadableDriverLicense">
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
-                                        <property name="xalign">0</property>
                                         <property name="label" translatable="yes">license</property>
                                         <property name="wrap">True</property>
                                         <property name="selectable">True</property>
+                                        <property name="xalign">0</property>
                                       </object>
                                       <packing>
                                         <property name="left_attach">1</property>
@@ -2548,11 +2548,11 @@ ipp://printer.mydomain/ipp</property>
                                       <object class="GtkLabel" id="lblNPDownloadableDriverDescription">
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
-                                        <property name="xalign">0</property>
                                         <property name="label" translatable="yes">short description</property>
                                         <property name="use_markup">True</property>
                                         <property name="wrap">True</property>
                                         <property name="selectable">True</property>
+                                        <property name="xalign">0</property>
                                       </object>
                                       <packing>
                                         <property name="left_attach">1</property>
@@ -2584,11 +2584,11 @@ ipp://printer.mydomain/ipp</property>
                                       <object class="GtkLabel" id="lblNPDownloadableDriverSupplier">
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
-                                        <property name="xalign">0</property>
                                         <property name="label" translatable="yes">supplier</property>
                                         <property name="use_markup">True</property>
                                         <property name="wrap">True</property>
                                         <property name="selectable">True</property>
+                                        <property name="xalign">0</property>
                                       </object>
                                       <packing>
                                         <property name="left_attach">1</property>
@@ -2639,8 +2639,8 @@ ipp://printer.mydomain/ipp</property>
                                       <object class="GtkLabel" id="label2212">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="xalign">0</property>
                                         <property name="label" translatable="yes">Support:</property>
+                                        <property name="xalign">0</property>
                                       </object>
                                       <packing>
                                         <property name="top_attach">3</property>
@@ -2653,10 +2653,10 @@ ipp://printer.mydomain/ipp</property>
                                       <object class="GtkLabel" id="lblNPDownloadableDriverSupportContacts">
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
-                                        <property name="xalign">0</property>
                                         <property name="label" translatable="yes">support contacts</property>
                                         <property name="wrap">True</property>
                                         <property name="selectable">True</property>
+                                        <property name="xalign">0</property>
                                       </object>
                                       <packing>
                                         <property name="left_attach">1</property>
@@ -2697,8 +2697,8 @@ ipp://printer.mydomain/ipp</property>
                                               <object class="GtkLabel" id="label2215">
                                                 <property name="visible">True</property>
                                                 <property name="can_focus">False</property>
-                                                <property name="xalign">0</property>
                                                 <property name="label" translatable="yes">Text:</property>
+                                                <property name="xalign">0</property>
                                               </object>
                                               <packing>
                                                 <property name="x_options">GTK_FILL</property>
@@ -2709,8 +2709,8 @@ ipp://printer.mydomain/ipp</property>
                                               <object class="GtkLabel" id="label2216">
                                                 <property name="visible">True</property>
                                                 <property name="can_focus">False</property>
-                                                <property name="xalign">0</property>
                                                 <property name="label" translatable="yes">Line art:</property>
+                                                <property name="xalign">0</property>
                                               </object>
                                               <packing>
                                                 <property name="top_attach">1</property>
@@ -2813,8 +2813,8 @@ ipp://printer.mydomain/ipp</property>
                                               <object class="GtkLabel" id="label2224">
                                                 <property name="visible">True</property>
                                                 <property name="can_focus">False</property>
-                                                <property name="xalign">0</property>
                                                 <property name="label" translatable="yes">Photo:</property>
+                                                <property name="xalign">0</property>
                                               </object>
                                               <packing>
                                                 <property name="top_attach">1</property>
@@ -2865,8 +2865,8 @@ ipp://printer.mydomain/ipp</property>
                                               <object class="GtkLabel" id="label2217">
                                                 <property name="visible">True</property>
                                                 <property name="can_focus">False</property>
-                                                <property name="xalign">0</property>
                                                 <property name="label" translatable="yes">Graphics:</property>
+                                                <property name="xalign">0</property>
                                               </object>
                                               <packing>
                                                 <property name="x_options">GTK_FILL</property>
