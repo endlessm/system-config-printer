@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugzilla.redhat.com/bugzilla\n"
-"POT-Creation-Date: 2015-02-06 17:50+0000\n"
+"POT-Creation-Date: 2016-01-30 02:33+0000\n"
 "PO-Revision-Date: 2014-10-23 06:58-0400\n"
 "Last-Translator: Tim Waugh <twaugh@redhat.com>\n"
 "Language-Team: Kannada (http://www.transifex.com/projects/p/system-config-"
@@ -109,7 +109,7 @@ msgstr "ನವೀಕರಣದ ಅಗತ್ಯವಿದೆ"
 msgid "Server error"
 msgstr "ಪೂರೈಕೆಗಣಕ ದೋಷ"
 
-#: ../errordialogs.py:80 ../system-config-printer.py:716
+#: ../errordialogs.py:80 ../system-config-printer.py:718
 msgid "Not connected"
 msgstr "ಸಂಪರ್ಕಿತವಾಗಿಲ್ಲ"
 
@@ -167,7 +167,7 @@ msgstr "ಕಾರ್ಯವನ್ನು ಅಳಿಸಲಾಗುತ್ತಿದ�
 msgid "canceling job"
 msgstr "ಕಾರ್ಯಗಳನ್ನು ರದ್ದು ಮಾಡಲಾಗುತ್ತಿದೆ"
 
-#: ../jobviewer.py:368 ../system-config-printer.py:1652
+#: ../jobviewer.py:368 ../system-config-printer.py:1654
 msgid "_Cancel"
 msgstr "ರದ್ದು ಮಾಡು(_C)"
 
@@ -175,7 +175,7 @@ msgstr "ರದ್ದು ಮಾಡು(_C)"
 msgid "Cancel selected jobs"
 msgstr "ಎಲ್ಲಾ ಆಯ್ದ ಕಾರ್ಯಗಳನ್ನು ರದ್ದು ಮಾಡು"
 
-#: ../jobviewer.py:370 ../system-config-printer.py:1653
+#: ../jobviewer.py:370 ../system-config-printer.py:1655
 msgid "_Delete"
 msgstr "ಅಳಿಸು(_D)"
 
@@ -243,7 +243,7 @@ msgstr "ಬಳಕೆದಾರ"
 msgid "Document"
 msgstr "ದಸ್ತಾವೇಜು"
 
-#: ../jobviewer.py:452 ../system-config-printer.py:896
+#: ../jobviewer.py:452 ../system-config-printer.py:898
 #: ../troubleshoot/PrintTestPage.py:86
 msgid "Printer"
 msgstr "ಮುದ್ರಕ"
@@ -285,7 +285,7 @@ msgstr "ಕಾರ್ಯದ ಗುಣವಿಶೇಷಗಳು"
 #: ../jobviewer.py:721 ../jobviewer.py:1073 ../jobviewer.py:1855
 #: ../jobviewer.py:1885 ../jobviewer.py:2278 ../jobviewer.py:2287
 #: ../jobviewer.py:2309 ../jobviewer.py:2393 ../printerproperties.py:1648
-#: ../ui/NewPrinterWindow.ui.h:94 ../troubleshoot/ChooseNetworkPrinter.py:102
+#: ../ui/NewPrinterWindow.ui.h:95 ../troubleshoot/ChooseNetworkPrinter.py:102
 #: ../troubleshoot/ChooseNetworkPrinter.py:103
 #: ../troubleshoot/ChooseNetworkPrinter.py:106
 #: ../troubleshoot/ChooseNetworkPrinter.py:107
@@ -357,7 +357,7 @@ msgstr "ಹಿಂದಕ್ಕೆ ಪಡೆಯಲಾಗಿದೆ"
 msgid "Save File"
 msgstr "ಕಡತವನ್ನು ಉಳಿಸು"
 
-#: ../jobviewer.py:1584 ../system-config-printer.py:268
+#: ../jobviewer.py:1584 ../system-config-printer.py:270
 #: ../ui/NewPrinterWindow.ui.h:9 ../troubleshoot/ChooseNetworkPrinter.py:37
 #: ../troubleshoot/ChoosePrinter.py:43 ../troubleshoot/DeviceListed.py:43
 msgid "Name"
@@ -471,12 +471,12 @@ msgid "Pending"
 msgstr "ಬಾಕಿ ಇರುವ"
 
 #: ../jobviewer.py:2384 ../printerproperties.py:72
-#: ../system-config-printer.py:131 ../troubleshoot/PrintTestPage.py:45
+#: ../system-config-printer.py:133 ../troubleshoot/PrintTestPage.py:45
 msgid "Processing"
 msgstr "ಸಂಸ್ಕರಣೆಗೊಳ್ಳುತ್ತಿದೆ"
 
 #: ../jobviewer.py:2385 ../printerproperties.py:76
-#: ../system-config-printer.py:133 ../troubleshoot/PrintTestPage.py:46
+#: ../system-config-printer.py:135 ../troubleshoot/PrintTestPage.py:46
 msgid "Stopped"
 msgstr "ನಿಂತಿದೆ"
 
@@ -492,7 +492,7 @@ msgstr "ವಿಫಲಗೊಳಿಸಲಾದ"
 msgid "Completed"
 msgstr "ಪೂರ್ಣಗೊಳಿಸಲಾದ"
 
-#: ../newprinter.py:72
+#: ../newprinter.py:74
 msgid ""
 "The firewall may need adjusting in order to detect network printers.  Adjust "
 "the firewall now?"
@@ -500,84 +500,84 @@ msgstr ""
 "ಜಾಲಬಂಧ ಮುದ್ರಕಗಳನ್ನು ಪತ್ತೆ ಮಾಡುವ ಸಲುವಾಗಿ ಫೈರ್ವಾಲ್ ಅನ್ನು ಸರಿಹೊಂದಿಸಬೇಕಾಗುತ್ತದೆ. "
 "ಫೈರ್ವಾಲನ್ನು ಈಗಲೆ ಸರಿಹೊಂದಿಸಬೇಕೆ?"
 
-#: ../newprinter.py:337 ../newprinter.py:348 ../newprinter.py:354
-#: ../newprinter.py:359
+#: ../newprinter.py:353 ../newprinter.py:364 ../newprinter.py:370
+#: ../newprinter.py:375
 msgid "Default"
 msgstr "ಪೂರ್ವನಿಯೋಜಿತ"
 
 #. See section 4.2.6 of this document for explanation of finishing types:
 #. ftp://ftp.pwg.org/pub/pwg/candidates/cs-ippfinishings10-20010205-5100.1.pdf
-#: ../newprinter.py:349 ../newprinter.py:360 ../newprinter.py:3747
+#: ../newprinter.py:365 ../newprinter.py:376 ../newprinter.py:3855
 #: ../ppdippstr.py:65 ../printerproperties.py:280
 msgid "None"
 msgstr "ಯಾವುದೂ ಇಲ್ಲ"
 
-#: ../newprinter.py:350
+#: ../newprinter.py:366
 msgid "Odd"
 msgstr "ಬೆಸ"
 
-#: ../newprinter.py:351
+#: ../newprinter.py:367
 msgid "Even"
 msgstr "ಸರಿ"
 
-#: ../newprinter.py:361
+#: ../newprinter.py:377
 msgid "XON/XOFF (Software)"
 msgstr "XON/XOFF (ತಂತ್ರಾಂಶ)"
 
-#: ../newprinter.py:362
+#: ../newprinter.py:378
 msgid "RTS/CTS (Hardware)"
 msgstr "RTS/CTS (ಯಂತ್ರಾಂಶ)"
 
-#: ../newprinter.py:363
+#: ../newprinter.py:379
 msgid "DTR/DSR (Hardware)"
 msgstr "DTR/DSR (ಯಂತ್ರಾಂಶ)"
 
-#: ../newprinter.py:381 ../printerproperties.py:234
+#: ../newprinter.py:397 ../printerproperties.py:234
 msgid "Members of this class"
 msgstr "ಈ ವರ್ಗದ ಸದಸ್ಯರುಗಳು"
 
-#: ../newprinter.py:383 ../printerproperties.py:235
+#: ../newprinter.py:399 ../printerproperties.py:235
 msgid "Others"
 msgstr "ಇತರೆ"
 
-#: ../newprinter.py:384
+#: ../newprinter.py:400
 msgid "Devices"
 msgstr "ಸಾಧನಗಳು"
 
-#: ../newprinter.py:385
+#: ../newprinter.py:401
 msgid "Connections"
 msgstr "ಸಂಪರ್ಕಗಳು"
 
-#: ../newprinter.py:386
+#: ../newprinter.py:402
 msgid "Makes"
 msgstr "ತಯಾರಕರು"
 
-#: ../newprinter.py:387
+#: ../newprinter.py:403
 msgid "Models"
 msgstr "ಮಾದರಿಗಳು"
 
-#: ../newprinter.py:388
+#: ../newprinter.py:404
 msgid "Drivers"
 msgstr "ಚಾಲಕಗಳು"
 
-#: ../newprinter.py:389 ../ui/NewPrinterWindow.ui.h:102
+#: ../newprinter.py:405 ../ui/NewPrinterWindow.ui.h:103
 msgid "Downloadable Drivers"
 msgstr "ಡೌನ್‍ಲೋಡ್ ಮಾಡಬಹುದಾದ ಚಾಲಕಗಳು"
 
-#: ../newprinter.py:468
+#: ../newprinter.py:484
 msgid "Browsing not available (pysmbc not installed)"
 msgstr "ವೀಕ್ಷಣೆಯು ಲಭ್ಯವಿಲ್ಲ (pysmbc ಅನ್ನು ಅನುಸ್ಥಾಪಿಸಲಾಗಿಲ್ಲ)"
 
 #. SMB list columns
-#: ../newprinter.py:474
+#: ../newprinter.py:490
 msgid "Share"
 msgstr "ಹಂಚಿಕೆ"
 
-#: ../newprinter.py:480
+#: ../newprinter.py:496
 msgid "Comment"
 msgstr "ಅಭಿಪ್ರಾಯ"
 
-#: ../newprinter.py:495
+#: ../newprinter.py:511
 msgid ""
 "PostScript Printer Description files (*.ppd, *.PPD, *.ppd.gz, *.PPD.gz, *."
 "PPD.GZ)"
@@ -585,102 +585,102 @@ msgstr ""
 "PostScript Printer Description ಕಡತಗಳು (*.ppd, *.PPD, *.ppd.gz, *.PPD.gz, *."
 "PPD.GZ)"
 
-#: ../newprinter.py:504
+#: ../newprinter.py:520
 msgid "All files (*)"
 msgstr "ಎಲ್ಲಾ ಕಡತಗಳು (*)"
 
-#: ../newprinter.py:653 ../newprinter.py:1514 ../newprinter.py:3274
-#: ../newprinter.py:3334 ../newprinter.py:3386 ../applet.py:128
+#: ../newprinter.py:669 ../newprinter.py:1587 ../newprinter.py:3382
+#: ../newprinter.py:3442 ../newprinter.py:3494 ../applet.py:129
 msgid "Search"
 msgstr "ಹುಡುಕು"
 
-#: ../newprinter.py:680 ../newprinter.py:702 ../ui/NewPrinterWindow.ui.h:1
+#: ../newprinter.py:696 ../newprinter.py:718 ../ui/NewPrinterWindow.ui.h:1
 msgid "New Printer"
 msgstr "ಹೊಸ ಮುದ್ರಕ"
 
-#: ../newprinter.py:688
+#: ../newprinter.py:704
 msgid "New Class"
 msgstr "ಹೊಸ ವರ್ಗ"
 
-#: ../newprinter.py:693
+#: ../newprinter.py:709
 msgid "Change Device URI"
 msgstr "ಸಾಧನ URI ಬದಲಾಯಿಸಿ"
 
-#: ../newprinter.py:700
+#: ../newprinter.py:716
 msgid "Change Driver"
 msgstr "ಸಾಧನವನ್ನು ಬದಲಾಯಿಸಿ"
 
-#: ../newprinter.py:704
+#: ../newprinter.py:720
 msgid "Download Printer Driver"
 msgstr ""
 
-#: ../newprinter.py:713 ../newprinter.py:2055 ../newprinter.py:2060
+#: ../newprinter.py:729 ../newprinter.py:2163 ../newprinter.py:2168
 msgid "fetching device list"
 msgstr "ಸಾಧನದ ಪಟ್ಟಿಯನ್ನು ಪಡೆಯಲಾಗುತ್ತಿದೆ"
 
-#: ../newprinter.py:955
+#: ../newprinter.py:971
 #, python-format
 msgid "Installing driver %s"
 msgstr "%s ಚಾಲಕವನ್ನು ಅನುಸ್ಥಾಪಿಸಲಾಗುತ್ತಿದೆ"
 
-#: ../newprinter.py:962
+#: ../newprinter.py:978
 msgid "Installing ..."
 msgstr "ಅನುಸ್ಥಾಪಿಸಲಾಗುತ್ತಿದೆ ..."
 
-#: ../newprinter.py:1327 ../newprinter.py:3076 ../newprinter.py:3304
+#: ../newprinter.py:1400 ../newprinter.py:3184 ../newprinter.py:3412
 #: ../ppdsloader.py:86
 msgid "Searching"
 msgstr "ಹುಡುಕಲಾಗುತ್ತಿದೆ"
 
-#: ../newprinter.py:1337 ../ppdsloader.py:93
+#: ../newprinter.py:1410 ../ppdsloader.py:93
 msgid "Searching for drivers"
 msgstr "ಚಾಲಕಗಳಿಗಾಗಿ ಹುಡುಕಲಾಗುತ್ತಿದೆ"
 
 #. device-info
 #. PhysicalDevice obj
 #. Separator?
-#: ../newprinter.py:1979
+#: ../newprinter.py:2087
 msgid "Enter URI"
 msgstr "URI ಅನ್ನು ನಮೂದಿಸಿ"
 
-#: ../newprinter.py:1984
+#: ../newprinter.py:2092
 msgid "Network Printer"
 msgstr "ಜಾಲಬಂಧ ಮುದ್ರಕ"
 
-#: ../newprinter.py:1988
+#: ../newprinter.py:2096
 msgid "Find Network Printer"
 msgstr "ಜಾಲಬಂಧ ಮುದ್ರಕವನ್ನು ಹುಡುಕು"
 
-#: ../newprinter.py:2020
+#: ../newprinter.py:2128
 msgid "Allow all incoming IPP Browse packets"
 msgstr "ಒಳಬರುವ ಎಲ್ಲಾ IPP ವೀಕ್ಷಣಾ ಪ್ಯಾಕೆಟ್‌ಗಳನ್ನು ಅನುಮತಿಸು"
 
-#: ../newprinter.py:2025
+#: ../newprinter.py:2133
 msgid "Allow all incoming mDNS traffic"
 msgstr "ಒಳಬರುವ ಎಲ್ಲಾ mDNS ಟ್ರಾಫಿಕ್ ಅನ್ನು ಅನುಮತಿಸು"
 
-#: ../newprinter.py:2035 ../newprinter.py:2038 ../newprinter.py:2466
-#: ../newprinter.py:2472 ../serversettings.py:563 ../serversettings.py:568
+#: ../newprinter.py:2143 ../newprinter.py:2146 ../newprinter.py:2574
+#: ../newprinter.py:2580 ../serversettings.py:563 ../serversettings.py:568
 msgid "Adjust Firewall"
 msgstr "ಫೈರ್ವಾಲನ್ನು ಸರಿಹೊಂದಿಸಿ"
 
-#: ../newprinter.py:2037 ../newprinter.py:2471
+#: ../newprinter.py:2145 ../newprinter.py:2579
 msgid "Do It Later"
 msgstr "ಇದನ್ನು ನಂತರ ಮಾಡು"
 
-#: ../newprinter.py:2146 ../newprinter.py:3640
+#: ../newprinter.py:2254 ../newprinter.py:3748
 msgid " (Current)"
 msgstr " (ಪ್ರಸ್ತುತ)"
 
-#: ../newprinter.py:2216
+#: ../newprinter.py:2324
 msgid "Scanning..."
 msgstr "ಶೋಧಿಸಲಾಗುತ್ತಿದೆ..."
 
-#: ../newprinter.py:2272
+#: ../newprinter.py:2380
 msgid "No Print Shares"
 msgstr "ಯಾವುದೆ ಹಂಚಲಾದ ಮುದ್ರಣವಿಲ್ಲ"
 
-#: ../newprinter.py:2273
+#: ../newprinter.py:2381
 msgid ""
 "There were no print shares found.  Please check that the Samba service is "
 "marked as trusted in your firewall configuration."
@@ -688,111 +688,111 @@ msgstr ""
 "ಯಾವುದೆ ಹಂಚಲಾದ ಮುದ್ರಣವು ಕಂಡುಬಂದಿಲ್ಲ.  ನಿಮ್ಮ ಫೈರ್ವಾಲ್ ಸಂರಚನೆಯಲ್ಲಿ ಸಾಂಬಾ ಸೇವೆಯು "
 "ನಂಬಿಕಸ್ತ ಎಂದು ಗುರುತು ಹಾಕಲಾಗಿದೆಯೆ ಎಂದು ದಯವಿಟ್ಟು ಪರೀಕ್ಷಿಸಿ."
 
-#: ../newprinter.py:2414
+#: ../newprinter.py:2522
 #, python-format
 msgid "Verification requires the %s module"
 msgstr ""
 
-#: ../newprinter.py:2468
+#: ../newprinter.py:2576
 msgid "Allow all incoming SMB/CIFS browse packets"
 msgstr "ಒಳಬರುವ ಎಲ್ಲಾ SMB/CIFS ವೀಕ್ಷಣಾ ಪ್ಯಾಕೆಟ್‌ಗಳಿಗೆ ಅನುಮತಿ ನೀಡು"
 
-#: ../newprinter.py:2584
+#: ../newprinter.py:2692
 msgid "Print Share Verified"
 msgstr "ಹಂಚಲಾದ ಮುದ್ರಣವನ್ನು ಪರಿಶೀಲಿಸಲಾಗಿದೆ"
 
-#: ../newprinter.py:2585
+#: ../newprinter.py:2693
 msgid "This print share is accessible."
 msgstr "ಈ ಹಂಚಿಕಾ ಮುದ್ರಣವು ನಿಲುಕಿಸಿಕೊಳ್ಳಬಹುದಾಗಿದೆ."
 
-#: ../newprinter.py:2590
+#: ../newprinter.py:2698
 msgid "This print share is not accessible."
 msgstr "ಈ ಹಂಚಿಕಾ ಮುದ್ರಣವು ನಿಲುಕಿಸಿಕೊಳ್ಳಲಾಗುವುದಿಲ್ಲ."
 
-#: ../newprinter.py:2593
+#: ../newprinter.py:2701
 msgid "Print Share Inaccessible"
 msgstr "ಈ ಹಂಚಿಕಾ ಮುದ್ರಣವು ನಿಲುಕುವುದಿಲ್ಲ"
 
-#: ../newprinter.py:2732
+#: ../newprinter.py:2840
 msgid "Parallel Port"
 msgstr "ಸಮಾನಾಂತರದ ಸಂಪರ್ಕಸ್ಥಾನ"
 
-#: ../newprinter.py:2734
+#: ../newprinter.py:2842
 msgid "Serial Port"
 msgstr "ಸರಣಿ ಸಂಪರ್ಕಸ್ಥಾನ"
 
-#: ../newprinter.py:2736
+#: ../newprinter.py:2844
 msgid "USB"
 msgstr "USB"
 
-#: ../newprinter.py:2738
+#: ../newprinter.py:2846
 msgid "Bluetooth"
 msgstr "ಬ್ಲೂಟೂತ್"
 
-#: ../newprinter.py:2740 ../newprinter.py:2743
+#: ../newprinter.py:2848 ../newprinter.py:2851
 msgid "HP Linux Imaging and Printing (HPLIP)"
 msgstr "HP ಲಿನಕ್ಸ್‌ ಇಮೇಜಿಂಗ್ ಹಾಗು ಮುದ್ರಣ (HPLIP)"
 
-#: ../newprinter.py:2742 ../newprinter.py:2881 ../newprinter.py:2883
-#: ../system-config-printer.py:899
+#: ../newprinter.py:2850 ../newprinter.py:2989 ../newprinter.py:2991
+#: ../system-config-printer.py:901
 msgid "Fax"
 msgstr "ಫ್ಯಾಕ್ಸ್‍"
 
-#: ../newprinter.py:2745
+#: ../newprinter.py:2853
 msgid "Hardware Abstraction Layer (HAL)"
 msgstr "ಯಂತ್ರಾಂಶ ಅಬ್‌ಸ್ಟ್ರಾಕ್ಶನ್ ಪದರ (HAL)"
 
-#: ../newprinter.py:2747 ../ppdippstr.py:178
+#: ../newprinter.py:2855 ../ppdippstr.py:178
 msgid "AppSocket/HP JetDirect"
 msgstr "AppSocket/HP JetDirect"
 
-#: ../newprinter.py:2756
+#: ../newprinter.py:2864
 #, python-format
 msgid "LPD/LPR queue '%s'"
 msgstr "LPD/LPR ಸರತಿ '%s'"
 
-#: ../newprinter.py:2759
+#: ../newprinter.py:2867
 msgid "LPD/LPR queue"
 msgstr "LPD/LPR ಸರತಿ"
 
-#: ../newprinter.py:2762 ../ppdippstr.py:184
+#: ../newprinter.py:2870 ../ppdippstr.py:184
 msgid "Windows Printer via SAMBA"
 msgstr "SAMBA ದ ಮೂಲಕದ Windows ಮುದ್ರಕ"
 
-#: ../newprinter.py:2773 ../newprinter.py:2775
+#: ../newprinter.py:2881 ../newprinter.py:2883
 msgid "IPP"
 msgstr "IPP"
 
-#: ../newprinter.py:2777
+#: ../newprinter.py:2885
 msgid "HTTP"
 msgstr "HTTP"
 
-#: ../newprinter.py:2785 ../newprinter.py:2946
+#: ../newprinter.py:2893 ../newprinter.py:3054
 msgid "Remote CUPS printer via DNS-SD"
 msgstr "DNS-SD ಮೂಲಕ ದೂರಸ್ಥ CUPS ಮುದ್ರಕ"
 
-#: ../newprinter.py:2797 ../newprinter.py:2956
+#: ../newprinter.py:2905 ../newprinter.py:3064
 #, python-format
 msgid "%s network printer via DNS-SD"
 msgstr "DNS-SD ಮೂಲಕ  %s ಜಾಲಬಂಧ ಮುದ್ರಕ"
 
-#: ../newprinter.py:2801 ../newprinter.py:2958
+#: ../newprinter.py:2909 ../newprinter.py:3066
 msgid "Network printer via DNS-SD"
 msgstr "DNS-SD ಮೂಲಕ ಜಾಲಬಂಧ ಮುದ್ರಕ"
 
-#: ../newprinter.py:2925
+#: ../newprinter.py:3033
 msgid "A printer connected to the parallel port."
 msgstr "ಒಂದು ಮುದ್ರಕವು ಸಮಾನಾಂತರ ಪೋರ್ಟಿಗೆ ಸಂಪರ್ಕಿತಗೊಂಡಿದೆ."
 
-#: ../newprinter.py:2927
+#: ../newprinter.py:3035
 msgid "A printer connected to a USB port."
 msgstr "USB ಪೋರ್ಟಿಗೆ ಒಂದು ಮುದ್ರಕವು ಸಂಪರ್ಕಿತಗೊಂಡಿದೆ."
 
-#: ../newprinter.py:2929
+#: ../newprinter.py:3037
 msgid "A printer connected via Bluetooth."
 msgstr "ಬ್ಲೂಟೂತ್ ಮೂಲಕ ಒಂದು ಮುದ್ರಕವು ಸಂಪರ್ಕಿತಗೊಂಡಿದೆ."
 
-#: ../newprinter.py:2931
+#: ../newprinter.py:3039
 msgid ""
 "HPLIP software driving a printer, or the printer function of a multi-"
 "function device."
@@ -800,7 +800,7 @@ msgstr ""
 "HPLIP ತಂತ್ರಾಂಶವು ಒಂದು ಮುದ್ರಕವನ್ನು, ಅಥವ ಒಂದು ಬಹುಕಾರ್ಯ ಸಾಧನದ ಒಂದು ಮುದ್ರಕ ಕಾರ್ಯವನ್ನು "
 "ನಡೆಸುತ್ತಿದೆ."
 
-#: ../newprinter.py:2934
+#: ../newprinter.py:3042
 msgid ""
 "HPLIP software driving a fax machine, or the fax function of a multi-"
 "function device."
@@ -808,52 +808,52 @@ msgstr ""
 "HPLIP ತಂತ್ರಾಂಶವು ಒಂದು ಫ್ಯಾಕ್ಸ್ ಯಂತ್ರವನ್ನು, ಅಥವ ಒಂದು ಬಹುಕಾರ್ಯ ಸಾಧನದ ಒಂದು ಫಾಕ್ಸ್ "
 "ಕಾರ್ಯವನ್ನು ನಡೆಸುತ್ತಿದೆ."
 
-#: ../newprinter.py:2937
+#: ../newprinter.py:3045
 msgid "Local printer detected by the Hardware Abstraction Layer (HAL)."
 msgstr ""
 "Hardware Abstraction Layer (HAL) ನಿಂದ ಒಂದು ಸ್ಥಳೀಯ ಮುದ್ರಕವು ಪತ್ತೆ ಮಾಡಲ್ಪಟ್ಟಿದೆ."
 
-#: ../newprinter.py:3077
+#: ../newprinter.py:3185
 msgid "Searching for printers"
 msgstr "ಮುದ್ರಕಗಳಿಗಾಗಿ ಹುಡುಕಲಾಗುತ್ತಿದೆ"
 
-#: ../newprinter.py:3183 ../ui/NewPrinterWindow.ui.h:46
+#: ../newprinter.py:3291 ../ui/NewPrinterWindow.ui.h:46
 msgid "No printer was found at that address."
 msgstr "ಆ ವಿಳಾಸದಲ್ಲಿ ಯಾವುದೆ ಮುದ್ರಕವಿಲ್ಲ."
 
-#: ../newprinter.py:3339
+#: ../newprinter.py:3447
 msgid "-- Select from search results --"
 msgstr "-- ಫಲಿತಾಂಶಗಳಿಂದ ಆಯ್ಕೆ ಮಾಡಿ --"
 
-#: ../newprinter.py:3341
+#: ../newprinter.py:3449
 msgid "-- No matches found --"
 msgstr "-- ಯಾವುದೂ ತಾಳೆಯಾಗುತ್ತಿಲ್ಲ --"
 
-#: ../newprinter.py:3455 ../ui/NewPrinterWindow.ui.h:80
+#: ../newprinter.py:3563 ../ui/NewPrinterWindow.ui.h:80
 msgid "Local Driver"
 msgstr "ಸ್ಥಳೀಯ ಚಾಲಕ"
 
-#: ../newprinter.py:3488 ../newprinter.py:3551 ../newprinter.py:3649
+#: ../newprinter.py:3596 ../newprinter.py:3659 ../newprinter.py:3757
 msgid " (recommended)"
 msgstr " (ಶಿಫಾರಸು ಮಾಡಲ್ಪಟ್ಟಿದೆ)"
 
-#: ../newprinter.py:3681
+#: ../newprinter.py:3789
 msgid "This PPD is generated by foomatic."
 msgstr "ಈ PPD ಯು foomatic ನಿಂದ ಉಂಟಾಗಿದೆ."
 
-#: ../newprinter.py:3729
+#: ../newprinter.py:3837
 msgid "OpenPrinting"
 msgstr "ಮುಕ್ತಮುದ್ರಣ(OpenPrinting)"
 
-#: ../newprinter.py:3740
+#: ../newprinter.py:3848
 msgid "Distributable"
 msgstr "ವಿತರಿಸಬಹುದಾದಂತಹ"
 
-#: ../newprinter.py:3782
+#: ../newprinter.py:3892
 msgid ", "
 msgstr ", "
 
-#: ../newprinter.py:3787
+#: ../newprinter.py:3897
 #, python-format
 msgid ""
 "\n"
@@ -862,20 +862,20 @@ msgstr ""
 "\n"
 "(%s)"
 
-#: ../newprinter.py:3792
+#: ../newprinter.py:3902
 msgid "No support contacts known"
 msgstr "ಯಾವುದೆ ಬೆಂಬಲ ಸಂಪರ್ಕವು ತಿಳಿದಿಲ್ಲ"
 
-#: ../newprinter.py:3796 ../newprinter.py:3809
+#: ../newprinter.py:3906 ../newprinter.py:3919
 msgid "Not specified."
 msgstr "ಸೂಚಿಸಲಾಗಿಲ್ಲ."
 
 #. Foomatic database problem of some sort.
-#: ../newprinter.py:3854
+#: ../newprinter.py:3964
 msgid "Database error"
 msgstr "ದತ್ತಾಂಶ ದೋಷ"
 
-#: ../newprinter.py:3855
+#: ../newprinter.py:3965
 #, python-format
 msgid "The '%s' driver cannot be used with printer '%s %s'."
 msgstr "ಚಾಲಕ '%s' ವು '%s %s' ಮುದ್ರಕದೊಂದಿಗೆ ಬಳಸಲಾಗುವುದಿಲ್ಲ."
@@ -883,45 +883,45 @@ msgstr "ಚಾಲಕ '%s' ವು '%s %s' ಮುದ್ರಕದೊಂದಿಗೆ
 #. This printer references some XML that is not
 #. installed by default.  Point the user at the
 #. package they need to install.
-#: ../newprinter.py:3865
+#: ../newprinter.py:3975
 #, python-format
 msgid "You will need to install the '%s' package in order to use this driver."
 msgstr "ಈ ಚಾಲಕವನ್ನು ಬಳಸಲು ನೀವು '%s' ಪ್ಯಾಕೇಜನ್ನು ಅಗತ್ಯವಾಗಿ ಅನುಸ್ಥಾಪಿಸಬೇಕಾಗುತ್ತದೆ."
 
 #. This error came from trying to open the PPD file.
-#: ../newprinter.py:3872
+#: ../newprinter.py:3982
 msgid "PPD error"
 msgstr "PPD ದೋಷ"
 
-#: ../newprinter.py:3874
+#: ../newprinter.py:3984
 msgid "Failed to read PPD file.  Possible reason follows:"
 msgstr "PPD ಕಡತವನ್ನು ಓದಲಾಗಿಲ್ಲ.  ಸಂಭಾವ್ಯ ಕಾರಣಗಳು ಈ ಕೆಳಗಿನಂತಿವೆ:"
 
 #. Failed to get PPD downloaded from OpenPrinting XXX
-#: ../newprinter.py:3892
+#: ../newprinter.py:4002
 msgid "Downloadable drivers"
 msgstr "ಡೌನ್‍ಲೋಡ್ ಮಾಡಬಹುದಾದಂತಹ ಚಾಲಕಗಳು"
 
-#: ../newprinter.py:3893
+#: ../newprinter.py:4003
 msgid "Failed to download PPD."
 msgstr "PPD ಅನ್ನು ಡೌನ್‌ಲೋಡ್‌ ಮಾಡಿಕೊಳ್ಳಲು ವಿಫಲವಾಗಿದೆ."
 
-#: ../newprinter.py:3901
+#: ../newprinter.py:4011
 msgid "fetching PPD"
 msgstr "PPDಯನ್ನು ಪಡೆಯಲಾಗುತ್ತಿದೆ"
 
-#: ../newprinter.py:3930 ../newprinter.py:3967
+#: ../newprinter.py:4040 ../newprinter.py:4077
 msgid "No Installable Options"
 msgstr "ಅನುಸ್ಥಾಪಿಸಬಲ್ಲ ಯಾವುದೆ ಆಯ್ಕೆಗಳಿಲ್ಲ"
 
-#: ../newprinter.py:4031
+#: ../newprinter.py:4141
 #, python-format
 msgid "adding printer %s"
 msgstr "ಮುದ್ರಕ %s ಅನ್ನು ಸೇರಿಸಲಾಗುತ್ತಿದೆ"
 
-#: ../newprinter.py:4060 ../newprinter.py:4072 ../newprinter.py:4090
-#: ../printerproperties.py:1002 ../system-config-printer.py:1688
-#: ../system-config-printer.py:1718
+#: ../newprinter.py:4170 ../newprinter.py:4182 ../newprinter.py:4200
+#: ../printerproperties.py:1002 ../system-config-printer.py:1690
+#: ../system-config-printer.py:1720
 #, python-format
 msgid "modifying printer %s"
 msgstr "ಮುದ್ರಕ %s ಅನ್ನು ಬದಲಾಯಿಸಲಾಗುತ್ತಿದೆ"
@@ -1223,11 +1223,11 @@ msgstr "LPT #1"
 msgid "fetching PPDs"
 msgstr "PPD ಗಳನ್ನು ಪಡೆಯಲಾಗುತ್ತಿದೆ"
 
-#: ../printerproperties.py:70 ../system-config-printer.py:130
+#: ../printerproperties.py:70 ../system-config-printer.py:132
 msgid "Idle"
 msgstr "ನಿಷ್ಕ್ರಿಯ"
 
-#: ../printerproperties.py:74 ../system-config-printer.py:132
+#: ../printerproperties.py:74 ../system-config-printer.py:134
 msgid "Busy"
 msgstr "ಕಾರ್ಯನಿರತ"
 
@@ -1570,203 +1570,203 @@ msgstr "ಪೂರೈಕೆಗಣಕದ ಸಿದ್ಧತೆಗಳನ್ನು �
 msgid "Adjust the firewall now to allow all incoming IPP connections?"
 msgstr "ಒಳಬರುವ ಎಲ್ಲಾ IPP ಸಂಪರ್ಕಗಳನ್ನು ಅನುಮತಿಸುವಂತೆ ಫೈರ್ವಾಲನ್ನು ಸರಿಹೊಂದಿಸಬೇಕೆ?"
 
-#: ../system-config-printer.py:233
+#: ../system-config-printer.py:235
 msgid "_Connect..."
 msgstr "ಸಂಪರ್ಕ ಕಲ್ಪಿಸು(_C)..."
 
-#: ../system-config-printer.py:234
+#: ../system-config-printer.py:236
 msgid "Choose a different CUPS server"
 msgstr "ಬೇರೊಂದು CUPS ಪೂರೈಕೆಗಣಕವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ"
 
-#: ../system-config-printer.py:236
+#: ../system-config-printer.py:238
 msgid "_Settings..."
 msgstr "ಸಿದ್ಧತೆಗಳು(_S)..."
 
-#: ../system-config-printer.py:237
+#: ../system-config-printer.py:239
 msgid "Adjust server settings"
 msgstr "ಪೂರೈಕೆಗಣಕದ ಸಿದ್ಧತೆಗಳನ್ನು ಸರಿಹೊಂದಿಸಿ"
 
-#: ../system-config-printer.py:239 ../ui/PrintersWindow.ui.h:3
+#: ../system-config-printer.py:241 ../ui/PrintersWindow.ui.h:3
 msgid "_Printer"
 msgstr "ಮುದ್ರಕ(_P)"
 
-#: ../system-config-printer.py:241
+#: ../system-config-printer.py:243
 msgid "_Class"
 msgstr "ವರ್ಗ(_C)"
 
-#: ../system-config-printer.py:246
+#: ../system-config-printer.py:248
 msgid "_Rename"
 msgstr "ಹೆಸರನ್ನು ಬದಲಾಯಿಸು (_R)"
 
-#: ../system-config-printer.py:248
+#: ../system-config-printer.py:250
 msgid "_Duplicate"
 msgstr "ನಕಲಿ (_D)"
 
-#: ../system-config-printer.py:252
+#: ../system-config-printer.py:254
 msgid "Set As De_fault"
 msgstr "ಪೂರ್ವನಿಯೋಜಿತವಾಗಿ ಹೊಂದಿಸು(_f)"
 
-#: ../system-config-printer.py:256
+#: ../system-config-printer.py:258
 msgid "_Create class"
 msgstr "ವರ್ಗಗಳನ್ನು ನಿರ್ಮಿಸು(_C)"
 
-#: ../system-config-printer.py:258
+#: ../system-config-printer.py:260
 msgid "View Print _Queue"
 msgstr "ಮುದ್ರಣದ ಸರತಿಯನ್ನು ನೋಡು(_Q)"
 
-#: ../system-config-printer.py:262
+#: ../system-config-printer.py:264
 msgid "E_nabled"
 msgstr "ಶಕ್ತಗೊಂಡ(_n)"
 
-#: ../system-config-printer.py:264
+#: ../system-config-printer.py:266
 msgid "_Shared"
 msgstr "ಹಂಚಲಾದ(_S)"
 
-#: ../system-config-printer.py:269
+#: ../system-config-printer.py:271
 msgid "Description"
 msgstr "ವಿವರಣೆ"
 
-#: ../system-config-printer.py:270 ../troubleshoot/ChooseNetworkPrinter.py:39
+#: ../system-config-printer.py:272 ../troubleshoot/ChooseNetworkPrinter.py:39
 #: ../troubleshoot/ChoosePrinter.py:45
 msgid "Location"
 msgstr "ಸ್ಥಳ"
 
-#: ../system-config-printer.py:271
+#: ../system-config-printer.py:273
 msgid "Manufacturer / Model"
 msgstr "ಉತ್ಪಾದಕರು / ಮಾದರಿ"
 
-#: ../system-config-printer.py:318 ../ui/PrinterPropertiesDialog.ui.h:41
+#: ../system-config-printer.py:320 ../ui/PrinterPropertiesDialog.ui.h:41
 #: ../ui/PrintersWindow.ui.h:10 ../ui/ServerSettingsDialog.ui.h:15
 #, fuzzy
 msgid "Add"
 msgstr "ಬೆಸ"
 
-#: ../system-config-printer.py:335 ../ui/PrinterPropertiesDialog.ui.h:88
+#: ../system-config-printer.py:337 ../ui/PrinterPropertiesDialog.ui.h:88
 #: ../ui/SMBBrowseDialog.ui.h:2
 #, fuzzy
 msgid "Refresh"
 msgstr "ಪುನಶ್ಚೇತನಗೊಳಿಸು(_R)"
 
-#: ../system-config-printer.py:349
+#: ../system-config-printer.py:351
 msgid "_New"
 msgstr "ಹೊಸ(_N)"
 
-#: ../system-config-printer.py:711
-#, python-format
-msgid "Print Settings - %s"
+#: ../system-config-printer.py:713
+#, fuzzy, python-format
+msgid "Printers - %s"
 msgstr "ಮುದ್ರಣದ ಸಿದ್ಧತೆಗಳು - %s"
 
-#: ../system-config-printer.py:714
+#: ../system-config-printer.py:716
 #, python-format
 msgid "Connected to %s"
 msgstr "%s ಗೆ ಸಂಪರ್ಕಿತವಾಗಿದೆ"
 
-#: ../system-config-printer.py:801
+#: ../system-config-printer.py:803
 msgid "obtaining queue details"
 msgstr "ಸರತಿಯ ಗುಣಗಳನ್ನು ಪಡೆಯಲಾಗುತ್ತಿದೆ"
 
-#: ../system-config-printer.py:890
+#: ../system-config-printer.py:892
 msgid "Network printer (discovered)"
 msgstr "ಜಾಲಬಂಧ ಮುದ್ರಕ (ಕಂಡುಹಿಡಿಯಲಾದ)"
 
-#: ../system-config-printer.py:893
+#: ../system-config-printer.py:895
 msgid "Network class (discovered)"
 msgstr "ಜಾಲಬಂಧ ವರ್ಗ (ಕಂಡುಹಿಡಿಯಲಾದ)"
 
-#: ../system-config-printer.py:902
+#: ../system-config-printer.py:904
 msgid "Class"
 msgstr "ವರ್ಗ"
 
-#: ../system-config-printer.py:905 ../system-config-printer.py:911
+#: ../system-config-printer.py:907 ../system-config-printer.py:913
 #: ../troubleshoot/LocalOrRemote.py:30
 msgid "Network printer"
 msgstr "ಜಾಲಬಂಧ ಮುದ್ರಕ"
 
-#: ../system-config-printer.py:908
+#: ../system-config-printer.py:910
 msgid "Network print share"
 msgstr "ಜಾಲಬಂಧ ಮುದ್ರಕದ ಹಂಚಿಕೆ"
 
-#: ../system-config-printer.py:1062
+#: ../system-config-printer.py:1064
 msgid "Service framework not available"
 msgstr "ಸೇವೆಯ ಫ್ರೇಮ್‌ವರ್ಕ್ ಲಭ್ಯವಿಲ್ಲ"
 
-#: ../system-config-printer.py:1064
+#: ../system-config-printer.py:1066
 msgid "Cannot start service on remote server"
 msgstr "ದೂರಸ್ಥ ಪೂರೈಕೆಗಣಕದಲ್ಲಿ ಸೇವೆಯನ್ನು ಆರಂಭಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ"
 
-#: ../system-config-printer.py:1112 ../ui/ConnectingDialog.ui.h:5
+#: ../system-config-printer.py:1114 ../ui/ConnectingDialog.ui.h:5
 #, no-c-format, python-format
 msgid "<i>Opening connection to %s</i>"
 msgstr "<i>%s ಗಾಗಿ ಸಂಪರ್ಕವನ್ನು ತೆರೆಯಲಾಗುತ್ತದೆ</i>"
 
-#: ../system-config-printer.py:1275
+#: ../system-config-printer.py:1277
 msgid "Set Default Printer"
 msgstr "ಮುದ್ರಕವನ್ನು ಪೂರ್ವನಿಯೋಜಿತವಾಗಿಸಿ"
 
-#: ../system-config-printer.py:1277
+#: ../system-config-printer.py:1279
 msgid "Do you want to set this as the system-wide default printer?"
 msgstr "ನೀವು ಇದನ್ನು ಗಣಕದಾದ್ಯಂತ ಪೂರ್ವನಿಯೋಜಿತ ಮುದ್ರಕವಾಗಿ ಹೊಂದಿಸಲು ಬಯಸುತ್ತೀರೆ?"
 
-#: ../system-config-printer.py:1279
+#: ../system-config-printer.py:1281
 msgid "Set as the _system-wide default printer"
 msgstr "ಗಣಕದಾದ್ಯಂತದ ಪೂರ್ವನಿಯೋಜಿತ ಮುದ್ರಕವಾಗಿ ಹೊಂದಿಸು(_s)"
 
-#: ../system-config-printer.py:1281
+#: ../system-config-printer.py:1283
 msgid "_Clear my personal default setting"
 msgstr "ನನ್ನ ಖಾಸಗಿ ಪೂರ್ವನಿಯೋಜಿತ ಸಿದ್ಧತೆಗಳನ್ನು ತೆಗೆದುಹಾಕು(_C)"
 
-#: ../system-config-printer.py:1282
+#: ../system-config-printer.py:1284
 msgid "Set as my _personal default printer"
 msgstr "ನನ್ನ ಪೂರ್ವನಿಯೋಜಿತ ಮುದ್ರಕವನ್ನಾಗಿ ಮಾಡು(_p)"
 
-#: ../system-config-printer.py:1287
+#: ../system-config-printer.py:1289
 msgid "setting default printer"
 msgstr "ಮುದ್ರಕವನ್ನು ಪೂರ್ವನಿಯೋಜಿತವಾಗಿ ಹೊಂದಿಸುವಿಕೆ"
 
-#: ../system-config-printer.py:1340
+#: ../system-config-printer.py:1342
 msgid "Cannot Rename"
 msgstr "ಹೆಸರನ್ನು ಬದಲಾಯಿಸಲಾಗಿಲ್ಲ"
 
-#: ../system-config-printer.py:1341
+#: ../system-config-printer.py:1343
 msgid "There are queued jobs."
 msgstr "ಮುದ್ರಣ ಕಾರ್ಯಗಳು ಸರತಿಯಲ್ಲಿವೆ."
 
-#: ../system-config-printer.py:1358
+#: ../system-config-printer.py:1360
 msgid "Renaming will lose history"
 msgstr "ಹೆಸರನ್ನು ಬದಲಾಯಿಸಿದಲ್ಲಿ ಇತಿಹಾಸವು ಇಲ್ಲವಾಗುತ್ತದೆ"
 
-#: ../system-config-printer.py:1360
+#: ../system-config-printer.py:1362
 msgid "Completed jobs will no longer be available for re-printing."
 msgstr "ಪೂರ್ಣಗೊಳಿಸಲಾದ ಕಾರ್ಯಗಳು ಮರು ಮುದ್ರಣಕ್ಕೆ ಲಭ್ಯವಿರುವುದಿಲ್ಲ."
 
-#: ../system-config-printer.py:1473
+#: ../system-config-printer.py:1475
 msgid "renaming printer"
 msgstr "ಮುದ್ರಕದ ಹೆಸರನ್ನು ಬದಲಾಯಿಸಿ"
 
-#: ../system-config-printer.py:1636
+#: ../system-config-printer.py:1638
 #, python-format
 msgid "Really delete class '%s'?"
 msgstr "ನಿಜವಾಗಲು %s ವರ್ಗವನ್ನು ಅಳಿಸಿ ಹಾಕಬೇಕೆ?"
 
-#: ../system-config-printer.py:1638
+#: ../system-config-printer.py:1640
 #, python-format
 msgid "Really delete printer '%s'?"
 msgstr "ನಿಜವಾಗಲು %s ಮುದ್ರಕವನ್ನು ಅಳಿಸಿ ಹಾಕಬೇಕೆ?"
 
-#: ../system-config-printer.py:1642
+#: ../system-config-printer.py:1644
 msgid "Really delete selected destinations?"
 msgstr "ನಿಜವಾಗಲು ಆಯ್ದ ನಿರ್ದೇಶಿತ ಸ್ಥಳಗಳನ್ನು ಅಳಿಸಿ ಹಾಕಬೇಕೆ?"
 
-#: ../system-config-printer.py:1663
+#: ../system-config-printer.py:1665
 #, python-format
 msgid "deleting printer %s"
 msgstr "%s ಮುದ್ರಕವನ್ನು ಅಳಿಸಲಾಗುತ್ತಿದೆ"
 
-#: ../system-config-printer.py:1754
+#: ../system-config-printer.py:1756
 msgid "Publish Shared Printers"
 msgstr "ಹಂಚಲಾದ ಮುದ್ರಕಗಳನ್ನು ಪ್ರಕಟಿಸು"
 
-#: ../system-config-printer.py:1755
+#: ../system-config-printer.py:1757
 msgid ""
 "Shared printers are not available to other people unless the 'Publish shared "
 "printers' option is enabled in the server settings."
@@ -1774,30 +1774,30 @@ msgstr ""
 "ಪೂರೈಕೆಗಣಕದ ಸಿದ್ಧತೆಗಳಲ್ಲಿ 'ಹಂಚಲಾದ ಮುದ್ರಕಗಳನ್ನು ಪ್ರಕಟಿಸು' ಆಯ್ಕೆ ಶಕ್ತಗೊಂಡಿರದ ಹೊರತು "
 "ಹಂಚಲಾದ ಮುದ್ರಕಗಳು ಬೇರೆಯವರಿಗೆ ಲಭ್ಯವಿರುವುದಿಲ್ಲ."
 
-#: ../system-config-printer.py:1973
+#: ../system-config-printer.py:1975
 msgid "Would you like to print a test page?"
 msgstr "ನೀವು ಪ್ರಾಯೋಗಿಕ ಪುಟವನ್ನು ಮುದ್ರಿಸಲು ಬಯಸುತ್ತೀರೆ?"
 
 #. Not more than 25 characters
-#: ../system-config-printer.py:1975 ../ui/PrinterPropertiesDialog.ui.h:17
+#: ../system-config-printer.py:1977 ../ui/PrinterPropertiesDialog.ui.h:17
 #: ../troubleshoot/PrintTestPage.py:74
 msgid "Print Test Page"
 msgstr "ಪ್ರಾಯೋಗಿಕ ಪುಟಗಳನ್ನು ಮುದ್ರಿಸು"
 
-#: ../system-config-printer.py:2067
+#: ../system-config-printer.py:2069
 msgid "Install driver"
 msgstr "ಚಾಲಕವನ್ನು ಅನುಸ್ಥಾಪಿಸಿ"
 
-#: ../system-config-printer.py:2068 ../troubleshoot/CheckPPDSanity.py:136
+#: ../system-config-printer.py:2070 ../troubleshoot/CheckPPDSanity.py:136
 #, python-format
 msgid "Printer '%s' requires the %s package but it is not currently installed."
 msgstr "'%s' ಮುದ್ರಕಕ್ಕೆ %s ಪ್ಯಾಕೇಜಿನ ಅಗತ್ಯವಿದೆ, ಆದರೆ ಪ್ರಸ್ತುತ ಅದು ಅನುಸ್ಥಾಪಿತವಾಗಿಲ್ಲ."
 
-#: ../system-config-printer.py:2083
+#: ../system-config-printer.py:2085
 msgid "Missing driver"
 msgstr "ಚಾಲಕವು ಕಾಣೆಯಾಗಿದೆ"
 
-#: ../system-config-printer.py:2084
+#: ../system-config-printer.py:2086
 #, python-format
 msgid ""
 "Printer '%s' requires the '%s' program but it is not currently installed.  "
@@ -1854,7 +1854,7 @@ msgid "Connect to CUPS server"
 msgstr "CUPS ಪೂರೈಕೆಗಣಕಕ್ಕೆ ಸಂಪರ್ಕ ಕಲ್ಪಿಸು"
 
 #: ../ui/ConnectDialog.ui.h:2 ../ui/ConnectingDialog.ui.h:2
-#: ../ui/NewPrinterName.ui.h:2 ../ui/NewPrinterWindow.ui.h:104
+#: ../ui/NewPrinterName.ui.h:2 ../ui/NewPrinterWindow.ui.h:105
 #: ../ui/PrinterPropertiesDialog.ui.h:4 ../ui/ServerSettingsDialog.ui.h:2
 #: ../ui/SMBBrowseDialog.ui.h:3
 #, fuzzy
@@ -2254,95 +2254,99 @@ msgstr ""
 "ಈ ಆಯ್ಕೆಯಿಂದ ಯಾವುದೆ ಚಾಲಕಗಳು ಡೌನ್‍ಲೋಡ್ ಆಗುವುದಿಲ್ಲ. ಮುಂದಿನ ಹಂತಗಳಲ್ಲಿ ಸ್ಥಳೀಯವಾಗಿ "
 "ಅನುಸ್ಥಾಪಿಸಲಾದ ಒಂದು ಚಾಲಕವು ಆರಿಸಲ್ಪಡುತ್ತದೆ."
 
-#: ../ui/NewPrinterWindow.ui.h:81 ../ui/PrinterPropertiesDialog.ui.h:7
-msgid "Description:"
-msgstr "ವಿವರಣೆ:"
+#: ../ui/NewPrinterWindow.ui.h:81
+msgid "<b>License Terms</b>"
+msgstr "<b>ಲೈಸನ್ಸ್‍ ನಿಯಮಗಳು</b>"
 
 #: ../ui/NewPrinterWindow.ui.h:82
-msgid "License:"
-msgstr "ಲೈಸೆನ್ಸ್‌:"
-
-#: ../ui/NewPrinterWindow.ui.h:83
 msgid "Supplier:"
 msgstr "ಒದಗಿಸಿದವರು:"
 
-#: ../ui/NewPrinterWindow.ui.h:84
-msgid "license"
-msgstr "ಲೈಸೆನ್ಸ್‌"
+#: ../ui/NewPrinterWindow.ui.h:83
+msgid "License:"
+msgstr "ಲೈಸೆನ್ಸ್‌:"
+
+#: ../ui/NewPrinterWindow.ui.h:84 ../ui/PrinterPropertiesDialog.ui.h:7
+msgid "Description:"
+msgstr "ವಿವರಣೆ:"
 
 #: ../ui/NewPrinterWindow.ui.h:85
-msgid "short description"
-msgstr "ಸಂಕ್ಷಿಪ್ತ ವಿವರಣೆ"
-
-#: ../ui/NewPrinterWindow.ui.h:86
-msgid "Manufacturer"
-msgstr "ಉತ್ಪಾದಕರು"
-
-#: ../ui/NewPrinterWindow.ui.h:87
 msgid "supplier"
 msgstr "ಒದಗಿಸಿದವರು"
 
+#: ../ui/NewPrinterWindow.ui.h:86
+msgid "license"
+msgstr "ಲೈಸೆನ್ಸ್‌"
+
+#: ../ui/NewPrinterWindow.ui.h:87
+msgid "short description"
+msgstr "ಸಂಕ್ಷಿಪ್ತ ವಿವರಣೆ"
+
 #: ../ui/NewPrinterWindow.ui.h:88
-msgid "Free software"
-msgstr "ಉಚಿತ ತಂತ್ರಾಂಶ"
-
-#: ../ui/NewPrinterWindow.ui.h:89
-msgid "Patented algorithms"
-msgstr "ಪೇಟೆಂಟ್ ಮಾಡಲಾದ ಅಲ್ಗಾರಿತಮ್‌ಗಳು"
-
-#: ../ui/NewPrinterWindow.ui.h:90
 msgid "Support:"
 msgstr "ಬೆಂಬಲ:"
 
-#: ../ui/NewPrinterWindow.ui.h:91
+#: ../ui/NewPrinterWindow.ui.h:89
 msgid "support contacts"
 msgstr "ಬೆಂಬಲ ಸಂಪರ್ಕಗಳು"
 
+#: ../ui/NewPrinterWindow.ui.h:90
+msgid "Free software"
+msgstr "ಉಚಿತ ತಂತ್ರಾಂಶ"
+
+#: ../ui/NewPrinterWindow.ui.h:91
+msgid "Patented algorithms"
+msgstr "ಪೇಟೆಂಟ್ ಮಾಡಲಾದ ಅಲ್ಗಾರಿತಮ್‌ಗಳು"
+
 #: ../ui/NewPrinterWindow.ui.h:92
+msgid "Manufacturer"
+msgstr "ಉತ್ಪಾದಕರು"
+
+#: ../ui/NewPrinterWindow.ui.h:93
 msgid "Text:"
 msgstr "ಪಠ್ಯ:"
 
-#: ../ui/NewPrinterWindow.ui.h:93
+#: ../ui/NewPrinterWindow.ui.h:94
 msgid "Line art:"
 msgstr "ಸಾಲು ಕಲೆ:"
-
-#: ../ui/NewPrinterWindow.ui.h:95
-msgid "Photo:"
-msgstr "ಚಿತ್ರ:"
 
 #: ../ui/NewPrinterWindow.ui.h:96
 msgid "Graphics:"
 msgstr "ಗ್ರಾಫಿಕ್ಸ್:"
 
 #: ../ui/NewPrinterWindow.ui.h:97
+msgid "Photo:"
+msgstr "ಚಿತ್ರ:"
+
+#: ../ui/NewPrinterWindow.ui.h:98
 msgid "<b>Output Quality</b>"
 msgstr "<b>ಔಟ್‌ಪುಟ್‌ನ ಗುಣಮಟ್ಟ</b>"
 
-#: ../ui/NewPrinterWindow.ui.h:98
+#: ../ui/NewPrinterWindow.ui.h:99
+msgid "<b>Driver details</b>"
+msgstr "<b>ಚಾಲಕದ ವಿವರಗಳು</b>"
+
+#: ../ui/NewPrinterWindow.ui.h:100
 msgid "Yes, I accept this license"
 msgstr "ಹೌದು, ನಾನು ಈ ನಿಯಮವನ್ನು ಅಂಗೀಕರಿಸುತ್ತೇನೆ"
 
-#: ../ui/NewPrinterWindow.ui.h:99
+#: ../ui/NewPrinterWindow.ui.h:101
 msgid "No, I do not accept this license"
 msgstr "ಇಲ್ಲ, ನಾನು ಈ ನಿಯಮವನ್ನು ಅಂಗೀಕರಿಸುವುದಿಲ್ಲ"
 
-#: ../ui/NewPrinterWindow.ui.h:100
-msgid "<b>License Terms</b>"
-msgstr "<b>ಲೈಸನ್ಸ್‍ ನಿಯಮಗಳು</b>"
-
-#: ../ui/NewPrinterWindow.ui.h:101
+#: ../ui/NewPrinterWindow.ui.h:102
 msgid "Driver details"
 msgstr "ಚಾಲಕದ ವಿವರಗಳು"
 
-#: ../ui/NewPrinterWindow.ui.h:103
+#: ../ui/NewPrinterWindow.ui.h:104
 msgid "Back"
 msgstr ""
 
-#: ../ui/NewPrinterWindow.ui.h:105 ../ui/PrinterPropertiesDialog.ui.h:3
+#: ../ui/NewPrinterWindow.ui.h:106 ../ui/PrinterPropertiesDialog.ui.h:3
 msgid "Apply"
 msgstr ""
 
-#: ../ui/NewPrinterWindow.ui.h:106
+#: ../ui/NewPrinterWindow.ui.h:107
 msgid "Forward"
 msgstr ""
 
@@ -2800,8 +2804,9 @@ msgid "Please Wait"
 msgstr "ದಯವಿಟ್ಟು ಕಾಯಿರಿ"
 
 #: ../system-config-printer.desktop.in.h:1
-msgid "Print Settings"
-msgstr "ಮುದ್ರಣದ ಸಿದ್ಧತೆಗಳು"
+#, fuzzy
+msgid "Printers"
+msgstr "ಮುದ್ರಕ"
 
 #: ../system-config-printer.desktop.in.h:2
 msgid "Configure printers"
@@ -2971,7 +2976,7 @@ msgstr ""
 "ಮುದ್ರಣ ನಿರ್ವಹಣಾ ಉಪಕರಣವನ್ನು ಬಳಸಿಕೊಂಡು ಪೂರೈಕೆಗಣಕದಲ್ಲಿನ ಸಿದ್ಧತೆಗಳಲ್ಲಿನ 'ಈ ಗಣಕದೊಂದಿಗೆ "
 "ಸಂಪರ್ಕ ಹೊಂದಿರುವ ಪ್ರಕಟಗೊಂಡ ಮುದ್ರಕಗಳನ್ನು ಹಂಚಿಕೆ ಮಾಡು' ಆಯ್ಕೆಯನ್ನು ಶಕ್ತಗೊಳಿಸಿ."
 
-#: ../troubleshoot/CheckPPDSanity.py:48 ../applet.py:180
+#: ../troubleshoot/CheckPPDSanity.py:48 ../applet.py:181
 msgid "Install"
 msgstr "ಅನುಸ್ಥಾಪಿಸಿ"
 
@@ -3335,61 +3340,61 @@ msgstr ""
 msgid "Click 'Forward' to begin."
 msgstr "ಆರಂಭಿಸಲು 'ಮುಂದಕ್ಕೆ' ಅನ್ನು ಕ್ಲಿಕ್ಕಿಸಿ."
 
-#: ../applet.py:84
+#: ../applet.py:85
 msgid "Configuring new printer"
 msgstr "ಹೊಸ ಮುದ್ರಕವನ್ನು ಸಂರಚಿಸಲಾಗುತ್ತಿದೆ"
 
-#: ../applet.py:85
+#: ../applet.py:86
 msgid "Please wait..."
 msgstr "ದಯವಿಟ್ಟು ಕಾಯಿರಿ..."
 
 #. name is a URI, no queue was generated, because no suitable
 #. driver was found
-#: ../applet.py:114 ../applet.py:167
+#: ../applet.py:115 ../applet.py:168
 msgid "Missing printer driver"
 msgstr "ಕಾಣೆಯಾಗಿರುವ ಮುದ್ರಕದ ಚಾಲಕ"
 
-#: ../applet.py:121
+#: ../applet.py:122
 #, python-format
 msgid "No printer driver for %s."
 msgstr "%s ಗಾಗಿ ಯಾವುದೆ ಮುದ್ರಕದ ಚಾಲಕವಿಲ್ಲ."
 
-#: ../applet.py:123
+#: ../applet.py:124
 msgid "No driver for this printer."
 msgstr "ಈ ಮುದ್ರಕಕ್ಕಾಗಿ ಯಾವುದೆ ಚಾಲಕವಿಲ್ಲ."
 
-#: ../applet.py:165
+#: ../applet.py:166
 msgid "Printer added"
 msgstr "ಸೇರ್ಪಡಿಸಲಾದ ಮುದ್ರಕ"
 
-#: ../applet.py:171
+#: ../applet.py:172
 msgid "Install printer driver"
 msgstr "ಮುದ್ರಕ ಚಾಲಕವನ್ನು ಅನುಸ್ಥಾಪಿಸಿ"
 
-#: ../applet.py:172
+#: ../applet.py:173
 #, python-format
 msgid "`%s' requires driver installation: %s."
 msgstr "`%s' ಕ್ಕೆ ಚಾಲಕವನ್ನು ಅನುಸ್ಥಾಪಿಸುವ ಅಗತ್ಯವಿದೆ: %s."
 
-#: ../applet.py:196
+#: ../applet.py:197
 #, python-format
 msgid "`%s' is ready for printing."
 msgstr "`%s' ಯು ಮುದ್ರಿಸಲು ಸಜ್ಜಾಗಿದೆ."
 
-#: ../applet.py:200 ../applet.py:212
+#: ../applet.py:201 ../applet.py:213
 msgid "Print test page"
 msgstr "ಪ್ರಾಯೋಗಿಕ ಪುಟಗಳನ್ನು ಮುದ್ರಿಸು"
 
-#: ../applet.py:203
+#: ../applet.py:204
 msgid "Configure"
 msgstr "ಸ್ವರೂಪಿಸು"
 
-#: ../applet.py:207
+#: ../applet.py:208
 #, python-format
 msgid "`%s' has been added, using the `%s' driver."
 msgstr "`%s' ಚಾಲಕವನ್ನು ಬಳಸಿ, `%s' ಅನ್ನು ಸೇರಿಸಲಾಗಿದೆ."
 
-#: ../applet.py:215
+#: ../applet.py:216
 msgid "Find driver"
 msgstr "ಚಾಲಕವನ್ನು ಪತ್ತೆಹಚ್ಚು"
 
@@ -3412,3 +3417,6 @@ msgid ""
 "For each queue, you can adjust the default page size and other driver "
 "options, as well as seeing ink/toner levels and status messages."
 msgstr ""
+
+#~ msgid "Print Settings"
+#~ msgstr "ಮುದ್ರಣದ ಸಿದ್ಧತೆಗಳು"
