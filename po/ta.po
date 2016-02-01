@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugzilla.redhat.com/bugzilla\n"
-"POT-Creation-Date: 2015-02-06 17:50+0000\n"
+"POT-Creation-Date: 2016-01-30 02:33+0000\n"
 "PO-Revision-Date: 2014-10-23 07:00-0400\n"
 "Last-Translator: Tim Waugh <twaugh@redhat.com>\n"
 "Language-Team: Tamil (http://www.transifex.com/projects/p/system-config-"
@@ -113,7 +113,7 @@ msgstr "மேம்படுத்தல் தேவைப்படுகி�
 msgid "Server error"
 msgstr "சேவையக பிழை"
 
-#: ../errordialogs.py:80 ../system-config-printer.py:716
+#: ../errordialogs.py:80 ../system-config-printer.py:718
 msgid "Not connected"
 msgstr "இணைக்கப்படவில்லை"
 
@@ -171,7 +171,7 @@ msgstr "பணியை அழிக்கிறது"
 msgid "canceling job"
 msgstr "பணியை ரத்துசெய்கிறது"
 
-#: ../jobviewer.py:368 ../system-config-printer.py:1652
+#: ../jobviewer.py:368 ../system-config-printer.py:1654
 msgid "_Cancel"
 msgstr "ரத்துசெய் (_C)"
 
@@ -179,7 +179,7 @@ msgstr "ரத்துசெய் (_C)"
 msgid "Cancel selected jobs"
 msgstr "தேர்ந்தெடுக்கப்பட்ட பணிகளை ரத்துசெய்யவும்"
 
-#: ../jobviewer.py:370 ../system-config-printer.py:1653
+#: ../jobviewer.py:370 ../system-config-printer.py:1655
 msgid "_Delete"
 msgstr "அழி (_D)"
 
@@ -247,7 +247,7 @@ msgstr "பயனர்"
 msgid "Document"
 msgstr "ஆவணம்"
 
-#: ../jobviewer.py:452 ../system-config-printer.py:896
+#: ../jobviewer.py:452 ../system-config-printer.py:898
 #: ../troubleshoot/PrintTestPage.py:86
 msgid "Printer"
 msgstr "அச்சடிப்பி"
@@ -289,7 +289,7 @@ msgstr "பணி பண்புகள்"
 #: ../jobviewer.py:721 ../jobviewer.py:1073 ../jobviewer.py:1855
 #: ../jobviewer.py:1885 ../jobviewer.py:2278 ../jobviewer.py:2287
 #: ../jobviewer.py:2309 ../jobviewer.py:2393 ../printerproperties.py:1648
-#: ../ui/NewPrinterWindow.ui.h:94 ../troubleshoot/ChooseNetworkPrinter.py:102
+#: ../ui/NewPrinterWindow.ui.h:95 ../troubleshoot/ChooseNetworkPrinter.py:102
 #: ../troubleshoot/ChooseNetworkPrinter.py:103
 #: ../troubleshoot/ChooseNetworkPrinter.py:106
 #: ../troubleshoot/ChooseNetworkPrinter.py:107
@@ -361,7 +361,7 @@ msgstr "மீட்டெடுக்கப்பட்டது"
 msgid "Save File"
 msgstr "கொப்பை சேமி"
 
-#: ../jobviewer.py:1584 ../system-config-printer.py:268
+#: ../jobviewer.py:1584 ../system-config-printer.py:270
 #: ../ui/NewPrinterWindow.ui.h:9 ../troubleshoot/ChooseNetworkPrinter.py:37
 #: ../troubleshoot/ChoosePrinter.py:43 ../troubleshoot/DeviceListed.py:43
 msgid "Name"
@@ -473,12 +473,12 @@ msgid "Pending"
 msgstr "விடுப்பட்டவை"
 
 #: ../jobviewer.py:2384 ../printerproperties.py:72
-#: ../system-config-printer.py:131 ../troubleshoot/PrintTestPage.py:45
+#: ../system-config-printer.py:133 ../troubleshoot/PrintTestPage.py:45
 msgid "Processing"
 msgstr "பணி நடைபெறுகிறது"
 
 #: ../jobviewer.py:2385 ../printerproperties.py:76
-#: ../system-config-printer.py:133 ../troubleshoot/PrintTestPage.py:46
+#: ../system-config-printer.py:135 ../troubleshoot/PrintTestPage.py:46
 msgid "Stopped"
 msgstr "நிறுத்தப்பட்டது"
 
@@ -494,7 +494,7 @@ msgstr "நிறுத்தப்பட்டது"
 msgid "Completed"
 msgstr "முடிக்கப்பட்டது"
 
-#: ../newprinter.py:72
+#: ../newprinter.py:74
 msgid ""
 "The firewall may need adjusting in order to detect network printers.  Adjust "
 "the firewall now?"
@@ -502,84 +502,84 @@ msgstr ""
 "பிணைய அச்சுப்பொறிகளைக் கண்டறிய ஃபயர்வாலை சரி செய்ய வேண்டியிருக்கலாம்.  இப்போது "
 "ஃபயர்வாலை சரி செய்ய வேண்டுமா?"
 
-#: ../newprinter.py:337 ../newprinter.py:348 ../newprinter.py:354
-#: ../newprinter.py:359
+#: ../newprinter.py:353 ../newprinter.py:364 ../newprinter.py:370
+#: ../newprinter.py:375
 msgid "Default"
 msgstr "முன்னிருப்பு"
 
 #. See section 4.2.6 of this document for explanation of finishing types:
 #. ftp://ftp.pwg.org/pub/pwg/candidates/cs-ippfinishings10-20010205-5100.1.pdf
-#: ../newprinter.py:349 ../newprinter.py:360 ../newprinter.py:3747
+#: ../newprinter.py:365 ../newprinter.py:376 ../newprinter.py:3855
 #: ../ppdippstr.py:65 ../printerproperties.py:280
 msgid "None"
 msgstr "ஒன்றுமில்லாத"
 
-#: ../newprinter.py:350
+#: ../newprinter.py:366
 msgid "Odd"
 msgstr "ஒற்றை"
 
-#: ../newprinter.py:351
+#: ../newprinter.py:367
 msgid "Even"
 msgstr "சமமான"
 
-#: ../newprinter.py:361
+#: ../newprinter.py:377
 msgid "XON/XOFF (Software)"
 msgstr "XON/XOFF (மென்பொருள்)"
 
-#: ../newprinter.py:362
+#: ../newprinter.py:378
 msgid "RTS/CTS (Hardware)"
 msgstr "RTS/CTS (வன்பொருள்)"
 
-#: ../newprinter.py:363
+#: ../newprinter.py:379
 msgid "DTR/DSR (Hardware)"
 msgstr "DTR/DSR (வன்பொருள்)"
 
-#: ../newprinter.py:381 ../printerproperties.py:234
+#: ../newprinter.py:397 ../printerproperties.py:234
 msgid "Members of this class"
 msgstr "இந்த வகுப்பின் உறுப்பினர்கள்"
 
-#: ../newprinter.py:383 ../printerproperties.py:235
+#: ../newprinter.py:399 ../printerproperties.py:235
 msgid "Others"
 msgstr "மற்றவை"
 
-#: ../newprinter.py:384
+#: ../newprinter.py:400
 msgid "Devices"
 msgstr "சாதனங்கள்"
 
-#: ../newprinter.py:385
+#: ../newprinter.py:401
 msgid "Connections"
 msgstr "இணைப்புகள்"
 
-#: ../newprinter.py:386
+#: ../newprinter.py:402
 msgid "Makes"
 msgstr "உருவாக்குகிறது"
 
-#: ../newprinter.py:387
+#: ../newprinter.py:403
 msgid "Models"
 msgstr "மாதிரிகள்"
 
-#: ../newprinter.py:388
+#: ../newprinter.py:404
 msgid "Drivers"
 msgstr "இயக்கிகள்"
 
-#: ../newprinter.py:389 ../ui/NewPrinterWindow.ui.h:102
+#: ../newprinter.py:405 ../ui/NewPrinterWindow.ui.h:103
 msgid "Downloadable Drivers"
 msgstr "பதிவிறக்கக்கூடிய இயக்கிகள்"
 
-#: ../newprinter.py:468
+#: ../newprinter.py:484
 msgid "Browsing not available (pysmbc not installed)"
 msgstr "உலாவி கிடைக்கவில்லை (pysmbc நிறுவப்படவில்லை)"
 
 #. SMB list columns
-#: ../newprinter.py:474
+#: ../newprinter.py:490
 msgid "Share"
 msgstr "பகிர்வு"
 
-#: ../newprinter.py:480
+#: ../newprinter.py:496
 msgid "Comment"
 msgstr "குறிப்பு"
 
-#: ../newprinter.py:495
+#: ../newprinter.py:511
 msgid ""
 "PostScript Printer Description files (*.ppd, *.PPD, *.ppd.gz, *.PPD.gz, *."
 "PPD.GZ)"
@@ -587,102 +587,102 @@ msgstr ""
 "PostScript அச்சடிப்பான் விளக்க கோப்புகள் (*.ppd, *.PPD, *.ppd.gz, *.PPD.gz, *.PPD."
 "GZ)"
 
-#: ../newprinter.py:504
+#: ../newprinter.py:520
 msgid "All files (*)"
 msgstr "அனைத்து கோப்புகள்  (*)"
 
-#: ../newprinter.py:653 ../newprinter.py:1514 ../newprinter.py:3274
-#: ../newprinter.py:3334 ../newprinter.py:3386 ../applet.py:128
+#: ../newprinter.py:669 ../newprinter.py:1587 ../newprinter.py:3382
+#: ../newprinter.py:3442 ../newprinter.py:3494 ../applet.py:129
 msgid "Search"
 msgstr "தேடல்"
 
-#: ../newprinter.py:680 ../newprinter.py:702 ../ui/NewPrinterWindow.ui.h:1
+#: ../newprinter.py:696 ../newprinter.py:718 ../ui/NewPrinterWindow.ui.h:1
 msgid "New Printer"
 msgstr "புதிய அச்சடிப்பி"
 
-#: ../newprinter.py:688
+#: ../newprinter.py:704
 msgid "New Class"
 msgstr "புதிய வகுப்பு"
 
-#: ../newprinter.py:693
+#: ../newprinter.py:709
 msgid "Change Device URI"
 msgstr "சாதனம் URI ஐ மாற்றவும்"
 
-#: ../newprinter.py:700
+#: ../newprinter.py:716
 msgid "Change Driver"
 msgstr "இயக்கியை மாற்றவும்"
 
-#: ../newprinter.py:704
+#: ../newprinter.py:720
 msgid "Download Printer Driver"
 msgstr ""
 
-#: ../newprinter.py:713 ../newprinter.py:2055 ../newprinter.py:2060
+#: ../newprinter.py:729 ../newprinter.py:2163 ../newprinter.py:2168
 msgid "fetching device list"
 msgstr "சாதனப் பட்டியலை மாற்றுகிறது"
 
-#: ../newprinter.py:955
+#: ../newprinter.py:971
 #, python-format
 msgid "Installing driver %s"
 msgstr ""
 
-#: ../newprinter.py:962
+#: ../newprinter.py:978
 msgid "Installing ..."
 msgstr ""
 
-#: ../newprinter.py:1327 ../newprinter.py:3076 ../newprinter.py:3304
+#: ../newprinter.py:1400 ../newprinter.py:3184 ../newprinter.py:3412
 #: ../ppdsloader.py:86
 msgid "Searching"
 msgstr "தேடுகிறது"
 
-#: ../newprinter.py:1337 ../ppdsloader.py:93
+#: ../newprinter.py:1410 ../ppdsloader.py:93
 msgid "Searching for drivers"
 msgstr "இயக்கிகளுக்காக தேடுகிறது"
 
 #. device-info
 #. PhysicalDevice obj
 #. Separator?
-#: ../newprinter.py:1979
+#: ../newprinter.py:2087
 msgid "Enter URI"
 msgstr "URI ஐ உள்ளிடவும்"
 
-#: ../newprinter.py:1984
+#: ../newprinter.py:2092
 msgid "Network Printer"
 msgstr "பிணைய அச்சடிப்பான்"
 
-#: ../newprinter.py:1988
+#: ../newprinter.py:2096
 msgid "Find Network Printer"
 msgstr "பிணைய அச்சடிப்பானைத் தேடு"
 
-#: ../newprinter.py:2020
+#: ../newprinter.py:2128
 msgid "Allow all incoming IPP Browse packets"
 msgstr "அனைத்து உள்வரும் IPP உலாவி பாக்கெட்டுகளை அனுமதிக்கவும்"
 
-#: ../newprinter.py:2025
+#: ../newprinter.py:2133
 msgid "Allow all incoming mDNS traffic"
 msgstr "அனைத்து உள்வரும் mDNS ட்ராபிக்கை அனுமதிக்கவும்"
 
-#: ../newprinter.py:2035 ../newprinter.py:2038 ../newprinter.py:2466
-#: ../newprinter.py:2472 ../serversettings.py:563 ../serversettings.py:568
+#: ../newprinter.py:2143 ../newprinter.py:2146 ../newprinter.py:2574
+#: ../newprinter.py:2580 ../serversettings.py:563 ../serversettings.py:568
 msgid "Adjust Firewall"
 msgstr "ஃபயர்வாலை சரிசெய்கிறது"
 
-#: ../newprinter.py:2037 ../newprinter.py:2471
+#: ../newprinter.py:2145 ../newprinter.py:2579
 msgid "Do It Later"
 msgstr "பின்னர் இதை செய்"
 
-#: ../newprinter.py:2146 ../newprinter.py:3640
+#: ../newprinter.py:2254 ../newprinter.py:3748
 msgid " (Current)"
 msgstr " (நடப்பு)"
 
-#: ../newprinter.py:2216
+#: ../newprinter.py:2324
 msgid "Scanning..."
 msgstr "ஸ்கேனிங் செய்கிறது..."
 
-#: ../newprinter.py:2272
+#: ../newprinter.py:2380
 msgid "No Print Shares"
 msgstr "அச்சு பகிர்வுகள் இல்லை"
 
-#: ../newprinter.py:2273
+#: ../newprinter.py:2381
 msgid ""
 "There were no print shares found.  Please check that the Samba service is "
 "marked as trusted in your firewall configuration."
@@ -690,111 +690,111 @@ msgstr ""
 "அச்சு பகிர்வுகள் எதுவும் இல்லை. உங்கள் ஃபயர்வால் கட்டமைப்பில் சம்பா சேவைகள் நம்பகமானது என "
 "குறிக்கப்பட்டுள்ளதா என சரிபார்க்கவும்."
 
-#: ../newprinter.py:2414
+#: ../newprinter.py:2522
 #, python-format
 msgid "Verification requires the %s module"
 msgstr ""
 
-#: ../newprinter.py:2468
+#: ../newprinter.py:2576
 msgid "Allow all incoming SMB/CIFS browse packets"
 msgstr "அனைத்து உள்வரும் SMB/CIFS உலாவி பாக்கெட்டுகளை அனுமதிக்கவும்"
 
-#: ../newprinter.py:2584
+#: ../newprinter.py:2692
 msgid "Print Share Verified"
 msgstr "அச்சடிப்பு பகிர்வு சரிபார்க்கப்பட்டது"
 
-#: ../newprinter.py:2585
+#: ../newprinter.py:2693
 msgid "This print share is accessible."
 msgstr "இந்த அச்சு பகிர்வு அணுகக்கூடியது."
 
-#: ../newprinter.py:2590
+#: ../newprinter.py:2698
 msgid "This print share is not accessible."
 msgstr "இந்த அச்சு பகிர்வு அணுகக்கூடியதல்ல."
 
-#: ../newprinter.py:2593
+#: ../newprinter.py:2701
 msgid "Print Share Inaccessible"
 msgstr "அச்சு பகிர்வு அணுகக்கூடியதாக இல்லை"
 
-#: ../newprinter.py:2732
+#: ../newprinter.py:2840
 msgid "Parallel Port"
 msgstr "துணைத் துறை"
 
-#: ../newprinter.py:2734
+#: ../newprinter.py:2842
 msgid "Serial Port"
 msgstr "வரிசை துறை"
 
-#: ../newprinter.py:2736
+#: ../newprinter.py:2844
 msgid "USB"
 msgstr "USB"
 
-#: ../newprinter.py:2738
+#: ../newprinter.py:2846
 msgid "Bluetooth"
 msgstr "ஃப்ளூடூத்"
 
-#: ../newprinter.py:2740 ../newprinter.py:2743
+#: ../newprinter.py:2848 ../newprinter.py:2851
 msgid "HP Linux Imaging and Printing (HPLIP)"
 msgstr "HP Linux Imaging and Printing (HPLIP)"
 
-#: ../newprinter.py:2742 ../newprinter.py:2881 ../newprinter.py:2883
-#: ../system-config-printer.py:899
+#: ../newprinter.py:2850 ../newprinter.py:2989 ../newprinter.py:2991
+#: ../system-config-printer.py:901
 msgid "Fax"
 msgstr "தொல்நகலி"
 
-#: ../newprinter.py:2745
+#: ../newprinter.py:2853
 msgid "Hardware Abstraction Layer (HAL)"
 msgstr "Hardware Abstraction Layer (HAL)"
 
-#: ../newprinter.py:2747 ../ppdippstr.py:178
+#: ../newprinter.py:2855 ../ppdippstr.py:178
 msgid "AppSocket/HP JetDirect"
 msgstr "AppSocket/HP JetDirect"
 
-#: ../newprinter.py:2756
+#: ../newprinter.py:2864
 #, python-format
 msgid "LPD/LPR queue '%s'"
 msgstr "LPD/LPR வரிசை '%s'"
 
-#: ../newprinter.py:2759
+#: ../newprinter.py:2867
 msgid "LPD/LPR queue"
 msgstr "LPD/LPR வரிசை "
 
-#: ../newprinter.py:2762 ../ppdippstr.py:184
+#: ../newprinter.py:2870 ../ppdippstr.py:184
 msgid "Windows Printer via SAMBA"
 msgstr "SAMBA வழியாக சாளர அச்சடிப்பான்"
 
-#: ../newprinter.py:2773 ../newprinter.py:2775
+#: ../newprinter.py:2881 ../newprinter.py:2883
 msgid "IPP"
 msgstr "IPP"
 
-#: ../newprinter.py:2777
+#: ../newprinter.py:2885
 msgid "HTTP"
 msgstr "HTTP"
 
-#: ../newprinter.py:2785 ../newprinter.py:2946
+#: ../newprinter.py:2893 ../newprinter.py:3054
 msgid "Remote CUPS printer via DNS-SD"
 msgstr "தொலை CUPS அச்சடிப்பான் DNS-SD வழியாக"
 
-#: ../newprinter.py:2797 ../newprinter.py:2956
+#: ../newprinter.py:2905 ../newprinter.py:3064
 #, python-format
 msgid "%s network printer via DNS-SD"
 msgstr "%s பிணைய அச்சடிப்பான் DNS-SD வழியாக"
 
-#: ../newprinter.py:2801 ../newprinter.py:2958
+#: ../newprinter.py:2909 ../newprinter.py:3066
 msgid "Network printer via DNS-SD"
 msgstr "பிணைய அச்சடிப்பான்  DNS-SD வழியாக"
 
-#: ../newprinter.py:2925
+#: ../newprinter.py:3033
 msgid "A printer connected to the parallel port."
 msgstr "ஒரு அச்சடிப்பி இணை துறையில் இணைக்கப்பட்டது."
 
-#: ../newprinter.py:2927
+#: ../newprinter.py:3035
 msgid "A printer connected to a USB port."
 msgstr "ஒரு அச்சடிப்பி ஒரு USB துறையில் இணைக்கப்பட்டது."
 
-#: ../newprinter.py:2929
+#: ../newprinter.py:3037
 msgid "A printer connected via Bluetooth."
 msgstr "ஒரு அச்சடிப்பான் ஃப்ளூடூத் வழியாக இணைக்கப்பட்டது."
 
-#: ../newprinter.py:2931
+#: ../newprinter.py:3039
 msgid ""
 "HPLIP software driving a printer, or the printer function of a multi-"
 "function device."
@@ -802,7 +802,7 @@ msgstr ""
 "HPLIP மென்பொருள் ஒரு அச்சடிப்பியை இயக்குகிறது, அல்லது பல செயல்பாட்டு சாதனத்தின் "
 "அச்சடிப்பியின் செயல்பாடு."
 
-#: ../newprinter.py:2934
+#: ../newprinter.py:3042
 msgid ""
 "HPLIP software driving a fax machine, or the fax function of a multi-"
 "function device."
@@ -810,51 +810,51 @@ msgstr ""
 "HPLIP மென்பொருள் ஒரு தொலைநகலியை இயக்குகிறது, அல்லது பல செயல்பாட்டு சாதனத்தின் "
 "தொலைநகலியின் செயல்பாடு."
 
-#: ../newprinter.py:2937
+#: ../newprinter.py:3045
 msgid "Local printer detected by the Hardware Abstraction Layer (HAL)."
 msgstr "Hardware Abstraction Layer (HAL) ஆல் உள்ளமை அச்சடிப்பி கண்டறியப்பட்டது."
 
-#: ../newprinter.py:3077
+#: ../newprinter.py:3185
 msgid "Searching for printers"
 msgstr "அச்சடிப்பானுக்காக தேடுகிறது"
 
-#: ../newprinter.py:3183 ../ui/NewPrinterWindow.ui.h:46
+#: ../newprinter.py:3291 ../ui/NewPrinterWindow.ui.h:46
 msgid "No printer was found at that address."
 msgstr "அந்த முகவரியில் அச்சடிப்பான் காணப்படவில்லை."
 
-#: ../newprinter.py:3339
+#: ../newprinter.py:3447
 msgid "-- Select from search results --"
 msgstr "-- தேடல் முடிவுகளிலிருந்து தேர்ந்தெடு --"
 
-#: ../newprinter.py:3341
+#: ../newprinter.py:3449
 msgid "-- No matches found --"
 msgstr "-- பொருத்தங்கள் எதுவும் காணப்படவில்லை--"
 
-#: ../newprinter.py:3455 ../ui/NewPrinterWindow.ui.h:80
+#: ../newprinter.py:3563 ../ui/NewPrinterWindow.ui.h:80
 msgid "Local Driver"
 msgstr "உள்ளமை இயக்கி"
 
-#: ../newprinter.py:3488 ../newprinter.py:3551 ../newprinter.py:3649
+#: ../newprinter.py:3596 ../newprinter.py:3659 ../newprinter.py:3757
 msgid " (recommended)"
 msgstr " (பரிந்துரைக்கப்பட்டது)"
 
-#: ../newprinter.py:3681
+#: ../newprinter.py:3789
 msgid "This PPD is generated by foomatic."
 msgstr "இந்த PPD foomaticஆல் உருவாக்கப்பட்டது."
 
-#: ../newprinter.py:3729
+#: ../newprinter.py:3837
 msgid "OpenPrinting"
 msgstr "OpenPrinting"
 
-#: ../newprinter.py:3740
+#: ../newprinter.py:3848
 msgid "Distributable"
 msgstr "விநியோகக்கூடியது"
 
-#: ../newprinter.py:3782
+#: ../newprinter.py:3892
 msgid ", "
 msgstr ", "
 
-#: ../newprinter.py:3787
+#: ../newprinter.py:3897
 #, python-format
 msgid ""
 "\n"
@@ -863,20 +863,20 @@ msgstr ""
 "\n"
 "(%s)"
 
-#: ../newprinter.py:3792
+#: ../newprinter.py:3902
 msgid "No support contacts known"
 msgstr "தெரிந்த தொடர்புகளின் துணை இல்லை"
 
-#: ../newprinter.py:3796 ../newprinter.py:3809
+#: ../newprinter.py:3906 ../newprinter.py:3919
 msgid "Not specified."
 msgstr "குறிப்பிடப்படவில்லை."
 
 #. Foomatic database problem of some sort.
-#: ../newprinter.py:3854
+#: ../newprinter.py:3964
 msgid "Database error"
 msgstr "தரவுத்தள பிழை"
 
-#: ../newprinter.py:3855
+#: ../newprinter.py:3965
 #, python-format
 msgid "The '%s' driver cannot be used with printer '%s %s'."
 msgstr "'%s' இயக்கி அச்சடிப்பி '%s %s' இல் பயன்படுத்த முடியாது."
@@ -884,45 +884,45 @@ msgstr "'%s' இயக்கி அச்சடிப்பி '%s %s' இல்
 #. This printer references some XML that is not
 #. installed by default.  Point the user at the
 #. package they need to install.
-#: ../newprinter.py:3865
+#: ../newprinter.py:3975
 #, python-format
 msgid "You will need to install the '%s' package in order to use this driver."
 msgstr "நீங்கள் இந்த இயக்கியைப் பயன்படுத்த '%s' தொகுப்புகளை நிறுவ வேண்டும்."
 
 #. This error came from trying to open the PPD file.
-#: ../newprinter.py:3872
+#: ../newprinter.py:3982
 msgid "PPD error"
 msgstr "PPD பிழை"
 
-#: ../newprinter.py:3874
+#: ../newprinter.py:3984
 msgid "Failed to read PPD file.  Possible reason follows:"
 msgstr "PPD கோப்பினை வாசிக்க முடியவில்லை.  இதற்கான காரணங்கள் பின்வருமாறு:"
 
 #. Failed to get PPD downloaded from OpenPrinting XXX
-#: ../newprinter.py:3892
+#: ../newprinter.py:4002
 msgid "Downloadable drivers"
 msgstr "பதிவிறக்கக்கூடிய இயக்கிகள்"
 
-#: ../newprinter.py:3893
+#: ../newprinter.py:4003
 msgid "Failed to download PPD."
 msgstr "PPDஐ பதிவிறக்க முடியவில்லை."
 
-#: ../newprinter.py:3901
+#: ../newprinter.py:4011
 msgid "fetching PPD"
 msgstr "PPDஐ மாற்றுகிறது"
 
-#: ../newprinter.py:3930 ../newprinter.py:3967
+#: ../newprinter.py:4040 ../newprinter.py:4077
 msgid "No Installable Options"
 msgstr "நிறுவக்கூடியவிருப்பங்கள் இல்லை"
 
-#: ../newprinter.py:4031
+#: ../newprinter.py:4141
 #, python-format
 msgid "adding printer %s"
 msgstr "அச்சடிப்பான் %sஐ சேர்க்கிறது"
 
-#: ../newprinter.py:4060 ../newprinter.py:4072 ../newprinter.py:4090
-#: ../printerproperties.py:1002 ../system-config-printer.py:1688
-#: ../system-config-printer.py:1718
+#: ../newprinter.py:4170 ../newprinter.py:4182 ../newprinter.py:4200
+#: ../printerproperties.py:1002 ../system-config-printer.py:1690
+#: ../system-config-printer.py:1720
 #, python-format
 msgid "modifying printer %s"
 msgstr "அச்சடிப்பான் %sஐ மாற்றியமைக்கிறது"
@@ -1224,11 +1224,11 @@ msgstr "LPT #1"
 msgid "fetching PPDs"
 msgstr "PPDsஐ மாற்றுகிறது"
 
-#: ../printerproperties.py:70 ../system-config-printer.py:130
+#: ../printerproperties.py:70 ../system-config-printer.py:132
 msgid "Idle"
 msgstr "வெறுமை"
 
-#: ../printerproperties.py:74 ../system-config-printer.py:132
+#: ../printerproperties.py:74 ../system-config-printer.py:134
 msgid "Busy"
 msgstr "பணியில்"
 
@@ -1571,203 +1571,203 @@ msgstr ""
 "உள்வரும் அனைத்து IPP இணைப்புகளையும் அனுமதிக்கும்படி இப்போது ஃபயர்வாலை சரி செய்ய "
 "வேண்டுமா?"
 
-#: ../system-config-printer.py:233
+#: ../system-config-printer.py:235
 msgid "_Connect..."
 msgstr "இணை (_C)..."
 
-#: ../system-config-printer.py:234
+#: ../system-config-printer.py:236
 msgid "Choose a different CUPS server"
 msgstr "ஒரு வேறுபட்ட CUPS சேவையகத்தை தேர்ந்தெடுக்கவும்"
 
-#: ../system-config-printer.py:236
+#: ../system-config-printer.py:238
 msgid "_Settings..."
 msgstr "அமைவுகள் (_S)..."
 
-#: ../system-config-printer.py:237
+#: ../system-config-printer.py:239
 msgid "Adjust server settings"
 msgstr "சேவையக அமைவுகளை சரிசெய்யவும்"
 
-#: ../system-config-printer.py:239 ../ui/PrintersWindow.ui.h:3
+#: ../system-config-printer.py:241 ../ui/PrintersWindow.ui.h:3
 msgid "_Printer"
 msgstr "அச்சடிப்பான் (_P)"
 
-#: ../system-config-printer.py:241
+#: ../system-config-printer.py:243
 msgid "_Class"
 msgstr "வகுப்பு (_C)"
 
-#: ../system-config-printer.py:246
+#: ../system-config-printer.py:248
 msgid "_Rename"
 msgstr "மறுபெயரிடு (_R)"
 
-#: ../system-config-printer.py:248
+#: ../system-config-printer.py:250
 msgid "_Duplicate"
 msgstr "போலி (_D)"
 
-#: ../system-config-printer.py:252
+#: ../system-config-printer.py:254
 msgid "Set As De_fault"
 msgstr "முன்னிருப்பாக அமை (_f)"
 
-#: ../system-config-printer.py:256
+#: ../system-config-printer.py:258
 msgid "_Create class"
 msgstr "வகுப்பை உருவாக்கு (_C)"
 
-#: ../system-config-printer.py:258
+#: ../system-config-printer.py:260
 msgid "View Print _Queue"
 msgstr "அச்சு வரிசையை பார்வையிடு ( _Q)"
 
-#: ../system-config-printer.py:262
+#: ../system-config-printer.py:264
 msgid "E_nabled"
 msgstr "செயல்படுத்தப்பட்டது (_n)"
 
-#: ../system-config-printer.py:264
+#: ../system-config-printer.py:266
 msgid "_Shared"
 msgstr "பகிரப்பட்டது (_S)"
 
-#: ../system-config-printer.py:269
+#: ../system-config-printer.py:271
 msgid "Description"
 msgstr "விளக்கம்"
 
-#: ../system-config-printer.py:270 ../troubleshoot/ChooseNetworkPrinter.py:39
+#: ../system-config-printer.py:272 ../troubleshoot/ChooseNetworkPrinter.py:39
 #: ../troubleshoot/ChoosePrinter.py:45
 msgid "Location"
 msgstr "இடம்"
 
-#: ../system-config-printer.py:271
+#: ../system-config-printer.py:273
 msgid "Manufacturer / Model"
 msgstr "உற்பத்தியாளர் / மாதிரி"
 
-#: ../system-config-printer.py:318 ../ui/PrinterPropertiesDialog.ui.h:41
+#: ../system-config-printer.py:320 ../ui/PrinterPropertiesDialog.ui.h:41
 #: ../ui/PrintersWindow.ui.h:10 ../ui/ServerSettingsDialog.ui.h:15
 #, fuzzy
 msgid "Add"
 msgstr "ஒற்றை"
 
-#: ../system-config-printer.py:335 ../ui/PrinterPropertiesDialog.ui.h:88
+#: ../system-config-printer.py:337 ../ui/PrinterPropertiesDialog.ui.h:88
 #: ../ui/SMBBrowseDialog.ui.h:2
 #, fuzzy
 msgid "Refresh"
 msgstr "புதுப்பி (_R)"
 
-#: ../system-config-printer.py:349
+#: ../system-config-printer.py:351
 msgid "_New"
 msgstr "புதிய (_N)"
 
-#: ../system-config-printer.py:711
-#, python-format
-msgid "Print Settings - %s"
+#: ../system-config-printer.py:713
+#, fuzzy, python-format
+msgid "Printers - %s"
 msgstr "அச்சு அமைவுகள் - %s"
 
-#: ../system-config-printer.py:714
+#: ../system-config-printer.py:716
 #, python-format
 msgid "Connected to %s"
 msgstr "%sக்கு இணைக்கப்பட்டது"
 
-#: ../system-config-printer.py:801
+#: ../system-config-printer.py:803
 msgid "obtaining queue details"
 msgstr "வரிசை விவரங்களை பெறுகிறது"
 
-#: ../system-config-printer.py:890
+#: ../system-config-printer.py:892
 msgid "Network printer (discovered)"
 msgstr "பிணைய அச்சடிப்பான் (கண்டுபிடிக்கப்பட்டது)"
 
-#: ../system-config-printer.py:893
+#: ../system-config-printer.py:895
 msgid "Network class (discovered)"
 msgstr "பிணைய வகுப்பு (கண்டுபிடிக்கப்பட்டது)"
 
-#: ../system-config-printer.py:902
+#: ../system-config-printer.py:904
 msgid "Class"
 msgstr "வகுப்பு"
 
-#: ../system-config-printer.py:905 ../system-config-printer.py:911
+#: ../system-config-printer.py:907 ../system-config-printer.py:913
 #: ../troubleshoot/LocalOrRemote.py:30
 msgid "Network printer"
 msgstr "பிணைய அச்சடிப்பான்"
 
-#: ../system-config-printer.py:908
+#: ../system-config-printer.py:910
 msgid "Network print share"
 msgstr "பிணைய அச்சு பகிர்வு"
 
-#: ../system-config-printer.py:1062
+#: ../system-config-printer.py:1064
 msgid "Service framework not available"
 msgstr "சேவை பணிச்சட்டமைப்பு இல்லை"
 
-#: ../system-config-printer.py:1064
+#: ../system-config-printer.py:1066
 msgid "Cannot start service on remote server"
 msgstr "தொலைநிலை சேவையகத்தில் சேவையை தொடங்க முடியாது"
 
-#: ../system-config-printer.py:1112 ../ui/ConnectingDialog.ui.h:5
+#: ../system-config-printer.py:1114 ../ui/ConnectingDialog.ui.h:5
 #, no-c-format, python-format
 msgid "<i>Opening connection to %s</i>"
 msgstr "<i>%sக்கு இணைப்பை திறக்கிறது</i>"
 
-#: ../system-config-printer.py:1275
+#: ../system-config-printer.py:1277
 msgid "Set Default Printer"
 msgstr "முன்னிருப்பு அச்சடிப்பானை அமை"
 
-#: ../system-config-printer.py:1277
+#: ../system-config-printer.py:1279
 msgid "Do you want to set this as the system-wide default printer?"
 msgstr "கணினி அளவிலான முன்னிருப்பு அச்சடிப்பியாக இதனை அமைக்க வேண்டுமா?"
 
-#: ../system-config-printer.py:1279
+#: ../system-config-printer.py:1281
 msgid "Set as the _system-wide default printer"
 msgstr "கணினி அளவிலான முன்னிருப்பு அச்சடிப்பியாக அமை (_s)"
 
-#: ../system-config-printer.py:1281
+#: ../system-config-printer.py:1283
 msgid "_Clear my personal default setting"
 msgstr "எனது தனிப்பட்ட முன்னிருப்பு அமைவை துடை (_C)"
 
-#: ../system-config-printer.py:1282
+#: ../system-config-printer.py:1284
 msgid "Set as my _personal default printer"
 msgstr "எனது தனிப்பட்ட முன்னிருப்பு அச்சடிப்பி ஆக்கவும் (_p)"
 
-#: ../system-config-printer.py:1287
+#: ../system-config-printer.py:1289
 msgid "setting default printer"
 msgstr "அமைவு முன்னிருப்பு அச்சிடிப்பான்"
 
-#: ../system-config-printer.py:1340
+#: ../system-config-printer.py:1342
 msgid "Cannot Rename"
 msgstr "மறுபெயரிட முடியாது"
 
-#: ../system-config-printer.py:1341
+#: ../system-config-printer.py:1343
 msgid "There are queued jobs."
 msgstr "அவை வரிசைப்படுத்தப்பட்ட பணிகள்."
 
-#: ../system-config-printer.py:1358
+#: ../system-config-printer.py:1360
 msgid "Renaming will lose history"
 msgstr "மறுபெயரிடுவதால் வரலாறு இழக்கப்படும்"
 
-#: ../system-config-printer.py:1360
+#: ../system-config-printer.py:1362
 msgid "Completed jobs will no longer be available for re-printing."
 msgstr "முடிக்கப்பட்ட பணிகள் மறு அச்சிடுதலில் இல்லை."
 
-#: ../system-config-printer.py:1473
+#: ../system-config-printer.py:1475
 msgid "renaming printer"
 msgstr "மீதமுள்ள அச்சடிப்பான்"
 
-#: ../system-config-printer.py:1636
+#: ../system-config-printer.py:1638
 #, python-format
 msgid "Really delete class '%s'?"
 msgstr "வகுப்பு '%s'ஐ அழிக்கவா?"
 
-#: ../system-config-printer.py:1638
+#: ../system-config-printer.py:1640
 #, python-format
 msgid "Really delete printer '%s'?"
 msgstr "அச்சடிப்பான் '%s'ஐ அழிக்கவா?"
 
-#: ../system-config-printer.py:1642
+#: ../system-config-printer.py:1644
 msgid "Really delete selected destinations?"
 msgstr "தேர்ந்தெடுக்கப்பட்ட இலக்குகளை அழிக்கவா?"
 
-#: ../system-config-printer.py:1663
+#: ../system-config-printer.py:1665
 #, python-format
 msgid "deleting printer %s"
 msgstr "அச்சடிப்பான் %sஐ அழிக்கிறது"
 
-#: ../system-config-printer.py:1754
+#: ../system-config-printer.py:1756
 msgid "Publish Shared Printers"
 msgstr "பகிரப்பட்ட அச்சடிப்பான்களை வெளியிடவும்"
 
-#: ../system-config-printer.py:1755
+#: ../system-config-printer.py:1757
 msgid ""
 "Shared printers are not available to other people unless the 'Publish shared "
 "printers' option is enabled in the server settings."
@@ -1775,30 +1775,30 @@ msgstr ""
 "பகிரப்பட்ட அச்சடிப்பிகள் வேறு மக்களிடம் இல்லை 'பகிரப்பட்ட அச்சடிப்பிகள் வெளியிடு' "
 "விருப்பத்தை சேவையக அமைவுகளில் செயல்படுத்தவும்"
 
-#: ../system-config-printer.py:1973
+#: ../system-config-printer.py:1975
 msgid "Would you like to print a test page?"
 msgstr "ஒரு சோதனை பகத்தை அச்சடிக்கவா?"
 
 #. Not more than 25 characters
-#: ../system-config-printer.py:1975 ../ui/PrinterPropertiesDialog.ui.h:17
+#: ../system-config-printer.py:1977 ../ui/PrinterPropertiesDialog.ui.h:17
 #: ../troubleshoot/PrintTestPage.py:74
 msgid "Print Test Page"
 msgstr "அச்சு சோதனை பக்கம்"
 
-#: ../system-config-printer.py:2067
+#: ../system-config-printer.py:2069
 msgid "Install driver"
 msgstr "இயக்கியை நிறுவு"
 
-#: ../system-config-printer.py:2068 ../troubleshoot/CheckPPDSanity.py:136
+#: ../system-config-printer.py:2070 ../troubleshoot/CheckPPDSanity.py:136
 #, python-format
 msgid "Printer '%s' requires the %s package but it is not currently installed."
 msgstr "அச்சடிப்பி '%s' க்கு %s தொகுப்பு தேவைப்படுகிறது ஆனால் தற்போது நிறுவப்படவில்லை."
 
-#: ../system-config-printer.py:2083
+#: ../system-config-printer.py:2085
 msgid "Missing driver"
 msgstr "விடுபட்ட இயக்கி"
 
-#: ../system-config-printer.py:2084
+#: ../system-config-printer.py:2086
 #, python-format
 msgid ""
 "Printer '%s' requires the '%s' program but it is not currently installed.  "
@@ -1854,7 +1854,7 @@ msgid "Connect to CUPS server"
 msgstr "CUPS சேவையகத்துடன் இணைக்கவும்"
 
 #: ../ui/ConnectDialog.ui.h:2 ../ui/ConnectingDialog.ui.h:2
-#: ../ui/NewPrinterName.ui.h:2 ../ui/NewPrinterWindow.ui.h:104
+#: ../ui/NewPrinterName.ui.h:2 ../ui/NewPrinterWindow.ui.h:105
 #: ../ui/PrinterPropertiesDialog.ui.h:4 ../ui/ServerSettingsDialog.ui.h:2
 #: ../ui/SMBBrowseDialog.ui.h:3
 #, fuzzy
@@ -2253,95 +2253,99 @@ msgstr ""
 "With this choice no driver download will be performed. In the next steps a "
 "locally installed driver will be selected."
 
-#: ../ui/NewPrinterWindow.ui.h:81 ../ui/PrinterPropertiesDialog.ui.h:7
-msgid "Description:"
-msgstr "விளக்கம்:"
+#: ../ui/NewPrinterWindow.ui.h:81
+msgid "<b>License Terms</b>"
+msgstr "<b>உரிம நிபந்தனைகள்</b>"
 
 #: ../ui/NewPrinterWindow.ui.h:82
-msgid "License:"
-msgstr "உரிமம்:"
-
-#: ../ui/NewPrinterWindow.ui.h:83
 msgid "Supplier:"
 msgstr "வழங்குநர்:"
 
-#: ../ui/NewPrinterWindow.ui.h:84
-msgid "license"
-msgstr "உரிமம்"
+#: ../ui/NewPrinterWindow.ui.h:83
+msgid "License:"
+msgstr "உரிமம்:"
+
+#: ../ui/NewPrinterWindow.ui.h:84 ../ui/PrinterPropertiesDialog.ui.h:7
+msgid "Description:"
+msgstr "விளக்கம்:"
 
 #: ../ui/NewPrinterWindow.ui.h:85
-msgid "short description"
-msgstr "குறுகிய விளக்கம்"
-
-#: ../ui/NewPrinterWindow.ui.h:86
-msgid "Manufacturer"
-msgstr "உற்பத்தியாளர்"
-
-#: ../ui/NewPrinterWindow.ui.h:87
 msgid "supplier"
 msgstr "வழங்குநர்"
 
+#: ../ui/NewPrinterWindow.ui.h:86
+msgid "license"
+msgstr "உரிமம்"
+
+#: ../ui/NewPrinterWindow.ui.h:87
+msgid "short description"
+msgstr "குறுகிய விளக்கம்"
+
 #: ../ui/NewPrinterWindow.ui.h:88
-msgid "Free software"
-msgstr "இலவச மென்பொருள்"
-
-#: ../ui/NewPrinterWindow.ui.h:89
-msgid "Patented algorithms"
-msgstr "Patented algorithms"
-
-#: ../ui/NewPrinterWindow.ui.h:90
 msgid "Support:"
 msgstr "துணை:"
 
-#: ../ui/NewPrinterWindow.ui.h:91
+#: ../ui/NewPrinterWindow.ui.h:89
 msgid "support contacts"
 msgstr "துணைத் தொடர்புகள்"
 
+#: ../ui/NewPrinterWindow.ui.h:90
+msgid "Free software"
+msgstr "இலவச மென்பொருள்"
+
+#: ../ui/NewPrinterWindow.ui.h:91
+msgid "Patented algorithms"
+msgstr "Patented algorithms"
+
 #: ../ui/NewPrinterWindow.ui.h:92
+msgid "Manufacturer"
+msgstr "உற்பத்தியாளர்"
+
+#: ../ui/NewPrinterWindow.ui.h:93
 msgid "Text:"
 msgstr "உரை:"
 
-#: ../ui/NewPrinterWindow.ui.h:93
+#: ../ui/NewPrinterWindow.ui.h:94
 msgid "Line art:"
 msgstr "வரி ஆர்ட்:"
-
-#: ../ui/NewPrinterWindow.ui.h:95
-msgid "Photo:"
-msgstr "நிழற்படம்:"
 
 #: ../ui/NewPrinterWindow.ui.h:96
 msgid "Graphics:"
 msgstr "வரைகலைகள்:"
 
 #: ../ui/NewPrinterWindow.ui.h:97
+msgid "Photo:"
+msgstr "நிழற்படம்:"
+
+#: ../ui/NewPrinterWindow.ui.h:98
 msgid "<b>Output Quality</b>"
 msgstr "<b>வெளிப்பாடு தரம்</b>"
 
-#: ../ui/NewPrinterWindow.ui.h:98
+#: ../ui/NewPrinterWindow.ui.h:99
+msgid "<b>Driver details</b>"
+msgstr "<b>இயக்கி விவரங்கள்</b>"
+
+#: ../ui/NewPrinterWindow.ui.h:100
 msgid "Yes, I accept this license"
 msgstr "ஆம், இந்த உரிமத்தை நான் ஏற்கிறேன்"
 
-#: ../ui/NewPrinterWindow.ui.h:99
+#: ../ui/NewPrinterWindow.ui.h:101
 msgid "No, I do not accept this license"
 msgstr "இல்லை, இந்த உரிமத்தை நான் ஏற்கவில்லை."
 
-#: ../ui/NewPrinterWindow.ui.h:100
-msgid "<b>License Terms</b>"
-msgstr "<b>உரிம நிபந்தனைகள்</b>"
-
-#: ../ui/NewPrinterWindow.ui.h:101
+#: ../ui/NewPrinterWindow.ui.h:102
 msgid "Driver details"
 msgstr "இயக்கி விவரங்கள்"
 
-#: ../ui/NewPrinterWindow.ui.h:103
+#: ../ui/NewPrinterWindow.ui.h:104
 msgid "Back"
 msgstr ""
 
-#: ../ui/NewPrinterWindow.ui.h:105 ../ui/PrinterPropertiesDialog.ui.h:3
+#: ../ui/NewPrinterWindow.ui.h:106 ../ui/PrinterPropertiesDialog.ui.h:3
 msgid "Apply"
 msgstr ""
 
-#: ../ui/NewPrinterWindow.ui.h:106
+#: ../ui/NewPrinterWindow.ui.h:107
 msgid "Forward"
 msgstr ""
 
@@ -2798,8 +2802,9 @@ msgid "Please Wait"
 msgstr "காத்திருக்கவும்"
 
 #: ../system-config-printer.desktop.in.h:1
-msgid "Print Settings"
-msgstr "அச்சு அமைவுகள்"
+#, fuzzy
+msgid "Printers"
+msgstr "அச்சடிப்பி"
 
 #: ../system-config-printer.desktop.in.h:2
 msgid "Configure printers"
@@ -2970,7 +2975,7 @@ msgstr ""
 "சேவையக அமைவில் 'இந்த கணினியில் இணைக்கப்பட்ட பகிரப்பட்ட அச்சடிப்பிகளை வெளியிடு' என்ற "
 "விருப்பத்தை அச்சடிக்கும் நிர்வாக கருவியை பயன்படுத்தி செயல்படுத்தவும்"
 
-#: ../troubleshoot/CheckPPDSanity.py:48 ../applet.py:180
+#: ../troubleshoot/CheckPPDSanity.py:48 ../applet.py:181
 msgid "Install"
 msgstr "நிறுவல்"
 
@@ -3327,61 +3332,61 @@ msgstr ""
 msgid "Click 'Forward' to begin."
 msgstr "'முன்னோக்கி' துவக்குவதற்கு சொடுக்கவும்."
 
-#: ../applet.py:84
+#: ../applet.py:85
 msgid "Configuring new printer"
 msgstr "புதிய அச்சடிப்பியை கட்டமைக்கிறது"
 
-#: ../applet.py:85
+#: ../applet.py:86
 msgid "Please wait..."
 msgstr "காத்திருக்கவும்..."
 
 #. name is a URI, no queue was generated, because no suitable
 #. driver was found
-#: ../applet.py:114 ../applet.py:167
+#: ../applet.py:115 ../applet.py:168
 msgid "Missing printer driver"
 msgstr "விடுபட்ட அச்சடிப்பி இயக்கி"
 
-#: ../applet.py:121
+#: ../applet.py:122
 #, python-format
 msgid "No printer driver for %s."
 msgstr "%sக்கான  அச்சடிப்பு இயக்கி எதுவும் இல்லை."
 
-#: ../applet.py:123
+#: ../applet.py:124
 msgid "No driver for this printer."
 msgstr "இந்த அச்சடிப்பிக்கான இயக்கி எதுவும் இல்லை."
 
-#: ../applet.py:165
+#: ../applet.py:166
 msgid "Printer added"
 msgstr "அச்சடிப்பி சேர்க்கப்பட்டது"
 
-#: ../applet.py:171
+#: ../applet.py:172
 msgid "Install printer driver"
 msgstr "அச்சடிப்பி இயக்கியை நிறுவவும்"
 
-#: ../applet.py:172
+#: ../applet.py:173
 #, python-format
 msgid "`%s' requires driver installation: %s."
 msgstr "`%s' க்கு இயக்கி நிறுவல் தேவைப்படுகிறது: %s."
 
-#: ../applet.py:196
+#: ../applet.py:197
 #, python-format
 msgid "`%s' is ready for printing."
 msgstr "`%s' அச்சடிப்பிற்கு தயாராக உள்ளது."
 
-#: ../applet.py:200 ../applet.py:212
+#: ../applet.py:201 ../applet.py:213
 msgid "Print test page"
 msgstr "சோதனை பக்கத்தை அச்சிடு"
 
-#: ../applet.py:203
+#: ../applet.py:204
 msgid "Configure"
 msgstr "கட்டமை"
 
-#: ../applet.py:207
+#: ../applet.py:208
 #, python-format
 msgid "`%s' has been added, using the `%s' driver."
 msgstr "`%s' இயக்கியை பயன்படுத்தி `%s' சேர்க்கப்பட்டது."
 
-#: ../applet.py:215
+#: ../applet.py:216
 msgid "Find driver"
 msgstr "இயக்கியைத் தேடு"
 
@@ -3404,3 +3409,6 @@ msgid ""
 "For each queue, you can adjust the default page size and other driver "
 "options, as well as seeing ink/toner levels and status messages."
 msgstr ""
+
+#~ msgid "Print Settings"
+#~ msgstr "அச்சு அமைவுகள்"

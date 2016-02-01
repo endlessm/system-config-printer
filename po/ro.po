@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugzilla.redhat.com/bugzilla\n"
-"POT-Creation-Date: 2015-02-06 17:50+0000\n"
+"POT-Creation-Date: 2016-01-30 02:33+0000\n"
 "PO-Revision-Date: 2014-10-23 07:02-0400\n"
 "Last-Translator: Tim Waugh <twaugh@redhat.com>\n"
 "Language-Team: Romanian (http://www.transifex.com/projects/p/system-config-"
@@ -109,7 +109,7 @@ msgstr "Este necesară actualizarea"
 msgid "Server error"
 msgstr "Eroare de server"
 
-#: ../errordialogs.py:80 ../system-config-printer.py:716
+#: ../errordialogs.py:80 ../system-config-printer.py:718
 msgid "Not connected"
 msgstr "Neconectat"
 
@@ -167,7 +167,7 @@ msgstr ""
 msgid "canceling job"
 msgstr "anulare sarcină"
 
-#: ../jobviewer.py:368 ../system-config-printer.py:1652
+#: ../jobviewer.py:368 ../system-config-printer.py:1654
 msgid "_Cancel"
 msgstr ""
 
@@ -175,7 +175,7 @@ msgstr ""
 msgid "Cancel selected jobs"
 msgstr ""
 
-#: ../jobviewer.py:370 ../system-config-printer.py:1653
+#: ../jobviewer.py:370 ../system-config-printer.py:1655
 msgid "_Delete"
 msgstr ""
 
@@ -243,7 +243,7 @@ msgstr "Utilizator"
 msgid "Document"
 msgstr "Document"
 
-#: ../jobviewer.py:452 ../system-config-printer.py:896
+#: ../jobviewer.py:452 ../system-config-printer.py:898
 #: ../troubleshoot/PrintTestPage.py:86
 msgid "Printer"
 msgstr "Imprimantă"
@@ -285,7 +285,7 @@ msgstr ""
 #: ../jobviewer.py:721 ../jobviewer.py:1073 ../jobviewer.py:1855
 #: ../jobviewer.py:1885 ../jobviewer.py:2278 ../jobviewer.py:2287
 #: ../jobviewer.py:2309 ../jobviewer.py:2393 ../printerproperties.py:1648
-#: ../ui/NewPrinterWindow.ui.h:94 ../troubleshoot/ChooseNetworkPrinter.py:102
+#: ../ui/NewPrinterWindow.ui.h:95 ../troubleshoot/ChooseNetworkPrinter.py:102
 #: ../troubleshoot/ChooseNetworkPrinter.py:103
 #: ../troubleshoot/ChooseNetworkPrinter.py:106
 #: ../troubleshoot/ChooseNetworkPrinter.py:107
@@ -358,7 +358,7 @@ msgstr ""
 msgid "Save File"
 msgstr ""
 
-#: ../jobviewer.py:1584 ../system-config-printer.py:268
+#: ../jobviewer.py:1584 ../system-config-printer.py:270
 #: ../ui/NewPrinterWindow.ui.h:9 ../troubleshoot/ChooseNetworkPrinter.py:37
 #: ../troubleshoot/ChoosePrinter.py:43 ../troubleshoot/DeviceListed.py:43
 msgid "Name"
@@ -472,12 +472,12 @@ msgid "Pending"
 msgstr "În așteptare"
 
 #: ../jobviewer.py:2384 ../printerproperties.py:72
-#: ../system-config-printer.py:131 ../troubleshoot/PrintTestPage.py:45
+#: ../system-config-printer.py:133 ../troubleshoot/PrintTestPage.py:45
 msgid "Processing"
 msgstr "Procesez"
 
 #: ../jobviewer.py:2385 ../printerproperties.py:76
-#: ../system-config-printer.py:133 ../troubleshoot/PrintTestPage.py:46
+#: ../system-config-printer.py:135 ../troubleshoot/PrintTestPage.py:46
 msgid "Stopped"
 msgstr "Oprit"
 
@@ -493,90 +493,90 @@ msgstr "Anulat"
 msgid "Completed"
 msgstr "Terminat"
 
-#: ../newprinter.py:72
+#: ../newprinter.py:74
 msgid ""
 "The firewall may need adjusting in order to detect network printers.  Adjust "
 "the firewall now?"
 msgstr ""
 
-#: ../newprinter.py:337 ../newprinter.py:348 ../newprinter.py:354
-#: ../newprinter.py:359
+#: ../newprinter.py:353 ../newprinter.py:364 ../newprinter.py:370
+#: ../newprinter.py:375
 msgid "Default"
 msgstr ""
 
 #. See section 4.2.6 of this document for explanation of finishing types:
 #. ftp://ftp.pwg.org/pub/pwg/candidates/cs-ippfinishings10-20010205-5100.1.pdf
-#: ../newprinter.py:349 ../newprinter.py:360 ../newprinter.py:3747
+#: ../newprinter.py:365 ../newprinter.py:376 ../newprinter.py:3855
 #: ../ppdippstr.py:65 ../printerproperties.py:280
 msgid "None"
 msgstr "Niciuna"
 
-#: ../newprinter.py:350
+#: ../newprinter.py:366
 msgid "Odd"
 msgstr ""
 
-#: ../newprinter.py:351
+#: ../newprinter.py:367
 msgid "Even"
 msgstr ""
 
-#: ../newprinter.py:361
+#: ../newprinter.py:377
 msgid "XON/XOFF (Software)"
 msgstr ""
 
-#: ../newprinter.py:362
+#: ../newprinter.py:378
 msgid "RTS/CTS (Hardware)"
 msgstr ""
 
-#: ../newprinter.py:363
+#: ../newprinter.py:379
 msgid "DTR/DSR (Hardware)"
 msgstr ""
 
-#: ../newprinter.py:381 ../printerproperties.py:234
+#: ../newprinter.py:397 ../printerproperties.py:234
 msgid "Members of this class"
 msgstr "Membri ai acestei clase"
 
-#: ../newprinter.py:383 ../printerproperties.py:235
+#: ../newprinter.py:399 ../printerproperties.py:235
 msgid "Others"
 msgstr "Alții"
 
-#: ../newprinter.py:384
+#: ../newprinter.py:400
 msgid "Devices"
 msgstr "Dispozitive"
 
-#: ../newprinter.py:385
+#: ../newprinter.py:401
 msgid "Connections"
 msgstr "Conexiuni"
 
-#: ../newprinter.py:386
+#: ../newprinter.py:402
 msgid "Makes"
 msgstr "Producători"
 
-#: ../newprinter.py:387
+#: ../newprinter.py:403
 msgid "Models"
 msgstr "Modele"
 
-#: ../newprinter.py:388
+#: ../newprinter.py:404
 msgid "Drivers"
 msgstr "Drivere"
 
-#: ../newprinter.py:389 ../ui/NewPrinterWindow.ui.h:102
+#: ../newprinter.py:405 ../ui/NewPrinterWindow.ui.h:103
 msgid "Downloadable Drivers"
 msgstr "Drivere descărcabile"
 
-#: ../newprinter.py:468
+#: ../newprinter.py:484
 msgid "Browsing not available (pysmbc not installed)"
 msgstr "Navigarea nu este disponibilă (nu este instalat pysmbc)"
 
 #. SMB list columns
-#: ../newprinter.py:474
+#: ../newprinter.py:490
 msgid "Share"
 msgstr "Partajare"
 
-#: ../newprinter.py:480
+#: ../newprinter.py:496
 msgid "Comment"
 msgstr "Comentariu"
 
-#: ../newprinter.py:495
+#: ../newprinter.py:511
 msgid ""
 "PostScript Printer Description files (*.ppd, *.PPD, *.ppd.gz, *.PPD.gz, *."
 "PPD.GZ)"
@@ -584,102 +584,102 @@ msgstr ""
 "Fișiere descriere imprimantă PostScript (*.ppd, *.PPD, *.ppd.gz, *.PPD.gz, *."
 "PPD.GZ)"
 
-#: ../newprinter.py:504
+#: ../newprinter.py:520
 msgid "All files (*)"
 msgstr "Toate fișierele (*)"
 
-#: ../newprinter.py:653 ../newprinter.py:1514 ../newprinter.py:3274
-#: ../newprinter.py:3334 ../newprinter.py:3386 ../applet.py:128
+#: ../newprinter.py:669 ../newprinter.py:1587 ../newprinter.py:3382
+#: ../newprinter.py:3442 ../newprinter.py:3494 ../applet.py:129
 msgid "Search"
 msgstr "Caută"
 
-#: ../newprinter.py:680 ../newprinter.py:702 ../ui/NewPrinterWindow.ui.h:1
+#: ../newprinter.py:696 ../newprinter.py:718 ../ui/NewPrinterWindow.ui.h:1
 msgid "New Printer"
 msgstr "Imprimantă nouă"
 
-#: ../newprinter.py:688
+#: ../newprinter.py:704
 msgid "New Class"
 msgstr "Clasă nouă"
 
-#: ../newprinter.py:693
+#: ../newprinter.py:709
 msgid "Change Device URI"
 msgstr "Schimbă URI dispozitiv"
 
-#: ../newprinter.py:700
+#: ../newprinter.py:716
 msgid "Change Driver"
 msgstr "Schimbă driver"
 
-#: ../newprinter.py:704
+#: ../newprinter.py:720
 msgid "Download Printer Driver"
 msgstr ""
 
-#: ../newprinter.py:713 ../newprinter.py:2055 ../newprinter.py:2060
+#: ../newprinter.py:729 ../newprinter.py:2163 ../newprinter.py:2168
 msgid "fetching device list"
 msgstr "se preia lista de dispozitive"
 
-#: ../newprinter.py:955
+#: ../newprinter.py:971
 #, python-format
 msgid "Installing driver %s"
 msgstr ""
 
-#: ../newprinter.py:962
+#: ../newprinter.py:978
 msgid "Installing ..."
 msgstr ""
 
-#: ../newprinter.py:1327 ../newprinter.py:3076 ../newprinter.py:3304
+#: ../newprinter.py:1400 ../newprinter.py:3184 ../newprinter.py:3412
 #: ../ppdsloader.py:86
 msgid "Searching"
 msgstr "Căutare"
 
-#: ../newprinter.py:1337 ../ppdsloader.py:93
+#: ../newprinter.py:1410 ../ppdsloader.py:93
 msgid "Searching for drivers"
 msgstr "Se caută drivere"
 
 #. device-info
 #. PhysicalDevice obj
 #. Separator?
-#: ../newprinter.py:1979
+#: ../newprinter.py:2087
 msgid "Enter URI"
 msgstr ""
 
-#: ../newprinter.py:1984
+#: ../newprinter.py:2092
 msgid "Network Printer"
 msgstr "Imprimantă în rețea"
 
-#: ../newprinter.py:1988
+#: ../newprinter.py:2096
 msgid "Find Network Printer"
 msgstr "Detectează imprimantă în rețea"
 
-#: ../newprinter.py:2020
+#: ../newprinter.py:2128
 msgid "Allow all incoming IPP Browse packets"
 msgstr ""
 
-#: ../newprinter.py:2025
+#: ../newprinter.py:2133
 msgid "Allow all incoming mDNS traffic"
 msgstr ""
 
-#: ../newprinter.py:2035 ../newprinter.py:2038 ../newprinter.py:2466
-#: ../newprinter.py:2472 ../serversettings.py:563 ../serversettings.py:568
+#: ../newprinter.py:2143 ../newprinter.py:2146 ../newprinter.py:2574
+#: ../newprinter.py:2580 ../serversettings.py:563 ../serversettings.py:568
 msgid "Adjust Firewall"
 msgstr ""
 
-#: ../newprinter.py:2037 ../newprinter.py:2471
+#: ../newprinter.py:2145 ../newprinter.py:2579
 msgid "Do It Later"
 msgstr ""
 
-#: ../newprinter.py:2146 ../newprinter.py:3640
+#: ../newprinter.py:2254 ../newprinter.py:3748
 msgid " (Current)"
 msgstr " (Curent)"
 
-#: ../newprinter.py:2216
+#: ../newprinter.py:2324
 msgid "Scanning..."
 msgstr "Scanare..."
 
-#: ../newprinter.py:2272
+#: ../newprinter.py:2380
 msgid "No Print Shares"
 msgstr "Nicio imprimantă partajată"
 
-#: ../newprinter.py:2273
+#: ../newprinter.py:2381
 msgid ""
 "There were no print shares found.  Please check that the Samba service is "
 "marked as trusted in your firewall configuration."
@@ -687,112 +687,112 @@ msgstr ""
 "Nu a fost detectată nicio imprimantă partajată. Verificați dacă serviciul "
 "Samba este marcat ca fiind de încredere în configurația firewall-ului."
 
-#: ../newprinter.py:2414
+#: ../newprinter.py:2522
 #, python-format
 msgid "Verification requires the %s module"
 msgstr ""
 
-#: ../newprinter.py:2468
+#: ../newprinter.py:2576
 msgid "Allow all incoming SMB/CIFS browse packets"
 msgstr ""
 
-#: ../newprinter.py:2584
+#: ../newprinter.py:2692
 msgid "Print Share Verified"
 msgstr "Imprimantă partajată confirmată"
 
-#: ../newprinter.py:2585
+#: ../newprinter.py:2693
 msgid "This print share is accessible."
 msgstr "Această imprimantă partajată este accesibilă."
 
-#: ../newprinter.py:2590
+#: ../newprinter.py:2698
 msgid "This print share is not accessible."
 msgstr "Această imprimantă partajată nu este accesibilă."
 
-#: ../newprinter.py:2593
+#: ../newprinter.py:2701
 msgid "Print Share Inaccessible"
 msgstr "Imprimantă partajată inaccesibilă"
 
-#: ../newprinter.py:2732
+#: ../newprinter.py:2840
 msgid "Parallel Port"
 msgstr "Port paralel"
 
-#: ../newprinter.py:2734
+#: ../newprinter.py:2842
 msgid "Serial Port"
 msgstr "Port serial"
 
-#: ../newprinter.py:2736
+#: ../newprinter.py:2844
 msgid "USB"
 msgstr "USB"
 
-#: ../newprinter.py:2738
+#: ../newprinter.py:2846
 msgid "Bluetooth"
 msgstr ""
 
-#: ../newprinter.py:2740 ../newprinter.py:2743
+#: ../newprinter.py:2848 ../newprinter.py:2851
 msgid "HP Linux Imaging and Printing (HPLIP)"
 msgstr ""
 "Scanare și tipărire HP pentru Linux (HP Linux Imaging and Printing, HPLIP)"
 
-#: ../newprinter.py:2742 ../newprinter.py:2881 ../newprinter.py:2883
-#: ../system-config-printer.py:899
+#: ../newprinter.py:2850 ../newprinter.py:2989 ../newprinter.py:2991
+#: ../system-config-printer.py:901
 msgid "Fax"
 msgstr "Fax"
 
-#: ../newprinter.py:2745
+#: ../newprinter.py:2853
 msgid "Hardware Abstraction Layer (HAL)"
 msgstr "Nivel abstractizare hardware (Hardware Abstraction Layer, HAL)"
 
-#: ../newprinter.py:2747 ../ppdippstr.py:178
+#: ../newprinter.py:2855 ../ppdippstr.py:178
 msgid "AppSocket/HP JetDirect"
 msgstr "AppSocket/HP JetDirect"
 
-#: ../newprinter.py:2756
+#: ../newprinter.py:2864
 #, python-format
 msgid "LPD/LPR queue '%s'"
 msgstr "Ordine de așteptare LPD/LPR „%s”"
 
-#: ../newprinter.py:2759
+#: ../newprinter.py:2867
 msgid "LPD/LPR queue"
 msgstr "Coadă LPD/LPR"
 
-#: ../newprinter.py:2762 ../ppdippstr.py:184
+#: ../newprinter.py:2870 ../ppdippstr.py:184
 msgid "Windows Printer via SAMBA"
 msgstr "Imprimantă Windows via SAMBA"
 
-#: ../newprinter.py:2773 ../newprinter.py:2775
+#: ../newprinter.py:2881 ../newprinter.py:2883
 msgid "IPP"
 msgstr "IPP"
 
-#: ../newprinter.py:2777
+#: ../newprinter.py:2885
 msgid "HTTP"
 msgstr "HTTP"
 
-#: ../newprinter.py:2785 ../newprinter.py:2946
+#: ../newprinter.py:2893 ../newprinter.py:3054
 msgid "Remote CUPS printer via DNS-SD"
 msgstr ""
 
-#: ../newprinter.py:2797 ../newprinter.py:2956
+#: ../newprinter.py:2905 ../newprinter.py:3064
 #, python-format
 msgid "%s network printer via DNS-SD"
 msgstr ""
 
-#: ../newprinter.py:2801 ../newprinter.py:2958
+#: ../newprinter.py:2909 ../newprinter.py:3066
 msgid "Network printer via DNS-SD"
 msgstr ""
 
-#: ../newprinter.py:2925
+#: ../newprinter.py:3033
 msgid "A printer connected to the parallel port."
 msgstr "O imprimantă conectată la un port paralel."
 
-#: ../newprinter.py:2927
+#: ../newprinter.py:3035
 msgid "A printer connected to a USB port."
 msgstr "O imprimantă conectată la un port USB."
 
-#: ../newprinter.py:2929
+#: ../newprinter.py:3037
 msgid "A printer connected via Bluetooth."
 msgstr ""
 
-#: ../newprinter.py:2931
+#: ../newprinter.py:3039
 msgid ""
 "HPLIP software driving a printer, or the printer function of a multi-"
 "function device."
@@ -800,7 +800,7 @@ msgstr ""
 "Software HPLIP care utilizează o imprimantă sau funcția de tipărire a unui "
 "dispozitiv multifuncțional."
 
-#: ../newprinter.py:2934
+#: ../newprinter.py:3042
 msgid ""
 "HPLIP software driving a fax machine, or the fax function of a multi-"
 "function device."
@@ -808,51 +808,51 @@ msgstr ""
 "HPLIP software utilizează un fax, sau funcția fax a unui dispozitiv "
 "multifuncțional."
 
-#: ../newprinter.py:2937
+#: ../newprinter.py:3045
 msgid "Local printer detected by the Hardware Abstraction Layer (HAL)."
 msgstr "Imprimantă locală detectată de Stratul de Abstracție Hardware (HAL)"
 
-#: ../newprinter.py:3077
+#: ../newprinter.py:3185
 msgid "Searching for printers"
 msgstr "Se caută imprimante"
 
-#: ../newprinter.py:3183 ../ui/NewPrinterWindow.ui.h:46
+#: ../newprinter.py:3291 ../ui/NewPrinterWindow.ui.h:46
 msgid "No printer was found at that address."
 msgstr "Nu a fost găsită nicio imprimantă la acea adresă."
 
-#: ../newprinter.py:3339
+#: ../newprinter.py:3447
 msgid "-- Select from search results --"
 msgstr "-- Alegeți din rezultatele căutării --"
 
-#: ../newprinter.py:3341
+#: ../newprinter.py:3449
 msgid "-- No matches found --"
 msgstr "-- Nu s-au găsit rezultate --"
 
-#: ../newprinter.py:3455 ../ui/NewPrinterWindow.ui.h:80
+#: ../newprinter.py:3563 ../ui/NewPrinterWindow.ui.h:80
 msgid "Local Driver"
 msgstr "Driver local"
 
-#: ../newprinter.py:3488 ../newprinter.py:3551 ../newprinter.py:3649
+#: ../newprinter.py:3596 ../newprinter.py:3659 ../newprinter.py:3757
 msgid " (recommended)"
 msgstr " (recomandat)"
 
-#: ../newprinter.py:3681
+#: ../newprinter.py:3789
 msgid "This PPD is generated by foomatic."
 msgstr "Acest PPD este generat de foomatic."
 
-#: ../newprinter.py:3729
+#: ../newprinter.py:3837
 msgid "OpenPrinting"
 msgstr "OpenPrinting"
 
-#: ../newprinter.py:3740
+#: ../newprinter.py:3848
 msgid "Distributable"
 msgstr "Distribuibil"
 
-#: ../newprinter.py:3782
+#: ../newprinter.py:3892
 msgid ", "
 msgstr ", "
 
-#: ../newprinter.py:3787
+#: ../newprinter.py:3897
 #, python-format
 msgid ""
 "\n"
@@ -861,20 +861,20 @@ msgstr ""
 "\n"
 "(%s)"
 
-#: ../newprinter.py:3792
+#: ../newprinter.py:3902
 msgid "No support contacts known"
 msgstr "Nu se cunoaște nicio adresă pentru asistență"
 
-#: ../newprinter.py:3796 ../newprinter.py:3809
+#: ../newprinter.py:3906 ../newprinter.py:3919
 msgid "Not specified."
 msgstr "Nespecificat."
 
 #. Foomatic database problem of some sort.
-#: ../newprinter.py:3854
+#: ../newprinter.py:3964
 msgid "Database error"
 msgstr "Eroare bază de date"
 
-#: ../newprinter.py:3855
+#: ../newprinter.py:3965
 #, python-format
 msgid "The '%s' driver cannot be used with printer '%s %s'."
 msgstr "Driverul „%s” nu poate fi folosit cu imprimanta „%s %s”."
@@ -882,45 +882,45 @@ msgstr "Driverul „%s” nu poate fi folosit cu imprimanta „%s %s”."
 #. This printer references some XML that is not
 #. installed by default.  Point the user at the
 #. package they need to install.
-#: ../newprinter.py:3865
+#: ../newprinter.py:3975
 #, python-format
 msgid "You will need to install the '%s' package in order to use this driver."
 msgstr "Trebuie să instalați pachetul „%s” pentru a putea folosi acest driver."
 
 #. This error came from trying to open the PPD file.
-#: ../newprinter.py:3872
+#: ../newprinter.py:3982
 msgid "PPD error"
 msgstr "Eroare PPD"
 
-#: ../newprinter.py:3874
+#: ../newprinter.py:3984
 msgid "Failed to read PPD file.  Possible reason follows:"
 msgstr "Nu am putut citi fișierul PPD.  Urmează motivul posibil:"
 
 #. Failed to get PPD downloaded from OpenPrinting XXX
-#: ../newprinter.py:3892
+#: ../newprinter.py:4002
 msgid "Downloadable drivers"
 msgstr "Drivere descărcabile"
 
-#: ../newprinter.py:3893
+#: ../newprinter.py:4003
 msgid "Failed to download PPD."
 msgstr "Descărcarea PPD a eșuat."
 
-#: ../newprinter.py:3901
+#: ../newprinter.py:4011
 msgid "fetching PPD"
 msgstr "se preia PPD"
 
-#: ../newprinter.py:3930 ../newprinter.py:3967
+#: ../newprinter.py:4040 ../newprinter.py:4077
 msgid "No Installable Options"
 msgstr "Nu există opțiuni instalabile"
 
-#: ../newprinter.py:4031
+#: ../newprinter.py:4141
 #, python-format
 msgid "adding printer %s"
 msgstr "se adaugă imprimanta %s"
 
-#: ../newprinter.py:4060 ../newprinter.py:4072 ../newprinter.py:4090
-#: ../printerproperties.py:1002 ../system-config-printer.py:1688
-#: ../system-config-printer.py:1718
+#: ../newprinter.py:4170 ../newprinter.py:4182 ../newprinter.py:4200
+#: ../printerproperties.py:1002 ../system-config-printer.py:1690
+#: ../system-config-printer.py:1720
 #, python-format
 msgid "modifying printer %s"
 msgstr "se modifică imprimanta %s"
@@ -1223,11 +1223,11 @@ msgstr ""
 msgid "fetching PPDs"
 msgstr ""
 
-#: ../printerproperties.py:70 ../system-config-printer.py:130
+#: ../printerproperties.py:70 ../system-config-printer.py:132
 msgid "Idle"
 msgstr "Inactiv"
 
-#: ../printerproperties.py:74 ../system-config-printer.py:132
+#: ../printerproperties.py:74 ../system-config-printer.py:134
 msgid "Busy"
 msgstr "Ocupat"
 
@@ -1568,203 +1568,203 @@ msgstr "se modifică configurația serverului"
 msgid "Adjust the firewall now to allow all incoming IPP connections?"
 msgstr ""
 
-#: ../system-config-printer.py:233
+#: ../system-config-printer.py:235
 msgid "_Connect..."
 msgstr "_Conectare..."
 
-#: ../system-config-printer.py:234
+#: ../system-config-printer.py:236
 msgid "Choose a different CUPS server"
 msgstr "Alege un alt server CUPS"
 
-#: ../system-config-printer.py:236
+#: ../system-config-printer.py:238
 msgid "_Settings..."
 msgstr "Config_urări..."
 
-#: ../system-config-printer.py:237
+#: ../system-config-printer.py:239
 msgid "Adjust server settings"
 msgstr "Corectează configurația serverului"
 
-#: ../system-config-printer.py:239 ../ui/PrintersWindow.ui.h:3
+#: ../system-config-printer.py:241 ../ui/PrintersWindow.ui.h:3
 msgid "_Printer"
 msgstr "Im_primantă"
 
-#: ../system-config-printer.py:241
+#: ../system-config-printer.py:243
 msgid "_Class"
 msgstr "_Clasă"
 
-#: ../system-config-printer.py:246
+#: ../system-config-printer.py:248
 msgid "_Rename"
 msgstr "_Redenumește"
 
-#: ../system-config-printer.py:248
+#: ../system-config-printer.py:250
 msgid "_Duplicate"
 msgstr ""
 
-#: ../system-config-printer.py:252
+#: ../system-config-printer.py:254
 msgid "Set As De_fault"
 msgstr "Stabilește ca impli_cit"
 
-#: ../system-config-printer.py:256
+#: ../system-config-printer.py:258
 msgid "_Create class"
 msgstr "_Creează o clasă"
 
-#: ../system-config-printer.py:258
+#: ../system-config-printer.py:260
 msgid "View Print _Queue"
 msgstr "Afișează _ordinea de tipărire"
 
-#: ../system-config-printer.py:262
+#: ../system-config-printer.py:264
 msgid "E_nabled"
 msgstr "_Activată"
 
-#: ../system-config-printer.py:264
+#: ../system-config-printer.py:266
 msgid "_Shared"
 msgstr "_Partajată"
 
-#: ../system-config-printer.py:269
+#: ../system-config-printer.py:271
 msgid "Description"
 msgstr "Descriere"
 
-#: ../system-config-printer.py:270 ../troubleshoot/ChooseNetworkPrinter.py:39
+#: ../system-config-printer.py:272 ../troubleshoot/ChooseNetworkPrinter.py:39
 #: ../troubleshoot/ChoosePrinter.py:45
 msgid "Location"
 msgstr "Amplasare"
 
-#: ../system-config-printer.py:271
+#: ../system-config-printer.py:273
 msgid "Manufacturer / Model"
 msgstr "Producător / Model"
 
-#: ../system-config-printer.py:318 ../ui/PrinterPropertiesDialog.ui.h:41
+#: ../system-config-printer.py:320 ../ui/PrinterPropertiesDialog.ui.h:41
 #: ../ui/PrintersWindow.ui.h:10 ../ui/ServerSettingsDialog.ui.h:15
 msgid "Add"
 msgstr ""
 
-#: ../system-config-printer.py:335 ../ui/PrinterPropertiesDialog.ui.h:88
+#: ../system-config-printer.py:337 ../ui/PrinterPropertiesDialog.ui.h:88
 #: ../ui/SMBBrowseDialog.ui.h:2
 #, fuzzy
 msgid "Refresh"
 msgstr "_Reîmprospătează"
 
-#: ../system-config-printer.py:349
+#: ../system-config-printer.py:351
 msgid "_New"
 msgstr "_Nou"
 
-#: ../system-config-printer.py:711
-#, python-format
-msgid "Print Settings - %s"
-msgstr ""
+#: ../system-config-printer.py:713
+#, fuzzy, python-format
+msgid "Printers - %s"
+msgstr "Imprimantă"
 
-#: ../system-config-printer.py:714
+#: ../system-config-printer.py:716
 #, python-format
 msgid "Connected to %s"
 msgstr "Conectat la %s"
 
-#: ../system-config-printer.py:801
+#: ../system-config-printer.py:803
 msgid "obtaining queue details"
 msgstr "Se obțin detalii despre sarcinile în așteptare"
 
-#: ../system-config-printer.py:890
+#: ../system-config-printer.py:892
 msgid "Network printer (discovered)"
 msgstr "Imprimantă în rețea (detectată)"
 
-#: ../system-config-printer.py:893
+#: ../system-config-printer.py:895
 msgid "Network class (discovered)"
 msgstr "Clasă de rețea (detectată)"
 
-#: ../system-config-printer.py:902
+#: ../system-config-printer.py:904
 msgid "Class"
 msgstr "Clasă"
 
-#: ../system-config-printer.py:905 ../system-config-printer.py:911
+#: ../system-config-printer.py:907 ../system-config-printer.py:913
 #: ../troubleshoot/LocalOrRemote.py:30
 msgid "Network printer"
 msgstr "Imprimantă rețea"
 
-#: ../system-config-printer.py:908
+#: ../system-config-printer.py:910
 msgid "Network print share"
 msgstr "Partajarea imprimantei în rețea"
 
-#: ../system-config-printer.py:1062
+#: ../system-config-printer.py:1064
 msgid "Service framework not available"
 msgstr ""
 
-#: ../system-config-printer.py:1064
+#: ../system-config-printer.py:1066
 msgid "Cannot start service on remote server"
 msgstr ""
 
-#: ../system-config-printer.py:1112 ../ui/ConnectingDialog.ui.h:5
+#: ../system-config-printer.py:1114 ../ui/ConnectingDialog.ui.h:5
 #, no-c-format, python-format
 msgid "<i>Opening connection to %s</i>"
 msgstr "<i>Se deschide conexiunea pentru %s</i>"
 
-#: ../system-config-printer.py:1275
+#: ../system-config-printer.py:1277
 msgid "Set Default Printer"
 msgstr "Stabilește imprimantă implicită"
 
-#: ../system-config-printer.py:1277
+#: ../system-config-printer.py:1279
 msgid "Do you want to set this as the system-wide default printer?"
 msgstr ""
 "Doriți să stabiliți această imprimantă ca implicită pentru întregul sistem?"
 
-#: ../system-config-printer.py:1279
+#: ../system-config-printer.py:1281
 msgid "Set as the _system-wide default printer"
 msgstr "Stabilește ca imprimantă implicită pentru întregul _sistem"
 
-#: ../system-config-printer.py:1281
+#: ../system-config-printer.py:1283
 msgid "_Clear my personal default setting"
 msgstr "Șterge _configurația mea personală implicită"
 
-#: ../system-config-printer.py:1282
+#: ../system-config-printer.py:1284
 msgid "Set as my _personal default printer"
 msgstr "Stabilește ca imprimanta mea _personală implicită"
 
-#: ../system-config-printer.py:1287
+#: ../system-config-printer.py:1289
 msgid "setting default printer"
 msgstr "se configurează imprimanta implicită"
 
-#: ../system-config-printer.py:1340
+#: ../system-config-printer.py:1342
 msgid "Cannot Rename"
 msgstr "Nu s-a putut redenumi"
 
-#: ../system-config-printer.py:1341
+#: ../system-config-printer.py:1343
 msgid "There are queued jobs."
 msgstr "Există sarcini în așteptare."
 
-#: ../system-config-printer.py:1358
+#: ../system-config-printer.py:1360
 msgid "Renaming will lose history"
 msgstr "Prin redenumire se va pierde istoricul"
 
-#: ../system-config-printer.py:1360
+#: ../system-config-printer.py:1362
 msgid "Completed jobs will no longer be available for re-printing."
 msgstr "Proiectele finalizate nu vor mai fi disponibile pentru retipărire."
 
-#: ../system-config-printer.py:1473
+#: ../system-config-printer.py:1475
 msgid "renaming printer"
 msgstr "se redenumește imprimanta"
 
-#: ../system-config-printer.py:1636
+#: ../system-config-printer.py:1638
 #, python-format
 msgid "Really delete class '%s'?"
 msgstr "Sigur doriți ștergerea clasei „%s”?"
 
-#: ../system-config-printer.py:1638
+#: ../system-config-printer.py:1640
 #, python-format
 msgid "Really delete printer '%s'?"
 msgstr "Sigur doriți ștergerea imprimantei „%s”?"
 
-#: ../system-config-printer.py:1642
+#: ../system-config-printer.py:1644
 msgid "Really delete selected destinations?"
 msgstr "Sigur doriți ștergerea destinațiilor selectate?"
 
-#: ../system-config-printer.py:1663
+#: ../system-config-printer.py:1665
 #, python-format
 msgid "deleting printer %s"
 msgstr "se șterge imprimanta „%s”"
 
-#: ../system-config-printer.py:1754
+#: ../system-config-printer.py:1756
 msgid "Publish Shared Printers"
 msgstr "Prezintă imprimantele partajate"
 
-#: ../system-config-printer.py:1755
+#: ../system-config-printer.py:1757
 msgid ""
 "Shared printers are not available to other people unless the 'Publish shared "
 "printers' option is enabled in the server settings."
@@ -1773,30 +1773,30 @@ msgstr ""
 "activată opțiunea „Prezintă imprimantele partajate” în configurația "
 "serverului."
 
-#: ../system-config-printer.py:1973
+#: ../system-config-printer.py:1975
 msgid "Would you like to print a test page?"
 msgstr "Doriți să imprimați o pagină de test?"
 
 #. Not more than 25 characters
-#: ../system-config-printer.py:1975 ../ui/PrinterPropertiesDialog.ui.h:17
+#: ../system-config-printer.py:1977 ../ui/PrinterPropertiesDialog.ui.h:17
 #: ../troubleshoot/PrintTestPage.py:74
 msgid "Print Test Page"
 msgstr "Tipărește pagină de test"
 
-#: ../system-config-printer.py:2067
+#: ../system-config-printer.py:2069
 msgid "Install driver"
 msgstr "Instalare driver"
 
-#: ../system-config-printer.py:2068 ../troubleshoot/CheckPPDSanity.py:136
+#: ../system-config-printer.py:2070 ../troubleshoot/CheckPPDSanity.py:136
 #, python-format
 msgid "Printer '%s' requires the %s package but it is not currently installed."
 msgstr "Imprimanta „%s” necesită pachetul %s, pachet ce nu este instalat."
 
-#: ../system-config-printer.py:2083
+#: ../system-config-printer.py:2085
 msgid "Missing driver"
 msgstr "Driver lipsă"
 
-#: ../system-config-printer.py:2084
+#: ../system-config-printer.py:2086
 #, python-format
 msgid ""
 "Printer '%s' requires the '%s' program but it is not currently installed.  "
@@ -1852,7 +1852,7 @@ msgid "Connect to CUPS server"
 msgstr "Conectare la server CUPS"
 
 #: ../ui/ConnectDialog.ui.h:2 ../ui/ConnectingDialog.ui.h:2
-#: ../ui/NewPrinterName.ui.h:2 ../ui/NewPrinterWindow.ui.h:104
+#: ../ui/NewPrinterName.ui.h:2 ../ui/NewPrinterWindow.ui.h:105
 #: ../ui/PrinterPropertiesDialog.ui.h:4 ../ui/ServerSettingsDialog.ui.h:2
 #: ../ui/SMBBrowseDialog.ui.h:3
 #, fuzzy
@@ -2249,95 +2249,99 @@ msgstr ""
 "Cu această opțiune nu se va descărca nici un driver. În pasul următor va fi "
 "ales un driver instalat local."
 
-#: ../ui/NewPrinterWindow.ui.h:81 ../ui/PrinterPropertiesDialog.ui.h:7
-msgid "Description:"
-msgstr "Descriere:"
+#: ../ui/NewPrinterWindow.ui.h:81
+msgid "<b>License Terms</b>"
+msgstr "<b>Termeni licență</b>"
 
 #: ../ui/NewPrinterWindow.ui.h:82
-msgid "License:"
-msgstr "Licență:"
-
-#: ../ui/NewPrinterWindow.ui.h:83
 msgid "Supplier:"
 msgstr "Furnizor:"
 
-#: ../ui/NewPrinterWindow.ui.h:84
-msgid "license"
-msgstr ""
+#: ../ui/NewPrinterWindow.ui.h:83
+msgid "License:"
+msgstr "Licență:"
+
+#: ../ui/NewPrinterWindow.ui.h:84 ../ui/PrinterPropertiesDialog.ui.h:7
+msgid "Description:"
+msgstr "Descriere:"
 
 #: ../ui/NewPrinterWindow.ui.h:85
-msgid "short description"
-msgstr ""
-
-#: ../ui/NewPrinterWindow.ui.h:86
-msgid "Manufacturer"
-msgstr "Producător"
-
-#: ../ui/NewPrinterWindow.ui.h:87
 msgid "supplier"
 msgstr ""
 
+#: ../ui/NewPrinterWindow.ui.h:86
+msgid "license"
+msgstr ""
+
+#: ../ui/NewPrinterWindow.ui.h:87
+msgid "short description"
+msgstr ""
+
 #: ../ui/NewPrinterWindow.ui.h:88
-msgid "Free software"
-msgstr "Program liber"
-
-#: ../ui/NewPrinterWindow.ui.h:89
-msgid "Patented algorithms"
-msgstr "Algoritmi brevetați"
-
-#: ../ui/NewPrinterWindow.ui.h:90
 msgid "Support:"
 msgstr "Asistență:"
 
-#: ../ui/NewPrinterWindow.ui.h:91
+#: ../ui/NewPrinterWindow.ui.h:89
 msgid "support contacts"
 msgstr ""
 
+#: ../ui/NewPrinterWindow.ui.h:90
+msgid "Free software"
+msgstr "Program liber"
+
+#: ../ui/NewPrinterWindow.ui.h:91
+msgid "Patented algorithms"
+msgstr "Algoritmi brevetați"
+
 #: ../ui/NewPrinterWindow.ui.h:92
+msgid "Manufacturer"
+msgstr "Producător"
+
+#: ../ui/NewPrinterWindow.ui.h:93
 msgid "Text:"
 msgstr "Text:"
 
-#: ../ui/NewPrinterWindow.ui.h:93
+#: ../ui/NewPrinterWindow.ui.h:94
 msgid "Line art:"
 msgstr "Artă:"
-
-#: ../ui/NewPrinterWindow.ui.h:95
-msgid "Photo:"
-msgstr "Foto:"
 
 #: ../ui/NewPrinterWindow.ui.h:96
 msgid "Graphics:"
 msgstr "Grafică:"
 
 #: ../ui/NewPrinterWindow.ui.h:97
+msgid "Photo:"
+msgstr "Foto:"
+
+#: ../ui/NewPrinterWindow.ui.h:98
 msgid "<b>Output Quality</b>"
 msgstr "<b>Calitatea tipăririi</b>"
 
-#: ../ui/NewPrinterWindow.ui.h:98
+#: ../ui/NewPrinterWindow.ui.h:99
+msgid "<b>Driver details</b>"
+msgstr "<b>Detalii driver</b>"
+
+#: ../ui/NewPrinterWindow.ui.h:100
 msgid "Yes, I accept this license"
 msgstr "Da, accept această licență"
 
-#: ../ui/NewPrinterWindow.ui.h:99
+#: ../ui/NewPrinterWindow.ui.h:101
 msgid "No, I do not accept this license"
 msgstr "Nu, nu accept această licență"
 
-#: ../ui/NewPrinterWindow.ui.h:100
-msgid "<b>License Terms</b>"
-msgstr "<b>Termeni licență</b>"
-
-#: ../ui/NewPrinterWindow.ui.h:101
+#: ../ui/NewPrinterWindow.ui.h:102
 msgid "Driver details"
 msgstr "Detalii driver"
 
-#: ../ui/NewPrinterWindow.ui.h:103
+#: ../ui/NewPrinterWindow.ui.h:104
 msgid "Back"
 msgstr ""
 
-#: ../ui/NewPrinterWindow.ui.h:105 ../ui/PrinterPropertiesDialog.ui.h:3
+#: ../ui/NewPrinterWindow.ui.h:106 ../ui/PrinterPropertiesDialog.ui.h:3
 msgid "Apply"
 msgstr ""
 
-#: ../ui/NewPrinterWindow.ui.h:106
+#: ../ui/NewPrinterWindow.ui.h:107
 msgid "Forward"
 msgstr ""
 
@@ -2790,8 +2794,9 @@ msgid "Please Wait"
 msgstr "Așteptați"
 
 #: ../system-config-printer.desktop.in.h:1
-msgid "Print Settings"
-msgstr ""
+#, fuzzy
+msgid "Printers"
+msgstr "Imprimantă"
 
 #: ../system-config-printer.desktop.in.h:2
 msgid "Configure printers"
@@ -2961,7 +2966,7 @@ msgstr ""
 "sistem” din configurația serverului, utilizând instrumentul de administrare "
 "a procesului de tipărire."
 
-#: ../troubleshoot/CheckPPDSanity.py:48 ../applet.py:180
+#: ../troubleshoot/CheckPPDSanity.py:48 ../applet.py:181
 msgid "Install"
 msgstr "Instalare"
 
@@ -3321,61 +3326,61 @@ msgstr ""
 msgid "Click 'Forward' to begin."
 msgstr "Pentru a începe clic „Înainte”"
 
-#: ../applet.py:84
+#: ../applet.py:85
 msgid "Configuring new printer"
 msgstr "Se configurează imprimanta nouă"
 
-#: ../applet.py:85
+#: ../applet.py:86
 msgid "Please wait..."
 msgstr ""
 
 #. name is a URI, no queue was generated, because no suitable
 #. driver was found
-#: ../applet.py:114 ../applet.py:167
+#: ../applet.py:115 ../applet.py:168
 msgid "Missing printer driver"
 msgstr "Driver imprimantă lipsă"
 
-#: ../applet.py:121
+#: ../applet.py:122
 #, python-format
 msgid "No printer driver for %s."
 msgstr "Nu există niciun driver de imprimantă pentru %s."
 
-#: ../applet.py:123
+#: ../applet.py:124
 msgid "No driver for this printer."
 msgstr "Nu există niciun driver pentru această imprimantă."
 
-#: ../applet.py:165
+#: ../applet.py:166
 msgid "Printer added"
 msgstr "Imprimantă adăugată"
 
-#: ../applet.py:171
+#: ../applet.py:172
 msgid "Install printer driver"
 msgstr "Instalare driver imprimantă"
 
-#: ../applet.py:172
+#: ../applet.py:173
 #, python-format
 msgid "`%s' requires driver installation: %s."
 msgstr "„%s” necesită instalare driver: %s"
 
-#: ../applet.py:196
+#: ../applet.py:197
 #, python-format
 msgid "`%s' is ready for printing."
 msgstr "„%s” este pregătită pentru tipărire."
 
-#: ../applet.py:200 ../applet.py:212
+#: ../applet.py:201 ../applet.py:213
 msgid "Print test page"
 msgstr "Tipărește pagina de test"
 
-#: ../applet.py:203
+#: ../applet.py:204
 msgid "Configure"
 msgstr "Configurează"
 
-#: ../applet.py:207
+#: ../applet.py:208
 #, python-format
 msgid "`%s' has been added, using the `%s' driver."
 msgstr "„%s” a fost adăugată, folosind driverul „%s”."
 
-#: ../applet.py:215
+#: ../applet.py:216
 msgid "Find driver"
 msgstr "Căutare driver"
 
