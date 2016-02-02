@@ -6,6 +6,7 @@ XSBC-Original-Maintainer: Otavio Salvador <otavio@ossystems.com.br>
 Build-Depends: cdbs (>= 0.4.43),
                debhelper (>= 5.0.37.2),
                dh-autoreconf,
+               intltool,
                python3-all-dev (>= 3.0.0),
                libxml-parser-perl,
                desktop-file-utils (>= 0.18-0ubuntu7),
