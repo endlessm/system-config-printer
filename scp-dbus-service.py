@@ -199,10 +199,9 @@ class GetBestDriversRequest:
                                                           devid=id_dict,
                                                           fit=fit)
             ppdname = ppdnamelist[0]
-            status = fit[ppdname]
 
             try:
-                if status != "exact" and not self.download_tried:
+                if not self.download_tried:
                     self.download_tried = True
                     self.dialog = newprinter.NewPrinterGUI()
                     self.dialog.NewPrinterWindow.set_modal (False)
