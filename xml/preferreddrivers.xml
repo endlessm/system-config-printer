@@ -182,6 +182,23 @@
       </fit>
     </drivertype>
 
+    <!-- If two exact drivers are available where one is coming as recommended -->
+    <!-- from openprinting we want to select that one unless an exact-cmd one  -->
+    <!-- is available. So, define this category to use in the preferred order. -->
+    <drivertype name="openprinting-recommended">
+      <ppdname match=".*OpenPrinting.*ppd.*"/>
+    </drivertype>
+
+    <!-- Likewise, for drivers directly provided by Epson. -->
+    <drivertype name="epson-recommended">
+      <ppdname match="lsb/.*epson-inkjet-printer.*ppd.*"/>
+    </drivertype>
+
+    <!-- Likewise, for drivers directly provided by Canon. -->
+    <drivertype name="canon-recommended">
+      <ppdname match="lsb/.*canon.*ppd.*"/>
+    </drivertype>
+
     <!-- Catch-all -->
     <drivertype name="manufacturer"/>
   </drivertypes>
@@ -264,9 +281,25 @@
     </printer>
 
     <printer>
-      <!-- For all printers -->
+      <!-- For all printers with the strongest possible fit -->
       <drivers>
 	<drivertype>manufacturer-cmd</drivertype>
+      </drivers>
+    </printer>
+
+    <printer>
+      <!-- For all printers which the available driver should take
+           priority over others with 'exact' fit (but not 'exact-cmd') -->
+      <drivers>
+	<drivertype>openprinting-recommended</drivertype>
+	<drivertype>epson-recommended</drivertype>
+	<drivertype>canon-recommended</drivertype>
+      </drivers>
+    </printer>
+
+    <printer>
+      <!-- For all printers (continued) -->
+      <drivers>
 	<drivertype>foomatic-recommended-nonpostscript</drivertype>
 	<drivertype>manufacturer*</drivertype>
 	<drivertype>pdf</drivertype>
