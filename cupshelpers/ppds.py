@@ -403,6 +403,51 @@ class PPDs:
             if not makemodel.startswith ("Generic "):
                 self.ppds['raw']['ppd-make-and-model'] = "Generic " + makemodel
 
+    def _availableFromRemoteSources(self, ppdname):
+        # We know a PPD is available to be installed from remote sources if either:
+        #  1. It has been installed by our automatic installer (eos-config-printer)
+        #  2. It contains the 'OpenPrinting' string in the PPD's name
+        #  3. Its a vendor-specific & LSB-compliant driver that we pre-install
+        #     (so far this only applies to Epson and Canon drivers)
+        regexps = [
+            '.*eos-config-printer.*ppd.*',
+            '.*OpenPrinting.*ppd.*',
+            'lsb/.*epson-inkjet-printer.*ppd.*',
+            'lsb/.*canon.*ppd.*'
+        ]
+        for regexp in regexps:
+            if re.match(regexp, ppdname) != None:
+                return True
+
+        # The PPD file is only available from local sources (i.e. pre-installed packages)
+        return False
+
+    def needsQueryingRemoteSources(self, ppdnamelist, fit):
+        """
+        Determines if it would be needed to query remote sources for additional
+        drivers based on a list of PPDs and how a good fit each of them are.
+
+        @param ppdnamelist: PPD names
+        @type ppdnamelist: string list
+        @param fit: Driver fit string for each PPD name
+        @type fit: dict of PPD name:fit
+        @returns: True if remote sources should be queried, or False otherwise
+        """
+        # We don't want to spawn a remote query if at least one of the PPDs
+        # that are locally available already comes from remote sources.
+        for ppdname in ppdnamelist:
+            # Disregard PPD if not a good enough fit, as we can't trust it anyway
+            if self.getStatusFromFit(fit[ppdname]) != self.STATUS_SUCCESS:
+                continue
+
+            # At least one of the good enough PPDs we already have is known to be
+            # available from remote sources: no need query again.
+            if self._availableFromRemoteSources(ppdname):
+                return False
+
+        # No match, we need to query remote sources
+        return True
+
     def getMakes (self):
         """
 	@returns: a list of strings representing makes, sorted according
