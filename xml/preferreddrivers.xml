@@ -182,9 +182,14 @@
       </fit>
     </drivertype>
 
-    <!-- If two exact drivers are available where one is coming as recommended -->
-    <!-- from openprinting we want to select that one unless an exact-cmd one  -->
+    <!-- If two 'exact' drivers are available where one has been installed via -->
+    <!-- eos-config-printer we want to select that one unless an exact-cmd one -->
     <!-- is available. So, define this category to use in the preferred order. -->
+    <drivertype name="eos-config-printer-installed">
+      <ppdname match=".*eos-config-printer.*ppd.*"/>
+    </drivertype>
+
+    <!-- Likewise, for other drivers coming from OpenPrinting.org -->
     <drivertype name="openprinting-recommended">
       <ppdname match=".*OpenPrinting.*ppd.*"/>
     </drivertype>
@@ -291,6 +296,7 @@
       <!-- For all printers which the available driver should take
            priority over others with 'exact' fit (but not 'exact-cmd') -->
       <drivers>
+	<drivertype>eos-config-printer-installed</drivertype>
 	<drivertype>openprinting-recommended</drivertype>
 	<drivertype>epson-recommended</drivertype>
 	<drivertype>canon-recommended</drivertype>
