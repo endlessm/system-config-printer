@@ -198,11 +198,10 @@ class GetBestDriversRequest:
                                                           self.installed_files,
                                                           devid=id_dict,
                                                           fit=fit)
-            ppdname = ppdnamelist[0]
-            status = fit[ppdname]
+            needs_querying = ppds.needsQueryingRemoteSources(ppdnamelist, fit)
 
             try:
-                if status != "exact" and not self.download_tried:
+                if needs_querying and not self.download_tried:
                     self.download_tried = True
                     self.dialog = newprinter.NewPrinterGUI()
                     self.dialog.NewPrinterWindow.set_modal (False)
