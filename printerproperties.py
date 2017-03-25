@@ -722,7 +722,7 @@ class PrinterPropertiesDialog(GtkGUI):
         return result
 
     def setPUsers(self, users):
-        """write list of usernames inot the GUI"""
+        """write list of usernames into the GUI"""
         model = self.tvPUsers.get_model()
         model.clear()
         for user in users:
