@@ -1247,16 +1247,21 @@ def _self_test(argv):
         with open (picklefile, "rb") as f:
             cupsppds = pickle.load (f)
     except IOError:
-        with open (picklefile, "wb") as f:
+        try:
             c = cups.Connection ()
-            try:
-                cupsppds = c.getPPDs2 ()
-                print ("Using getPPDs2()")
-            except AttributeError:
-                # Need pycups >= 1.9.52 for getPPDs2
-                cupsppds = c.getPPDs ()
-                print ("Using getPPDs()")
+        except RuntimeError as e:
+            print ("Could not connect to CUPS: %s" % e)
+            exit (77)
 
+        try:
+            cupsppds = c.getPPDs2 ()
+            print ("Using getPPDs2()")
+        except AttributeError:
+            # Need pycups >= 1.9.52 for getPPDs2
+            cupsppds = c.getPPDs ()
+            print ("Using getPPDs()")
+
+        with open (picklefile, "wb") as f:
             pickle.dump (cupsppds, f)
 
     xml_dir = os.environ.get ("top_srcdir")
