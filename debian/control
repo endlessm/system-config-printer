@@ -16,6 +16,7 @@ Build-Depends: cdbs (>= 0.4.43),
                dh-python,
                python3-all-dev (>= 3.0.0),
                python3-nose,
+               python3-cups,
                systemd,
                udev,
                xmlto
