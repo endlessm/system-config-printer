@@ -400,7 +400,7 @@ nosetests.sh:	FORCE
 	echo "nosetests3" >> "$@"
 	chmod 755 "$@"
 
-TESTS = test-xml-validity.sh test-ppd-module.sh nosetests.sh
+TESTS = test-xml-validity.sh nosetests.sh
 
 CLEANFILES=			\
 	$(systemd_CLEANFILES)	\
