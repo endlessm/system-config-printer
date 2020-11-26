@@ -1839,7 +1839,8 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "김은주 <eukim@redhat.com>\n"
-"오현석 <hoh@redhat.com>"
+"오현석 <hoh@redhat.com>\n"
+"한정일 <LukeHan1128@gmail.com>"
 
 #: ../ui/ConnectDialog.ui.h:1
 msgid "Connect to CUPS server"
@@ -2466,7 +2467,7 @@ msgstr "사용자  "
 #: ../ui/PrinterPropertiesDialog.ui.h:40
 #, fuzzy
 msgid "Delete"
-msgstr "취소(_D) "
+msgstr "삭제(_D) "
 
 #: ../ui/PrinterPropertiesDialog.ui.h:42
 msgid "Access Control"
